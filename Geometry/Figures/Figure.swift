@@ -99,7 +99,7 @@ protocol FigureProtocol {
     var raw: Result<T, CGError> { get }
 }
 
-// MARK: - Getting Defaulted Raw Value From Optionals/Weaks
+// MARK: - Getting Defaulted Raw Value From Weak/Optional
 
 extension WeakProtocol where T: FigureProtocol {
     var defaultedRaw: Result<T.T, CGError> {
