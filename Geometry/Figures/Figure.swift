@@ -33,9 +33,9 @@ class Figure<T>: FigureProtocol, RawPropagator {
         parents = .empty
     }
     
-    init (_ figure: Propagator) {
-        parents = FigureParents(figure)
-        receiveFrom(figure)
+    init (_ parent: Propagator) {
+        parents = FigureParents(parent)
+        receiveFrom(parent)
     }
     
     init (sorted figures: [Propagator]) {
