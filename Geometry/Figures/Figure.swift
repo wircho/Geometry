@@ -8,17 +8,14 @@
 
 import Result
 
-// MARK: -
+// MARK: - Figure class
 
-class Figure<T>: FigureProtocol {
-    typealias FigureParents = SimpleTree<Weak<AnyObject>>
+class Figure<T>: Propagator, FigureProtocol {
+    typealias FigureParents = SimpleTree<Weak<Propagator>>
 
-// MARK: - Reactive Model: RawPropagator (RawCache + Propagator) Conformance
+// MARK: - RawPropagator Conformance
 
     var _raw = Result<T, CGError>.inexistent
-    var _gotSignal = true
-    var receivers: [OptionalClosureGetter] = []
-    
     func getRaw() -> Result<T, CGError> {
         fatalError("\(#function) must be overriden")
     }
@@ -29,22 +26,26 @@ class Figure<T>: FigureProtocol {
     
 // MARK: - Initializers
 
-    init () {
+    override init () {
         parents = .empty
+        super.init()
     }
     
     init (_ parent: Propagator) {
         parents = FigureParents(parent)
+        super.init()
         receiveFrom(parent)
     }
     
     init (sorted figures: [Propagator]) {
         parents = FigureParents(sorted: figures)
+        super.init()
         receiveFrom(figures)
     }
     
     init (unsorted figures: [Propagator]) {
         parents = FigureParents(unsorted: figures)
+        super.init()
         receiveFrom(figures)
     }
     
@@ -57,7 +58,7 @@ class Figure<T>: FigureProtocol {
 
 // MARK: - Figure Protocol
 
-protocol FigureProtocol: RawPropagator {
+protocol FigureProtocol: RawPropagatorProtocol {
     associatedtype T
     var raw: Result<T, CGError> { get }
 }

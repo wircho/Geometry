@@ -9,15 +9,17 @@
 import Foundation
 import Result
 
+// MARK: - Propagator Protocol
+
 typealias Closure = ()->Void
 typealias OptionalClosureGetter = Getter<Closure?>
 
-protocol Propagator: class {
+protocol PropagatorProtocol: class {
     var _gotSignal: Bool { get set }
     var receivers: [OptionalClosureGetter] { get set }
 }
 
-extension Propagator {
+extension PropagatorProtocol {
     private func receiveSignal() {
         gotSignal = true
     }
@@ -38,7 +40,7 @@ extension Propagator {
         }
     }
     
-    func addReceiver(_ receiver: Propagator) {
+    func addReceiver(_ receiver: PropagatorProtocol) {
         receivers.append(
             Getter {
                 [weak receiver] in
@@ -48,13 +50,25 @@ extension Propagator {
         )
     }
     
-    func receiveFrom(_ propagators: [Propagator]) {
+    func receiveFrom(_ propagators: [PropagatorProtocol]) {
         for propagator in propagators {
             propagator.addReceiver(self)
         }
     }
     
-    func receiveFrom(_ propagators: Propagator ...) {
+    func receiveFrom(_ propagators: PropagatorProtocol ...) {
         receiveFrom(propagators)
     }
 }
+
+// MARK: - Propagator class
+
+class Propagator: PropagatorProtocol {
+    
+    // MARK: - Propagator Conformance
+    var _gotSignal = true
+    var receivers: [OptionalClosureGetter] = []
+    
+}
+
+

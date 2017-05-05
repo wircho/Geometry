@@ -8,13 +8,13 @@
 
 import Foundation
 
-protocol RawPropagator: Propagator {
+protocol RawPropagatorProtocol: PropagatorProtocol {
     associatedtype Raw
     func getRaw() -> Raw
     var _raw: Raw { get set }
 }
 
-extension RawPropagator {
+extension RawPropagatorProtocol {
     var raw: Raw {
         guard gotSignal else {
             return _raw
