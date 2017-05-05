@@ -1,0 +1,6 @@
+framework module Pods_GeometrySample {
+  umbrella header "Pods-GeometrySample-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -7,12 +7,41 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */; };
+		A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
 		AEA287491EBCCB2C002E425F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA287481EBCCB2C002E425F /* Assets.xcassets */; };
 		AEA2874C1EBCCB2C002E425F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2874A1EBCCB2C002E425F /* LaunchScreen.storyboard */; };
 		AEA287571EBCCB2C002E425F /* GeometrySampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287561EBCCB2C002E425F /* GeometrySampleTests.swift */; };
+		AEA2878E1EBCCC04002E425F /* CircleToPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287651EBCCC04002E425F /* CircleToPoint.swift */; };
+		AEA2878F1EBCCC04002E425F /* CircleWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287661EBCCC04002E425F /* CircleWithRadius.swift */; };
+		AEA287901EBCCC04002E425F /* Circumcircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287671EBCCC04002E425F /* Circumcircle.swift */; };
+		AEA287911EBCCC04002E425F /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287691EBCCC04002E425F /* Circle.swift */; };
+		AEA287921EBCCC04002E425F /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876A1EBCCC04002E425F /* Figure.swift */; };
+		AEA287931EBCCC04002E425F /* FreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876D1EBCCC04002E425F /* FreePoint.swift */; };
+		AEA287941EBCCC04002E425F /* StraightCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876F1EBCCC04002E425F /* StraightCircle.swift */; };
+		AEA287951EBCCC04002E425F /* TwoStraights.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287701EBCCC04002E425F /* TwoStraights.swift */; };
+		AEA287961EBCCC04002E425F /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287721EBCCC04002E425F /* Point.swift */; };
+		AEA287971EBCCC04002E425F /* FreeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287751EBCCC04002E425F /* FreeScalar.swift */; };
+		AEA287981EBCCC04002E425F /* Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287771EBCCC04002E425F /* Scalar.swift */; };
+		AEA287991EBCCC04002E425F /* Line2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877A1EBCCC04002E425F /* Line2Points.swift */; };
+		AEA2879A1EBCCC04002E425F /* Ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877B1EBCCC04002E425F /* Ray.swift */; };
+		AEA2879B1EBCCC04002E425F /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877C1EBCCC04002E425F /* Segment.swift */; };
+		AEA2879C1EBCCC04002E425F /* Straight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877E1EBCCC04002E425F /* Straight.swift */; };
+		AEA2879D1EBCCC04002E425F /* Straight2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877F1EBCCC04002E425F /* Straight2Points.swift */; };
+		AEA2879E1EBCCC04002E425F /* CGError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* CGError.swift */; };
+		AEA2879F1EBCCC04002E425F /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* CGMath.swift */; };
+		AEA287A01EBCCC04002E425F /* CGResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* CGResult.swift */; };
+		AEA287A11EBCCC04002E425F /* CGResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* CGResultMath.swift */; };
+		AEA287A21EBCCC04002E425F /* CGTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* CGTypes.swift */; };
+		AEA287A31EBCCC04002E425F /* Propagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* Propagator.swift */; };
+		AEA287A41EBCCC04002E425F /* RawCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287881EBCCC04002E425F /* RawCache.swift */; };
+		AEA287A51EBCCC04002E425F /* RawPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287891EBCCC04002E425F /* RawPropagator.swift */; };
+		AEA287A61EBCCC04002E425F /* Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878B1EBCCC04002E425F /* Getter.swift */; };
+		AEA287A71EBCCC04002E425F /* SimpleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878C1EBCCC04002E425F /* SimpleTree.swift */; };
+		AEA287A81EBCCC04002E425F /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08B914015758F9D3A0EA3CC5 /* Pods-GeometrySample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySample.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample.release.xcconfig"; sourceTree = "<group>"; };
+		1AFD956535FF38239364E7D7 /* Pods-GeometrySampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		32B63DA0331CCBBC5E726895 /* Pods-GeometrySampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		9FF6C6F56C8645116D7BD20C /* Pods-GeometrySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample.debug.xcconfig"; sourceTree = "<group>"; };
 		AEA2873E1EBCCB2C002E425F /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA287411EBCCB2C002E425F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEA287431EBCCB2C002E425F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -36,6 +69,35 @@
 		AEA287521EBCCB2C002E425F /* GeometrySampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GeometrySampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA287561EBCCB2C002E425F /* GeometrySampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometrySampleTests.swift; sourceTree = "<group>"; };
 		AEA287581EBCCB2C002E425F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEA287651EBCCC04002E425F /* CircleToPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleToPoint.swift; sourceTree = "<group>"; };
+		AEA287661EBCCC04002E425F /* CircleWithRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWithRadius.swift; sourceTree = "<group>"; };
+		AEA287671EBCCC04002E425F /* Circumcircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circumcircle.swift; sourceTree = "<group>"; };
+		AEA287691EBCCC04002E425F /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
+		AEA2876A1EBCCC04002E425F /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
+		AEA2876D1EBCCC04002E425F /* FreePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreePoint.swift; sourceTree = "<group>"; };
+		AEA2876F1EBCCC04002E425F /* StraightCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightCircle.swift; sourceTree = "<group>"; };
+		AEA287701EBCCC04002E425F /* TwoStraights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoStraights.swift; sourceTree = "<group>"; };
+		AEA287721EBCCC04002E425F /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
+		AEA287751EBCCC04002E425F /* FreeScalar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeScalar.swift; sourceTree = "<group>"; };
+		AEA287771EBCCC04002E425F /* Scalar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scalar.swift; sourceTree = "<group>"; };
+		AEA2877A1EBCCC04002E425F /* Line2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line2Points.swift; sourceTree = "<group>"; };
+		AEA2877B1EBCCC04002E425F /* Ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray.swift; sourceTree = "<group>"; };
+		AEA2877C1EBCCC04002E425F /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		AEA2877E1EBCCC04002E425F /* Straight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Straight.swift; sourceTree = "<group>"; };
+		AEA2877F1EBCCC04002E425F /* Straight2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Straight2Points.swift; sourceTree = "<group>"; };
+		AEA287811EBCCC04002E425F /* CGError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGError.swift; sourceTree = "<group>"; };
+		AEA287821EBCCC04002E425F /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
+		AEA287831EBCCC04002E425F /* CGResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGResult.swift; sourceTree = "<group>"; };
+		AEA287841EBCCC04002E425F /* CGResultMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGResultMath.swift; sourceTree = "<group>"; };
+		AEA287851EBCCC04002E425F /* CGTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGTypes.swift; sourceTree = "<group>"; };
+		AEA287871EBCCC04002E425F /* Propagator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Propagator.swift; sourceTree = "<group>"; };
+		AEA287881EBCCC04002E425F /* RawCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawCache.swift; sourceTree = "<group>"; };
+		AEA287891EBCCC04002E425F /* RawPropagator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawPropagator.swift; sourceTree = "<group>"; };
+		AEA2878B1EBCCC04002E425F /* Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Getter.swift; sourceTree = "<group>"; };
+		AEA2878C1EBCCC04002E425F /* SimpleTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTree.swift; sourceTree = "<group>"; };
+		AEA2878D1EBCCC04002E425F /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
+		B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -50,18 +113,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21C1406729EAF4ABEF3B9CC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9FF6C6F56C8645116D7BD20C /* Pods-GeometrySample.debug.xcconfig */,
+				08B914015758F9D3A0EA3CC5 /* Pods-GeometrySample.release.xcconfig */,
+				32B63DA0331CCBBC5E726895 /* Pods-GeometrySampleTests.debug.xcconfig */,
+				1AFD956535FF38239364E7D7 /* Pods-GeometrySampleTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AEA287351EBCCB2C002E425F = {
 			isa = PBXGroup;
 			children = (
+				AEA287611EBCCC04002E425F /* Geometry */,
 				AEA287401EBCCB2C002E425F /* GeometrySample */,
 				AEA287551EBCCB2C002E425F /* GeometrySampleTests */,
 				AEA2873F1EBCCB2C002E425F /* Products */,
+				21C1406729EAF4ABEF3B9CC8 /* Pods */,
+				B6DB6575FB726F080B32670C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +174,186 @@
 			path = GeometrySampleTests;
 			sourceTree = "<group>";
 		};
+		AEA287611EBCCC04002E425F /* Geometry */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2878A1EBCCC04002E425F /* Tools */,
+				AEA287801EBCCC04002E425F /* Math */,
+				AEA287861EBCCC04002E425F /* Reactive */,
+				AEA287621EBCCC04002E425F /* Figures */,
+			);
+			name = Geometry;
+			path = ../Geometry;
+			sourceTree = "<group>";
+		};
+		AEA287621EBCCC04002E425F /* Figures */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2876A1EBCCC04002E425F /* Figure.swift */,
+				AEA287731EBCCC04002E425F /* Scalar */,
+				AEA2876B1EBCCC04002E425F /* Point */,
+				AEA287781EBCCC04002E425F /* Straight */,
+				AEA287631EBCCC04002E425F /* Circle */,
+			);
+			path = Figures;
+			sourceTree = "<group>";
+		};
+		AEA287631EBCCC04002E425F /* Circle */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287641EBCCC04002E425F /* FinalClasses */,
+				AEA287681EBCCC04002E425F /* Superclasses */,
+			);
+			path = Circle;
+			sourceTree = "<group>";
+		};
+		AEA287641EBCCC04002E425F /* FinalClasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287651EBCCC04002E425F /* CircleToPoint.swift */,
+				AEA287661EBCCC04002E425F /* CircleWithRadius.swift */,
+				AEA287671EBCCC04002E425F /* Circumcircle.swift */,
+			);
+			path = FinalClasses;
+			sourceTree = "<group>";
+		};
+		AEA287681EBCCC04002E425F /* Superclasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287691EBCCC04002E425F /* Circle.swift */,
+			);
+			path = Superclasses;
+			sourceTree = "<group>";
+		};
+		AEA2876B1EBCCC04002E425F /* Point */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2876C1EBCCC04002E425F /* FinalClasses */,
+				AEA287711EBCCC04002E425F /* Superclasses */,
+			);
+			path = Point;
+			sourceTree = "<group>";
+		};
+		AEA2876C1EBCCC04002E425F /* FinalClasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2876D1EBCCC04002E425F /* FreePoint.swift */,
+				AEA2876E1EBCCC04002E425F /* Intersections */,
+			);
+			path = FinalClasses;
+			sourceTree = "<group>";
+		};
+		AEA2876E1EBCCC04002E425F /* Intersections */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2876F1EBCCC04002E425F /* StraightCircle.swift */,
+				AEA287701EBCCC04002E425F /* TwoStraights.swift */,
+			);
+			path = Intersections;
+			sourceTree = "<group>";
+		};
+		AEA287711EBCCC04002E425F /* Superclasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287721EBCCC04002E425F /* Point.swift */,
+			);
+			path = Superclasses;
+			sourceTree = "<group>";
+		};
+		AEA287731EBCCC04002E425F /* Scalar */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287741EBCCC04002E425F /* FinalClasses */,
+				AEA287761EBCCC04002E425F /* Superclasses */,
+			);
+			path = Scalar;
+			sourceTree = "<group>";
+		};
+		AEA287741EBCCC04002E425F /* FinalClasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287751EBCCC04002E425F /* FreeScalar.swift */,
+			);
+			path = FinalClasses;
+			sourceTree = "<group>";
+		};
+		AEA287761EBCCC04002E425F /* Superclasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287771EBCCC04002E425F /* Scalar.swift */,
+			);
+			path = Superclasses;
+			sourceTree = "<group>";
+		};
+		AEA287781EBCCC04002E425F /* Straight */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287791EBCCC04002E425F /* FinalClasses */,
+				AEA2877D1EBCCC04002E425F /* Superclasses */,
+			);
+			path = Straight;
+			sourceTree = "<group>";
+		};
+		AEA287791EBCCC04002E425F /* FinalClasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2877A1EBCCC04002E425F /* Line2Points.swift */,
+				AEA2877B1EBCCC04002E425F /* Ray.swift */,
+				AEA2877C1EBCCC04002E425F /* Segment.swift */,
+			);
+			path = FinalClasses;
+			sourceTree = "<group>";
+		};
+		AEA2877D1EBCCC04002E425F /* Superclasses */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2877E1EBCCC04002E425F /* Straight.swift */,
+				AEA2877F1EBCCC04002E425F /* Straight2Points.swift */,
+			);
+			path = Superclasses;
+			sourceTree = "<group>";
+		};
+		AEA287801EBCCC04002E425F /* Math */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287811EBCCC04002E425F /* CGError.swift */,
+				AEA287821EBCCC04002E425F /* CGMath.swift */,
+				AEA287831EBCCC04002E425F /* CGResult.swift */,
+				AEA287841EBCCC04002E425F /* CGResultMath.swift */,
+				AEA287851EBCCC04002E425F /* CGTypes.swift */,
+			);
+			path = Math;
+			sourceTree = "<group>";
+		};
+		AEA287861EBCCC04002E425F /* Reactive */ = {
+			isa = PBXGroup;
+			children = (
+				AEA287871EBCCC04002E425F /* Propagator.swift */,
+				AEA287881EBCCC04002E425F /* RawCache.swift */,
+				AEA287891EBCCC04002E425F /* RawPropagator.swift */,
+			);
+			path = Reactive;
+			sourceTree = "<group>";
+		};
+		AEA2878A1EBCCC04002E425F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				AEA2878B1EBCCC04002E425F /* Getter.swift */,
+				AEA2878C1EBCCC04002E425F /* SimpleTree.swift */,
+				AEA2878D1EBCCC04002E425F /* Weak.swift */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		B6DB6575FB726F080B32670C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */,
+				B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -103,9 +361,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEA2875B1EBCCB2C002E425F /* Build configuration list for PBXNativeTarget "GeometrySample" */;
 			buildPhases = (
+				0290CF9AE93976D63BED9C6F /* [CP] Check Pods Manifest.lock */,
 				AEA2873A1EBCCB2C002E425F /* Sources */,
 				AEA2873B1EBCCB2C002E425F /* Frameworks */,
 				AEA2873C1EBCCB2C002E425F /* Resources */,
+				35EFD9C3C0455ABF53BED5F9 /* [CP] Embed Pods Frameworks */,
+				0A9A2997FC46D8BB0B287B40 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -120,9 +381,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AEA2875E1EBCCB2C002E425F /* Build configuration list for PBXNativeTarget "GeometrySampleTests" */;
 			buildPhases = (
+				37C92C8A18153FE146225897 /* [CP] Check Pods Manifest.lock */,
 				AEA2874E1EBCCB2C002E425F /* Sources */,
 				AEA2874F1EBCCB2C002E425F /* Frameworks */,
 				AEA287501EBCCB2C002E425F /* Resources */,
+				0259DFFAE05F443F14FFF370 /* [CP] Embed Pods Frameworks */,
+				B45FC673C4C9F212A2CDB132 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,13 +460,133 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0259DFFAE05F443F14FFF370 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		0290CF9AE93976D63BED9C6F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0A9A2997FC46D8BB0B287B40 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		35EFD9C3C0455ABF53BED5F9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		37C92C8A18153FE146225897 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		B45FC673C4C9F212A2CDB132 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AEA2873A1EBCCB2C002E425F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEA2879C1EBCCC04002E425F /* Straight.swift in Sources */,
+				AEA287A61EBCCC04002E425F /* Getter.swift in Sources */,
 				AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */,
 				AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */,
+				AEA287921EBCCC04002E425F /* Figure.swift in Sources */,
+				AEA2878E1EBCCC04002E425F /* CircleToPoint.swift in Sources */,
+				AEA287941EBCCC04002E425F /* StraightCircle.swift in Sources */,
+				AEA287981EBCCC04002E425F /* Scalar.swift in Sources */,
+				AEA2879F1EBCCC04002E425F /* CGMath.swift in Sources */,
+				AEA2878F1EBCCC04002E425F /* CircleWithRadius.swift in Sources */,
+				AEA287901EBCCC04002E425F /* Circumcircle.swift in Sources */,
+				AEA287A31EBCCC04002E425F /* Propagator.swift in Sources */,
+				AEA287961EBCCC04002E425F /* Point.swift in Sources */,
+				AEA287A71EBCCC04002E425F /* SimpleTree.swift in Sources */,
+				AEA287A81EBCCC04002E425F /* Weak.swift in Sources */,
+				AEA287991EBCCC04002E425F /* Line2Points.swift in Sources */,
+				AEA287A11EBCCC04002E425F /* CGResultMath.swift in Sources */,
+				AEA287931EBCCC04002E425F /* FreePoint.swift in Sources */,
+				AEA2879B1EBCCC04002E425F /* Segment.swift in Sources */,
+				AEA287A41EBCCC04002E425F /* RawCache.swift in Sources */,
+				AEA287A01EBCCC04002E425F /* CGResult.swift in Sources */,
+				AEA2879D1EBCCC04002E425F /* Straight2Points.swift in Sources */,
+				AEA2879E1EBCCC04002E425F /* CGError.swift in Sources */,
+				AEA287951EBCCC04002E425F /* TwoStraights.swift in Sources */,
+				AEA287A51EBCCC04002E425F /* RawPropagator.swift in Sources */,
+				AEA287911EBCCC04002E425F /* Circle.swift in Sources */,
+				AEA287971EBCCC04002E425F /* FreeScalar.swift in Sources */,
+				AEA2879A1EBCCC04002E425F /* Ray.swift in Sources */,
+				AEA287A21EBCCC04002E425F /* CGTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +723,7 @@
 		};
 		AEA2875C1EBCCB2C002E425F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9FF6C6F56C8645116D7BD20C /* Pods-GeometrySample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PQD87S5J6V;
@@ -352,6 +737,7 @@
 		};
 		AEA2875D1EBCCB2C002E425F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 08B914015758F9D3A0EA3CC5 /* Pods-GeometrySample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = PQD87S5J6V;
@@ -365,6 +751,7 @@
 		};
 		AEA2875F1EBCCB2C002E425F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32B63DA0331CCBBC5E726895 /* Pods-GeometrySampleTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -380,6 +767,7 @@
 		};
 		AEA287601EBCCB2C002E425F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AFD956535FF38239364E7D7 /* Pods-GeometrySampleTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -412,6 +800,7 @@
 				AEA2875D1EBCCB2C002E425F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AEA2875E1EBCCB2C002E425F /* Build configuration list for PBXNativeTarget "GeometrySampleTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +809,7 @@
 				AEA287601EBCCB2C002E425F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
