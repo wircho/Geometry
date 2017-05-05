@@ -10,7 +10,7 @@ import Result
 
 // MARK: -
 
-class Figure<T>: FigureProtocol, RawPropagator {
+class Figure<T>: FigureProtocol {
     typealias FigureParents = SimpleTree<Weak<AnyObject>>
 
 // MARK: - Reactive Model: RawPropagator (RawCache + Propagator) Conformance
@@ -55,9 +55,9 @@ class Figure<T>: FigureProtocol, RawPropagator {
     }
 }
 
-// MARK: - FigureProtocol
+// MARK: - Figure Protocol
 
-protocol FigureProtocol {
+protocol FigureProtocol: RawPropagator {
     associatedtype T
     var raw: Result<T, CGError> { get }
 }
