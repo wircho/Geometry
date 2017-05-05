@@ -8,7 +8,11 @@
 
 import Foundation
 
-protocol RawPropagator: RawCache, Propagator { }
+protocol RawPropagator: Propagator {
+    associatedtype Raw
+    func getRaw() -> Raw
+    var _raw: Raw { get set }
+}
 
 extension RawPropagator {
     var raw: Raw {
