@@ -201,8 +201,8 @@
 		AEA287631EBCCC04002E425F /* Circle */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287641EBCCC04002E425F /* FinalClasses */,
 				AEA287681EBCCC04002E425F /* Superclasses */,
+				AEA287641EBCCC04002E425F /* FinalClasses */,
 			);
 			path = Circle;
 			sourceTree = "<group>";
@@ -210,8 +210,8 @@
 		AEA287641EBCCC04002E425F /* FinalClasses */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287651EBCCC04002E425F /* CircleToPoint.swift */,
 				AEA287661EBCCC04002E425F /* CircleWithRadius.swift */,
+				AEA287651EBCCC04002E425F /* CircleToPoint.swift */,
 				AEA287671EBCCC04002E425F /* Circumcircle.swift */,
 			);
 			path = FinalClasses;
@@ -228,8 +228,8 @@
 		AEA2876B1EBCCC04002E425F /* Point */ = {
 			isa = PBXGroup;
 			children = (
-				AEA2876C1EBCCC04002E425F /* FinalClasses */,
 				AEA287711EBCCC04002E425F /* Superclasses */,
+				AEA2876C1EBCCC04002E425F /* FinalClasses */,
 			);
 			path = Point;
 			sourceTree = "<group>";
@@ -246,8 +246,8 @@
 		AEA2876E1EBCCC04002E425F /* Intersections */ = {
 			isa = PBXGroup;
 			children = (
-				AEA2876F1EBCCC04002E425F /* StraightCircle.swift */,
 				AEA287701EBCCC04002E425F /* TwoStraights.swift */,
+				AEA2876F1EBCCC04002E425F /* StraightCircle.swift */,
 			);
 			path = Intersections;
 			sourceTree = "<group>";
@@ -263,8 +263,8 @@
 		AEA287731EBCCC04002E425F /* Scalar */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287741EBCCC04002E425F /* FinalClasses */,
 				AEA287761EBCCC04002E425F /* Superclasses */,
+				AEA287741EBCCC04002E425F /* FinalClasses */,
 			);
 			path = Scalar;
 			sourceTree = "<group>";
@@ -288,8 +288,8 @@
 		AEA287781EBCCC04002E425F /* Straight */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287791EBCCC04002E425F /* FinalClasses */,
 				AEA2877D1EBCCC04002E425F /* Superclasses */,
+				AEA287791EBCCC04002E425F /* FinalClasses */,
 			);
 			path = Straight;
 			sourceTree = "<group>";
@@ -316,11 +316,11 @@
 		AEA287801EBCCC04002E425F /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287811EBCCC04002E425F /* CGError.swift */,
+				AEA287851EBCCC04002E425F /* CGTypes.swift */,
 				AEA287821EBCCC04002E425F /* CGMath.swift */,
+				AEA287811EBCCC04002E425F /* CGError.swift */,
 				AEA287831EBCCC04002E425F /* CGResult.swift */,
 				AEA287841EBCCC04002E425F /* CGResultMath.swift */,
-				AEA287851EBCCC04002E425F /* CGTypes.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -328,8 +328,8 @@
 		AEA287861EBCCC04002E425F /* Reactive */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287871EBCCC04002E425F /* Propagator.swift */,
 				AEA287881EBCCC04002E425F /* RawCache.swift */,
+				AEA287871EBCCC04002E425F /* Propagator.swift */,
 				AEA287891EBCCC04002E425F /* RawPropagator.swift */,
 			);
 			path = Reactive;
@@ -338,9 +338,9 @@
 		AEA2878A1EBCCC04002E425F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				AEA2878D1EBCCC04002E425F /* Weak.swift */,
 				AEA2878B1EBCCC04002E425F /* Getter.swift */,
 				AEA2878C1EBCCC04002E425F /* SimpleTree.swift */,
-				AEA2878D1EBCCC04002E425F /* Weak.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
