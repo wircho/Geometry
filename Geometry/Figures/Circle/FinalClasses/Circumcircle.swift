@@ -10,14 +10,14 @@ import CoreGraphics
 import Result
 
 class Circumcircle: Circle {
-    var points: (Getter<RCGPoint>, Getter<RCGPoint>, Getter<RCGPoint>)
+    var points: (Weak<Point>, Weak<Point>, Weak<Point>)
     
     init(_ p0: Point, _ p1: Point, _ p2: Point) {
-        self.points = (p0.getter, p1.getter, p2.getter)
+        self.points = Weak.tuple(p0, p1, p2)
         super.init(unsorted: p0, p1, p2)
     }
     
     override func getRaw() -> RCGCircle {
-        return RCGCircle(cicumscribing: (points.0.value, points.1.value, points.2.value))
+        return RCGCircle(cicumscribing: (points.0.defaultedRaw, points.1.defaultedRaw, points.2.defaultedRaw))
     }
 }

@@ -10,7 +10,7 @@ import Result
 
 // MARK: -
 
-class Figure<T>: RawPropagator {
+class Figure<T>: FigureProtocol, RawPropagator {
     typealias FigureParents = SimpleTree<Weak<AnyObject>>
 
 // MARK: - RawPropagator (RawCache + Propagator) Conformance
@@ -85,15 +85,30 @@ class Figure<T>: RawPropagator {
         }
     }
     
-// MARK: - Weak Getter Of Raw Value
-    
-    var getter: Getter<Result<T, CGError>> {
-        return Getter<Figure<T>?>(weak: self).map{ $0?.raw }.or(.inexistent)
-    }
-    
 // MARK: - Deinit
     
     deinit {
         gotSignal = true
+    }
+}
+
+// MARK: - FigureProtocol
+
+protocol FigureProtocol {
+    associatedtype T
+    var raw: Result<T, CGError> { get }
+}
+
+// MARK: - Getting Defaulted Raw Value From Optionals/Weaks
+
+extension WeakProtocol where T: FigureProtocol {
+    var defaultedRaw: Result<T.T, CGError> {
+        return self.object?.raw ?? .inexistent
+    }
+}
+
+extension OptionalProtocol where W: FigureProtocol {
+    var defaultedRaw: Result<W.T, CGError> {
+        return self.optionalCopy?.raw ?? .inexistent
     }
 }

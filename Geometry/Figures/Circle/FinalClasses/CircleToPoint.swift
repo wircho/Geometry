@@ -10,16 +10,16 @@ import CoreGraphics
 import Result
 
 class CircleToPoint: Circle {
-    var center: Getter<RCGPoint>
-    var point: Getter<RCGPoint>
+    weak var center: Point?
+    weak var point: Point?
     
     init(center: Point, point: Point) {
-        self.center = center.getter
-        self.point = point.getter
+        self.center = center
+        self.point = point
         super.init(center, point)
     }
     
     override func getRaw() -> Result<CGCircle, CGError> {
-        return RCGCircle(center: center.value, point: point.value)
+        return RCGCircle(center: center.defaultedRaw, point: point.defaultedRaw)
     }
 }

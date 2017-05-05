@@ -28,6 +28,16 @@ struct Weak<T: AnyObject>: WeakProtocol, Hashable {
     }
 }
 
+extension Weak {
+    static func tuple(_ t0: T, _ t1: T) -> (Weak<T>, Weak<T>) {
+        return (Weak(t0), Weak(t1))
+    }
+    
+    static func tuple(_ t0: T, _ t1: T, _ t2: T) -> (Weak<T>, Weak<T>, Weak<T>) {
+        return (Weak(t0), Weak(t1), Weak(t2))
+    }
+}
+
 func ==<T: AnyObject, S: AnyObject>(lhs: Weak<T>, rhs: Weak<S>) -> Bool {
     return lhs.object === rhs.object
 }

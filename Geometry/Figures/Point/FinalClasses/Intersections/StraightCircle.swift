@@ -12,17 +12,17 @@ import Result
 // MARK: - Intersection Mediator
 
 class StraightCircleMediator: Figure<CGPoint2> {
-    var straight: Getter<RCGStraight>
-    var circle: Getter<RCGCircle>
+    weak var straight: Straight?
+    weak var circle: Circle?
     
     init(straight: Straight, circle: Circle) {
-        self.straight = straight.getter
-        self.circle = circle.getter
+        self.straight = straight
+        self.circle = circle
         super.init(straight, circle)
     }
     
     override func getRaw() -> RCGPoint2 {
-        return intersections(straight.value, circle.value)
+        return intersections(straight.defaultedRaw, circle.defaultedRaw)
     }
 }
 
@@ -34,19 +34,19 @@ class StraightCircleIntersection: Point {
         case second
     }
     
-    var mediator: Getter<RCGPoint2>
+    weak var mediator: StraightCircleMediator?
     var index: Index
     
     init(mediator: StraightCircleMediator, index: Index) {
-        self.mediator = mediator.getter
+        self.mediator = mediator
         self.index = index
         super.init(mediator)
     }
     
     override func getRaw() -> Result<CGPoint, CGError> {
         switch index {
-        case .first: return mediator.value.first
-        case .second: return mediator.value.second
+        case .first: return mediator.defaultedRaw.first
+        case .second: return mediator.defaultedRaw.second
         }
     }
 }

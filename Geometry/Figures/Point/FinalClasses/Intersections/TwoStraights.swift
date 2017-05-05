@@ -12,14 +12,14 @@ import CoreGraphics
 import Result
 
 class TwoStraightIntersection: Point {
-    var straights: (Getter<RCGStraight>, Getter<RCGStraight>)
+    var straights: (Weak<Straight>, Weak<Straight>)
     
     init(_ s0: Straight, _ s1: Straight) {
-        self.straights = (s0.getter, s1.getter)
+        self.straights = Weak.tuple(s0, s1)
         super.init(unsorted: s0, s1)
     }
     
     override func getRaw() -> RCGPoint {
-        return intersection(straights.0.value, straights.1.value)
+        return intersection(straights.0.defaultedRaw, straights.1.defaultedRaw)
     }
 }

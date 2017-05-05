@@ -12,15 +12,15 @@ import Result
 // MARK: - Straight Figures Through 2 Points
 
 class Straight2Points: Straight {
-    var points: (Getter<RCGPoint>, Getter<RCGPoint>)
+    var points: (Weak<Point>, Weak<Point>)
     
     init(_ p0: Point, _ p1: Point, sorted: Bool) {
-        self.points = (p0.getter, p1.getter)
+        self.points = Weak.tuple(p0, p1)
         super.init(unsorted: p0, p1)
     }
     
     var arrow: RCGArrow {
-        return RCGArrow(points: (points.0.value, points.1.value))
+        return RCGArrow(points: (points.0.defaultedRaw, points.1.defaultedRaw))
     }
 }
 

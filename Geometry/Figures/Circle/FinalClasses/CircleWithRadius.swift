@@ -10,16 +10,16 @@ import CoreGraphics
 import Result
 
 class CircleWithRadius: Circle {
-    var center: Getter<RCGPoint>
-    var radius: Getter<RCGFloat>
+    weak var center: Point?
+    weak var radius: Scalar?
     
     init(center: Point, radius: Scalar) {
-        self.center = center.getter
-        self.radius = radius.getter
+        self.center = center
+        self.radius = radius
         super.init(center, radius)
     }
     
     override func getRaw() -> Result<CGCircle, CGError> {
-        return RCGCircle(center: center.value, radius: radius.value)
+        return RCGCircle(center: center.defaultedRaw, radius: radius.defaultedRaw)
     }
 }

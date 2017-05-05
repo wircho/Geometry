@@ -15,6 +15,7 @@ enum CGError: Error {
 protocol CGErrorProtocol {
     init(_ error: CGError)
 }
+
 extension CGError: CGErrorProtocol {
     init(_ error: CGError) {
         self = error
