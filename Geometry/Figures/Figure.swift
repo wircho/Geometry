@@ -13,7 +13,7 @@ import Result
 class Figure<T>: FigureProtocol, RawPropagator {
     typealias FigureParents = SimpleTree<Weak<AnyObject>>
 
-// MARK: - RawPropagator (RawCache + Propagator) Conformance
+// MARK: - Reactive Model: RawPropagator (RawCache + Propagator) Conformance
 
     var _raw = Result<T, CGError>.inexistent
     var _gotSignal = true
