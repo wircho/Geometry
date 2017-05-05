@@ -16,7 +16,7 @@ class CircleWithRadius: Circle {
     init(center: Point, radius: Scalar) {
         self.center = center
         self.radius = radius
-        super.init(center, radius)
+        super.init(sorted: [center, radius])
     }
     
     override func getRaw() -> Result<CGCircle, CGError> {

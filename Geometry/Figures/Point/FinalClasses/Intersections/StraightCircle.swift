@@ -18,7 +18,7 @@ class StraightCircleMediator: Figure<CGPoint2> {
     init(straight: Straight, circle: Circle) {
         self.straight = straight
         self.circle = circle
-        super.init(straight, circle)
+        super.init(sorted: [straight, circle])
     }
     
     override func getRaw() -> RCGPoint2 {

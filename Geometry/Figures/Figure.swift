@@ -28,61 +28,24 @@ class Figure<T>: FigureProtocol, RawPropagator {
     var parents: FigureParents
     
 // MARK: - Initializers
-    
+
     init () {
-        self.parents = .empty
+        parents = .empty
     }
     
-    init (_ value: Propagator) {
-        self.parents = FigureParents(value)
-        value.addReceiver(self)
+    init (_ figure: Propagator) {
+        parents = FigureParents(figure)
+        receiveFrom(figure)
     }
     
-    init (_ value0: Propagator, _ value1: Propagator) {
-        self.parents = FigureParents(value0, value1)
-        value0.addReceiver(self)
-        value1.addReceiver(self)
+    init (sorted figures: [Propagator]) {
+        parents = FigureParents(sorted: figures)
+        receiveFrom(figures)
     }
     
-    init (_ value0: Propagator, _ value1: Propagator, _ value2: Propagator) {
-        self.parents = FigureParents(value0, value1, value2)
-        value0.addReceiver(self)
-        value1.addReceiver(self)
-        value2.addReceiver(self)
-    }
-    
-    init (unsorted value0: Propagator, _ value1: Propagator) {
-        self.parents = FigureParents(unsorted: value0, value1)
-        value0.addReceiver(self)
-        value1.addReceiver(self)
-    }
-    
-    init (unsorted value0: Propagator, _ value1: Propagator, _ value2: Propagator) {
-        self.parents = FigureParents(unsorted: value0, value1, value2)
-        value0.addReceiver(self)
-        value1.addReceiver(self)
-        value2.addReceiver(self)
-    }
-    
-    init (_ array: [Propagator]) {
-        self.parents = FigureParents(array)
-        for value in array {
-            value.addReceiver(self)
-        }
-    }
-    
-    init (sorted array: [Propagator]) {
-        self.parents = FigureParents(array)
-        for value in array {
-            value.addReceiver(self)
-        }
-    }
-    
-    init (unsorted array: [Propagator]) {
-        self.parents = FigureParents(unsorted: array)
-        for value in array {
-            value.addReceiver(self)
-        }
+    init (unsorted figures: [Propagator]) {
+        parents = FigureParents(unsorted: figures)
+        receiveFrom(figures)
     }
     
 // MARK: - Deinit

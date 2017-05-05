@@ -47,4 +47,14 @@ extension Propagator {
             }
         )
     }
+    
+    func receiveFrom(_ propagators: [Propagator]) {
+        for propagator in propagators {
+            propagator.addReceiver(self)
+        }
+    }
+    
+    func receiveFrom(_ propagators: Propagator ...) {
+        receiveFrom(propagators)
+    }
 }

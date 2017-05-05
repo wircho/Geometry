@@ -16,7 +16,7 @@ class TwoStraightIntersection: Point {
     
     init(_ s0: Straight, _ s1: Straight) {
         self.straights = Weak.tuple(s0, s1)
-        super.init(unsorted: s0, s1)
+        super.init(unsorted: [s0, s1])
     }
     
     override func getRaw() -> RCGPoint {

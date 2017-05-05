@@ -16,7 +16,7 @@ class Straight2Points: Straight {
     
     init(_ p0: Point, _ p1: Point, sorted: Bool) {
         self.points = Weak.tuple(p0, p1)
-        super.init(unsorted: p0, p1)
+        super.init(unsorted: [p0, p1])
     }
     
     var arrow: RCGArrow {

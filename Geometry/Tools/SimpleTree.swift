@@ -42,36 +42,46 @@ enum SimpleTree<T: Hashable>: Hashable {
         }
     }
     
+    fileprivate static func with(sorted values: [T]) -> SimpleTree {
+        guard let first = values.first else {
+            return .empty
+        }
+        if values.count == 1 {
+            return .leaf(first)
+        } else {
+            return .sorted(values.map{.leaf($0)})
+        }
+    }
+    
+    fileprivate static func with(unsorted values: [T]) -> SimpleTree {
+        guard let first = values.first else {
+            return .empty
+        }
+        if values.count == 1 {
+            return .leaf(first)
+        } else {
+            return .unsorted(Set(values.map{.leaf($0)}))
+        }
+    }
+    
     init (_ value: T) {
         self = .leaf(value)
     }
     
-    init (_ value0: T, _ value1: T) {
-        self = .sorted([.leaf(value0), .leaf(value1)])
+    init (sorted values: [T]) {
+        self = .with(sorted: values)
     }
     
-    init (_ value0: T, _ value1: T, _ value2: T) {
-        self = .sorted([.leaf(value0), .leaf(value1), .leaf(value2)])
+    init (unsorted values: [T]) {
+        self = .with(unsorted: values)
     }
     
-    init (unsorted value0: T, _ value1: T) {
-        self = .unsorted([.leaf(value0), .leaf(value1)])
+    init (sorted values: T ...) {
+        self = .with(sorted: values)
     }
     
-    init (unsorted value0: T, _ value1: T, _ value2: T) {
-        self = .unsorted([.leaf(value0), .leaf(value1), .leaf(value2)])
-    }
-    
-    init (_ array: [T]) {
-        self = .sorted(array.map{.leaf($0)})
-    }
-    
-    init (sorted array: [T]) {
-        self = .sorted(array.map{.leaf($0)})
-    }
-    
-    init (unsorted set: Set<T>) {
-        self = .unsorted(Set(set.map{.leaf($0)}))
+    init (unsorted values: T ...) {
+        self = .with(unsorted: values)
     }
 }
 
@@ -82,31 +92,19 @@ extension SimpleTree where T: WeakProtocol {
         self = .leaf(T(value))
     }
     
-    init (_ value0: S, _ value1: S) {
-        self = .sorted([.leaf(T(value0)), .leaf(T(value1))])
+    init (sorted values: [S]) {
+        self = .with(sorted: values.map{ T($0) })
     }
     
-    init (_ value0: S, _ value1: S, _ value2: S) {
-        self = .sorted([.leaf(T(value0)), .leaf(T(value1)), .leaf(T(value2))])
+    init (unsorted values: [S]) {
+        self = .with(unsorted: values.map{ T($0) })
     }
     
-    init (unsorted value0: S, _ value1: S) {
-        self = .unsorted([.leaf(T(value0)), .leaf(T(value1))])
+    init (sorted values: S ...) {
+        self = .with(sorted: values.map{ T($0) })
     }
     
-    init (unsorted value0: S, _ value1: S, _ value2: S) {
-        self = .unsorted([.leaf(T(value0)), .leaf(T(value1)), .leaf(T(value2))])
-    }
-    
-    init (_ array: [S]) {
-        self = .sorted(array.map{.leaf(T($0))})
-    }
-    
-    init (sorted array: [S]) {
-        self = .sorted(array.map{.leaf(T($0))})
-    }
-    
-    init (unsorted array: [S]) {
-        self = .unsorted(Set(array.map{.leaf(T($0))}))
+    init (unsorted values: S ...) {
+        self = .with(unsorted: values.map{ T($0) })
     }
 }

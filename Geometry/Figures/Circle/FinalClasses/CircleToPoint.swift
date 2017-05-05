@@ -16,7 +16,7 @@ class CircleToPoint: Circle {
     init(center: Point, point: Point) {
         self.center = center
         self.point = point
-        super.init(center, point)
+        super.init(sorted: [center, point])
     }
     
     override func getRaw() -> Result<CGCircle, CGError> {
