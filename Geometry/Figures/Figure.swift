@@ -10,43 +10,33 @@ import Result
 
 // MARK: - Figure class
 
-class Figure<T>: Propagator, FigureProtocol {
+class Figure<T>: RawPropagator<Result<T, CGError>>, FigureProtocol {
     typealias FigureParents = SimpleTree<Weak<Propagator>>
 
-// MARK: - RawPropagator Conformance
-
-    var _raw = Result<T, CGError>.inexistent
-    func getRaw() -> Result<T, CGError> {
-        fatalError("\(#function) must be overriden")
-    }
-    
 // MARK: - Parents (For Comparison / Duplicate Prevention)
     
     var parents: FigureParents
     
 // MARK: - Initializers
 
-    override init () {
+    init () {
         parents = .empty
-        super.init()
+        super.init(initial: .inexistent)
     }
     
     init (_ parent: Propagator) {
         parents = FigureParents(parent)
-        super.init()
-        receiveFrom(parent)
+        super.init(initial: .inexistent, parent: parent)
     }
     
-    init (sorted figures: [Propagator]) {
-        parents = FigureParents(sorted: figures)
-        super.init()
-        receiveFrom(figures)
+    init (sorted parents: [Propagator]) {
+        self.parents = FigureParents(sorted: parents)
+        super.init(initial: .inexistent, parents: parents)
     }
     
-    init (unsorted figures: [Propagator]) {
-        parents = FigureParents(unsorted: figures)
-        super.init()
-        receiveFrom(figures)
+    init (unsorted parents: [Propagator]) {
+        self.parents = FigureParents(unsorted: parents)
+        super.init(initial: .inexistent, parents: parents)
     }
     
 // MARK: - Deinit
@@ -58,7 +48,7 @@ class Figure<T>: Propagator, FigureProtocol {
 
 // MARK: - Figure Protocol
 
-protocol FigureProtocol: RawPropagatorProtocol {
+protocol FigureProtocol {
     associatedtype T
     var raw: Result<T, CGError> { get }
 }
