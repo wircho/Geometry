@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 class FreePoint: Point {
-    var position = RCGPoint.inexistent {
+    var position = RCGPoint.none {
         didSet {
             signal = true
         }

@@ -6,8 +6,8 @@
 //
 
 enum CGError: Error {
+    case none
     case complex
-    case inexistent
     case infinity
 }
 

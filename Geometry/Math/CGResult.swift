@@ -103,7 +103,7 @@ extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
     var first: RCGPoint {
         return self.flatMap {
             guard let first = $0.first else {
-                return .inexistent
+                return .none
             }
             return .success(first)
         }
@@ -112,7 +112,7 @@ extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
     var second: RCGPoint {
         return self.flatMap {
             guard let second = $0.second else {
-                return .inexistent
+                return .none
             }
             return .success(second)
         }
@@ -120,8 +120,8 @@ extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
 }
 
 extension Result where Error: CGErrorProtocol {
-    static var inexistent: Result {
-        return .failure(Error(.inexistent))
+    static var none: Result {
+        return .failure(Error(.none))
     }
 }
 

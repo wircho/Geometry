@@ -109,7 +109,7 @@ func intersection(_ straight0: CGStraight, _ straight1: CGStraight) -> RCGPoint 
     return intersectionCoordinates(straight0.arrow, straight1.arrow).flatMap {
         coords in
         guard straight0.kind.covers(coords.0) && straight1.kind.covers(coords.1) else {
-            return .inexistent
+            return .none
         }
         return .success(straight0.arrow.at(coords.0))
     }
@@ -126,7 +126,7 @@ func intersectionCoordinates(_ arrow: CGArrow, _ circle: CGCircle) -> RCG2 {
         let pc = arrow.at(c, multiplier: nRec)
         let dc = distance(pc, circle.center)
         guard dc <= circle.radius else {
-            return .inexistent
+            return .none
         }
         let e = sqrt(circle.radius * circle.radius - dc * dc)
         return .success((c - e) * nRec, (c + e) * nRec)

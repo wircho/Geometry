@@ -20,22 +20,22 @@ class Figure<T>: RecalculationSignalPropagator<Result<T, CGError>>, FigureProtoc
 
     init () {
         parents = .empty
-        super.init(value: .inexistent)
+        super.init(value: .none)
     }
     
     init (_ parent: SignalPropagator) {
         parents = FigureParents(parent)
-        super.init(value: .inexistent, receiveFrom: [parent])
+        super.init(value: .none, receiveFrom: [parent])
     }
     
     init (sorted parents: [SignalPropagator]) {
         self.parents = FigureParents(sorted: parents)
-        super.init(value: .inexistent, receiveFrom: parents)
+        super.init(value: .none, receiveFrom: parents)
     }
     
     init (unsorted parents: [SignalPropagator]) {
         self.parents = FigureParents(unsorted: parents)
-        super.init(value: .inexistent, receiveFrom: parents)
+        super.init(value: .none, receiveFrom: parents)
     }
     
 // MARK: - Deinit
@@ -56,12 +56,12 @@ protocol FigureProtocol {
 
 extension WeakProtocol where T: FigureProtocol {
     var coalescedValue: Result<T.T, CGError> {
-        return self.object?.value ?? .inexistent
+        return self.object?.value ?? .none
     }
 }
 
 extension OptionalProtocol where W: FigureProtocol {
     var coalescedValue: Result<W.T, CGError> {
-        return self.optionalCopy?.value ?? .inexistent
+        return self.optionalCopy?.value ?? .none
     }
 }

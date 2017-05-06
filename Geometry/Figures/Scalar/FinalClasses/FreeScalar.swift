@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 class FreeScalar: Scalar {
-    var position = RCGFloat.inexistent {
+    var position = RCGFloat.none {
         didSet {
             signal = true
         }
