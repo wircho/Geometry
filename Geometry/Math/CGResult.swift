@@ -21,6 +21,24 @@ typealias RCGPoint2 = Result<CGPoint2, CGError>
 
 // MARK: Result extensions
 
+extension Result {
+    init(_ value: T?, orError: Error) {
+        guard let value = value else {
+            self = .failure(orError)
+            return
+        }
+        self = .success(value)
+    }
+    
+    init(_ value: T?, orOther: Result) {
+        guard let value = value else {
+            self = orOther
+            return
+        }
+        self = .success(value)
+    }
+}
+
 extension Result where T: CGPointProtocol {
     typealias RCGFloat = Result<CGFloat, Error>
     
@@ -87,15 +105,15 @@ extension Result where T: CGArrowProtocol {
     }
 }
 
-extension Result where T: CGStraightProtocol {
+extension Result where T: CGStraightProtocol, Error: CGErrorProtocol {
     typealias RCGArrow = Result<CGArrow, Error>
     
     init(kind: CGStraight.Kind, arrow: RCGArrow) {
-        self = arrow.map { T(kind: kind, arrow: $0) }
+        self = arrow.flatMap { Result(T(kind: kind, arrow: $0), orOther: .infinity) }
     }
     
     init(kind: CGStraight.Kind, points: (RCGPoint, RCGPoint)) {
-        self = points.0.flatMap { p0 in points.1.map { p1 in T(kind: kind, points: (p0, p1)) } }
+        self = points.0.flatMap { p0 in points.1.flatMap { p1 in Result(T(kind: kind, arrow: CGArrow(points: (p0,p1))), orOther: .infinity) } }
     }
 }
 
@@ -122,6 +140,9 @@ extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
 extension Result where Error: CGErrorProtocol {
     static var none: Result {
         return .failure(Error(.none))
+    }
+    static var infinity: Result {
+        return .failure(Error(.infinity))
     }
 }
 

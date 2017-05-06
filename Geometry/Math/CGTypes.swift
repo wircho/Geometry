@@ -16,6 +16,9 @@ struct CGCircle {
 
 struct CGArrow {
     var points: (CGPoint, CGPoint)
+    var isPoint: Bool {
+        return (1 / (points.0 - points.1).squaredNorm).isNaN
+    }
 }
 
 struct CGStraight {
@@ -33,6 +36,13 @@ struct CGStraight {
     }
     var kind: Kind
     var arrow: CGArrow
+    init?(kind: Kind, arrow: CGArrow) {
+        guard kind == .segment || !arrow.isPoint else {
+            return nil
+        }
+        self.kind = kind
+        self.arrow = arrow
+    }
 }
 
 struct CG2x2 {
@@ -74,8 +84,8 @@ protocol CGArrowProtocol {
 protocol CGStraightProtocol {
     var kind: CGStraight.Kind { get }
     var arrow: CGArrow { get }
-    init(kind: CGStraight.Kind, arrow: CGArrow)
-    init(kind: CGStraight.Kind, points: (CGPoint, CGPoint))
+    init?(kind: CGStraight.Kind, arrow: CGArrow)
+    init?(kind: CGStraight.Kind, points: (CGPoint, CGPoint))
 }
 
 protocol CG2x2Protocol {
@@ -101,7 +111,7 @@ extension CGCircle: CGCircleProtocol {
 }
 extension CGArrow: CGArrowProtocol {}
 extension CGStraight: CGStraightProtocol {
-    init(kind: CGStraight.Kind, points: (CGPoint, CGPoint)) {
+    init?(kind: CGStraight.Kind, points: (CGPoint, CGPoint)) {
         self.init(kind: kind, arrow: CGArrow(points: points))
     }
 }
@@ -125,15 +135,15 @@ extension CGArrowProtocol {
 }
 
 extension CGStraightProtocol {
-    func segment(arrow: CGArrow) -> Self {
+    func segment(arrow: CGArrow) -> Self? {
         return Self(kind: .segment, arrow: arrow)
     }
     
-    func line(arrow: CGArrow) -> Self {
+    func line(arrow: CGArrow) -> Self? {
         return Self(kind: .line, arrow: arrow)
     }
     
-    func ray(arrow: CGArrow) -> Self {
+    func ray(arrow: CGArrow) -> Self? {
         return Self(kind: .ray, arrow: arrow)
     }
 }
