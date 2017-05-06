@@ -1,5 +1,5 @@
 //
-//  RecalculationSignalPropagator.swift
+//  RecalculationTransmitter.swift
 //
 //  Created by AdolfoX Rodriguez on 2017-05-04.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RecalculationSignalPropagator<Value>: SignalPropagator {
+class RecalculationTransmitter<Value>: Transmitter {
     
 // MARK: - Raw Value
     
@@ -15,7 +15,7 @@ class RecalculationSignalPropagator<Value>: SignalPropagator {
     
 // MARK: - Initialization
     
-    init(value: Value, emitTo receivers:[SignalPropagator] = [], receiveFrom emitters:[SignalPropagator] = []) {
+    init(value: Value, emitTo receivers:[Transmitter] = [], receiveFrom emitters:[Transmitter] = []) {
         _value = value
         super.init(emitTo: receivers, receiveFrom: emitters)
     }

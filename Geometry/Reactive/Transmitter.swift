@@ -1,5 +1,5 @@
 //
-//  SignalPropagator.swift
+//  Transmitter.swift
 //
 //  Created by AdolfoX Rodriguez on 2017-05-03.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -10,10 +10,10 @@ import Result
 
 // MARK: - Class That Propagates A Boolean Signal
 
-class SignalPropagator {
+class Transmitter {
     
     private var _signal = true
-    private var receivers: [Weak<SignalPropagator>] = []
+    private var receivers: [Weak<Transmitter>] = []
     
 // MARK: - Signal Status (get) And Propagation (set)
     
@@ -35,38 +35,38 @@ class SignalPropagator {
     
 // MARK: - Initialization
     
-    init(emitTo receivers: [SignalPropagator] = [], receiveFrom emitters: [SignalPropagator] = []) {
+    init(emitTo receivers: [Transmitter] = [], receiveFrom emitters: [Transmitter] = []) {
         emitTo(receivers)
         receiveFrom(emitters)
     }
     
 // MARK: - Adding Receivers of Emitters
     
-    func emitTo(_ receivers: [SignalPropagator]) {
+    func emitTo(_ receivers: [Transmitter]) {
         for receiver in receivers {
             self.receivers.append(Weak(receiver))
         }
     }
     
-    func emitTo(_ receiver: SignalPropagator) {
+    func emitTo(_ receiver: Transmitter) {
         receivers.append(Weak(receiver))
     }
     
-    func stopEmittingTo(_ receiver: SignalPropagator) {
+    func stopEmittingTo(_ receiver: Transmitter) {
         receivers = receivers.filter { $0.object !== receiver }
     }
     
-    func receiveFrom(_ emitters: [SignalPropagator]) {
+    func receiveFrom(_ emitters: [Transmitter]) {
         for emitter in emitters {
             emitter.emitTo(self)
         }
     }
     
-    func receiveFrom(_ emitter: SignalPropagator) {
+    func receiveFrom(_ emitter: Transmitter) {
         emitter.emitTo(self)
     }
     
-    func stopReceivingFrom(_ emitter: SignalPropagator) {
+    func stopReceivingFrom(_ emitter: Transmitter) {
         emitter.stopEmittingTo(self)
     }
     

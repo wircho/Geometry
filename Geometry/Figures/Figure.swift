@@ -9,11 +9,11 @@ import Result
 
 // MARK: - Figure class
 
-class Figure<T>: RecalculationSignalPropagator<Result<T, CGError>>, FigureProtocol {
+class Figure<T>: RecalculationTransmitter<Result<T, CGError>>, FigureProtocol {
     
 // MARK: - Parents (For Comparison / Duplicate Prevention)
     
-    typealias FigureParents = SimpleTree<Weak<SignalPropagator>>
+    typealias FigureParents = SimpleTree<Weak<Transmitter>>
     var parents: FigureParents
     
 // MARK: - Initializers
@@ -23,17 +23,17 @@ class Figure<T>: RecalculationSignalPropagator<Result<T, CGError>>, FigureProtoc
         super.init(value: .none)
     }
     
-    init (_ parent: SignalPropagator) {
+    init (_ parent: Transmitter) {
         parents = FigureParents(parent)
         super.init(value: .none, receiveFrom: [parent])
     }
     
-    init (sorted parents: [SignalPropagator]) {
+    init (sorted parents: [Transmitter]) {
         self.parents = FigureParents(sorted: parents)
         super.init(value: .none, receiveFrom: parents)
     }
     
-    init (unsorted parents: [SignalPropagator]) {
+    init (unsorted parents: [Transmitter]) {
         self.parents = FigureParents(unsorted: parents)
         super.init(value: .none, receiveFrom: parents)
     }

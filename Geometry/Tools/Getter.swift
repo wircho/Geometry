@@ -8,6 +8,7 @@
 import Foundation
 
 // MARK: Getter
+// Not really using this. But it's nice.
 
 struct Getter<T> {
     private var getter: () -> T

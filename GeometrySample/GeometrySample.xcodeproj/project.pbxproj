@@ -36,8 +36,8 @@
 		AEA287A01EBCCC04002E425F /* CGResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* CGResult.swift */; };
 		AEA287A11EBCCC04002E425F /* CGResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* CGResultMath.swift */; };
 		AEA287A21EBCCC04002E425F /* CGTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* CGTypes.swift */; };
-		AEA287A31EBCCC04002E425F /* SignalPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* SignalPropagator.swift */; };
-		AEA287A51EBCCC04002E425F /* RecalculationSignalPropagator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287891EBCCC04002E425F /* RecalculationSignalPropagator.swift */; };
+		AEA287A31EBCCC04002E425F /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* Transmitter.swift */; };
+		AEA287A51EBCCC04002E425F /* RecalculationTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287891EBCCC04002E425F /* RecalculationTransmitter.swift */; };
 		AEA287A61EBCCC04002E425F /* Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878B1EBCCC04002E425F /* Getter.swift */; };
 		AEA287A71EBCCC04002E425F /* SimpleTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878C1EBCCC04002E425F /* SimpleTree.swift */; };
 		AEA287A81EBCCC04002E425F /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
@@ -89,8 +89,8 @@
 		AEA287831EBCCC04002E425F /* CGResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGResult.swift; sourceTree = "<group>"; };
 		AEA287841EBCCC04002E425F /* CGResultMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGResultMath.swift; sourceTree = "<group>"; };
 		AEA287851EBCCC04002E425F /* CGTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGTypes.swift; sourceTree = "<group>"; };
-		AEA287871EBCCC04002E425F /* SignalPropagator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalPropagator.swift; sourceTree = "<group>"; };
-		AEA287891EBCCC04002E425F /* RecalculationSignalPropagator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecalculationSignalPropagator.swift; sourceTree = "<group>"; };
+		AEA287871EBCCC04002E425F /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
+		AEA287891EBCCC04002E425F /* RecalculationTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecalculationTransmitter.swift; sourceTree = "<group>"; };
 		AEA2878B1EBCCC04002E425F /* Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Getter.swift; sourceTree = "<group>"; };
 		AEA2878C1EBCCC04002E425F /* SimpleTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleTree.swift; sourceTree = "<group>"; };
 		AEA2878D1EBCCC04002E425F /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
@@ -326,8 +326,8 @@
 		AEA287861EBCCC04002E425F /* Reactive */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287871EBCCC04002E425F /* SignalPropagator.swift */,
-				AEA287891EBCCC04002E425F /* RecalculationSignalPropagator.swift */,
+				AEA287871EBCCC04002E425F /* Transmitter.swift */,
+				AEA287891EBCCC04002E425F /* RecalculationTransmitter.swift */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -566,7 +566,7 @@
 				AEA2879F1EBCCC04002E425F /* CGMath.swift in Sources */,
 				AEA2878F1EBCCC04002E425F /* CircleWithRadius.swift in Sources */,
 				AEA287901EBCCC04002E425F /* Circumcircle.swift in Sources */,
-				AEA287A31EBCCC04002E425F /* SignalPropagator.swift in Sources */,
+				AEA287A31EBCCC04002E425F /* Transmitter.swift in Sources */,
 				AEA287961EBCCC04002E425F /* Point.swift in Sources */,
 				AEA287A71EBCCC04002E425F /* SimpleTree.swift in Sources */,
 				AEA287A81EBCCC04002E425F /* Weak.swift in Sources */,
@@ -578,7 +578,7 @@
 				AEA2879D1EBCCC04002E425F /* Straight2Points.swift in Sources */,
 				AEA2879E1EBCCC04002E425F /* CGError.swift in Sources */,
 				AEA287951EBCCC04002E425F /* TwoStraights.swift in Sources */,
-				AEA287A51EBCCC04002E425F /* RecalculationSignalPropagator.swift in Sources */,
+				AEA287A51EBCCC04002E425F /* RecalculationTransmitter.swift in Sources */,
 				AEA287911EBCCC04002E425F /* Circle.swift in Sources */,
 				AEA287971EBCCC04002E425F /* FreeScalar.swift in Sources */,
 				AEA2879A1EBCCC04002E425F /* Ray.swift in Sources */,
