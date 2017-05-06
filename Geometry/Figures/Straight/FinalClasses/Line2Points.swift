@@ -1,6 +1,5 @@
 //
 //  Line2Points.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-05.
 //  Copyright © 2017 Trovy. All rights reserved.

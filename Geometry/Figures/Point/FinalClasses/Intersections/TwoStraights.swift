@@ -1,6 +1,5 @@
 //
 //  TwoStraights.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-04.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -19,7 +18,7 @@ class TwoStraightIntersection: Point {
         super.init(unsorted: [s0, s1])
     }
     
-    override func getRaw() -> RCGPoint {
-        return intersection(straights.0.defaultedRaw, straights.1.defaultedRaw)
+    override func recalculate() -> RCGPoint {
+        return intersection(straights.0.coalescedValue, straights.1.coalescedValue)
     }
 }

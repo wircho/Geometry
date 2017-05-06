@@ -1,6 +1,5 @@
 //
 //  Figure.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-04.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -10,7 +9,7 @@ import Result
 
 // MARK: - Figure class
 
-class Figure<T>: RawPropagator<Result<T, CGError>>, FigureProtocol {
+class Figure<T>: RecalculationSignalPropagator<Result<T, CGError>>, FigureProtocol {
     
 // MARK: - Parents (For Comparison / Duplicate Prevention)
     
@@ -21,22 +20,22 @@ class Figure<T>: RawPropagator<Result<T, CGError>>, FigureProtocol {
 
     init () {
         parents = .empty
-        super.init(initial: .inexistent)
+        super.init(value: .inexistent)
     }
     
     init (_ parent: SignalPropagator) {
         parents = FigureParents(parent)
-        super.init(initial: .inexistent, receiveFrom: [parent])
+        super.init(value: .inexistent, receiveFrom: [parent])
     }
     
     init (sorted parents: [SignalPropagator]) {
         self.parents = FigureParents(sorted: parents)
-        super.init(initial: .inexistent, receiveFrom: parents)
+        super.init(value: .inexistent, receiveFrom: parents)
     }
     
     init (unsorted parents: [SignalPropagator]) {
         self.parents = FigureParents(unsorted: parents)
-        super.init(initial: .inexistent, receiveFrom: parents)
+        super.init(value: .inexistent, receiveFrom: parents)
     }
     
 // MARK: - Deinit
@@ -50,19 +49,19 @@ class Figure<T>: RawPropagator<Result<T, CGError>>, FigureProtocol {
 
 protocol FigureProtocol {
     associatedtype T
-    var raw: Result<T, CGError> { get }
+    var value: Result<T, CGError> { get }
 }
 
-// MARK: - Getting Defaulted Raw Value From Weak/Optional
+// MARK: - Getting Coalesced Raw Value From Weak/Optional
 
 extension WeakProtocol where T: FigureProtocol {
-    var defaultedRaw: Result<T.T, CGError> {
-        return self.object?.raw ?? .inexistent
+    var coalescedValue: Result<T.T, CGError> {
+        return self.object?.value ?? .inexistent
     }
 }
 
 extension OptionalProtocol where W: FigureProtocol {
-    var defaultedRaw: Result<W.T, CGError> {
-        return self.optionalCopy?.raw ?? .inexistent
+    var coalescedValue: Result<W.T, CGError> {
+        return self.optionalCopy?.value ?? .inexistent
     }
 }

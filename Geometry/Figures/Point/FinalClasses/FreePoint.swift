@@ -1,6 +1,5 @@
 //
 //  FreePoint.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-05.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -21,7 +20,7 @@ class FreePoint: Point {
         self.position = position
     }
     
-    override func getRaw() -> RCGPoint {
+    override func recalculate() -> RCGPoint {
         return position
     }
 }

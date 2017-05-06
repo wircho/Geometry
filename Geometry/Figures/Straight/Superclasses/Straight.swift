@@ -1,6 +1,5 @@
 //
 //  Straight.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-04.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -14,7 +13,7 @@ typealias StraightKind = CGStraight.Kind
 // MARK: - Straight Base Class
 
 class Straight: Figure<CGStraight> {
-    override func getRaw() -> Result<CGStraight, CGError> {
+    override func recalculate() -> Result<CGStraight, CGError> {
         guard let conformed = self as? StraightProtocol else {
             fatalError("Use a subclass that conforms to \(StraightProtocol.self)")
         }

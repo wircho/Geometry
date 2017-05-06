@@ -1,6 +1,5 @@
 //
 //  CGResultMath.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-02.
 //  Copyright © 2017 Trovy. All rights reserved.

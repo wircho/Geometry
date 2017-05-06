@@ -1,6 +1,5 @@
 //
 //  FreeScalar.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-05.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -10,18 +9,18 @@ import CoreGraphics
 import Result
 
 class FreeScalar: Scalar {
-    var value = RCGFloat.inexistent {
+    var position = RCGFloat.inexistent {
         didSet {
             signal = true
         }
     }
     
-    init (at value: RCGFloat) {
+    init (at position: RCGFloat) {
         super.init()
-        self.value = value
+        self.position = position
     }
     
-    override func getRaw() -> RCGFloat {
-        return value
+    override func recalculate() -> RCGFloat {
+        return position
     }
 }

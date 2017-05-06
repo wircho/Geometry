@@ -1,6 +1,5 @@
 //
 //  StraightCircle.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-04.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -21,8 +20,8 @@ class StraightCircleMediator: Figure<CGPoint2> {
         super.init(sorted: [straight, circle])
     }
     
-    override func getRaw() -> RCGPoint2 {
-        return intersections(straight.defaultedRaw, circle.defaultedRaw)
+    override func recalculate() -> RCGPoint2 {
+        return intersections(straight.coalescedValue, circle.coalescedValue)
     }
 }
 
@@ -43,10 +42,10 @@ class StraightCircleIntersection: Point {
         super.init(mediator)
     }
     
-    override func getRaw() -> Result<CGPoint, CGError> {
+    override func recalculate() -> Result<CGPoint, CGError> {
         switch index {
-        case .first: return mediator.defaultedRaw.first
-        case .second: return mediator.defaultedRaw.second
+        case .first: return mediator.coalescedValue.first
+        case .second: return mediator.coalescedValue.second
         }
     }
 }

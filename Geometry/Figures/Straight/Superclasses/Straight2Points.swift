@@ -1,6 +1,5 @@
 //
 //  Straight2Points.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-05.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -20,7 +19,7 @@ class Straight2Points: Straight {
     }
     
     var arrow: RCGArrow {
-        return RCGArrow(points: (points.0.defaultedRaw, points.1.defaultedRaw))
+        return RCGArrow(points: (points.0.coalescedValue, points.1.coalescedValue))
     }
 }
 

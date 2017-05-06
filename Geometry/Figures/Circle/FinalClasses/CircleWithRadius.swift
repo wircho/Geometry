@@ -1,6 +1,5 @@
 //
 //  CircleWithRadius.swift
-//  Drawvy
 //
 //  Created by AdolfoX Rodriguez on 2017-05-05.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -19,7 +18,7 @@ class CircleWithRadius: Circle {
         super.init(sorted: [center, radius])
     }
     
-    override func getRaw() -> Result<CGCircle, CGError> {
-        return RCGCircle(center: center.defaultedRaw, radius: radius.defaultedRaw)
+    override func recalculate() -> Result<CGCircle, CGError> {
+        return RCGCircle(center: center.coalescedValue, radius: radius.coalescedValue)
     }
 }
