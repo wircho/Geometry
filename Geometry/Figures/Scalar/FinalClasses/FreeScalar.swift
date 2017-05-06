@@ -12,7 +12,7 @@ import Result
 class FreeScalar: Scalar {
     var value = RCGFloat.inexistent {
         didSet {
-            gotSignal = true
+            signal = true
         }
     }
     

@@ -12,7 +12,7 @@ import Result
 class FreePoint: Point {
     var position = RCGPoint.inexistent {
         didSet {
-            gotSignal = true
+            signal = true
         }
     }
     

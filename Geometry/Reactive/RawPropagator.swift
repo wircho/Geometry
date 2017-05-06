@@ -8,31 +8,31 @@
 
 import Foundation
 
-class RawPropagator<Raw>: Propagator {
-    var _raw: Raw
+class RawPropagator<Raw>: SignalPropagator {
     
-    init(initial: Raw, parents:[Propagator] = []) {
+// MARK: - Raw Value
+    
+    private var _raw: Raw
+    
+// MARK: - Initialization
+    
+    init(initial: Raw, emitTo receivers:[SignalPropagator] = [], receiveFrom emitters:[SignalPropagator] = []) {
         _raw = initial
-        super.init()
-        receiveFrom(parents)
+        super.init(emitTo: receivers, receiveFrom: emitters)
     }
     
-    init(initial: Raw, parent:Propagator) {
-        _raw = initial
-        super.init()
-        receiveFrom(parent)
-    }
+// MARK: - Recalculate Raw If Signal
     
     func getRaw() -> Raw {
         fatalError("\(#function) must be overriden")
     }
     
     var raw: Raw {
-        guard gotSignal else {
+        guard signal else {
             return _raw
         }
         _raw = getRaw()
-        gotSignal = false
+        signal = false
         return _raw
     }
 }
