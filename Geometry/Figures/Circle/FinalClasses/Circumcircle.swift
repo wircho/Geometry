@@ -16,7 +16,7 @@ class Circumcircle: Circle {
         super.init(unsorted: [p0, p1, p2])
     }
     
-    override func recalculate() -> RCGCircle {
-        return RCGCircle(cicumscribing: (points.0.coalescedValue, points.1.coalescedValue, points.2.coalescedValue))
+    override func recalculate() -> _CircleResult {
+        return _CircleResult(cicumscribing: (points.0.coalescedValue, points.1.coalescedValue, points.2.coalescedValue))
     }
 }

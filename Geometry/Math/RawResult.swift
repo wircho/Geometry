@@ -1,5 +1,5 @@
 //
-//  CGResult.swift
+//  RawResult.swift
 //
 //  Created by AdolfoX Rodriguez on 2017-05-04.
 //  Copyright © 2017 Trovy. All rights reserved.
@@ -10,14 +10,15 @@ import Result
 
 // MARK: Result types
 
-typealias RCGFloat = Result<CGFloat, CGError>
-typealias RCGPoint = Result<CGPoint, CGError>
-typealias RCGCircle = Result<CGCircle, CGError>
-typealias RCGArrow = Result<CGArrow, CGError>
-typealias RCGStraight = Result<CGStraight, CGError>
-typealias RCG2x2 = Result<CG2x2, CGError>
-typealias RCG2 = Result<CG2, CGError>
-typealias RCGPoint2 = Result<CGPoint2, CGError>
+typealias _FloatResult = Result<_Float, MathError>
+typealias _PointResult = Result<_Point, MathError>
+typealias _CircleResult = Result<_Circle, MathError>
+typealias _ArrowResult = Result<_Arrow, MathError>
+typealias _StraightResult = Result<_Straight, MathError>
+typealias _TwoByTwoResult = Result<_TwoByTwo, MathError>
+typealias _Float2Result = Result<_Float2, MathError>
+typealias _Point2Result = Result<_Point2, MathError>
+
 
 // MARK: Result extensions
 
@@ -39,86 +40,86 @@ extension Result {
     }
 }
 
-extension Result where T: CGPointProtocol {
-    typealias RCGFloat = Result<CGFloat, Error>
+extension Result where T: _PointProtocol {
+    typealias _FloatResult = Result<_Float, Error>
     
-    var x: RCGFloat {
+    var x: _FloatResult {
         return self.map { $0.x }
     }
     
-    var y: RCGFloat {
+    var y: _FloatResult {
         return self.map { $0.y }
     }
     
-    init (x: CGFloat, y: CGFloat) {
+    init (x: _Float, y: _Float) {
         self = .success(T(x: x, y: y))
     }
     
-    init (x: RCGFloat, y: RCGFloat) {
+    init (x: _FloatResult, y: _FloatResult) {
         self = x.flatMap { x in return y.map { y in return T(x: x, y: y) } }
     }
     
-    var squaredNorm: RCGFloat {
+    var squaredNorm: _FloatResult {
         return map { $0.squaredNorm }
     }
     
-    var norm: RCGFloat {
+    var norm: _FloatResult {
         return map { $0.norm }
     }
 }
 
-extension Result where T: CGCircleProtocol {
-    typealias RCGPoint = Result<CGPoint, Error>
+extension Result where T: _CircleProtocol {
+    typealias _PointResult = Result<_Point, Error>
     
-    var center: RCGPoint {
+    var center: _PointResult {
         return self.map { $0.center }
     }
     
-    var radius: RCGFloat {
+    var radius: _FloatResult {
         return self.map { $0.radius }
     }
     
-    init (center: CGPoint, radius: CGFloat) {
+    init (center: _Point, radius: _Float) {
         self = .success(T(center: center, radius: radius))
     }
     
-    init (center: RCGPoint, radius: RCGFloat) {
+    init (center: _PointResult, radius: _FloatResult) {
         self = center.flatMap { center in return radius.map { radius in return T(center: center, radius: radius) } }
     }
     
-    init (center: RCGPoint, point: RCGPoint) {
+    init (center: _PointResult, point: _PointResult) {
         self = center.flatMap { center in return point.map { point in return T(center: center, point: point) } }
     }
 }
 
-extension Result where T: CGArrowProtocol {
-    var point0: RCGPoint {
+extension Result where T: _ArrowProtocol {
+    var point0: _PointResult {
         return self.map { $0.points.0 }
     }
     
-    var point1: RCGPoint {
+    var point1: _PointResult {
         return self.map { $0.points.1 }
     }
     
-    init(points: (RCGPoint, RCGPoint)) {
+    init(points: (_PointResult, _PointResult)) {
         self = points.0.flatMap { p0 in points.1.map { p1 in T(points: (p0, p1)) } }
     }
 }
 
-extension Result where T: CGStraightProtocol, Error: CGErrorProtocol {
-    typealias RCGArrow = Result<CGArrow, Error>
+extension Result where T: _StraightProtocol, Error: MathErrorProtocol {
+    typealias _ArrowResult = Result<_Arrow, Error>
     
-    init(kind: CGStraight.Kind, arrow: RCGArrow) {
+    init(kind: _Straight.Kind, arrow: _ArrowResult) {
         self = arrow.flatMap { Result(T(kind: kind, arrow: $0), orOther: .infinity) }
     }
     
-    init(kind: CGStraight.Kind, points: (RCGPoint, RCGPoint)) {
-        self = points.0.flatMap { p0 in points.1.flatMap { p1 in Result(T(kind: kind, arrow: CGArrow(points: (p0,p1))), orOther: .infinity) } }
+    init(kind: _Straight.Kind, points: (_PointResult, _PointResult)) {
+        self = points.0.flatMap { p0 in points.1.flatMap { p1 in Result(T(kind: kind, arrow: _Arrow(points: (p0,p1))), orOther: .infinity) } }
     }
 }
 
-extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
-    var first: RCGPoint {
+extension Result where T: _Point2Protocol,  Error: MathErrorProtocol {
+    var first: _PointResult {
         return self.flatMap {
             guard let first = $0.first else {
                 return .none
@@ -127,7 +128,7 @@ extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
         }
     }
     
-    var second: RCGPoint {
+    var second: _PointResult {
         return self.flatMap {
             guard let second = $0.second else {
                 return .none
@@ -137,7 +138,7 @@ extension Result where T: CGPoint2Protocol,  Error: CGErrorProtocol {
     }
 }
 
-extension Result where Error: CGErrorProtocol {
+extension Result where Error: MathErrorProtocol {
     static var none: Result {
         return .failure(Error(.none))
     }

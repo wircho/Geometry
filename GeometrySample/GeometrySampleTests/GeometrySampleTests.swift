@@ -7,8 +7,22 @@
 //
 
 import XCTest
-@testable import Result
+import CoreGraphics
+import Result
 @testable import GeometrySample
+
+class FailPoint: Point {
+    private var failure: MathError
+    
+    init(_ failure: MathError) {
+        self.failure = failure
+        super.init()
+    }
+    
+    override func recalculate() -> Result<CGPoint, MathError> {
+        return .failure(failure)
+    }
+}
 
 class GeometrySampleTests: XCTestCase {
     
@@ -23,16 +37,17 @@ class GeometrySampleTests: XCTestCase {
     }
     
     func testFreeScalar() {
+        // Constants
+        let position0: _Float = 856.24
+        let position1: _Float = 83456.1524
         // Create free scalar
-        let position: CGFloat = 856.24
-        let freeScalar = FreeScalar(at: position)
-        guard let value = freeScalar.value.value else {
+        let freeScalar = FreeScalar(at: position0)
+        guard let value0 = freeScalar.value.value else {
             XCTFail()
             return
         }
-        XCTAssert(position == value)
+        XCTAssert(position0 == value0)
         // Move free scalar
-        let position1: CGFloat = 83456.1524
         freeScalar.position = position1
         guard let value1 = freeScalar.value.value else {
             XCTFail()
@@ -42,16 +57,17 @@ class GeometrySampleTests: XCTestCase {
     }
     
     func testFreePoint() {
+        // Constants
+        let position0 = _Point(x: 0.25, y: 3.481)
+        let position1 = _Point(x: 20.31, y: 18.456)
         // Create free point
-        let position = CGPoint(x: 0.25, y: 3.481)
-        let freePoint = FreePoint(at: position)
-        guard let value = freePoint.value.value else {
+        let freePoint = FreePoint(at: position0)
+        guard let value0 = freePoint.value.value else {
             XCTFail()
             return
         }
-        XCTAssert(position == value)
+        XCTAssert(position0 == value0)
         // Move free point
-        let position1 = CGPoint(x: 20.31, y: 18.456)
         freePoint.position = position1
         guard let value1 = freePoint.value.value else {
             XCTFail()
@@ -60,15 +76,14 @@ class GeometrySampleTests: XCTestCase {
         XCTAssert(position1 == value1)
     }
     
-    func testLine2Points() {
-        // Create line
-    }
-    
-//    func testPerformanceExample() {
-//        // This is an example of a performance test case.
-//        self.measure {
-//            // Put the code you want to measure the time of here.
-//        }
+//    func testLine2Points() {
+//        // Constants
+//        let freePoint0 = FreePoint(at: CGPoint(x: 3234.234, y: 4597.234))
+//        let freePoint1 = FreePoint(at: CGPoint(x: 90923.1, y: 9343.546))
+//        let failPoint0 = FailPoint(.complex)
+//        let failPoint1 = FailPoint(.none)
+//        // Create regular line
+//        let line0 = Line2Points(freePoint0, freePoint1)
 //    }
     
 }

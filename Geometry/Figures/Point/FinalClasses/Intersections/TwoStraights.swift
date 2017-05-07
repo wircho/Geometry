@@ -18,7 +18,7 @@ class TwoStraightIntersection: Point {
         super.init(unsorted: [s0, s1])
     }
     
-    override func recalculate() -> RCGPoint {
+    override func recalculate() -> _PointResult {
         return intersection(straights.0.coalescedValue, straights.1.coalescedValue)
     }
 }

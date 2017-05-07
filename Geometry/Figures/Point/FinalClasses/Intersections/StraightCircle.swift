@@ -10,7 +10,7 @@ import Result
 
 // MARK: - Intersection Mediator
 
-class StraightCircleMediator: Figure<CGPoint2> {
+class StraightCircleMediator: Figure<_Point2> {
     weak var straight: Straight?
     weak var circle: Circle?
     
@@ -20,7 +20,7 @@ class StraightCircleMediator: Figure<CGPoint2> {
         super.init(sorted: [straight, circle])
     }
     
-    override func recalculate() -> RCGPoint2 {
+    override func recalculate() -> _Point2Result {
         return intersections(straight.coalescedValue, circle.coalescedValue)
     }
 }
@@ -42,7 +42,7 @@ class StraightCircleIntersection: Point {
         super.init(mediator)
     }
     
-    override func recalculate() -> Result<CGPoint, CGError> {
+    override func recalculate() -> _PointResult {
         switch index {
         case .first: return mediator.coalescedValue.first
         case .second: return mediator.coalescedValue.second

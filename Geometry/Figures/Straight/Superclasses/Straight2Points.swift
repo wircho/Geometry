@@ -18,8 +18,8 @@ class Straight2Points: Straight {
         super.init(unsorted: [p0, p1])
     }
     
-    var arrow: RCGArrow {
-        return RCGArrow(points: (points.0.coalescedValue, points.1.coalescedValue))
+    var arrow: _ArrowResult {
+        return _ArrowResult(points: (points.0.coalescedValue, points.1.coalescedValue))
     }
 }
 

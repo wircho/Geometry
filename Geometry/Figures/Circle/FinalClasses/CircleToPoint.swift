@@ -18,7 +18,7 @@ class CircleToPoint: Circle {
         super.init(sorted: [center, point])
     }
     
-    override func recalculate() -> Result<CGCircle, CGError> {
-        return RCGCircle(center: center.coalescedValue, point: point.coalescedValue)
+    override func recalculate() -> _CircleResult {
+        return _CircleResult(center: center.coalescedValue, point: point.coalescedValue)
     }
 }

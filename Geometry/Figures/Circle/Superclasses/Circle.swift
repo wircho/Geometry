@@ -8,4 +8,4 @@
 import CoreGraphics
 import Result
 
-class Circle: Figure<CGCircle> { }
+class Circle: Figure<_Circle> { }

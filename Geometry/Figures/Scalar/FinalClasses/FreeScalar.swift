@@ -20,7 +20,7 @@ class FreeScalar: Scalar {
         super.init()
     }
     
-    override func recalculate() -> RCGFloat {
+    override func recalculate() -> _FloatResult {
         return .success(position)
     }
 }

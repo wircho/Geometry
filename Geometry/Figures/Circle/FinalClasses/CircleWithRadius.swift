@@ -18,7 +18,7 @@ class CircleWithRadius: Circle {
         super.init(sorted: [center, radius])
     }
     
-    override func recalculate() -> Result<CGCircle, CGError> {
-        return RCGCircle(center: center.coalescedValue, radius: radius.coalescedValue)
+    override func recalculate() -> _CircleResult {
+        return _CircleResult(center: center.coalescedValue, radius: radius.coalescedValue)
     }
 }

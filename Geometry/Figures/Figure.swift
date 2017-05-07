@@ -9,7 +9,7 @@ import Result
 
 // MARK: - Figure class
 
-class Figure<T>: RecalculationTransmitter<Result<T, CGError>>, FigureProtocol {
+class Figure<T>: RecalculationTransmitter<Result<T, MathError>>, FigureProtocol {
     
 // MARK: - Parents (For Comparison / Duplicate Prevention)
     
@@ -49,19 +49,19 @@ class Figure<T>: RecalculationTransmitter<Result<T, CGError>>, FigureProtocol {
 
 protocol FigureProtocol {
     associatedtype T
-    var value: Result<T, CGError> { get }
+    var value: Result<T, MathError> { get }
 }
 
 // MARK: - Getting Coalesced Raw Value From Weak/Optional
 
 extension WeakProtocol where T: FigureProtocol {
-    var coalescedValue: Result<T.T, CGError> {
+    var coalescedValue: Result<T.T, MathError> {
         return self.object?.value ?? .none
     }
 }
 
 extension OptionalProtocol where W: FigureProtocol {
-    var coalescedValue: Result<W.T, CGError> {
+    var coalescedValue: Result<W.T, MathError> {
         return self.optionalCopy?.value ?? .none
     }
 }

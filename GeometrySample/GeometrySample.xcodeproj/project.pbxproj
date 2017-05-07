@@ -31,11 +31,11 @@
 		AEA2879B1EBCCC04002E425F /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877C1EBCCC04002E425F /* Segment.swift */; };
 		AEA2879C1EBCCC04002E425F /* Straight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877E1EBCCC04002E425F /* Straight.swift */; };
 		AEA2879D1EBCCC04002E425F /* Straight2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2877F1EBCCC04002E425F /* Straight2Points.swift */; };
-		AEA2879E1EBCCC04002E425F /* CGError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* CGError.swift */; };
-		AEA2879F1EBCCC04002E425F /* CGMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* CGMath.swift */; };
-		AEA287A01EBCCC04002E425F /* CGResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* CGResult.swift */; };
-		AEA287A11EBCCC04002E425F /* CGResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* CGResultMath.swift */; };
-		AEA287A21EBCCC04002E425F /* CGTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* CGTypes.swift */; };
+		AEA2879E1EBCCC04002E425F /* MathError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* MathError.swift */; };
+		AEA2879F1EBCCC04002E425F /* RawMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* RawMath.swift */; };
+		AEA287A01EBCCC04002E425F /* RawResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* RawResult.swift */; };
+		AEA287A11EBCCC04002E425F /* RawResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* RawResultMath.swift */; };
+		AEA287A21EBCCC04002E425F /* RawTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* RawTypes.swift */; };
 		AEA287A31EBCCC04002E425F /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* Transmitter.swift */; };
 		AEA287A51EBCCC04002E425F /* RecalculationTransmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287891EBCCC04002E425F /* RecalculationTransmitter.swift */; };
 		AEA287A61EBCCC04002E425F /* Getter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878B1EBCCC04002E425F /* Getter.swift */; };
@@ -84,11 +84,11 @@
 		AEA2877C1EBCCC04002E425F /* Segment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		AEA2877E1EBCCC04002E425F /* Straight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Straight.swift; sourceTree = "<group>"; };
 		AEA2877F1EBCCC04002E425F /* Straight2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Straight2Points.swift; sourceTree = "<group>"; };
-		AEA287811EBCCC04002E425F /* CGError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGError.swift; sourceTree = "<group>"; };
-		AEA287821EBCCC04002E425F /* CGMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGMath.swift; sourceTree = "<group>"; };
-		AEA287831EBCCC04002E425F /* CGResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGResult.swift; sourceTree = "<group>"; };
-		AEA287841EBCCC04002E425F /* CGResultMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGResultMath.swift; sourceTree = "<group>"; };
-		AEA287851EBCCC04002E425F /* CGTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGTypes.swift; sourceTree = "<group>"; };
+		AEA287811EBCCC04002E425F /* MathError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathError.swift; sourceTree = "<group>"; };
+		AEA287821EBCCC04002E425F /* RawMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawMath.swift; sourceTree = "<group>"; };
+		AEA287831EBCCC04002E425F /* RawResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawResult.swift; sourceTree = "<group>"; };
+		AEA287841EBCCC04002E425F /* RawResultMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawResultMath.swift; sourceTree = "<group>"; };
+		AEA287851EBCCC04002E425F /* RawTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawTypes.swift; sourceTree = "<group>"; };
 		AEA287871EBCCC04002E425F /* Transmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transmitter.swift; sourceTree = "<group>"; };
 		AEA287891EBCCC04002E425F /* RecalculationTransmitter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecalculationTransmitter.swift; sourceTree = "<group>"; };
 		AEA2878B1EBCCC04002E425F /* Getter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Getter.swift; sourceTree = "<group>"; };
@@ -314,11 +314,11 @@
 		AEA287801EBCCC04002E425F /* Math */ = {
 			isa = PBXGroup;
 			children = (
-				AEA287851EBCCC04002E425F /* CGTypes.swift */,
-				AEA287821EBCCC04002E425F /* CGMath.swift */,
-				AEA287811EBCCC04002E425F /* CGError.swift */,
-				AEA287831EBCCC04002E425F /* CGResult.swift */,
-				AEA287841EBCCC04002E425F /* CGResultMath.swift */,
+				AEA287851EBCCC04002E425F /* RawTypes.swift */,
+				AEA287821EBCCC04002E425F /* RawMath.swift */,
+				AEA287811EBCCC04002E425F /* MathError.swift */,
+				AEA287831EBCCC04002E425F /* RawResult.swift */,
+				AEA287841EBCCC04002E425F /* RawResultMath.swift */,
 			);
 			path = Math;
 			sourceTree = "<group>";
@@ -563,7 +563,7 @@
 				AEA2878E1EBCCC04002E425F /* CircleToPoint.swift in Sources */,
 				AEA287941EBCCC04002E425F /* StraightCircle.swift in Sources */,
 				AEA287981EBCCC04002E425F /* Scalar.swift in Sources */,
-				AEA2879F1EBCCC04002E425F /* CGMath.swift in Sources */,
+				AEA2879F1EBCCC04002E425F /* RawMath.swift in Sources */,
 				AEA2878F1EBCCC04002E425F /* CircleWithRadius.swift in Sources */,
 				AEA287901EBCCC04002E425F /* Circumcircle.swift in Sources */,
 				AEA287A31EBCCC04002E425F /* Transmitter.swift in Sources */,
@@ -571,18 +571,18 @@
 				AEA287A71EBCCC04002E425F /* SimpleTree.swift in Sources */,
 				AEA287A81EBCCC04002E425F /* Weak.swift in Sources */,
 				AEA287991EBCCC04002E425F /* Line2Points.swift in Sources */,
-				AEA287A11EBCCC04002E425F /* CGResultMath.swift in Sources */,
+				AEA287A11EBCCC04002E425F /* RawResultMath.swift in Sources */,
 				AEA287931EBCCC04002E425F /* FreePoint.swift in Sources */,
 				AEA2879B1EBCCC04002E425F /* Segment.swift in Sources */,
-				AEA287A01EBCCC04002E425F /* CGResult.swift in Sources */,
+				AEA287A01EBCCC04002E425F /* RawResult.swift in Sources */,
 				AEA2879D1EBCCC04002E425F /* Straight2Points.swift in Sources */,
-				AEA2879E1EBCCC04002E425F /* CGError.swift in Sources */,
+				AEA2879E1EBCCC04002E425F /* MathError.swift in Sources */,
 				AEA287951EBCCC04002E425F /* TwoStraights.swift in Sources */,
 				AEA287A51EBCCC04002E425F /* RecalculationTransmitter.swift in Sources */,
 				AEA287911EBCCC04002E425F /* Circle.swift in Sources */,
 				AEA287971EBCCC04002E425F /* FreeScalar.swift in Sources */,
 				AEA2879A1EBCCC04002E425F /* Ray.swift in Sources */,
-				AEA287A21EBCCC04002E425F /* CGTypes.swift in Sources */,
+				AEA287A21EBCCC04002E425F /* RawTypes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
