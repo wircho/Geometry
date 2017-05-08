@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-class Point: Figure<CGPoint> { }
+class Point: Figure<Spot> { }
 
 // TODO: - Circumcenter, Baricenter, Point On object
 // TODO: (Long term) Point In object

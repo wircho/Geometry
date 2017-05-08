@@ -10,14 +10,14 @@ import Result
 
 // MARK: Result types
 
-typealias _FloatResult = Result<_Float, MathError>
-typealias _PointResult = Result<_Point, MathError>
-typealias _CircleResult = Result<_Circle, MathError>
-typealias _ArrowResult = Result<_Arrow, MathError>
-typealias _StraightResult = Result<_Straight, MathError>
-typealias _TwoByTwoResult = Result<_TwoByTwo, MathError>
-typealias _Float2Result = Result<_Float2, MathError>
-typealias _Point2Result = Result<_Point2, MathError>
+typealias FloatResult = Result<Float, MathError>
+typealias SpotResult = Result<Spot, MathError>
+typealias RingResult = Result<Ring, MathError>
+typealias ArrowResult = Result<Arrow, MathError>
+typealias SaberResult = Result<Saber, MathError>
+typealias TwoByTwoFloatResult = Result<TwoByTwo<Float>, MathError>
+typealias TwoFloatResult = Result<Two<Float>, MathError>
+typealias TwoOptionalSpotResult = Result<Two<Spot?>, MathError>
 
 
 // MARK: Result extensions
@@ -40,100 +40,94 @@ extension Result {
     }
 }
 
-extension Result where T: _PointProtocol {
-    typealias _FloatResult = Result<_Float, Error>
+extension Result where T: SpotProtocol {
+    typealias FloatResult = Result<Float, Error>
     
-    var x: _FloatResult {
+    var x: FloatResult {
         return self.map { $0.x }
     }
     
-    var y: _FloatResult {
+    var y: FloatResult {
         return self.map { $0.y }
     }
     
-    init (x: _Float, y: _Float) {
+    init (x: Float, y: Float) {
         self = .success(T(x: x, y: y))
     }
     
-    init (x: _FloatResult, y: _FloatResult) {
+    init (x: FloatResult, y: FloatResult) {
         self = x.flatMap { x in return y.map { y in return T(x: x, y: y) } }
     }
     
-    var squaredNorm: _FloatResult {
+    var squaredNorm: FloatResult {
         return map { $0.squaredNorm }
     }
     
-    var norm: _FloatResult {
+    var norm: FloatResult {
         return map { $0.norm }
     }
 }
 
-extension Result where T: _CircleProtocol {
-    typealias _PointResult = Result<_Point, Error>
+extension Result where T: RingProtocol {
+    typealias SpotResult = Result<Spot, Error>
     
-    var center: _PointResult {
+    var center: SpotResult {
         return self.map { $0.center }
     }
     
-    var radius: _FloatResult {
+    var radius: FloatResult {
         return self.map { $0.radius }
     }
     
-    init (center: _Point, radius: _Float) {
+    init (center: Spot, radius: Float) {
         self = .success(T(center: center, radius: radius))
     }
     
-    init (center: _PointResult, radius: _FloatResult) {
+    init (center: SpotResult, radius: FloatResult) {
         self = center.flatMap { center in return radius.map { radius in return T(center: center, radius: radius) } }
     }
     
-    init (center: _PointResult, point: _PointResult) {
+    init (center: SpotResult, point: SpotResult) {
         self = center.flatMap { center in return point.map { point in return T(center: center, point: point) } }
     }
 }
 
-extension Result where T: _ArrowProtocol {
-    var point0: _PointResult {
+extension Result where T: ArrowProtocol {
+    var point0: SpotResult {
         return self.map { $0.points.0 }
     }
     
-    var point1: _PointResult {
+    var point1: SpotResult {
         return self.map { $0.points.1 }
     }
     
-    init(points: (_PointResult, _PointResult)) {
+    init(points: (SpotResult, SpotResult)) {
         self = points.0.flatMap { p0 in points.1.map { p1 in T(points: (p0, p1)) } }
     }
 }
 
-extension Result where T: _StraightProtocol, Error: MathErrorProtocol {
-    typealias _ArrowResult = Result<_Arrow, Error>
+extension Result where T: SaberProtocol, Error: MathErrorProtocol {
+    typealias ArrowResult = Result<Arrow, Error>
     
-    init(kind: _Straight.Kind, arrow: _ArrowResult) {
+    init(kind: Saber.Kind, arrow: ArrowResult) {
         self = arrow.flatMap { Result(T(kind: kind, arrow: $0), orOther: .infinity) }
     }
     
-    init(kind: _Straight.Kind, points: (_PointResult, _PointResult)) {
-        self = points.0.flatMap { p0 in points.1.flatMap { p1 in Result(T(kind: kind, arrow: _Arrow(points: (p0,p1))), orOther: .infinity) } }
+    init(kind: Saber.Kind, points: (SpotResult, SpotResult)) {
+        self = points.0.flatMap { p0 in points.1.flatMap { p1 in Result(T(kind: kind, arrow: Arrow(points: (p0,p1))), orOther: .infinity) } }
     }
 }
 
-extension Result where T: _Point2Protocol,  Error: MathErrorProtocol {
-    var first: _PointResult {
-        return self.flatMap {
-            guard let first = $0.first else {
-                return .none
-            }
-            return .success(first)
+extension Result where T: TwoProtocol,  Error: MathErrorProtocol {
+    var v0: Result<T.T,Error> {
+        return self.map {
+            return $0.v0
         }
     }
     
-    var second: _PointResult {
-        return self.flatMap {
-            guard let second = $0.second else {
-                return .none
-            }
-            return .success(second)
+    var v1: Result<T.T,Error> {
+        return self.map {
+            return $0.v1
         }
     }
 }

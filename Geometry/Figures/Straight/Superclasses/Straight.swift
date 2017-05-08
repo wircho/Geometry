@@ -10,28 +10,28 @@ import Result
 
 // MARK: - Straight Base Class
 
-class Straight: Figure<_Straight> {
-    override func recalculate() -> _StraightResult {
+class Straight: Figure<Saber> {
+    override func recalculate() -> SaberResult {
         guard let conformed = self as? StraightProtocol else {
             fatalError("Use a subclass that conforms to \(StraightProtocol.self)")
         }
-        return _StraightResult(kind: conformed.kind, arrow: conformed.arrow)
+        return SaberResult(kind: conformed.kind, arrow: conformed.arrow)
     }
 }
 
 // MARK: - Protocols For Every Subclass
 
 protocol StraightProtocol {
-    var kind: _Straight.Kind { get }
-    var arrow: _ArrowResult { get }
+    var kind: Saber.Kind { get }
+    var arrow: ArrowResult { get }
 }
 
 protocol LineProtocol: StraightProtocol { }
 protocol SegmentProtocol: StraightProtocol { }
 protocol RayProtocol: StraightProtocol { }
 
-extension LineProtocol { var kind: _Straight.Kind { return .line } }
-extension SegmentProtocol { var kind: _Straight.Kind { return .segment } }
-extension RayProtocol { var kind: _Straight.Kind { return .ray } }
+extension LineProtocol { var kind: Saber.Kind { return .line } }
+extension SegmentProtocol { var kind: Saber.Kind { return .segment } }
+extension RayProtocol { var kind: Saber.Kind { return .ray } }
 
 // TODO: - Parallel and Perpendicular Lines, Angle bisector, Perpendicular Bisector

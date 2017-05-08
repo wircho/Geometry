@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */; };
 		A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */; };
+		AE4ECFC31EC1001B0053AFEA /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
@@ -58,6 +59,7 @@
 		1AFD956535FF38239364E7D7 /* Pods-GeometrySampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		32B63DA0331CCBBC5E726895 /* Pods-GeometrySampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9FF6C6F56C8645116D7BD20C /* Pods-GeometrySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample.debug.xcconfig"; sourceTree = "<group>"; };
+		AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalProtocol.swift; sourceTree = "<group>"; };
 		AEA2873E1EBCCB2C002E425F /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA287411EBCCB2C002E425F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEA287431EBCCB2C002E425F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 			children = (
 				AEA2878D1EBCCC04002E425F /* Weak.swift */,
 				AEA2878B1EBCCC04002E425F /* Getter.swift */,
+				AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */,
 				AEA2878C1EBCCC04002E425F /* SimpleTree.swift */,
 			);
 			path = Tools;
@@ -577,6 +580,7 @@
 				AEA287A01EBCCC04002E425F /* RawResult.swift in Sources */,
 				AEA2879D1EBCCC04002E425F /* Straight2Points.swift in Sources */,
 				AEA2879E1EBCCC04002E425F /* MathError.swift in Sources */,
+				AE4ECFC31EC1001B0053AFEA /* OptionalProtocol.swift in Sources */,
 				AEA287951EBCCC04002E425F /* TwoStraights.swift in Sources */,
 				AEA287A51EBCCC04002E425F /* RecalculationTransmitter.swift in Sources */,
 				AEA287911EBCCC04002E425F /* Circle.swift in Sources */,

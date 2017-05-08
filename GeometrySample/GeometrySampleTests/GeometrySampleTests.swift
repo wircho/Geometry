@@ -38,8 +38,8 @@ class GeometrySampleTests: XCTestCase {
     
     func testFreeScalar() {
         // Constants
-        let position0: _Float = 856.24
-        let position1: _Float = 83456.1524
+        let position0: GeometrySample.Float = 856.24
+        let position1: GeometrySample.Float = 83456.1524
         // Create free scalar
         let freeScalar = FreeScalar(at: position0)
         guard let value0 = freeScalar.value.value else {
@@ -58,8 +58,8 @@ class GeometrySampleTests: XCTestCase {
     
     func testFreePoint() {
         // Constants
-        let position0 = _Point(x: 0.25, y: 3.481)
-        let position1 = _Point(x: 20.31, y: 18.456)
+        let position0 = Spot(x: 0.25, y: 3.481)
+        let position1 = Spot(x: 20.31, y: 18.456)
         // Create free point
         let freePoint = FreePoint(at: position0)
         guard let value0 = freePoint.value.value else {

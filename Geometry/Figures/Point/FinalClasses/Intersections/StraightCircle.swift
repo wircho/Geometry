@@ -10,7 +10,7 @@ import Result
 
 // MARK: - Intersection Mediator
 
-class StraightCircleMediator: Figure<_Point2> {
+class StraightCircleMediator: Figure<Two<Spot?>> {
     weak var straight: Straight?
     weak var circle: Circle?
     
@@ -20,7 +20,7 @@ class StraightCircleMediator: Figure<_Point2> {
         super.init(sorted: [straight, circle])
     }
     
-    override func recalculate() -> _Point2Result {
+    override func recalculate() -> TwoOptionalSpotResult {
         return intersections(straight.coalescedValue, circle.coalescedValue)
     }
 }
@@ -42,10 +42,10 @@ class StraightCircleIntersection: Point {
         super.init(mediator)
     }
     
-    override func recalculate() -> _PointResult {
+    override func recalculate() -> SpotResult {
         switch index {
-        case .first: return mediator.coalescedValue.first
-        case .second: return mediator.coalescedValue.second
+        case .first: return mediator?.value.v0.optional ?? .none
+        case .second: return mediator?.value.v0.optional ?? .none
         }
     }
 }

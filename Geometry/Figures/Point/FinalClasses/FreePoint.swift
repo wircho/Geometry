@@ -9,18 +9,18 @@ import CoreGraphics
 import Result
 
 class FreePoint: Point {
-    var position: _Point {
+    var position: Spot {
         didSet {
             signal = true
         }
     }
     
-    init (at position: _Point) {
+    init (at position: Spot) {
         self.position = position
         super.init()
     }
     
-    override func recalculate() -> _PointResult {
+    override func recalculate() -> SpotResult {
         return .success(position)
     }
 }

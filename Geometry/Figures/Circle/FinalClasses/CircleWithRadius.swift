@@ -18,7 +18,7 @@ class CircleWithRadius: Circle {
         super.init(sorted: [center, radius])
     }
     
-    override func recalculate() -> _CircleResult {
-        return _CircleResult(center: center.coalescedValue, radius: radius.coalescedValue)
+    override func recalculate() -> RingResult {
+        return RingResult(center: center.coalescedValue, radius: radius.coalescedValue)
     }
 }

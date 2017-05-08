@@ -10,6 +10,6 @@ import Result
 
 // MARK: - Scalar Base Class
 
-class Scalar: Figure<CGFloat> { }
+class Scalar: Figure<Float> { }
 
 // TODO: - Segment Length, Coordinate, Angle
