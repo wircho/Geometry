@@ -12,7 +12,7 @@ class CircleWithRadius: Circle {
     weak var center: Point?
     weak var radius: Scalar?
     
-    init(center: Point, radius: Scalar) {
+    init(_ center: Point, _ radius: Scalar) {
         self.center = center
         self.radius = radius
         super.init(sorted: [center, radius])

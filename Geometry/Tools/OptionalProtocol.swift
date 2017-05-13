@@ -46,17 +46,3 @@ extension Result where T: OptionalProtocol {
         })
     }
 }
-
-// MARK: - Getter
-
-extension Getter where T: OptionalProtocol {
-    func or(_ w:T.W) -> Getter<T.W> {
-        return map { $0.optionalCopy ?? w }
-    }
-}
-
-extension Getter where T: OptionalProtocol, T.W: AnyObject {
-    init(weak object: T.W) {
-        self.init { [weak object] in return T(optional: object) }
-    }
-}

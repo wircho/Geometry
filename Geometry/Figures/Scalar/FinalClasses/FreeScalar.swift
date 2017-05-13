@@ -11,7 +11,7 @@ import Result
 class FreeScalar: Scalar {
     var position: CGFloat {
         didSet {
-            signal = true
+            needsRecalculation = true
         }
     }
     

@@ -10,6 +10,8 @@ import Foundation
 import CoreGraphics
 import Result
 
+// TODO: Make mediator, since point may not exist
+
 class TwoStraightIntersection: Point {
     var straights: (Weak<Straight>, Weak<Straight>)
     

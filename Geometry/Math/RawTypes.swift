@@ -26,9 +26,27 @@ struct TwoByTwo<T> {
     var a11: T
 }
 
+private var pi = Float(M_PI)
+private var twoPi = Float(2 * M_PI)
+struct Angle {
+    var value: Float
+    
+    init (value: Float) {
+        var val = value
+        while val > pi { val -= pi }
+        while val <= -pi { val += pi }
+        self.value = val
+    }
+}
+
 struct Ring {
     var center: Spot
     var radius: Float
+}
+
+struct Cap {
+    var ring: Ring
+    var angles: Two<Float>
 }
 
 struct Arrow {
@@ -133,16 +151,12 @@ extension Two: TwoProtocol { }
 // MARK: Protocol extensions
 
 extension ArrowProtocol {
-    var at0: Spot {
+    var vector: Spot {
         return points.1 - points.0
     }
     
     func at(_ v: Float) -> Spot {
-        return points.0 + at0 * v
-    }
-    
-    func at(_ v: Float, multiplier: Float) -> Spot {
-        return points.0 + at0 * v * multiplier
+        return points.0 + vector * v
     }
 }
 
@@ -166,12 +180,12 @@ extension TwoByTwoProtocol {
     }
     
     init (column0: Two<T>, column1: Two<T>) {
-        self.init(a00: column0.v0, a01: column1.v1, a10: column0.v0, a11: column1.v1)
+        self.init(a00: column0.v0, a01: column1.v0, a10: column0.v1, a11: column1.v1)
     }
 }
 
 extension TwoByTwoProtocol where T: FloatProtocol {
     var determinant: T {
-        return a00 * a11 - a01 * a11
+        return a00 * a11 - a01 * a10
     }
 }

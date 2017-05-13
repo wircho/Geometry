@@ -17,7 +17,9 @@ typealias ArrowResult = Result<Arrow, MathError>
 typealias SaberResult = Result<Saber, MathError>
 typealias TwoByTwoFloatResult = Result<TwoByTwo<Float>, MathError>
 typealias TwoFloatResult = Result<Two<Float>, MathError>
+typealias TwoSpotResult = Result<Two<Spot>, MathError>
 typealias TwoOptionalSpotResult = Result<Two<Spot?>, MathError>
+typealias TwoOptionalFloatResult = Result<Two<Float?>, MathError>
 
 
 // MARK: Result extensions
@@ -66,6 +68,10 @@ extension Result where T: SpotProtocol {
     var norm: FloatResult {
         return map { $0.norm }
     }
+    
+    var orthogonal: Result<Spot, Error> {
+        return self.map { $0.orthogonal }
+    }
 }
 
 extension Result where T: RingProtocol {
@@ -101,6 +107,10 @@ extension Result where T: ArrowProtocol {
         return self.map { $0.points.1 }
     }
     
+    var vector: SpotResult {
+        return self.map { $0.vector }
+    }
+    
     init(points: (SpotResult, SpotResult)) {
         self = points.0.flatMap { p0 in points.1.map { p1 in T(points: (p0, p1)) } }
     }
@@ -108,6 +118,10 @@ extension Result where T: ArrowProtocol {
 
 extension Result where T: SaberProtocol, Error: MathErrorProtocol {
     typealias ArrowResult = Result<Arrow, Error>
+    
+    var arrow: ArrowResult {
+        return self.map { $0.arrow }
+    }
     
     init(kind: Saber.Kind, arrow: ArrowResult) {
         self = arrow.flatMap { Result(T(kind: kind, arrow: $0), orOther: .infinity) }

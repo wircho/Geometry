@@ -22,8 +22,7 @@ struct Weak<T: AnyObject>: WeakProtocol, Hashable {
     
     init(_ object: T) {
         _object = object
-        var obj = object
-        hashValue = withUnsafePointer(to: &obj) { $0.hashValue }
+        hashValue = ObjectIdentifier(object).hashValue
     }
 }
 

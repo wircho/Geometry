@@ -7,21 +7,4 @@
 
 import Foundation
 
-// MARK: Getter
-// Not really using this. But it's nice.
-
-struct Getter<T> {
-    private var getter: () -> T
-    
-    init(getter: @escaping () -> T) {
-        self.getter = getter
-    }
-    
-    var value: T {
-        return getter()
-    }
-    
-    func map<U>(_ transform: @escaping (T) -> U) -> Getter<U> {
-        return Getter<U> { transform(self.getter()) }
-    }
-}
+typealias Getter<T> = () -> T

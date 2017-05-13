@@ -7,31 +7,62 @@
 
 import Foundation
 
-class RecalculationTransmitter<Value>: Transmitter {
+// MARK: - Base Class
+
+class _RecalculationTransmitter: Transmitter {
     
-// MARK: - Raw Value
+// MARK: - Needs Recalculation
     
-    private var _value: Value
+    private var _needsRecalculation: Bool = true
+    
+    var needsRecalculation: Bool {
+        get {
+            return _needsRecalculation
+        }
+        set {
+            guard newValue != _needsRecalculation else {
+                return
+            }
+            if newValue {
+                send { transmitter in
+                    if let r = transmitter as? _RecalculationTransmitter {
+                        r._needsRecalculation = true
+                    }
+                }
+            } else {
+                _needsRecalculation = false
+            }
+        }
+    }
+}
+
+// MARK: - Main Class
+
+class RecalculationTransmitter<Result>: _RecalculationTransmitter {
+    
+// MARK: - Raw Result
+    
+    private var _result: Result
     
 // MARK: - Initialization
     
-    init(value: Value, emitTo receivers:[Transmitter] = [], receiveFrom emitters:[Transmitter] = []) {
-        _value = value
+    init(_ result: Result, emitTo receivers:[Transmitter] = [], receiveFrom emitters:[Transmitter] = []) {
+        _result = result
         super.init(emitTo: receivers, receiveFrom: emitters)
     }
     
 // MARK: - Recalculate Value If Signal
     
-    func recalculate() -> Value {
+    func recalculate() -> Result {
         fatalError("\(#function) must be overriden")
     }
     
-    var value: Value {
-        guard signal else {
-            return _value
+    var result: Result {
+        guard needsRecalculation else {
+            return _result
         }
-        _value = recalculate()
-        signal = false
-        return _value
+        _result = recalculate()
+        needsRecalculation = false
+        return _result
     }
 }

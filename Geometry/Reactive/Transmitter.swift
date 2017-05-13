@@ -8,28 +8,33 @@
 import Foundation
 import Result
 
-// MARK: - Class That Propagates A Boolean Signal
+// MARK: - Class That Propagates A Signal
 
 class Transmitter {
     
-    private var _signal = true
     private var receivers: [Weak<Transmitter>] = []
     
-// MARK: - Signal Status (get) And Propagation (set)
+// MARK: - Send Signal
     
-    var signal: Bool {
-        get { return _signal }
-        set {
-            guard newValue != _signal else {
-                return
-            }
-            _signal = newValue
-            if newValue {
-                receivers = receivers.filter { $0.object != nil }
-                for receiver in receivers {
-                    receiver.object?.signal = true
-                }
-            }
+    enum CustomSignalAlgorithm {
+        case depthFirst
+        case breadthFirst
+    }
+    
+    private func sendToReceivers(algorithm: CustomSignalAlgorithm, customSignal: (Transmitter) -> Void) {
+        for receiver in self.receivers {
+            receiver.object?.send(algorithm: algorithm, customSignal: customSignal)
+        }
+    }
+    
+    func send(algorithm: CustomSignalAlgorithm = .depthFirst, customSignal: (Transmitter) -> Void) {
+        switch algorithm {
+        case .breadthFirst:
+            sendToReceivers(algorithm: algorithm, customSignal: customSignal)
+            customSignal(self)
+        case .depthFirst:
+            customSignal(self)
+            sendToReceivers(algorithm: algorithm, customSignal: customSignal)
         }
     }
     

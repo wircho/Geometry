@@ -102,4 +102,7 @@ extension SpotProtocol {
     var norm: Float {
         return sqrt(squaredNorm)
     }
+    var orthogonal: Spot {
+        return Spot(x: -y, y: x)
+    }
 }

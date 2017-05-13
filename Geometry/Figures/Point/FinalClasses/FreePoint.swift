@@ -11,13 +11,17 @@ import Result
 class FreePoint: Point {
     var position: Spot {
         didSet {
-            signal = true
+            needsRecalculation = true
         }
     }
     
     init (at position: Spot) {
         self.position = position
         super.init()
+    }
+    
+    convenience init (x: Float, y: Float) {
+        self.init(at: Spot(x: x, y: y))
     }
     
     override func recalculate() -> SpotResult {

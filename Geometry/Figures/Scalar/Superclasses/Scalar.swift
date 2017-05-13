@@ -10,6 +10,10 @@ import Result
 
 // MARK: - Scalar Base Class
 
-class Scalar: Figure<Float> { }
+class Scalar: Figure<Float> {
+    override func drawIn(_ rect: CGRect) {
+        // Does nothing
+    }
+}
 
 // TODO: - Segment Length, Coordinate, Angle

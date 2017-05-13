@@ -12,7 +12,7 @@ class CircleToPoint: Circle {
     weak var center: Point?
     weak var point: Point?
     
-    init(center: Point, point: Point) {
+    init(_ center: Point, _ point: Point) {
         self.center = center
         self.point = point
         super.init(sorted: [center, point])

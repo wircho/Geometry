@@ -9,7 +9,7 @@ import Result
 
 // MARK: - Figure class
 
-class Figure<T>: RecalculationTransmitter<Result<T, MathError>>, FigureProtocol {
+class Figure<Value>: RecalculationTransmitter<Result<Value, MathError>>, FigureProtocol {
     
 // MARK: - Parents (For Comparison / Duplicate Prevention)
     
@@ -20,48 +20,66 @@ class Figure<T>: RecalculationTransmitter<Result<T, MathError>>, FigureProtocol 
 
     init () {
         parents = .empty
-        super.init(value: .none)
+        super.init(.none)
+        checkFigureContext()
     }
     
     init (_ parent: Transmitter) {
         parents = FigureParents(parent)
-        super.init(value: .none, receiveFrom: [parent])
+        super.init(.none, receiveFrom: [parent])
+        checkFigureContext()
     }
     
     init (sorted parents: [Transmitter]) {
         self.parents = FigureParents(sorted: parents)
-        super.init(value: .none, receiveFrom: parents)
+        super.init(.none, receiveFrom: parents)
+        checkFigureContext()
     }
     
     init (unsorted parents: [Transmitter]) {
         self.parents = FigureParents(unsorted: parents)
-        super.init(value: .none, receiveFrom: parents)
+        super.init(.none, receiveFrom: parents)
+        checkFigureContext()
+    }
+    
+// MARK: - Drawable
+    
+    func drawIn(_ rect: CGRect) {
+        fatalError("\(#function) must be overriden")
+    }
+    
+// MARK: - Figure Context
+    
+    private func checkFigureContext() {
+        if let context = Association.getWeak(Thread.current, FigureContext.threadKey) as? FigureContext {
+            context.append(self)
+        }
     }
     
 // MARK: - Deinit
     
     deinit {
-        signal = true
+        needsRecalculation = true
     }
 }
 
 // MARK: - Figure Protocol
 
-protocol FigureProtocol {
+protocol FigureProtocol: Drawable {
     associatedtype T
-    var value: Result<T, MathError> { get }
+    var result: Result<T, MathError> { get }
 }
 
 // MARK: - Getting Coalesced Raw Value From Weak/Optional
 
 extension WeakProtocol where T: FigureProtocol {
     var coalescedValue: Result<T.T, MathError> {
-        return self.object?.value ?? .none
+        return self.object?.result ?? .none
     }
 }
 
 extension OptionalProtocol where W: FigureProtocol {
     var coalescedValue: Result<W.T, MathError> {
-        return self.optionalCopy?.value ?? .none
+        return self.optionalCopy?.result ?? .none
     }
 }

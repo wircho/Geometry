@@ -89,20 +89,17 @@ func distance(_ point0: SpotResult, _ point1: SpotResult) -> FloatResult {
 func sqrt(_ value: FloatResult) -> FloatResult {
     return value.flatMap {
         value in
-        guard value >= 0 else {
+        let s = sqrt(value)
+        guard !s.isNaN else {
             return .failure(MathError.complex)
         }
-        return .success(sqrt(value))
+        return .success(s)
     }
 }
 
 func intersectionCoordinates(_ arrow0: Arrow, _ arrow1: Arrow) -> TwoFloatResult {
     //(01 - 00) * alpha - (11 - 10) * beta =  10 - 00
-    return (arrow0.at0 | -arrow1.at0).inverse.map { $0  * (arrow1.points.0 - arrow0.points.0).coordinates }
-}
-
-func intersection(_ arrow0: Arrow, _ arrow1: Arrow) -> SpotResult {
-    return intersectionCoordinates(arrow0, arrow1).map { arrow0.points.0 + arrow0.at0 * $0.v0 }
+    return (arrow0.vector | -arrow1.vector).inverse.map { $0 * (arrow1.points.0 - arrow0.points.0).coordinates }
 }
 
 func intersection(_ straight0: Saber, _ straight1: Saber) -> SpotResult {
@@ -120,10 +117,10 @@ func intersection(_ straight0: SaberResult, _ straight1: SaberResult) -> SpotRes
 }
 
 func intersectionCoordinates(_ arrow: Arrow, _ circle: Ring) -> TwoFloatResult {
-    return (1 ~/ arrow.at0.norm).flatMap {
+    return (1 ~/ arrow.vector.norm).flatMap {
         nRec in
-        let c = (circle.center - arrow.points.0) • arrow.at0 * nRec
-        let pc = arrow.at(c, multiplier: nRec)
+        let c = (circle.center - arrow.points.0) • arrow.vector * nRec
+        let pc = arrow.at(c * nRec)
         let dc = distance(pc, circle.center)
         guard dc <= circle.radius else {
             return .none
@@ -132,6 +129,37 @@ func intersectionCoordinates(_ arrow: Arrow, _ circle: Ring) -> TwoFloatResult {
         return .success(Two(v0: (c - e) * nRec, v1: (c + e) * nRec))
     }
     
+}
+
+func intersectionCoordinates(_ arrow: Arrow, _ rect: CGRect) -> TwoFloatResult {
+    let vector = arrow.vector
+    let minX = rect.minX
+    let minY = rect.minY
+    let maxX = rect.maxX
+    let maxY = rect.maxY
+    guard let minXC = ((minX - arrow.points.0.x) ~/ vector.x).value, let maxXC = ((maxX - arrow.points.0.x) ~/ vector.x).value else {
+        guard arrow.points.0.x > minX && arrow.points.0.x < maxX else {
+            return .none
+        }
+        guard let minYC = ((minY - arrow.points.0.y) ~/ vector.y).value, let maxYC = ((maxY - arrow.points.0.y) ~/ vector.y).value else {
+            return .infinity
+        }
+        return .success(Two(v0: min(minYC, maxYC), v1: max(minYC, maxYC)))
+    }
+    guard let minYC = ((minY - arrow.points.0.y) ~/ vector.y).value, let maxYC = ((maxY - arrow.points.0.y) ~/ vector.y).value else {
+        guard arrow.points.0.y > minY && arrow.points.0.y < maxY else {
+            return .none
+        }
+        return .success(Two(v0: min(minXC, maxXC), v1: max(minXC, maxXC)))
+    }
+    let x0 = min(minXC, maxXC)
+    let x1 = max(minXC, maxXC)
+    let y0 = min(minYC, maxYC)
+    let y1 = max(minYC, maxYC)
+    guard x1 > y0 && y1 > x0 else {
+        return .none
+    }
+    return .success(Two(v0: max(x0, y0), v1: min(x1, y1)))
 }
 
 func intersections(_ straight: Saber, _ circle: Ring) -> TwoOptionalSpotResult {
@@ -144,8 +172,39 @@ func intersections(_ straight: Saber, _ circle: Ring) -> TwoOptionalSpotResult {
     }
 }
 
+func intersections(_ straight: Saber, _ rect: CGRect) -> TwoOptionalSpotResult {
+    return intersectionCoordinates(straight.arrow, rect).map {
+        coords in
+        return Two<Spot?>(
+            v0: straight.kind.covers(coords.v0) ? straight.arrow.at(coords.v0) : nil,
+            v1: straight.kind.covers(coords.v1) ? straight.arrow.at(coords.v1) : nil
+        )
+    }
+}
+
+func intersections(_ c0: Ring, _ c1: Ring) -> TwoSpotResult {
+    let arrow = Arrow(points: (c0.center, c1.center))
+    let d = arrow.vector.norm
+    return (1 ~/ d).flatMap {
+        dRec in
+        let r0Sq = c0.radius * c0.radius
+        let r1Sq = c1.radius * c1.radius
+        let d0 = (d - (r1Sq - r0Sq) * dRec) / 2
+        return sqrt(Result.success(r0Sq - d0 * d0)).map {
+            h in
+            let b = arrow.at(d0 * dRec)
+            let hv = arrow.vector.orthogonal * (dRec * h)
+            return Two(v0: b - hv, v1: b + hv)
+        }
+    }
+}
+
 func intersections(_ straight: SaberResult, _ circle: RingResult) -> TwoOptionalSpotResult {
     return straight.flatMap { s in circle.flatMap { c in intersections(s,c) } }
+}
+
+func intersections(_ c0: RingResult, _ c1: RingResult) -> TwoSpotResult {
+    return c0.flatMap { c0 in c1.flatMap { c1 in intersections(c0, c1) } }
 }
 
 // MARK: Protocol extensions

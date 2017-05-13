@@ -10,12 +10,31 @@ import Result
 
 // MARK: - Straight Base Class
 
-class Straight: Figure<Saber> {
+private let one = Result<Float, MathError>.success(1)
+class Straight: Figure<Saber>, OneDimensional {
+    
+    var lineWidth: CGFloat = 2
+    var color: UIColor = .black
+    var normReciprocal: Float? = nil
+    
     override func recalculate() -> SaberResult {
         guard let conformed = self as? StraightProtocol else {
-            fatalError("Use a subclass that conforms to \(StraightProtocol.self)")
+            fatalError("In \(#function). Use a subclass that conforms to \(StraightProtocol.self)")
         }
-        return SaberResult(kind: conformed.kind, arrow: conformed.arrow)
+        let arrow = conformed.calculateArrow()
+        normReciprocal = (one / arrow.vector.norm).value
+        return SaberResult(kind: conformed.kind, arrow: arrow)
+    }
+    
+    func at(_ pos: Float) -> Spot? {
+        fatalError("\(#function) must be overriden")
+    }
+    
+    override func drawIn(_ rect: CGRect) {
+        guard let saber = result.value, let exits:Two<Spot?> = intersections(saber, rect).value else { return }
+        let (point0, point1) = (exits.v0 ?? saber.arrow.points.0,  exits.v1 ?? saber.arrow.points.1)
+        color.setStroke()
+        UIBezierPath(segment: point0, point1, lineWidth: lineWidth).stroke()
     }
 }
 
@@ -23,7 +42,7 @@ class Straight: Figure<Saber> {
 
 protocol StraightProtocol {
     var kind: Saber.Kind { get }
-    var arrow: ArrowResult { get }
+    func calculateArrow() -> ArrowResult
 }
 
 protocol LineProtocol: StraightProtocol { }
