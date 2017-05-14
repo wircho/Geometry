@@ -8,10 +8,10 @@
 import CoreGraphics
 import Result
 
-final class Ray2Points: Figure, Straight2Points, Ray {
+final class Ray2Points: Figure, Ruler2Points, Ray {
     var appearance = Appearance()
-    var storage = FigureStorage<Saber>()
-    var straightStorage = StraightStorage()
+    var storage = FigureStorage<RawRuler>()
+    var rulerStorage = RulerStorage()
     var oneDimensionalStorage = OneDimensionalStorage()
     
     weak var point0: Point?

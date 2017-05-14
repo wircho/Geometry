@@ -26,8 +26,8 @@ import Result
 //
 //let staticFloat0: GeometrySample.Float = 3944.23
 //let staticFloat1: GeometrySample.Float = 92.1
-//let staticSpot0 = Spot(x: 3234.234, y: 4597.234)
-//let staticSpot1 = Spot(x: 90923.1, y: 9343.546)
+//let staticRawPoint0 = RawPoint(x: 3234.234, y: 4597.234)
+//let staticRawPoint1 = RawPoint(x: 90923.1, y: 9343.546)
 
 class GeometrySampleTests: XCTestCase {
     
@@ -63,8 +63,8 @@ class GeometrySampleTests: XCTestCase {
 //    
 //    func testFreePoint() {
 //        // Constants
-//        let position0 = Spot(x: 0.25, y: 3.481)
-//        let position1 = Spot(x: 20.31, y: 18.456)
+//        let position0 = RawPoint(x: 0.25, y: 3.481)
+//        let position1 = RawPoint(x: 20.31, y: 18.456)
 //        // Create free point
 //        let freePoint = FreePoint(at: position0)
 //        guard let value0 = freePoint.result.value else {
@@ -81,9 +81,9 @@ class GeometrySampleTests: XCTestCase {
 //        XCTAssert(position1 == value1)
 //    }
 //    
-//    func getFreeAndFailedPoints(spot0: Spot = staticSpot0, spot1: Spot = staticSpot1, closure: (((FreePoint, FreePoint), (FailPoint, FailPoint), (MathError, MathError)) -> Void)? = nil) {
-//        let freePoint0 = FreePoint(at: spot0)
-//        let freePoint1 = FreePoint(at: spot1)
+//    func getFreeAndFailedPoints(RawPoint0: RawPoint = staticRawPoint0, RawPoint1: RawPoint = staticRawPoint1, closure: (((FreePoint, FreePoint), (FailPoint, FailPoint), (MathError, MathError)) -> Void)? = nil) {
+//        let freePoint0 = FreePoint(at: RawPoint0)
+//        let freePoint1 = FreePoint(at: RawPoint1)
 //        let error0 = MathError.complex
 //        let error1 = MathError.none
 //        let failPoint0 = FailPoint(error0)
@@ -91,9 +91,9 @@ class GeometrySampleTests: XCTestCase {
 //        closure?((freePoint0, freePoint1), (failPoint0, failPoint1), (error0, error1))
 //    }
 //    
-//    func getStraight2Points<T:Straight2Points>(spot0: Spot = staticSpot0, spot1: Spot = staticSpot1, closure:((T,T,T,T) -> Void)? = nil) where T: Straight2PointsWithSorting {
+//    func getRuler2Points<T:Ruler2Points>(RawPoint0: RawPoint = staticRawPoint0, RawPoint1: RawPoint = staticRawPoint1, closure:((T,T,T,T) -> Void)? = nil) where T: Ruler2PointsWithSorting {
 //        // Constants
-//        getFreeAndFailedPoints(spot0: spot0, spot1: spot1) {
+//        getFreeAndFailedPoints(RawPoint0: RawPoint0, RawPoint1: RawPoint1) {
 //            free, fail, error in
 //            
 //            // Regular line
@@ -121,14 +121,14 @@ class GeometrySampleTests: XCTestCase {
 //        }
 //    }
 //    
-//    func testAllStraight2Points() {
-//        getStraight2Points() { (_: Line2Points, _: Line2Points, _: Line2Points, _: Line2Points) in }
-//        getStraight2Points() { (_: Segment, _: Segment, _: Segment, _: Segment) in }
-//        getStraight2Points() { (_: Ray, _: Ray, _: Ray, _: Ray) in }
+//    func testAllRuler2Points() {
+//        getRuler2Points() { (_: Line2Points, _: Line2Points, _: Line2Points, _: Line2Points) in }
+//        getRuler2Points() { (_: Segment, _: Segment, _: Segment, _: Segment) in }
+//        getRuler2Points() { (_: Ray, _: Ray, _: Ray, _: Ray) in }
 //    }
     
 //    func testCircleWithRadius() {
-//        let freePoint0 = FreePoint(at: Spot(x: 0.25, y: 3.481))
+//        let freePoint0 = FreePoint(at: RawPoint(x: 0.25, y: 3.481))
 //        let freeScalar1 = FreeScalar(at: 83.49)
 //        let circle0 =
 //    }

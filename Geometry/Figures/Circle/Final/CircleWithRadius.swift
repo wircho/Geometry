@@ -10,7 +10,7 @@ import Result
 
 final class CircleWithRadius: Figure, Circle {
     var appearance = Appearance()
-    var storage = FigureStorage<Ring>()
+    var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
     var oneDimensionalStorage = OneDimensionalStorage()
     
@@ -27,7 +27,7 @@ final class CircleWithRadius: Figure, Circle {
         return []
     }
     
-    func recalculate() -> RingResult {
-        return RingResult(center: center?.result ?? .none, radius: radius?.result ?? .none)
+    func recalculate() -> RawCircleResult {
+        return RawCircleResult(center: center?.result ?? .none, radius: radius?.result ?? .none)
     }
 }

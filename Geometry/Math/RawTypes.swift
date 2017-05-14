@@ -10,7 +10,7 @@ import CoreGraphics
 // MARK: - Typealiases
 
 typealias Float = CGFloat
-typealias Spot = CGPoint
+typealias RawPoint = CGPoint
 
 // MARK: - New Types
 
@@ -39,24 +39,24 @@ struct Angle {
     }
 }
 
-struct Ring {
-    var center: Spot
+struct RawCircle {
+    var center: RawPoint
     var radius: Float
 }
 
-struct Cap {
-    var ring: Ring
+struct RawAngle {
+    var circle: RawCircle
     var angles: Two<Float>
 }
 
 struct Arrow {
-    var points: (Spot, Spot)
+    var points: (RawPoint, RawPoint)
     var isPoint: Bool {
         return (1 / (points.0 - points.1).squaredNorm).isNaN
     }
 }
 
-struct Saber {
+struct RawRuler {
     enum Kind {
         case segment
         case line
@@ -91,29 +91,29 @@ protocol FloatProtocol {
     var isInfinite: Bool { get }
 }
 
-protocol SpotProtocol {
+protocol RawPointProtocol {
     var x: Float { get }
     var y: Float { get }
     init(x: Float, y: Float)
 }
 
-protocol RingProtocol {
-    var center: Spot { get }
+protocol RawCircleProtocol {
+    var center: RawPoint { get }
     var radius: Float { get }
-    init(center: Spot, radius: Float)
-    init(center: Spot, point: Spot)
+    init(center: RawPoint, radius: Float)
+    init(center: RawPoint, point: RawPoint)
 }
 
 protocol ArrowProtocol {
-    var points: (Spot, Spot) { get }
-    init(points: (Spot, Spot))
+    var points: (RawPoint, RawPoint) { get }
+    init(points: (RawPoint, RawPoint))
 }
 
-protocol SaberProtocol {
-    var kind: Saber.Kind { get }
+protocol RawRulerProtocol {
+    var kind: RawRuler.Kind { get }
     var arrow: Arrow { get }
-    init?(kind: Saber.Kind, arrow: Arrow)
-    init?(kind: Saber.Kind, points: (Spot, Spot))
+    init?(kind: RawRuler.Kind, arrow: Arrow)
+    init?(kind: RawRuler.Kind, points: (RawPoint, RawPoint))
 }
 
 protocol TwoByTwoProtocol {
@@ -133,15 +133,15 @@ protocol TwoProtocol {
 }
 
 extension Float: FloatProtocol {}
-extension Spot: SpotProtocol {}
-extension Ring: RingProtocol {
+extension RawPoint: RawPointProtocol {}
+extension RawCircle: RawCircleProtocol {
     init(center: CGPoint, point: CGPoint) {
         self.init(center: center, radius: distance(center, point))
     }
 }
 extension Arrow: ArrowProtocol {}
-extension Saber: SaberProtocol {
-    init?(kind: Saber.Kind, points: (Spot, Spot)) {
+extension RawRuler: RawRulerProtocol {
+    init?(kind: RawRuler.Kind, points: (RawPoint, RawPoint)) {
         self.init(kind: kind, arrow: Arrow(points: points))
     }
 }
@@ -151,16 +151,16 @@ extension Two: TwoProtocol { }
 // MARK: Protocol extensions
 
 extension ArrowProtocol {
-    var vector: Spot {
+    var vector: RawPoint {
         return points.1 - points.0
     }
     
-    func at(_ v: Float) -> Spot {
+    func at(_ v: Float) -> RawPoint {
         return points.0 + vector * v
     }
 }
 
-extension SaberProtocol {
+extension RawRulerProtocol {
     func segment(arrow: Arrow) -> Self? {
         return Self(kind: .segment, arrow: arrow)
     }

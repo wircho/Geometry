@@ -11,20 +11,20 @@ import Result
 
 final class ParallelLine: Figure, DirectedLine {
     var appearance = Appearance()
-    var storage = FigureStorage<Saber>()
-    var straightStorage = StraightStorage()
+    var storage = FigureStorage<RawRuler>()
+    var rulerStorage = RulerStorage()
     var oneDimensionalStorage = OneDimensionalStorage()
     
     weak var point: Point?
-    weak var straight: Straight?
+    weak var ruler: Ruler?
     
-    init(_ point: Point, _ straight: Straight) {
+    init(_ point: Point, _ ruler: Ruler) {
         self.point = point
-        self.straight = straight
+        self.ruler = ruler
         appendToContext()
     }
     
-    func calculateArrowDirection() -> SpotResult {
-        return straight?.result.arrow.vector ?? .none
+    func calculateArrowDirection() -> RawPointResult {
+        return ruler?.result.arrow.vector ?? .none
     }
 }

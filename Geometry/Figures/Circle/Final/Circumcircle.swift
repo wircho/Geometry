@@ -10,7 +10,7 @@ import Result
 
 final class Circumcircle: Figure, Circle {
     var appearance = Appearance()
-    var storage = FigureStorage<Ring>()
+    var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
     var oneDimensionalStorage = OneDimensionalStorage()
     
@@ -29,7 +29,7 @@ final class Circumcircle: Figure, Circle {
         return [point0, point1, point2].flatMap { $0 }
     }
     
-    func recalculate() -> RingResult {
-        return RingResult(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
+    func recalculate() -> RawCircleResult {
+        return RawCircleResult(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
     }
 }

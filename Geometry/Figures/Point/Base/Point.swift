@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 protocol Point: FigureBase, Appears, Drawable {
-    var result: SpotResult { get }
+    var result: RawPointResult { get }
 }
 
 extension Point {

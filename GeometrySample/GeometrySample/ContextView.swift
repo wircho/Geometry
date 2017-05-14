@@ -23,13 +23,13 @@ private func createFigureContext() -> FigureContext {
         let s0 = Segment2Points(p1, p2)
         s0.color = .gray
         let r0 = Ray2Points(p2, p3)
-        let (_, op4) = TwoStraightIntersection.create(l0, r0)
+        let (_, op4) = TwoRulerIntersection.create(l0, r0)
         guard let p4 = op4 else {
             fatalError("Bad 0!")
         }
         p4.radius = 8
         let c0 = CircleToPoint(p4, p1)
-        let (_, oi0p0, oi0p1) = StraightCircleIntersection.create(r0, c0)
+        let (_, oi0p0, oi0p1) = RulerCircleIntersection.create(r0, c0)
         guard let i0p0 = oi0p0, let i0p1 = oi0p1 else {
             fatalError("Bad 1!")
         }
@@ -48,19 +48,19 @@ private func createFigureContext() -> FigureContext {
         pel0.color = .brown
         let pal0 = ParallelLine(p2, l0)
         pal0.color = .cyan
-        let (_, op5) = TwoStraightIntersection.create(l0, pel0)
+        let (_, op5) = TwoRulerIntersection.create(l0, pel0)
         guard let p5 = op5 else {
             fatalError("Bad 2!")
         }
         p5.color = .green
         p5.radius = 4
-        let (_, oi1p0, oi1p1) = StraightCircleIntersection.create(s0, c1)
+        let (_, oi1p0, oi1p1) = RulerCircleIntersection.create(s0, c1)
         guard let i1p0 = oi1p0, let i1p1 = oi1p1 else {
             fatalError("Bad 3!")
         }
         let c2 = CircleToPoint(i1p0, p5)
         c2.color = .red
-        let (_, oi2p0, oi2p1) = StraightCircleIntersection.create(l0, c2)
+        let (_, oi2p0, oi2p1) = RulerCircleIntersection.create(l0, c2)
         guard oi2p0 == nil, let i2p1 = oi2p1 else {
             fatalError("Bad 4!")
         }

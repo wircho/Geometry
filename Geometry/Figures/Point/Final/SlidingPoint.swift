@@ -11,7 +11,7 @@ import Result
 
 final class SlidingPoint: Figure, Point {
     var appearance = Appearance(radiusMultiplier: 3)
-    var storage = FigureStorage<Spot>()
+    var storage = FigureStorage<RawPoint>()
     var _position: Float
     
     weak var floor: OneDimensional?
@@ -31,7 +31,7 @@ final class SlidingPoint: Figure, Point {
         appendToContext()
     }
     
-    func recalculate() -> SpotResult {
+    func recalculate() -> RawPointResult {
         return Result(value: floor?.at(position)).optional ?? .none
     }
 }

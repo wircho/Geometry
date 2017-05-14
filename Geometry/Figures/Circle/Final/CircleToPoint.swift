@@ -10,7 +10,7 @@ import Result
 
 final class CircleToPoint: Figure, Circle {
     var appearance = Appearance()
-    var storage = FigureStorage<Ring>()
+    var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
     var oneDimensionalStorage = OneDimensionalStorage()
     
@@ -27,7 +27,7 @@ final class CircleToPoint: Figure, Circle {
         return [point].flatMap { $0 }
     }
     
-    func recalculate() -> RingResult {
-        return RingResult(center: center?.result ?? .none, point: point?.result ?? .none)
+    func recalculate() -> RawCircleResult {
+        return RawCircleResult(center: center?.result ?? .none, point: point?.result ?? .none)
     }
 }

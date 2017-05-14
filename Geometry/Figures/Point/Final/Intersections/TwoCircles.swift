@@ -12,7 +12,7 @@ import Result
 // MARK: - Intersection Mediator
 
 final class TwoCircleMediator: Figure {
-    var storage = FigureStorage<TwoSpot>()
+    var storage = FigureStorage<TwoRawPoint>()
     
     var existing: CoupleOfPoints = .none
     
@@ -27,13 +27,13 @@ final class TwoCircleMediator: Figure {
         appendToContext()
     }
     
-    func recalculate() -> TwoSpotResult {
+    func recalculate() -> TwoRawPointResult {
         switch existing {
         case .none:
             return intersections(circle0?.result ?? .none, circle1?.result ?? .none)
         case let .one(pt):
             guard let point = pt.point else { return .none }
-            return TwoSpotResult(v0: point.result, v1: ArrowResult(points: (circle0?.result.center ?? .none, circle1?.result.center ?? .none)).reflect(point.result))
+            return TwoRawPointResult(v0: point.result, v1: ArrowResult(points: (circle0?.result.center ?? .none, circle1?.result.center ?? .none)).reflect(point.result))
         case .two:
             return .none
         }
@@ -49,7 +49,7 @@ final class TwoCircleIntersection: Figure, Point {
     }
     
     var appearance = Appearance(radiusMultiplier: 3)
-    var storage = FigureStorage<Spot>()
+    var storage = FigureStorage<RawPoint>()
     
     weak var mediator: TwoCircleMediator?
     var index: Index
@@ -82,7 +82,7 @@ final class TwoCircleIntersection: Figure, Point {
         }
     }
     
-    func recalculate() -> SpotResult {
+    func recalculate() -> RawPointResult {
         guard let mediator = mediator else { return .none }
         switch mediator.existing {
         case .two: return .none

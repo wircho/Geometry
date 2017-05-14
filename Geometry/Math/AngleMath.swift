@@ -9,11 +9,11 @@
 import CoreGraphics
 
 extension Angle {
-    init (vector: Spot) {
+    init (vector: RawPoint) {
         value = atan2(vector.y, vector.x)
     }
     
-    func vector(radius: Float) -> Spot {
+    func vector(radius: Float) -> RawPoint {
         return CGPoint(x: radius * cos(value), y: radius * sin(value))
     }
 }

@@ -12,7 +12,7 @@ protocol OneDimensional: class {
 //    func intersectionPointsNotWith(other: Transmitter?) -> [Point]
     var oneDimensionalStorage: OneDimensionalStorage { get set }
     var touchingDefiningPoints: [Point] { get }
-    func at(_ pos: Float) -> Spot?
+    func at(_ pos: Float) -> RawPoint?
 }
 
 struct OneDimensionalStorage {

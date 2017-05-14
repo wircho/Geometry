@@ -8,11 +8,11 @@
 
 import Foundation
 
-protocol DirectedLine: Straight, Line {
+protocol DirectedLine: Ruler, Line {
     var point: Point? { get }
-    var straight: Straight? { get }
-    func calculateArrowDirection() -> SpotResult
-    init(_ point: Point, _ straight: Straight)
+    var ruler: Ruler? { get }
+    func calculateArrowDirection() -> RawPointResult
+    init(_ point: Point, _ ruler: Ruler)
     
 }
 
@@ -26,8 +26,8 @@ extension DirectedLine {
         return [point].flatMap { $0 }
     }
     
-    func at(_ pos: Float) -> Spot? {
-        guard let value = result.value, let normReciprocal = straightStorage.normReciprocal else { return nil }
+    func at(_ pos: Float) -> RawPoint? {
+        guard let value = result.value, let normReciprocal = rulerStorage.normReciprocal else { return nil }
         return value.arrow.at(pos * normReciprocal)
     }
 }

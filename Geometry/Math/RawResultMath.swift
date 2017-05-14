@@ -40,35 +40,35 @@ prefix func -(value: FloatResult) -> FloatResult {
     return value.map { -$0 }
 }
 
-func +(lhs: SpotResult, rhs: SpotResult) -> SpotResult {
-    return SpotResult(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+func +(lhs: RawPointResult, rhs: RawPointResult) -> RawPointResult {
+    return RawPointResult(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
 
-func -(lhs: SpotResult, rhs: SpotResult) -> SpotResult {
-    return SpotResult(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+func -(lhs: RawPointResult, rhs: RawPointResult) -> RawPointResult {
+    return RawPointResult(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
 
-prefix func -(point: SpotResult) -> SpotResult {
-    return SpotResult(x: -point.x, y: -point.y)
+prefix func -(point: RawPointResult) -> RawPointResult {
+    return RawPointResult(x: -point.x, y: -point.y)
 }
 
-func *(lhs: FloatResult, rhs: SpotResult) -> SpotResult {
-    return SpotResult(x: lhs * rhs.x, y: lhs * rhs.y)
+func *(lhs: FloatResult, rhs: RawPointResult) -> RawPointResult {
+    return RawPointResult(x: lhs * rhs.x, y: lhs * rhs.y)
 }
 
-func *(lhs: SpotResult, rhs: FloatResult) -> SpotResult {
-    return SpotResult(x: rhs * lhs.x, y: rhs * lhs.y)
+func *(lhs: RawPointResult, rhs: FloatResult) -> RawPointResult {
+    return RawPointResult(x: rhs * lhs.x, y: rhs * lhs.y)
 }
 
-func /(lhs: Spot, rhs: Float) -> SpotResult {
-    return (lhs.x ~/ rhs).flatMap { x in (lhs.y ~/ rhs).map { y in Spot(x: x, y: y) } }
+func /(lhs: RawPoint, rhs: Float) -> RawPointResult {
+    return (lhs.x ~/ rhs).flatMap { x in (lhs.y ~/ rhs).map { y in RawPoint(x: x, y: y) } }
 }
 
-func /(lhs: SpotResult, rhs: FloatResult) -> SpotResult {
-    return SpotResult(x: lhs.x / rhs, y: lhs.y / rhs)
+func /(lhs: RawPointResult, rhs: FloatResult) -> RawPointResult {
+    return RawPointResult(x: lhs.x / rhs, y: lhs.y / rhs)
 }
 
-func •(lhs: SpotResult, rhs: SpotResult) -> FloatResult {
+func •(lhs: RawPointResult, rhs: RawPointResult) -> FloatResult {
     return lhs.x * rhs.x + lhs.y * rhs.y
 }
 
@@ -82,11 +82,11 @@ func /<T: FloatProtocol>(lhs: TwoByTwo<T>, rhs: T) -> Result<TwoByTwo<T>, MathEr
 
 // MARK: Global functions
 
-func squareDistance(_ point0: SpotResult, _ point1: SpotResult) -> FloatResult {
+func squareDistance(_ point0: RawPointResult, _ point1: RawPointResult) -> FloatResult {
     return (point0 - point1).squaredNorm
 }
 
-func distance(_ point0: SpotResult, _ point1: SpotResult) -> FloatResult {
+func distance(_ point0: RawPointResult, _ point1: RawPointResult) -> FloatResult {
     return (point0 - point1).norm
 }
 
@@ -106,21 +106,21 @@ func intersectionCoordinates(_ arrow0: Arrow, _ arrow1: Arrow) -> TwoFloatResult
     return (arrow0.vector | -arrow1.vector).inverse.map { $0 * (arrow1.points.0 - arrow0.points.0).coordinates }
 }
 
-func intersection(_ straight0: Saber, _ straight1: Saber) -> SpotResult {
-    return intersectionCoordinates(straight0.arrow, straight1.arrow).flatMap {
+func intersection(_ ruler0: RawRuler, _ ruler1: RawRuler) -> RawPointResult {
+    return intersectionCoordinates(ruler0.arrow, ruler1.arrow).flatMap {
         coords in
-        guard straight0.kind.covers(coords.v0) && straight1.kind.covers(coords.v1) else {
+        guard ruler0.kind.covers(coords.v0) && ruler1.kind.covers(coords.v1) else {
             return .none
         }
-        return .success(straight0.arrow.at(coords.v0))
+        return .success(ruler0.arrow.at(coords.v0))
     }
 }
 
-func intersection(_ straight0: SaberResult, _ straight1: SaberResult) -> SpotResult {
-    return straight0.flatMap { s0 in return straight1.flatMap { s1 in return intersection(s0, s1) } }
+func intersection(_ ruler0: RawRulerResult, _ ruler1: RawRulerResult) -> RawPointResult {
+    return ruler0.flatMap { s0 in return ruler1.flatMap { s1 in return intersection(s0, s1) } }
 }
 
-func intersectionCoordinates(_ arrow: Arrow, _ circle: Ring) -> TwoFloatResult {
+func intersectionCoordinates(_ arrow: Arrow, _ circle: RawCircle) -> TwoFloatResult {
     return (1 ~/ arrow.vector.norm).flatMap {
         nRec in
         let c = (circle.center - arrow.points.0) • arrow.vector * nRec
@@ -168,29 +168,29 @@ func intersectionCoordinates(_ arrow: Arrow, _ rect: CGRect) -> TwoFloatResult {
     return .success(Two(v0: max(x0, y0), v1: min(x1, y1)))
 }
 
-func intersections(_ straight: Saber, _ circle: Ring) -> TwoOptionalSpotResult {
-    return intersectionCoordinates(straight.arrow, circle).map {
+func intersections(_ ruler: RawRuler, _ circle: RawCircle) -> TwoOptionalRawPointResult {
+    return intersectionCoordinates(ruler.arrow, circle).map {
         coords in
-        let v0: Spot? = straight.kind.covers(coords.v0) ? straight.arrow.at(coords.v0) : nil
-        let v1: Spot? = straight.kind.covers(coords.v1) ? straight.arrow.at(coords.v1) : nil
-        return Two<Spot?>(
+        let v0: RawPoint? = ruler.kind.covers(coords.v0) ? ruler.arrow.at(coords.v0) : nil
+        let v1: RawPoint? = ruler.kind.covers(coords.v1) ? ruler.arrow.at(coords.v1) : nil
+        return Two<RawPoint?>(
             v0: v0,
             v1: v1
         )
     }
 }
 
-func intersections(_ straight: Saber, _ rect: CGRect) -> TwoOptionalSpotResult {
-    return intersectionCoordinates(straight.arrow, rect).map {
+func intersections(_ ruler: RawRuler, _ rect: CGRect) -> TwoOptionalRawPointResult {
+    return intersectionCoordinates(ruler.arrow, rect).map {
         coords in
-        return Two<Spot?>(
-            v0: straight.kind.covers(coords.v0) ? straight.arrow.at(coords.v0) : nil,
-            v1: straight.kind.covers(coords.v1) ? straight.arrow.at(coords.v1) : nil
+        return Two<RawPoint?>(
+            v0: ruler.kind.covers(coords.v0) ? ruler.arrow.at(coords.v0) : nil,
+            v1: ruler.kind.covers(coords.v1) ? ruler.arrow.at(coords.v1) : nil
         )
     }
 }
 
-func intersections(_ c0: Ring, _ c1: Ring) -> TwoSpotResult {
+func intersections(_ c0: RawCircle, _ c1: RawCircle) -> TwoRawPointResult {
     let arrow = Arrow(points: (c0.center, c1.center))
     let d = arrow.vector.norm
     return (1 ~/ d).flatMap {
@@ -207,11 +207,11 @@ func intersections(_ c0: Ring, _ c1: Ring) -> TwoSpotResult {
     }
 }
 
-func intersections(_ straight: SaberResult, _ circle: RingResult) -> TwoOptionalSpotResult {
-    return straight.flatMap { s in circle.flatMap { c in intersections(s,c) } }
+func intersections(_ ruler: RawRulerResult, _ circle: RawCircleResult) -> TwoOptionalRawPointResult {
+    return ruler.flatMap { s in circle.flatMap { c in intersections(s,c) } }
 }
 
-func intersections(_ c0: RingResult, _ c1: RingResult) -> TwoSpotResult {
+func intersections(_ c0: RawCircleResult, _ c1: RawCircleResult) -> TwoRawPointResult {
     return c0.flatMap { c0 in c1.flatMap { c1 in intersections(c0, c1) } }
 }
 
@@ -224,46 +224,46 @@ private extension TwoByTwoProtocol where T: FloatProtocol {
 }
 
 extension ArrowProtocol {
-    func reflect(_ spot: Spot) -> Result<Spot, MathError> {
-        return project(spot).map {
+    func reflect(_ RawPoint: RawPoint) -> Result<RawPoint, MathError> {
+        return project(RawPoint).map {
             p in
-            return 2 * at(p) - spot
+            return 2 * at(p) - RawPoint
         }
     }
     
-    func project(_ spot: Spot) -> Result<Float, MathError> {
+    func project(_ RawPoint: RawPoint) -> Result<Float, MathError> {
         let nRec = 1 ~/ vector.norm
         return nRec.map {
             nRec in
-            return ((at(nRec) - points.0) • (spot - points.0)) * nRec
+            return ((at(nRec) - points.0) • (RawPoint - points.0)) * nRec
         }
     }
 }
 
 extension Result where T: ArrowProtocol, Error: MathErrorProtocol {
-    func reflect(_ spot: Spot) -> Result<Spot, Error> {
-        return flatMap { $0.reflect(spot).mapError { Error($0) } }
+    func reflect(_ RawPoint: RawPoint) -> Result<RawPoint, Error> {
+        return flatMap { $0.reflect(RawPoint).mapError { Error($0) } }
     }
     
-    func reflect(_ spot: Result<Spot, Error>) -> Result<Spot, Error> {
-        return spot.flatMap { reflect($0) }
+    func reflect(_ RawPoint: Result<RawPoint, Error>) -> Result<RawPoint, Error> {
+        return RawPoint.flatMap { reflect($0) }
     }
     
-    func project(_ spot: Spot) -> Result<Float, Error> {
-        return flatMap { $0.project(spot).mapError { Error($0) } }
+    func project(_ RawPoint: RawPoint) -> Result<Float, Error> {
+        return flatMap { $0.project(RawPoint).mapError { Error($0) } }
     }
     
-    func project(_ spot: Result<Spot, Error>) -> Result<Float, Error> {
-        return spot.flatMap { project($0) }
+    func project(_ RawPoint: Result<RawPoint, Error>) -> Result<Float, Error> {
+        return RawPoint.flatMap { project($0) }
     }
     
-    func at(_ v: Result<Float, Error>) -> Result<Spot, Error> {
+    func at(_ v: Result<Float, Error>) -> Result<RawPoint, Error> {
         return flatMap { s in v.map { v in s.at(v) } }
     }
 }
 
-extension Result where T: RingProtocol, Error: MathErrorProtocol {
-    init(cicumscribing points: (Spot, Spot, Spot)) {
+extension Result where T: RawCircleProtocol, Error: MathErrorProtocol {
+    init(cicumscribing points: (RawPoint, RawPoint, RawPoint)) {
         let d = 2 * ( points.0.x * (points.1.y - points.2.y)
             + points.1.x * (points.2.y - points.0.y)
             + points.2.x * (points.0.y - points.1.y)
@@ -271,7 +271,7 @@ extension Result where T: RingProtocol, Error: MathErrorProtocol {
         let u = points.0.squaredNorm * (points.1 - points.2)
             + points.1.squaredNorm * (points.2 - points.0)
             + points.2.squaredNorm * (points.0 - points.1)
-        self = (Spot(x: u.y, y: -u.x) / d)
+        self = (RawPoint(x: u.y, y: -u.x) / d)
             .map {
                 center in
                 let radius = distance(center, points.0)
@@ -280,7 +280,7 @@ extension Result where T: RingProtocol, Error: MathErrorProtocol {
             .mapError { Error($0) }
     }
     
-    init (cicumscribing points: (SpotResult, SpotResult, SpotResult)) {
+    init (cicumscribing points: (RawPointResult, RawPointResult, RawPointResult)) {
         self = points.0.flatMap { p0 in return points.1.flatMap{ p1 in return points.2.flatMap { p2 in return Result(cicumscribing: (p0, p1, p2)) } } }
     }
 }
