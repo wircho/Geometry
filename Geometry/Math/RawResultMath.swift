@@ -28,6 +28,10 @@ func *(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
     return lhs.flatMap { lhs in return rhs.map { rhs in return lhs * rhs } }
 }
 
+func *(lhs: Float, rhs: FloatResult) -> FloatResult {
+    return rhs.map { rhs in return lhs * rhs }
+}
+
 func /(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
     return lhs.flatMap { lhs in return rhs.flatMap { rhs in return lhs ~/ rhs } }
 }
@@ -126,7 +130,9 @@ func intersectionCoordinates(_ arrow: Arrow, _ circle: Ring) -> TwoFloatResult {
             return .none
         }
         let e = sqrt(circle.radius * circle.radius - dc * dc)
-        return .success(Two(v0: (c - e) * nRec, v1: (c + e) * nRec))
+        // TODO: Just return
+        let r = TwoFloatResult.success(Two(v0: (c - e) * nRec, v1: (c + e) * nRec))
+        return r
     }
     
 }
@@ -165,9 +171,11 @@ func intersectionCoordinates(_ arrow: Arrow, _ rect: CGRect) -> TwoFloatResult {
 func intersections(_ straight: Saber, _ circle: Ring) -> TwoOptionalSpotResult {
     return intersectionCoordinates(straight.arrow, circle).map {
         coords in
+        let v0: Spot? = straight.kind.covers(coords.v0) ? straight.arrow.at(coords.v0) : nil
+        let v1: Spot? = straight.kind.covers(coords.v1) ? straight.arrow.at(coords.v1) : nil
         return Two<Spot?>(
-            v0: straight.kind.covers(coords.v0) ? straight.arrow.at(coords.v0) : nil,
-            v1: straight.kind.covers(coords.v1) ? straight.arrow.at(coords.v1) : nil
+            v0: v0,
+            v1: v1
         )
     }
 }
@@ -215,16 +223,54 @@ private extension TwoByTwoProtocol where T: FloatProtocol {
     }
 }
 
+extension ArrowProtocol {
+    func reflect(_ spot: Spot) -> Result<Spot, MathError> {
+        return project(spot).map {
+            p in
+            return 2 * at(p) - spot
+        }
+    }
+    
+    func project(_ spot: Spot) -> Result<Float, MathError> {
+        let nRec = 1 ~/ vector.norm
+        return nRec.map {
+            nRec in
+            return ((at(nRec) - points.0) • (spot - points.0)) * nRec
+        }
+    }
+}
+
+extension Result where T: ArrowProtocol, Error: MathErrorProtocol {
+    func reflect(_ spot: Spot) -> Result<Spot, Error> {
+        return flatMap { $0.reflect(spot).mapError { Error($0) } }
+    }
+    
+    func reflect(_ spot: Result<Spot, Error>) -> Result<Spot, Error> {
+        return spot.flatMap { reflect($0) }
+    }
+    
+    func project(_ spot: Spot) -> Result<Float, Error> {
+        return flatMap { $0.project(spot).mapError { Error($0) } }
+    }
+    
+    func project(_ spot: Result<Spot, Error>) -> Result<Float, Error> {
+        return spot.flatMap { project($0) }
+    }
+    
+    func at(_ v: Result<Float, Error>) -> Result<Spot, Error> {
+        return flatMap { s in v.map { v in s.at(v) } }
+    }
+}
+
 extension Result where T: RingProtocol, Error: MathErrorProtocol {
     init(cicumscribing points: (Spot, Spot, Spot)) {
         let d = 2 * ( points.0.x * (points.1.y - points.2.y)
             + points.1.x * (points.2.y - points.0.y)
             + points.2.x * (points.0.y - points.1.y)
         )
-        let u = 2 * ( points.0.squaredNorm * (points.1 - points.2)
+        let u = points.0.squaredNorm * (points.1 - points.2)
             + points.1.squaredNorm * (points.2 - points.0)
             + points.2.squaredNorm * (points.0 - points.1)
-        )
         self = (Spot(x: u.y, y: -u.x) / d)
             .map {
                 center in

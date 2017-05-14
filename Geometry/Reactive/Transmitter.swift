@@ -8,26 +8,32 @@
 import Foundation
 import Result
 
-// MARK: - Class That Propagates A Signal
+// MARK: - Signal Propagation Algorithms
 
-class Transmitter {
+enum TransmitterSignalAlgorithm {
+    case depthFirst
+    case breadthFirst
+}
+
+// MARK: - Object That Propagates A Signal
+
+protocol Transmitter: class {
     
-    private var receivers: [Weak<Transmitter>] = []
+    var receivers: [Getter<Transmitter?>] { get set }
     
+}
+
+extension Transmitter {
+
 // MARK: - Send Signal
     
-    enum CustomSignalAlgorithm {
-        case depthFirst
-        case breadthFirst
-    }
-    
-    private func sendToReceivers(algorithm: CustomSignalAlgorithm, customSignal: (Transmitter) -> Void) {
+    private func sendToReceivers(algorithm: TransmitterSignalAlgorithm, customSignal: (Transmitter) -> Void) {
         for receiver in self.receivers {
-            receiver.object?.send(algorithm: algorithm, customSignal: customSignal)
+            receiver()?.send(algorithm: algorithm, customSignal: customSignal)
         }
     }
     
-    func send(algorithm: CustomSignalAlgorithm = .depthFirst, customSignal: (Transmitter) -> Void) {
+    func send(algorithm: TransmitterSignalAlgorithm = .depthFirst, customSignal: (Transmitter) -> Void) {
         switch algorithm {
         case .breadthFirst:
             sendToReceivers(algorithm: algorithm, customSignal: customSignal)
@@ -38,27 +44,20 @@ class Transmitter {
         }
     }
     
-// MARK: - Initialization
-    
-    init(emitTo receivers: [Transmitter] = [], receiveFrom emitters: [Transmitter] = []) {
-        emitTo(receivers)
-        receiveFrom(emitters)
-    }
-    
 // MARK: - Adding Receivers of Emitters
     
     func emitTo(_ receivers: [Transmitter]) {
         for receiver in receivers {
-            self.receivers.append(Weak(receiver))
+            self.receivers.append({ [weak receiver] in receiver })
         }
     }
     
     func emitTo(_ receiver: Transmitter) {
-        receivers.append(Weak(receiver))
+        receivers.append({ [weak receiver] in receiver })
     }
     
     func stopEmittingTo(_ receiver: Transmitter) {
-        receivers = receivers.filter { $0.object !== receiver }
+        receivers = receivers.filter { $0() !== receiver }
     }
     
     func receiveFrom(_ emitters: [Transmitter]) {

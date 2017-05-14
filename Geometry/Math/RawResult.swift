@@ -17,8 +17,10 @@ typealias ArrowResult = Result<Arrow, MathError>
 typealias SaberResult = Result<Saber, MathError>
 typealias TwoByTwoFloatResult = Result<TwoByTwo<Float>, MathError>
 typealias TwoFloatResult = Result<Two<Float>, MathError>
-typealias TwoSpotResult = Result<Two<Spot>, MathError>
-typealias TwoOptionalSpotResult = Result<Two<Spot?>, MathError>
+typealias TwoSpot = Two<Spot>
+typealias TwoSpotResult = Result<TwoSpot, MathError>
+typealias TwoOptionalSpot = Two<Spot?>
+typealias TwoOptionalSpotResult = Result<TwoOptionalSpot, MathError>
 typealias TwoOptionalFloatResult = Result<Two<Float?>, MathError>
 
 
@@ -144,14 +146,18 @@ extension Result where T: TwoProtocol,  Error: MathErrorProtocol {
             return $0.v1
         }
     }
+    
+    init(v0: Result<T.T,Error>, v1: Result<T.T,Error>) {
+        self = v0.flatMap { v0 in v1.map { v1 in T(v0: v0, v1: v1) } }
+    }
 }
 
-extension Result where Error: MathErrorProtocol {
-    static var none: Result {
-        return .failure(Error(.none))
+extension ResultProtocol where Error: MathErrorProtocol {
+    static var none: Self {
+        return Self(error: Error(.none))
     }
-    static var infinity: Result {
-        return .failure(Error(.infinity))
+    static var infinity: Self {
+        return Self(error: Error(.infinity))
     }
 }
 
