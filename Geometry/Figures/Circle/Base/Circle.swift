@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-protocol Circle: FigureBase, OneDimensional, StrokeAppears, Drawable {
+protocol Circle: FigureBase, OneDimensional, StrokeAppears, Drawable, Touchable {
     var result: RawCircleResult { get }
     var circleStorage: CircleStorage { get set }
 }
@@ -20,9 +20,18 @@ extension Circle {
         UIBezierPath(circle: value, lineWidth: lineWidth).stroke()
     }
     
-    func at(_ pos: Float) -> RawPoint? {
-        guard let circle = result.value else { return nil }
-        return  circle.center + Angle(value: pos).vector(radius: circle.radius)
+    func at(_ pos: Float) -> RawPointResult {
+        return result.map {
+            circle in
+            return  circle.center + Angle(value: pos).vector(radius: circle.radius)
+        }
+    }
+    
+    func closest(from point: RawPoint) -> FloatResult {
+        return result.map {
+            circle in
+            return (point - circle.center).angle.value
+        }
     }
     
     var cedula: Cedula {
@@ -43,6 +52,17 @@ extension Circle {
         get { return circleStorage.oneDimensionalStorage }
         set { circleStorage.oneDimensionalStorage = newValue }
     }
+    
+    func distanceFrom(point: RawPoint) -> FloatResult {
+        return result.map {
+            circle in
+            return abs(circle.radius - distance(point, circle.center))
+        }
+    }
+    
+    var touchRadius: Float { return 40 }
+    
+    var touchPriority: Int { return 901 }
 }
 
 struct CircleStorage {

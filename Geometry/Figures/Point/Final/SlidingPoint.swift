@@ -23,6 +23,6 @@ final class SlidingPoint: Figure, Point, FreeValued {
     }
     
     func recalculate() -> RawPointResult {
-        return Result(value: floor?.at(position)).optional ?? .none
+        return floor?.at(position) ?? .none
     }
 }

@@ -26,27 +26,29 @@ struct TwoByTwo<T> {
     var a11: T
 }
 
-private var pi = Float(M_PI)
-private var twoPi = Float(2 * M_PI)
+
 struct Angle {
     var value: Float
     
+    static var piValue = Float(M_PI)
+    static var twoPiValue = Float(2 * M_PI)
+    
     init (value: Float) {
         var val = value
-        while val > pi { val -= twoPi }
-        while val <= -pi { val += twoPi }
+        while val > Angle.piValue { val -= Angle.twoPiValue }
+        while val <= -Angle.piValue { val += Angle.twoPiValue }
         self.value = val
     }
     
     func greaterValue(_ other: Angle) -> Float {
         var value1 = other.value
-        while value1 < value { value1 += twoPi }
+        while value1 < value { value1 += Angle.twoPiValue }
         return value1
     }
     
     func lesserValue(_ other: Angle) -> Float {
         var value1 = other.value
-        while value1 > value { value1 -= twoPi }
+        while value1 > value { value1 -= Angle.twoPiValue }
         return value1
     }
 }

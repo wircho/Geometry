@@ -14,7 +14,11 @@ final class Line2Points: Figure, Ruler2Points, Line {
     
     let parentOrder = ParentOrder.unsorted
     
-    func at(_ pos: Float) -> RawPoint? {
-        return result.value?.arrow.at(pos)
+    func at(_ pos: Float) -> RawPointResult {
+        return result.map { $0.arrow.at(pos) }
+    }
+    
+    func closest(from point: RawPoint) -> FloatResult {
+        return result.arrow.project(point)
     }
 }

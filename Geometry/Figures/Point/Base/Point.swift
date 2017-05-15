@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-protocol Point: FigureBase, PointAppears, Drawable {
+protocol Point: FigureBase, PointAppears, Drawable, Touchable {
     var result: RawPointResult { get }
     var pointStorage: PointStorage { get set }
 }
@@ -31,6 +31,14 @@ extension Point {
         get { return pointStorage.figureStorage }
         set { pointStorage.figureStorage = newValue }
     }
+    
+    func distanceFrom(point: RawPoint) -> FloatResult {
+        return result.map { distance($0, point) }
+    }
+    
+    var touchRadius: Float { return 50 }
+    
+    var touchPriority: Int { return 1000 }
 }
 
 struct PointStorage {

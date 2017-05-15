@@ -9,7 +9,7 @@
 import CoreGraphics
 import Result
 
-protocol Arc: FigureBase, OneDimensional, StrokeAppears, Drawable {
+protocol Arc: FigureBase, OneDimensional, StrokeAppears, Drawable, Touchable {
     var result: RawArcResult { get }
     var arcStorage: ArcStorage { get set }
 }
@@ -21,16 +21,36 @@ extension Arc {
         UIBezierPath(arc: value, lineWidth: lineWidth).stroke()
     }
     
-    func at(_ pos: Float) -> RawPoint? {
-        guard let arc = result.value else { return nil }
-        let angle: Float
-        let angles = arc.angleValues
-        if arc.fromFirst {
-            angle = angles.v0 + (angles.v1 - angles.v0) * min(max(pos, 0), 1)
-        } else {
-            angle = angles.v1 + (angles.v0 - angles.v1) * min(max(pos, 0), 1)
+    func at(_ pos: Float) -> RawPointResult {
+        return result.map {
+            arc in
+            let angle: Float
+            let angles = arc.angleValues
+            if arc.fromFirst {
+                angle = angles.v0 + (angles.v1 - angles.v0) * min(max(pos, 0), 1)
+            } else {
+                angle = angles.v1 + (angles.v0 - angles.v1) * min(max(pos, 0), 1)
+            }
+            return  arc.center + Angle(value: angle).vector(radius: arc.radius)
         }
-        return  arc.center + Angle(value: angle).vector(radius: arc.radius)
+    }
+    
+    func closest(from point: RawPoint) -> FloatResult {
+        return result.flatMap {
+            arc in
+            var angles = arc.angleValues
+            let angle = arc.angles.v0.greaterValue((point - arc.center).angle)
+            if angle <= angles.v1 {
+                return arc.fromFirst ? ((angle - angles.v0) ~/ (angles.v1 - angles.v0)) : ((angles.v1 - angle) ~/ (angles.v1 - angles.v0))
+            } else {
+                angles.v0 += Angle.twoPiValue
+                if (abs(angle - angles.v1) < abs(angles.v0 - angle)) == arc.fromFirst {
+                    return .success(1)
+                } else {
+                    return .success(0)
+                }
+            }
+        }
     }
     
     var cedula: Cedula {
@@ -51,6 +71,21 @@ extension Arc {
         get { return arcStorage.oneDimensionalStorage }
         set { arcStorage.oneDimensionalStorage = newValue }
     }
+    
+    func distanceFrom(point: RawPoint) -> FloatResult {
+        return result.flatMap {
+            arc in
+            closest(from: point).map {
+                c in
+                let angle = arc.angles.v0.value + (arc.angles.v1.value - arc.angles.v0.value) * (arc.fromFirst ? c : (1 - c))
+                return distance(point, arc.center + Angle(value: angle).vector(radius: arc.radius))
+            }
+        }
+    }
+    
+    var touchRadius: Float { return 40 }
+    
+    var touchPriority: Int { return 901 }
 }
 
 struct ArcStorage {

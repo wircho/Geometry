@@ -24,9 +24,18 @@ extension DirectedLine {
         return [point].flatMap { $0 }
     }
     
-    func at(_ pos: Float) -> RawPoint? {
-        guard let value = result.value, let normReciprocal = rulerStorage.normReciprocal else { return nil }
-        return value.arrow.at(pos * normReciprocal)
+    func at(_ pos: Float) -> RawPointResult {
+        return result.flatMap {
+            value in
+            normReciprocal.map {
+                normReciprocal in
+                value.arrow.at(pos * normReciprocal)
+            }
+        }
+    }
+    
+    func closest(from point: RawPoint) -> FloatResult {
+        return result.arrow.projectIso(point)
     }
     
     var parentOrder: ParentOrder { return .sorted }

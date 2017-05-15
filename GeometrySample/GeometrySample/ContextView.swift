@@ -82,26 +82,18 @@ private func createFigureContext() -> FigureContext {
     }
     let arc0 = Circumarc(p0, p2, p1)
     
-    
     for i in 0 ... 100 {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (1 / 60.0) * Double(i)) {
             p2.position.y -= 1
             sl0.position -= 0.1
         }
     }
-    
-    
     return ctx
 }
 
 class ContextView: UIView, FigureContextDelegate {
 
     var context = createFigureContext()
-    
-    init() {
-        super.init(frame: CGRect.zero)
-        context.delegate = self
-    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
