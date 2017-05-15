@@ -105,6 +105,47 @@ struct ObjectSet<T: AnyObject>: SetAlgebra {
     var array:[T] {
         return set.map { $0.object }
     }
+    
+    static func compareSets(_ s0: [T], _ s1: [T]) -> Bool {
+        return ObjectSet(s0) == ObjectSet(s1)
+    }
+    
+    static func compareWholeSets(_ s0: [T?], _ s1: [T?]) -> Bool {
+        var a0:[T] = []
+        var a1:[T] = []
+        for e in s0 {
+            guard let e = e else { return false }
+            a0.append(e)
+        }
+        for e in s1 {
+            guard let e = e else { return false }
+            a1.append(e)
+        }
+        return compareSets(a0, a1)
+    }
+    
+    static func compareArrays(_ s0: [T], _ s1: [T]) -> Bool {
+        guard s0.count == s1.count else { return false }
+        guard s0.count > 0 else { return true }
+        for i in 0 ..< s0.count {
+            guard s0[i] === s1[i] else { return false }
+        }
+        return true
+    }
+    
+    static func compareWholeArrays(_ s0: [T?], _ s1: [T?]) -> Bool {
+        var a0:[T] = []
+        var a1:[T] = []
+        for e in s0 {
+            guard let e = e else { return false }
+            a0.append(e)
+        }
+        for e in s1 {
+            guard let e = e else { return false }
+            a1.append(e)
+        }
+        return compareArrays(a0, a1)
+    }
 }
     
 // MARK: - ObjectSet: Collection

@@ -9,20 +9,12 @@
 import CoreGraphics
 import Result
 
-final class SlidingPoint: Figure, Point {
+final class SlidingPoint: Figure, Point, FreeValued {
     var appearance = Appearance(radiusMultiplier: 3)
     var storage = FigureStorage<RawPoint>()
     var _position: Float
     
     weak var floor: OneDimensional?
-    
-    var position: Float {
-        get { return _position }
-        set {
-            _position = newValue
-            needsRecalculation = true
-        }
-    }
     
     init(_ floor: OneDimensional, at initial: Float) {
         self.floor = floor

@@ -11,13 +11,16 @@ import Result
 
 // MARK: - Intersection Mediator
 
-final class TwoCircleMediator: Figure {
+final class TwoCircleMediator: Figure, ParentComparable {
     var storage = FigureStorage<TwoRawPoint>()
     
     var existing: CoupleOfPoints = .none
     
     weak var circle0: Circle?
     weak var circle1: Circle?
+    
+    let parentOrder = ParentOrder.unsorted
+    var parents: [AnyObject?] { return [circle0, circle1] }
     
     init(_ cl0: Circle, _ cl1: Circle) {
         let (c0, c1) = (cl0.cedula.value < cl1.cedula.value) ? (cl0, cl1) : (cl1, cl0)
@@ -60,6 +63,11 @@ final class TwoCircleIntersection: Figure, Point {
         mediator.circle0?.intersectionPoints.append(self)
         mediator.circle1?.intersectionPoints.append(self)
         appendToContext()
+    }
+    
+    func compare(with other: TwoCircleIntersection) -> Bool {
+        guard let mediator = mediator, let otherMediator = other.mediator else { return false }
+        return mediator === otherMediator && index == other.index
     }
     
     static func create(_ c0: Circle, _ c1: Circle) -> (mediator: TwoCircleMediator, intersection0: TwoCircleIntersection?, intersection0: TwoCircleIntersection?) {

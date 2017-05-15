@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class CircleToPoint: Figure, Circle {
+final class CircleToPoint: Figure, Circle, ParentComparable {
     var appearance = Appearance()
     var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
@@ -16,6 +16,9 @@ final class CircleToPoint: Figure, Circle {
     
     weak var center: Point?
     weak var point: Point?
+    
+    let parentOrder = ParentOrder.sorted
+    var parents: [AnyObject?] { return [center, point] }
     
     init(_ center: Point, _ point: Point) {
         self.center = center

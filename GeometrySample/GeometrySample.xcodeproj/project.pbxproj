@@ -42,14 +42,14 @@
 		AEE3ABE01EC6D2BF0071D7D9 /* FreeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDE1EC6D2BF0071D7D9 /* FreeScalar.swift */; };
 		AEE3ABEB1EC6D4690071D7D9 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE31EC6D4690071D7D9 /* Point.swift */; };
 		AEE3ABEC1EC6D4690071D7D9 /* FreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */; };
-		AEE3ABED1EC6D4690071D7D9 /* StraightCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE71EC6D4690071D7D9 /* StraightCircle.swift */; };
+		AEE3ABED1EC6D4690071D7D9 /* RulerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE71EC6D4690071D7D9 /* RulerCircle.swift */; };
 		AEE3ABEE1EC6D4690071D7D9 /* TwoCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */; };
-		AEE3ABEF1EC6D4690071D7D9 /* TwoStraights.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE91EC6D4690071D7D9 /* TwoStraights.swift */; };
+		AEE3ABEF1EC6D4690071D7D9 /* TwoRulers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */; };
 		AEE3ABF01EC6D4690071D7D9 /* SlidingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */; };
 		AEE3ABF21EC6D4FF0071D7D9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF11EC6D4FF0071D7D9 /* Appearance.swift */; };
 		AEE3ABFE1EC6E7B90071D7D9 /* DirectedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF51EC6E7B90071D7D9 /* DirectedLine.swift */; };
-		AEE3ABFF1EC6E7B90071D7D9 /* Straight.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF61EC6E7B90071D7D9 /* Straight.swift */; };
-		AEE3AC001EC6E7B90071D7D9 /* Straight2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF71EC6E7B90071D7D9 /* Straight2Points.swift */; };
+		AEE3ABFF1EC6E7B90071D7D9 /* Ruler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF61EC6E7B90071D7D9 /* Ruler.swift */; };
+		AEE3AC001EC6E7B90071D7D9 /* Ruler2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF71EC6E7B90071D7D9 /* Ruler2Points.swift */; };
 		AEE3AC011EC6E7B90071D7D9 /* Line2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF91EC6E7B90071D7D9 /* Line2Points.swift */; };
 		AEE3AC021EC6E7B90071D7D9 /* ParallelLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABFA1EC6E7B90071D7D9 /* ParallelLine.swift */; };
 		AEE3AC031EC6E7B90071D7D9 /* PerpendicularLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABFB1EC6E7B90071D7D9 /* PerpendicularLine.swift */; };
@@ -60,6 +60,7 @@
 		AEE3AC0F1EC753DF0071D7D9 /* CircleWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */; };
 		AEE3AC101EC753DF0071D7D9 /* Circumcircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */; };
 		AEE3AC121EC811980071D7D9 /* CoupleOfPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */; };
+		AEE3AC141EC93A2C0071D7D9 /* ParentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */; };
 		AEF1FF8A1EC4FA8C003A902D /* AngleMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1FF891EC4FA8C003A902D /* AngleMath.swift */; };
 /* End PBXBuildFile section */
 
@@ -115,14 +116,14 @@
 		AEE3ABDE1EC6D2BF0071D7D9 /* FreeScalar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreeScalar.swift; sourceTree = "<group>"; };
 		AEE3ABE31EC6D4690071D7D9 /* Point.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreePoint.swift; sourceTree = "<group>"; };
-		AEE3ABE71EC6D4690071D7D9 /* StraightCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StraightCircle.swift; sourceTree = "<group>"; };
+		AEE3ABE71EC6D4690071D7D9 /* RulerCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RulerCircle.swift; sourceTree = "<group>"; };
 		AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoCircles.swift; sourceTree = "<group>"; };
-		AEE3ABE91EC6D4690071D7D9 /* TwoStraights.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoStraights.swift; sourceTree = "<group>"; };
+		AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoRulers.swift; sourceTree = "<group>"; };
 		AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingPoint.swift; sourceTree = "<group>"; };
 		AEE3ABF11EC6D4FF0071D7D9 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		AEE3ABF51EC6E7B90071D7D9 /* DirectedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectedLine.swift; sourceTree = "<group>"; };
-		AEE3ABF61EC6E7B90071D7D9 /* Straight.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Straight.swift; sourceTree = "<group>"; };
-		AEE3ABF71EC6E7B90071D7D9 /* Straight2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Straight2Points.swift; sourceTree = "<group>"; };
+		AEE3ABF61EC6E7B90071D7D9 /* Ruler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ruler.swift; sourceTree = "<group>"; };
+		AEE3ABF71EC6E7B90071D7D9 /* Ruler2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ruler2Points.swift; sourceTree = "<group>"; };
 		AEE3ABF91EC6E7B90071D7D9 /* Line2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line2Points.swift; sourceTree = "<group>"; };
 		AEE3ABFA1EC6E7B90071D7D9 /* ParallelLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParallelLine.swift; sourceTree = "<group>"; };
 		AEE3ABFB1EC6E7B90071D7D9 /* PerpendicularLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerpendicularLine.swift; sourceTree = "<group>"; };
@@ -133,6 +134,7 @@
 		AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWithRadius.swift; sourceTree = "<group>"; };
 		AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circumcircle.swift; sourceTree = "<group>"; };
 		AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoupleOfPoints.swift; sourceTree = "<group>"; };
+		AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentComparable.swift; sourceTree = "<group>"; };
 		AEF1FF891EC4FA8C003A902D /* AngleMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleMath.swift; sourceTree = "<group>"; };
 		B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -309,6 +311,7 @@
 				AEE3ABF11EC6D4FF0071D7D9 /* Appearance.swift */,
 				AEE3ABD61EC6D2910071D7D9 /* FreeValue.swift */,
 				AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */,
+				AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -369,8 +372,8 @@
 		AEE3ABE61EC6D4690071D7D9 /* Intersections */ = {
 			isa = PBXGroup;
 			children = (
-				AEE3ABE91EC6D4690071D7D9 /* TwoStraights.swift */,
-				AEE3ABE71EC6D4690071D7D9 /* StraightCircle.swift */,
+				AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */,
+				AEE3ABE71EC6D4690071D7D9 /* RulerCircle.swift */,
 				AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */,
 			);
 			path = Intersections;
@@ -388,8 +391,8 @@
 		AEE3ABF41EC6E7B90071D7D9 /* Base */ = {
 			isa = PBXGroup;
 			children = (
-				AEE3ABF61EC6E7B90071D7D9 /* Straight.swift */,
-				AEE3ABF71EC6E7B90071D7D9 /* Straight2Points.swift */,
+				AEE3ABF61EC6E7B90071D7D9 /* Ruler.swift */,
+				AEE3ABF71EC6E7B90071D7D9 /* Ruler2Points.swift */,
 				AEE3ABF51EC6E7B90071D7D9 /* DirectedLine.swift */,
 			);
 			path = Base;
@@ -648,7 +651,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE4ED21C1EC3A4D60053AFEA /* ContextView.swift in Sources */,
-				AEE3AC001EC6E7B90071D7D9 /* Straight2Points.swift in Sources */,
+				AEE3AC001EC6E7B90071D7D9 /* Ruler2Points.swift in Sources */,
 				AEE3ABDF1EC6D2BF0071D7D9 /* Scalar.swift in Sources */,
 				AE4ECFC71EC23B680053AFEA /* ObjectSet.swift in Sources */,
 				AEA287A61EBCCC04002E425F /* Getter.swift in Sources */,
@@ -670,15 +673,16 @@
 				AEE3ABE01EC6D2BF0071D7D9 /* FreeScalar.swift in Sources */,
 				AEE3AC0D1EC753DF0071D7D9 /* Circle.swift in Sources */,
 				AEE3AC0E1EC753DF0071D7D9 /* CircleToPoint.swift in Sources */,
-				AEE3ABED1EC6D4690071D7D9 /* StraightCircle.swift in Sources */,
+				AEE3AC141EC93A2C0071D7D9 /* ParentComparable.swift in Sources */,
+				AEE3ABED1EC6D4690071D7D9 /* RulerCircle.swift in Sources */,
 				AE4ECFD21EC36C340053AFEA /* CGExtensions.swift in Sources */,
 				AE4ECFD01EC2BFB60053AFEA /* Drawable.swift in Sources */,
 				AEA287A81EBCCC04002E425F /* Weak.swift in Sources */,
 				AEA287A11EBCCC04002E425F /* RawResultMath.swift in Sources */,
-				AEE3ABFF1EC6E7B90071D7D9 /* Straight.swift in Sources */,
+				AEE3ABFF1EC6E7B90071D7D9 /* Ruler.swift in Sources */,
 				AEA287A01EBCCC04002E425F /* RawResult.swift in Sources */,
 				AEE3ABEC1EC6D4690071D7D9 /* FreePoint.swift in Sources */,
-				AEE3ABEF1EC6D4690071D7D9 /* TwoStraights.swift in Sources */,
+				AEE3ABEF1EC6D4690071D7D9 /* TwoRulers.swift in Sources */,
 				AE4ECFCB1EC2B7C90053AFEA /* TransmitterContext.swift in Sources */,
 				AE4ED22C1EC4BB5A0053AFEA /* Arc.swift in Sources */,
 				AEE3AC021EC6E7B90071D7D9 /* ParallelLine.swift in Sources */,

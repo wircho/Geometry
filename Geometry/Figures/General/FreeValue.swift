@@ -9,13 +9,13 @@
 import CoreGraphics
 import Result
 
-protocol FreeValue: class {
-    associatedtype Value
-    var _position: Value { get set }
+protocol FreeValued: class {
+    associatedtype FreeValue
+    var _position: FreeValue { get set }
 }
 
-extension FreeValue where Self: Recalculator, Self: Transmitter, Self.ResultValue: ResultProtocol, Self.ResultValue.Value == Value {
-    var position: Value {
+extension FreeValued where Self: Recalculator, Self: Transmitter {
+    var position: FreeValue {
         get {
             return _position
         }
@@ -24,8 +24,14 @@ extension FreeValue where Self: Recalculator, Self: Transmitter, Self.ResultValu
             needsRecalculation = true
         }
     }
-    
+}
+
+extension FreeValued where Self: Recalculator, Self: Transmitter, Self.ResultValue: ResultProtocol, Self.ResultValue.Value == FreeValue {
     func recalculate() -> ResultValue {
         return ResultValue(value: position)
     }
+}
+
+extension FreeValued where Self: Figure {
+    func compare(with other: Self) -> Bool { return self === other }
 }

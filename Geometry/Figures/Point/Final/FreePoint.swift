@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class FreePoint: Figure, Point, FreeValue {
+final class FreePoint: Figure, Point, FreeValued {
     var appearance = Appearance(radiusMultiplier: 3)
     var storage = FigureStorage<RawPoint>()
     var _position: RawPoint

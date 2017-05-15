@@ -17,6 +17,8 @@ final class Ray2Points: Figure, Ruler2Points, Ray {
     weak var point0: Point?
     weak var point1: Point?
     
+    let parentOrder = ParentOrder.sorted
+    
     init(_ p0: Point, _ p1: Point) {
         point0 = p0
         point1 = p1

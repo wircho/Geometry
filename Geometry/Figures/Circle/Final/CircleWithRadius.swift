@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class CircleWithRadius: Figure, Circle {
+final class CircleWithRadius: Figure, Circle, ParentComparable {
     var appearance = Appearance()
     var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
@@ -16,6 +16,9 @@ final class CircleWithRadius: Figure, Circle {
     
     weak var center: Point?
     weak var radius: Scalar?
+    
+    let parentOrder = ParentOrder.sorted
+    var parents: [AnyObject?] { return [center, radius] }
     
     init(_ center: Point, _ radius: Scalar) {
         self.center = center

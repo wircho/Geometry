@@ -17,6 +17,8 @@ final class Line2Points: Figure, Ruler2Points, Line {
     weak var point0: Point?
     weak var point1: Point?
     
+    let parentOrder = ParentOrder.unsorted
+    
     init(_ p0: Point, _ p1: Point) {
         point0 = p0
         point1 = p1

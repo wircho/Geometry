@@ -20,6 +20,7 @@ struct FigureStorage<Value> {
 protocol Figure: FigureBase, Recalculator {
     associatedtype Value
     var storage: FigureStorage<Value> { get set }
+    func compare(with other: Self) -> Bool
 }
 
 extension Figure {

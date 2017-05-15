@@ -8,12 +8,11 @@
 
 import Foundation
 
-protocol DirectedLine: Ruler, Line {
+protocol DirectedLine: Ruler, Line, ParentComparable {
     var point: Point? { get }
     var ruler: Ruler? { get }
     func calculateArrowDirection() -> RawPointResult
     init(_ point: Point, _ ruler: Ruler)
-    
 }
 
 extension DirectedLine {
@@ -30,4 +29,7 @@ extension DirectedLine {
         guard let value = result.value, let normReciprocal = rulerStorage.normReciprocal else { return nil }
         return value.arrow.at(pos * normReciprocal)
     }
+    
+    var parentOrder: ParentOrder { return .sorted }
+    var parents: [AnyObject?] { return [point, ruler] }
 }

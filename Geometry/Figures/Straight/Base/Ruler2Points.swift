@@ -10,7 +10,7 @@ import Result
 
 // MARK: - Ruler Figures Through 2 Points
 
-protocol Ruler2Points: Ruler {
+protocol Ruler2Points: Ruler, ParentComparable {
     var point0: Point? { get }
     var point1: Point? { get }
     
@@ -36,4 +36,6 @@ extension Ruler2Points {
         case .ray: return value.arrow.at(max(pos,0) * normReciprocal)
         }
     }
+    
+    var parents: [AnyObject?] { return [point0, point1] }
 }

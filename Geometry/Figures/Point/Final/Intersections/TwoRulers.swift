@@ -10,12 +10,15 @@ import Foundation
 import CoreGraphics
 import Result
 
-final class TwoRulerMediator: Figure {
+final class TwoRulerMediator: Figure, ParentComparable {
     var storage = FigureStorage<RawPoint>()
     weak var existing: Point?
     
     weak var ruler0: Ruler?
     weak var ruler1: Ruler?
+    
+    let parentOrder = ParentOrder.unsorted
+    var parents: [AnyObject?] { return [ruler0, ruler1] }
     
     init(_ s0: Ruler, _ s1: Ruler) {
         ruler0 = s0
@@ -28,6 +31,7 @@ final class TwoRulerMediator: Figure {
     }
     
     func recalculate() -> RawPointResult {
+        guard existing == nil else { return .none }
         return intersection(ruler0?.result ?? .none, ruler1?.result ?? .none)
     }
 }
@@ -43,6 +47,11 @@ class TwoRulerIntersection: Figure, Point {
         mediator.ruler0?.intersectionPoints.append(self)
         mediator.ruler1?.intersectionPoints.append(self)
         appendToContext()
+    }
+    
+    func compare(with other: TwoRulerIntersection) -> Bool {
+        guard let mediator = mediator, let otherMediator = other.mediator else { return false }
+        return mediator === otherMediator
     }
     
     func recalculate() -> RawPointResult {

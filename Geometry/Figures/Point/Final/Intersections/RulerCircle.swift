@@ -10,13 +10,16 @@ import Result
 
 // MARK: - Intersection Mediator
 
-final class RulerCircleMediator: Figure {
+final class RulerCircleMediator: Figure, ParentComparable {
     var storage = FigureStorage<Two<RawPoint?>>()
     
     var existing: CoupleOfPoints = .none
     
     weak var ruler: Ruler?
     weak var circle: Circle?
+    
+    let parentOrder = ParentOrder.sorted
+    var parents: [AnyObject?] { return [ruler, circle] }
     
     init(_ ruler: Ruler, _ circle: Circle) {
         self.ruler = ruler
@@ -65,6 +68,11 @@ final class RulerCircleIntersection: Figure, Point {
         mediator.ruler?.intersectionPoints.append(self)
         mediator.circle?.intersectionPoints.append(self)
         appendToContext()
+    }
+    
+    func compare(with other: RulerCircleIntersection) -> Bool {
+        guard let mediator = mediator, let otherMediator = other.mediator else { return false }
+        return mediator === otherMediator && index == other.index
     }
     
     static func create(_ ruler: Ruler, _ circle: Circle) -> (mediator: RulerCircleMediator, intersection0: RulerCircleIntersection?, intersection0: RulerCircleIntersection?) {

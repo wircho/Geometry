@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class FreeScalar: Figure, Scalar, FreeValue {
+final class FreeScalar: Figure, Scalar, FreeValued {
     var storage = FigureStorage<Float>()
     var _position: Float
     

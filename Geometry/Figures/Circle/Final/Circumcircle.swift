@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class Circumcircle: Figure, Circle {
+final class Circumcircle: Figure, Circle, ParentComparable {
     var appearance = Appearance()
     var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
@@ -17,6 +17,9 @@ final class Circumcircle: Figure, Circle {
     weak var point0: Point?
     weak var point1: Point?
     weak var point2: Point?
+    
+    let parentOrder = ParentOrder.unsorted
+    var parents: [AnyObject?] { return [point0, point1, point2] }
     
     init(_ p0: Point, _ p1: Point, _ p2: Point) {
         point0 = p0
