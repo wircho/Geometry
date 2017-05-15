@@ -10,7 +10,7 @@ import CoreGraphics
 import Result
 
 final class ParallelLine: Figure, DirectedLine {
-    var appearance = Appearance()
+    var appearance = StrokeAppearance()
     var storage = FigureStorage<RawRuler>()
     var rulerStorage = RulerStorage()
     var oneDimensionalStorage = OneDimensionalStorage()

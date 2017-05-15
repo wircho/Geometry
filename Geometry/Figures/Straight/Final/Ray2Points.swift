@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 final class Ray2Points: Figure, Ruler2Points, Ray {
-    var appearance = Appearance()
+    var appearance = StrokeAppearance()
     var storage = FigureStorage<RawRuler>()
     var rulerStorage = RulerStorage()
     var oneDimensionalStorage = OneDimensionalStorage()

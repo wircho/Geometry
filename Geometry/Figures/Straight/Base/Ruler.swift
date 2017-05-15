@@ -12,7 +12,7 @@ import Result
 
 private let one = Result<Float, MathError>.success(1)
 
-protocol Ruler: FigureBase, OneDimensional, Appears, Drawable {
+protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Drawable {
     var result: RawRulerResult { get }
     var rulerStorage: RulerStorage { get set }
     func calculateArrow() -> ArrowResult
@@ -46,4 +46,4 @@ extension Line { var kind: RawRuler.Kind { return .line } }
 extension Segment { var kind: RawRuler.Kind { return .segment } }
 extension Ray { var kind: RawRuler.Kind { return .ray } }
 
-// TODO: - Parallel and Perpendicular Lines, Angle bisector, Perpendicular Bisector
+// TODO: - Angle bisector, Perpendicular Bisector

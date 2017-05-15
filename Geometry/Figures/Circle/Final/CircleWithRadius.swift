@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 final class CircleWithRadius: Figure, Circle, ParentComparable {
-    var appearance = Appearance()
+    var appearance = StrokeAppearance()
     var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
     var oneDimensionalStorage = OneDimensionalStorage()

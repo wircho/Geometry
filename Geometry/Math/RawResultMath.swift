@@ -130,9 +130,7 @@ func intersectionCoordinates(_ arrow: Arrow, _ circle: RawCircle) -> TwoFloatRes
             return .none
         }
         let e = sqrt(circle.radius * circle.radius - dc * dc)
-        // TODO: Just return
-        let r = TwoFloatResult.success(Two(v0: (c - e) * nRec, v1: (c + e) * nRec))
-        return r
+        return .success(Two(v0: (c - e) * nRec, v1: (c + e) * nRec))
     }
     
 }

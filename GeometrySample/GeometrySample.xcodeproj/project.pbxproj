@@ -12,7 +12,6 @@
 		AE4ECFC31EC1001B0053AFEA /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */; };
 		AE4ECFC71EC23B680053AFEA /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */; };
 		AE4ECFC91EC23BC60053AFEA /* HashableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */; };
-		AE4ECFCB1EC2B7C90053AFEA /* TransmitterContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFCA1EC2B7C90053AFEA /* TransmitterContext.swift */; };
 		AE4ECFD01EC2BFB60053AFEA /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFCF1EC2BFB60053AFEA /* Drawable.swift */; };
 		AE4ECFD21EC36C340053AFEA /* CGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFD11EC36C340053AFEA /* CGExtensions.swift */; };
 		AE4ED21A1EC39F5F0053AFEA /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
@@ -82,7 +81,6 @@
 		AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalProtocol.swift; sourceTree = "<group>"; };
 		AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
 		AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableObject.swift; sourceTree = "<group>"; };
-		AE4ECFCA1EC2B7C90053AFEA /* TransmitterContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransmitterContext.swift; sourceTree = "<group>"; };
 		AE4ECFCF1EC2BFB60053AFEA /* Drawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drawable.swift; sourceTree = "<group>"; };
 		AE4ECFD11EC36C340053AFEA /* CGExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGExtensions.swift; sourceTree = "<group>"; };
 		AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureContext.swift; sourceTree = "<group>"; };
@@ -286,7 +284,6 @@
 			children = (
 				AEA287871EBCCC04002E425F /* Transmitter.swift */,
 				AEA287891EBCCC04002E425F /* Recalculator.swift */,
-				AE4ECFCA1EC2B7C90053AFEA /* TransmitterContext.swift */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -683,7 +680,6 @@
 				AEA287A01EBCCC04002E425F /* RawResult.swift in Sources */,
 				AEE3ABEC1EC6D4690071D7D9 /* FreePoint.swift in Sources */,
 				AEE3ABEF1EC6D4690071D7D9 /* TwoRulers.swift in Sources */,
-				AE4ECFCB1EC2B7C90053AFEA /* TransmitterContext.swift in Sources */,
 				AE4ED22C1EC4BB5A0053AFEA /* Arc.swift in Sources */,
 				AEE3AC021EC6E7B90071D7D9 /* ParallelLine.swift in Sources */,
 				AEA2879E1EBCCC04002E425F /* MathError.swift in Sources */,

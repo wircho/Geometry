@@ -51,7 +51,7 @@ final class TwoCircleIntersection: Figure, Point {
         case second
     }
     
-    var appearance = Appearance(radiusMultiplier: 3)
+    var appearance = PointAppearance()
     var storage = FigureStorage<RawPoint>()
     
     weak var mediator: TwoCircleMediator?

@@ -10,7 +10,7 @@ import CoreGraphics
 import Result
 
 final class SlidingPoint: Figure, Point, FreeValued {
-    var appearance = Appearance(radiusMultiplier: 3)
+    var appearance = PointAppearance()
     var storage = FigureStorage<RawPoint>()
     var _position: Float
     

@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-protocol Circle: FigureBase, OneDimensional, Appears, Drawable {
+protocol Circle: FigureBase, OneDimensional, StrokeAppears, Drawable {
     var result: RawCircleResult { get }
     var circleStorage: CircleStorage { get set }
 }

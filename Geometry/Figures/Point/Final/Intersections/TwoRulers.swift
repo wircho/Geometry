@@ -37,7 +37,7 @@ final class TwoRulerMediator: Figure, ParentComparable {
 }
 
 class TwoRulerIntersection: Figure, Point {
-    var appearance = Appearance(radiusMultiplier: 3)
+    var appearance = PointAppearance()
     var storage = FigureStorage<RawPoint>()
     
     weak var mediator: TwoRulerMediator?

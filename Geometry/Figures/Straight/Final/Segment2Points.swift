@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 final class Segment2Points: Figure, Ruler2Points, Segment {
-    var appearance = Appearance()
+    var appearance = StrokeAppearance()
     var storage = FigureStorage<RawRuler>()
     var rulerStorage = RulerStorage()
     var oneDimensionalStorage = OneDimensionalStorage()

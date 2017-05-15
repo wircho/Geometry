@@ -8,25 +8,18 @@
 
 import UIKit
 
-struct Appearance {
+// MARK: - Stroke
+
+struct StrokeAppearance {
     var color: UIColor = .black
     var lineWidth: Float = 2
-    
-    init() { }
-    init(radius: Float) {
-        self.lineWidth = radius * 2
-    }
-    
-    init(radiusMultiplier: Float) {
-        self.lineWidth = self.lineWidth * radiusMultiplier
-    }
 }
 
-protocol Appears: class {
-    var appearance: Appearance { get set }
+protocol StrokeAppears: class {
+    var appearance: StrokeAppearance { get set }
 }
 
-extension Appears {
+extension StrokeAppears {
     var color: UIColor {
         get { return appearance.color }
         set { appearance.color = newValue }
@@ -37,22 +30,41 @@ extension Appears {
     }
 }
 
-//struct AppearingFigureStorage<Value> {
-//    var appearance = Appearance()
-//    var storage = FigureStorage<Value>()
-//}
-//
-//protocol AppearingFigure: Figure, Appears {
-//    var appearingStorage: AppearingFigureStorage<Self.Value> { get set }
-//}
-//
-//extension AppearingFigure {
-//    var appearance: Appearance {
-//        get { return appearingStorage.appearance }
-//        set { appearingStorage.appearance = newValue }
-//    }
-//    var storage: FigureStorage<Self.Value> {
-//        get { return appearingStorage.storage }
-//        set { appearingStorage.storage = newValue }
-//    }
-//}
+// MARK: - Point
+
+struct PointAppearance {
+    var color: UIColor = .black
+    var radius: Float = 6
+}
+
+protocol PointAppears: class {
+    var appearance: PointAppearance { get set }
+}
+
+extension PointAppears {
+    var color: UIColor {
+        get { return appearance.color }
+        set { appearance.color = newValue }
+    }
+    var radius: Float {
+        get { return appearance.radius }
+        set { appearance.radius = newValue }
+    }
+}
+
+// MARK: - Fill
+
+struct FillAppearance {
+    var color: UIColor = .gray
+}
+
+protocol FillAppears: class {
+    var appearance: FillAppearance { get set }
+}
+
+extension FillAppears {
+    var color: UIColor {
+        get { return appearance.color }
+        set { appearance.color = newValue }
+    }
+}

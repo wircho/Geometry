@@ -8,20 +8,11 @@
 import CoreGraphics
 import Result
 
-protocol Point: FigureBase, Appears, Drawable {
+protocol Point: FigureBase, PointAppears, Drawable {
     var result: RawPointResult { get }
 }
 
 extension Point {
-    var radius: Float {
-        get {
-            return lineWidth / 2
-        }
-        set {
-            lineWidth = newValue * 2
-        }
-    }
-    
     func drawIn(_ rect: CGRect) {
         guard let center = result.value else { return }
         color.setFill()

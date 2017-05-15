@@ -31,9 +31,7 @@ final class RulerCircleMediator: Figure, ParentComparable {
     func recalculate() -> TwoOptionalRawPointResult {
         switch existing {
         case .none:
-            // TODO: Just return!
-            let r = intersections(ruler?.result ?? .none, circle?.result ?? .none)
-            return r
+            return intersections(ruler?.result ?? .none, circle?.result ?? .none)
         case let .one(pt):
             guard let point = pt.point else { return .none }
             let arrow = (ruler?.result ?? .none).arrow
@@ -56,7 +54,7 @@ final class RulerCircleIntersection: Figure, Point {
         case second
     }
     
-    var appearance = Appearance(radiusMultiplier: 3)
+    var appearance = PointAppearance()
     var storage = FigureStorage<RawPoint>()
     
     weak var mediator: RulerCircleMediator?

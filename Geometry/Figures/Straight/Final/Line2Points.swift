@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 final class Line2Points: Figure, Ruler2Points, Line {
-    var appearance = Appearance()
+    var appearance = StrokeAppearance()
     var storage = FigureStorage<RawRuler>()
     var rulerStorage = RulerStorage()
     var oneDimensionalStorage = OneDimensionalStorage()
