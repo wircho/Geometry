@@ -9,10 +9,9 @@
 import Foundation
 
 protocol DirectedLine: Ruler, Line, ParentComparable {
-    var point: Point? { get }
-    var ruler: Ruler? { get }
+    var directedLineStorage: DirectedLineStorage { get set }
     func calculateArrowDirection() -> RawPointResult
-    init(_ point: Point, _ ruler: Ruler)
+    init(_ directedLineStorage: DirectedLineStorage)
 }
 
 extension DirectedLine {
@@ -32,4 +31,31 @@ extension DirectedLine {
     
     var parentOrder: ParentOrder { return .sorted }
     var parents: [AnyObject?] { return [point, ruler] }
+    
+    var rulerStorage: RulerStorage {
+        get { return directedLineStorage.rulerStorage }
+        set { directedLineStorage.rulerStorage = newValue }
+    }
+    
+    var point: Point? { return directedLineStorage.point }
+    var ruler: Ruler? { return directedLineStorage.ruler }
+}
+
+extension DirectedLine where Self: Figure {
+    init(_ p: Point, _ r: Ruler) {
+        self.init(DirectedLineStorage(p, r))
+        setChildOf([p, r])
+    }
+}
+
+struct DirectedLineStorage {
+    var rulerStorage = RulerStorage()
+    
+    weak var point: Point?
+    weak var ruler: Ruler?
+    
+    init(_ p: Point, _ r: Ruler) {
+        point = p
+        ruler = r
+    }
 }

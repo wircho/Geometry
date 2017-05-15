@@ -9,19 +9,13 @@ import CoreGraphics
 import Result
 
 final class Ray2Points: Figure, Ruler2Points, Ray {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawRuler>()
-    var rulerStorage = RulerStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
-    
-    weak var point0: Point?
-    weak var point1: Point?
+    var ruler2PointsStorage: Ruler2PointsStorage
+    init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     
     let parentOrder = ParentOrder.sorted
     
-    init(_ p0: Point, _ p1: Point) {
-        point0 = p0
-        point1 = p1
-        appendToContext()
+    func at(_ pos: Float) -> RawPoint? {
+        guard let value = result.value, let normReciprocal = rulerStorage.normReciprocal else { return nil }
+        return value.arrow.at(max(pos,0) * normReciprocal)
     }
 }

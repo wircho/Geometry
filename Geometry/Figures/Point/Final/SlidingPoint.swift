@@ -10,8 +10,7 @@ import CoreGraphics
 import Result
 
 final class SlidingPoint: Figure, Point, FreeValued {
-    var appearance = PointAppearance()
-    var storage = FigureStorage<RawPoint>()
+    var pointStorage = PointStorage()
     var _position: Float
     
     weak var floor: OneDimensional?
@@ -20,7 +19,7 @@ final class SlidingPoint: Figure, Point, FreeValued {
         self.floor = floor
         _position = initial
         floor.slidingPoints.append(self)
-        appendToContext()
+        setChildOf([floor])
     }
     
     func recalculate() -> RawPointResult {

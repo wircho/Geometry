@@ -10,8 +10,8 @@ import Foundation
 import CoreGraphics
 
 class FigureContext: Drawable {
-    static let threadKey = "FigureContext"
     var figures: [FigureBase] = []
+    weak var delegate: FigureContextDelegate? = nil
     
     func drawIn(_ rect: CGRect) {
         for figure in figures {
@@ -19,14 +19,9 @@ class FigureContext: Drawable {
         }
     }
     
-    func inside(_ closure: ()->Void) {
-        Association.setWeak(Thread.current, FigureContext.threadKey, self)
-        closure()
-        Association.setWeak(Thread.current, FigureContext.threadKey, nil)
-    }
-    
     @discardableResult func append<T: FigureBase>(_ figure: T) -> T {
         figures.append(figure)
+        figure.context = self
         return figure
     }
     
@@ -49,4 +44,12 @@ class FigureContext: Drawable {
         }
         return true
     }
+    
+    func setFiguresWillRecalculate() {
+        delegate?.contextFiguresWillRecalculate(self)
+    }
+}
+
+protocol FigureContextDelegate: class {
+    func contextFiguresWillRecalculate(_: FigureContext)
 }

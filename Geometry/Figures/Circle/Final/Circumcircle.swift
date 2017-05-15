@@ -9,10 +9,7 @@ import CoreGraphics
 import Result
 
 final class Circumcircle: Figure, Circle, ParentComparable {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
     
     weak var point0: Point?
     weak var point1: Point?
@@ -25,7 +22,7 @@ final class Circumcircle: Figure, Circle, ParentComparable {
         point0 = p0
         point1 = p1
         point2 = p2
-        appendToContext()
+        setChildOf([p0, p1, p2])
     }
     
     var touchingDefiningPoints: [Point] {

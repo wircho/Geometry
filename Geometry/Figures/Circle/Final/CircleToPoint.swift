@@ -9,10 +9,7 @@ import CoreGraphics
 import Result
 
 final class CircleToPoint: Figure, Circle, ParentComparable {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
     
     weak var center: Point?
     weak var point: Point?
@@ -23,7 +20,7 @@ final class CircleToPoint: Figure, Circle, ParentComparable {
     init(_ center: Point, _ point: Point) {
         self.center = center
         self.point = point
-        appendToContext()
+        setChildOf([center, point])
     }
     
     var touchingDefiningPoints: [Point] {

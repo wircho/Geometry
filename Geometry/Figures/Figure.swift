@@ -9,12 +9,21 @@ import Result
 
 // MARK: - Figure
 
-protocol FigureBase: Transmitter { }
+protocol FigureBase: Transmitter {
+    var context: FigureContext? { get set }
+}
 
 struct FigureStorage<Value> {
+    weak var context: FigureContext?
     var receivers: [Getter<Transmitter?>] = []
     var _result: Result<Value, MathError> = .failure(.none)
-    var _needsRecalculation = true
+    var _needsRecalculation = true {
+        didSet {
+            if _needsRecalculation && !oldValue {
+                context?.setFiguresWillRecalculate()
+            }
+        }
+    }
 }
 
 protocol Figure: FigureBase, Recalculator {
@@ -39,9 +48,15 @@ extension Figure {
         set { storage._needsRecalculation = newValue }
     }
     
-    func appendToContext() {
-        if let context = Association.getWeak(Thread.current, FigureContext.threadKey) as? FigureContext {
-            context.append(self)
+    var context: FigureContext? {
+        get { return storage.context }
+        set { storage.context = newValue }
+    }
+    
+    func setChildOf(_ array: [FigureBase]) {
+        if let first = array.first {
+            first.context?.append(self)
         }
+        receiveFrom(array as [Transmitter])
     }
 }

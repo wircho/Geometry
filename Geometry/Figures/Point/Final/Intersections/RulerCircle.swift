@@ -25,7 +25,7 @@ final class RulerCircleMediator: Figure, ParentComparable {
         self.ruler = ruler
         self.circle = circle
         ruler.findCommonPoints(with: circle) { existing.add($0) }
-        appendToContext()
+        setChildOf([ruler, circle])
     }
     
     func recalculate() -> TwoOptionalRawPointResult {
@@ -54,8 +54,7 @@ final class RulerCircleIntersection: Figure, Point {
         case second
     }
     
-    var appearance = PointAppearance()
-    var storage = FigureStorage<RawPoint>()
+    var pointStorage = PointStorage()
     
     weak var mediator: RulerCircleMediator?
     var index: Index
@@ -65,7 +64,7 @@ final class RulerCircleIntersection: Figure, Point {
         self.index = index
         mediator.ruler?.intersectionPoints.append(self)
         mediator.circle?.intersectionPoints.append(self)
-        appendToContext()
+        setChildOf([mediator])
     }
     
     func compare(with other: RulerCircleIntersection) -> Bool {

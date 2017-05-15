@@ -9,16 +9,15 @@ import CoreGraphics
 import Result
 
 final class FreePoint: Figure, Point, FreeValued {
-    var appearance = PointAppearance()
-    var storage = FigureStorage<RawPoint>()
+    var pointStorage = PointStorage()
     var _position: RawPoint
     
-    init(at initial: RawPoint) {
+    init(at initial: RawPoint, `in` context: FigureContext) {
         _position = initial
-        appendToContext()
+        context.append(self)
     }
     
-    convenience init(x: Float, y: Float) {
-        self.init(at: RawPoint(x: x, y: y))
+    convenience init(x: Float, y: Float, `in` context: FigureContext) {
+        self.init(at: RawPoint(x: x, y: y), in: context)
     }
 }

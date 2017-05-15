@@ -9,19 +9,12 @@ import CoreGraphics
 import Result
 
 final class Line2Points: Figure, Ruler2Points, Line {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawRuler>()
-    var rulerStorage = RulerStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
-    
-    weak var point0: Point?
-    weak var point1: Point?
+    var ruler2PointsStorage: Ruler2PointsStorage
+    init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     
     let parentOrder = ParentOrder.unsorted
     
-    init(_ p0: Point, _ p1: Point) {
-        point0 = p0
-        point1 = p1
-        appendToContext()
+    func at(_ pos: Float) -> RawPoint? {
+        return result.value?.arrow.at(pos)
     }
 }

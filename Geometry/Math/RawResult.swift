@@ -13,6 +13,7 @@ import Result
 typealias FloatResult = Result<Float, MathError>
 typealias RawPointResult = Result<RawPoint, MathError>
 typealias RawCircleResult = Result<RawCircle, MathError>
+typealias RawArcResult = Result<RawArc, MathError>
 typealias ArrowResult = Result<Arrow, MathError>
 typealias RawRulerResult = Result<RawRuler, MathError>
 typealias TwoByTwoFloatResult = Result<TwoByTwo<Float>, MathError>

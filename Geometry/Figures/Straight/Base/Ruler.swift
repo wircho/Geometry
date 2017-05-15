@@ -19,10 +19,6 @@ protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Drawable {
     var kind: RawRuler.Kind { get }
 }
 
-struct RulerStorage {
-    var normReciprocal: Float? = nil
-}
-
 extension Ruler {
     func recalculate() -> RawRulerResult {
         let arrow = calculateArrow()
@@ -36,6 +32,28 @@ extension Ruler {
         color.setStroke()
         UIBezierPath(segment: point0, point1, lineWidth: lineWidth).stroke()
     }
+    
+    var appearance: StrokeAppearance {
+        get { return rulerStorage.appearance }
+        set { rulerStorage.appearance = newValue }
+    }
+    
+    var storage: FigureStorage<RawRuler> {
+        get { return rulerStorage.figureStorage }
+        set { rulerStorage.figureStorage = newValue }
+    }
+    
+    var oneDimensionalStorage: OneDimensionalStorage {
+        get { return rulerStorage.oneDimensionalStorage }
+        set { rulerStorage.oneDimensionalStorage = newValue }
+    }
+}
+
+struct RulerStorage {
+    var normReciprocal: Float? = nil
+    var appearance = StrokeAppearance()
+    var figureStorage = FigureStorage<RawRuler>()
+    var oneDimensionalStorage = OneDimensionalStorage()
 }
 
 protocol Line: Ruler { }

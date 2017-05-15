@@ -27,7 +27,7 @@ final class TwoRulerMediator: Figure, ParentComparable {
             existing = $0
             return false
         }
-        appendToContext()
+        setChildOf([s0, s1])
     }
     
     func recalculate() -> RawPointResult {
@@ -37,8 +37,7 @@ final class TwoRulerMediator: Figure, ParentComparable {
 }
 
 class TwoRulerIntersection: Figure, Point {
-    var appearance = PointAppearance()
-    var storage = FigureStorage<RawPoint>()
+    var pointStorage = PointStorage()
     
     weak var mediator: TwoRulerMediator?
     
@@ -46,7 +45,7 @@ class TwoRulerIntersection: Figure, Point {
         self.mediator = mediator
         mediator.ruler0?.intersectionPoints.append(self)
         mediator.ruler1?.intersectionPoints.append(self)
-        appendToContext()
+        setChildOf([mediator])
     }
     
     func compare(with other: TwoRulerIntersection) -> Bool {

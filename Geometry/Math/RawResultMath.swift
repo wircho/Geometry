@@ -282,3 +282,32 @@ extension Result where T: RawCircleProtocol, Error: MathErrorProtocol {
         self = points.0.flatMap { p0 in return points.1.flatMap{ p1 in return points.2.flatMap { p2 in return Result(cicumscribing: (p0, p1, p2)) } } }
     }
 }
+
+extension Result where T: RawArcProtocol, Error: MathErrorProtocol {
+    init(cicumscribing points: (RawPoint, RawPoint, RawPoint)) {
+        let d = 2 * ( points.0.x * (points.1.y - points.2.y)
+            + points.1.x * (points.2.y - points.0.y)
+            + points.2.x * (points.0.y - points.1.y)
+        )
+        let u = points.0.squaredNorm * (points.1 - points.2)
+            + points.1.squaredNorm * (points.2 - points.0)
+            + points.2.squaredNorm * (points.0 - points.1)
+        self = (RawPoint(x: u.y, y: -u.x) / d)
+            .map {
+                center in
+                let radius = distance(center, points.0)
+                let circle = RawCircle(center: center, radius: radius)
+                let angles = ((points.0 - center).angle, (points.1 - center).angle, (points.2 - center).angle)
+                if angles.0.greaterValue(angles.1) < angles.0.greaterValue(angles.2) {
+                    return T(circle: circle, angles: Two(v0: angles.0, v1: angles.2), fromFirst: true)
+                } else {
+                    return T(circle: circle, angles: Two(v0: angles.2, v1: angles.0), fromFirst: false)
+                }
+            }
+            .mapError { Error($0) }
+    }
+    
+    init (cicumscribing points: (RawPointResult, RawPointResult, RawPointResult)) {
+        self = points.0.flatMap { p0 in return points.1.flatMap{ p1 in return points.2.flatMap { p2 in return Result(cicumscribing: (p0, p1, p2)) } } }
+    }
+}

@@ -17,7 +17,6 @@
 		AE4ED21A1EC39F5F0053AFEA /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
 		AE4ED21C1EC3A4D60053AFEA /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
 		AE4ED2241EC40BFE0053AFEA /* Cedula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2231EC40BFE0053AFEA /* Cedula.swift */; };
-		AE4ED22C1EC4BB5A0053AFEA /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22B1EC4BB5A0053AFEA /* Arc.swift */; };
 		AE4ED22E1EC4C34E0053AFEA /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22D1EC4C34E0053AFEA /* Association.swift */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
@@ -60,6 +59,8 @@
 		AEE3AC101EC753DF0071D7D9 /* Circumcircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */; };
 		AEE3AC121EC811980071D7D9 /* CoupleOfPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */; };
 		AEE3AC141EC93A2C0071D7D9 /* ParentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */; };
+		AEE3AC171EC967AC0071D7D9 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC161EC967AC0071D7D9 /* Arc.swift */; };
+		AEE3AC1C1EC9F67F0071D7D9 /* Circumarc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */; };
 		AEF1FF8A1EC4FA8C003A902D /* AngleMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1FF891EC4FA8C003A902D /* AngleMath.swift */; };
 /* End PBXBuildFile section */
 
@@ -86,7 +87,6 @@
 		AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureContext.swift; sourceTree = "<group>"; };
 		AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextView.swift; sourceTree = "<group>"; };
 		AE4ED2231EC40BFE0053AFEA /* Cedula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cedula.swift; sourceTree = "<group>"; };
-		AE4ED22B1EC4BB5A0053AFEA /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		AE4ED22D1EC4C34E0053AFEA /* Association.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Association.swift; sourceTree = "<group>"; };
 		AEA2873E1EBCCB2C002E425F /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA287411EBCCB2C002E425F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +133,8 @@
 		AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circumcircle.swift; sourceTree = "<group>"; };
 		AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoupleOfPoints.swift; sourceTree = "<group>"; };
 		AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentComparable.swift; sourceTree = "<group>"; };
+		AEE3AC161EC967AC0071D7D9 /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
+		AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circumarc.swift; sourceTree = "<group>"; };
 		AEF1FF891EC4FA8C003A902D /* AngleMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleMath.swift; sourceTree = "<group>"; };
 		B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -181,17 +183,10 @@
 		AE4ED2271EC4BB410053AFEA /* Arc */ = {
 			isa = PBXGroup;
 			children = (
-				AE4ED22A1EC4BB5A0053AFEA /* Superclasses */,
+				AEE3AC151EC967AC0071D7D9 /* Base */,
+				AEE3AC1A1EC9F67F0071D7D9 /* Final */,
 			);
 			path = Arc;
-			sourceTree = "<group>";
-		};
-		AE4ED22A1EC4BB5A0053AFEA /* Superclasses */ = {
-			isa = PBXGroup;
-			children = (
-				AE4ED22B1EC4BB5A0053AFEA /* Arc.swift */,
-			);
-			path = Superclasses;
 			sourceTree = "<group>";
 		};
 		AEA287351EBCCB2C002E425F = {
@@ -434,6 +429,22 @@
 			path = Final;
 			sourceTree = "<group>";
 		};
+		AEE3AC151EC967AC0071D7D9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				AEE3AC161EC967AC0071D7D9 /* Arc.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		AEE3AC1A1EC9F67F0071D7D9 /* Final */ = {
+			isa = PBXGroup;
+			children = (
+				AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */,
+			);
+			path = Final;
+			sourceTree = "<group>";
+		};
 		B6DB6575FB726F080B32670C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -664,6 +675,7 @@
 				AE4ED2241EC40BFE0053AFEA /* Cedula.swift in Sources */,
 				AEE3AC051EC6E7B90071D7D9 /* Segment2Points.swift in Sources */,
 				AEE3ABF01EC6D4690071D7D9 /* SlidingPoint.swift in Sources */,
+				AEE3AC1C1EC9F67F0071D7D9 /* Circumarc.swift in Sources */,
 				AE4ED22E1EC4C34E0053AFEA /* Association.swift in Sources */,
 				AEE3AC101EC753DF0071D7D9 /* Circumcircle.swift in Sources */,
 				AEA287A31EBCCC04002E425F /* Transmitter.swift in Sources */,
@@ -673,6 +685,7 @@
 				AEE3AC141EC93A2C0071D7D9 /* ParentComparable.swift in Sources */,
 				AEE3ABED1EC6D4690071D7D9 /* RulerCircle.swift in Sources */,
 				AE4ECFD21EC36C340053AFEA /* CGExtensions.swift in Sources */,
+				AEE3AC171EC967AC0071D7D9 /* Arc.swift in Sources */,
 				AE4ECFD01EC2BFB60053AFEA /* Drawable.swift in Sources */,
 				AEA287A81EBCCC04002E425F /* Weak.swift in Sources */,
 				AEA287A11EBCCC04002E425F /* RawResultMath.swift in Sources */,
@@ -680,7 +693,6 @@
 				AEA287A01EBCCC04002E425F /* RawResult.swift in Sources */,
 				AEE3ABEC1EC6D4690071D7D9 /* FreePoint.swift in Sources */,
 				AEE3ABEF1EC6D4690071D7D9 /* TwoRulers.swift in Sources */,
-				AE4ED22C1EC4BB5A0053AFEA /* Arc.swift in Sources */,
 				AEE3AC021EC6E7B90071D7D9 /* ParallelLine.swift in Sources */,
 				AEA2879E1EBCCC04002E425F /* MathError.swift in Sources */,
 				AE4ECFC31EC1001B0053AFEA /* OptionalProtocol.swift in Sources */,

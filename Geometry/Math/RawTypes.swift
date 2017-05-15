@@ -33,9 +33,21 @@ struct Angle {
     
     init (value: Float) {
         var val = value
-        while val > pi { val -= pi }
-        while val <= -pi { val += pi }
+        while val > pi { val -= twoPi }
+        while val <= -pi { val += twoPi }
         self.value = val
+    }
+    
+    func greaterValue(_ other: Angle) -> Float {
+        var value1 = other.value
+        while value1 < value { value1 += twoPi }
+        return value1
+    }
+    
+    func lesserValue(_ other: Angle) -> Float {
+        var value1 = other.value
+        while value1 > value { value1 -= twoPi }
+        return value1
     }
 }
 
@@ -44,9 +56,24 @@ struct RawCircle {
     var radius: Float
 }
 
-struct RawAngle {
+struct RawArc {
     var circle: RawCircle
-    var angles: Two<Float>
+    var angles: Two<Angle>
+    var fromFirst: Bool
+    
+    var angleValues: Two<Float> {
+        return Two(v0: angles.v0.value, v1: angles.v0.greaterValue(angles.v1))
+    }
+    
+    var center: RawPoint {
+        get { return circle.center }
+        set { circle.center = newValue }
+    }
+    
+    var radius: Float {
+        get { return circle.radius }
+        set { circle.radius = newValue }
+    }
 }
 
 struct Arrow {
@@ -104,6 +131,13 @@ protocol RawCircleProtocol {
     init(center: RawPoint, point: RawPoint)
 }
 
+protocol RawArcProtocol {
+    var circle: RawCircle { get }
+    var angles: Two<Angle> { get }
+    var fromFirst: Bool { get }
+    init(circle: RawCircle, angles: Two<Angle>, fromFirst: Bool)
+}
+
 protocol ArrowProtocol {
     var points: (RawPoint, RawPoint) { get }
     init(points: (RawPoint, RawPoint))
@@ -133,12 +167,17 @@ protocol TwoProtocol {
 }
 
 extension Float: FloatProtocol {}
-extension RawPoint: RawPointProtocol {}
+extension RawPoint: RawPointProtocol {
+    var angle: Angle {
+        return Angle(value: atan2(y, x))
+    }
+}
 extension RawCircle: RawCircleProtocol {
     init(center: CGPoint, point: CGPoint) {
         self.init(center: center, radius: distance(center, point))
     }
 }
+extension RawArc: RawArcProtocol {}
 extension Arrow: ArrowProtocol {}
 extension RawRuler: RawRulerProtocol {
     init?(kind: RawRuler.Kind, points: (RawPoint, RawPoint)) {

@@ -11,10 +11,8 @@ import Result
 // MARK: - Ruler Figures Through 2 Points
 
 protocol Ruler2Points: Ruler, ParentComparable {
-    var point0: Point? { get }
-    var point1: Point? { get }
-    
-    init(_ p0: Point, _ p1: Point)
+    var ruler2PointsStorage: Ruler2PointsStorage { get set }
+    init(_ ruler2PointsStorage: Ruler2PointsStorage)
 }
 
 extension Ruler2Points {
@@ -28,14 +26,33 @@ extension Ruler2Points {
         return [point0, point1].flatMap { $0 }
     }
     
-    func at(_ pos: Float) -> RawPoint? {
-        guard let value = result.value, let normReciprocal = rulerStorage.normReciprocal else { return nil }
-        switch value.kind {
-        case .line: return value.arrow.at(pos)
-        case .segment: return value.arrow.at(min(max(pos,0),1))
-        case .ray: return value.arrow.at(max(pos,0) * normReciprocal)
-        }
+    var parents: [AnyObject?] { return [point0, point1] }
+    
+    var rulerStorage: RulerStorage {
+        get { return  ruler2PointsStorage.rulerStorage }
+        set { ruler2PointsStorage.rulerStorage = newValue }
     }
     
-    var parents: [AnyObject?] { return [point0, point1] }
+    var point0: Point? { return ruler2PointsStorage.point0 }
+    
+    var point1: Point? { return ruler2PointsStorage.point1 }
+}
+
+extension Ruler2Points where Self: Figure {
+    init(_ p0: Point, _ p1: Point) {
+        self.init(Ruler2PointsStorage(p0, p1))
+        setChildOf([p0, p1])
+    }
+}
+
+struct Ruler2PointsStorage {
+    var rulerStorage = RulerStorage()
+    
+    weak var point0: Point? = nil
+    weak var point1: Point? = nil
+    
+    init(_ p0: Point, _ p1: Point) {
+        point0 = p0
+        point1 = p1
+    }
 }

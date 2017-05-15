@@ -27,7 +27,7 @@ final class TwoCircleMediator: Figure, ParentComparable {
         circle0 = c0
         circle1 = c1
         c0.findCommonPoints(with: c1) { existing.add($0) }
-        appendToContext()
+        setChildOf([cl0, cl1])
     }
     
     func recalculate() -> TwoRawPointResult {
@@ -51,8 +51,7 @@ final class TwoCircleIntersection: Figure, Point {
         case second
     }
     
-    var appearance = PointAppearance()
-    var storage = FigureStorage<RawPoint>()
+    var pointStorage = PointStorage()
     
     weak var mediator: TwoCircleMediator?
     var index: Index
@@ -62,7 +61,7 @@ final class TwoCircleIntersection: Figure, Point {
         self.index = index
         mediator.circle0?.intersectionPoints.append(self)
         mediator.circle1?.intersectionPoints.append(self)
-        appendToContext()
+        setChildOf([mediator])
     }
     
     func compare(with other: TwoCircleIntersection) -> Bool {

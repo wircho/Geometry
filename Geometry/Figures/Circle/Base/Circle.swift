@@ -17,19 +17,37 @@ extension Circle {
     func drawIn(_ rect: CGRect) {
         guard let value = result.value else { return }
         color.setStroke()
-        UIBezierPath(circleWithCenter: value.center, radius: value.radius, lineWidth: lineWidth).stroke()
+        UIBezierPath(circle: value, lineWidth: lineWidth).stroke()
     }
     
     func at(_ pos: Float) -> RawPoint? {
-        guard let radius = result.value?.radius else { return nil }
-        return Angle(value: pos).vector(radius: radius)
+        guard let circle = result.value else { return nil }
+        return  circle.center + Angle(value: pos).vector(radius: circle.radius)
     }
     
     var cedula: Cedula {
         return circleStorage.cedula
     }
+    
+    var appearance: StrokeAppearance {
+        get { return circleStorage.appearance }
+        set { circleStorage.appearance = newValue }
+    }
+    
+    var storage: FigureStorage<RawCircle> {
+        get { return circleStorage.figureStorage }
+        set { circleStorage.figureStorage = newValue }
+    }
+    
+    var oneDimensionalStorage: OneDimensionalStorage {
+        get { return circleStorage.oneDimensionalStorage }
+        set { circleStorage.oneDimensionalStorage = newValue }
+    }
 }
 
 struct CircleStorage {
     let cedula = Cedula()
+    var appearance = StrokeAppearance()
+    var figureStorage = FigureStorage<RawCircle>()
+    var oneDimensionalStorage = OneDimensionalStorage()
 }

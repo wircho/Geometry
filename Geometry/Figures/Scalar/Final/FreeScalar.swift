@@ -12,8 +12,8 @@ final class FreeScalar: Figure, Scalar, FreeValued {
     var storage = FigureStorage<Float>()
     var _position: Float
     
-    init(at initial: Float) {
+    init(at initial: Float, `in` context: FigureContext) {
         _position = initial
-        appendToContext()
+        context.append(self)
     }
 }

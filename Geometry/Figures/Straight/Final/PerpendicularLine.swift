@@ -10,19 +10,8 @@ import CoreGraphics
 import Result
 
 final class PerpendicularLine: Figure, DirectedLine {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawRuler>()
-    var rulerStorage = RulerStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
-    
-    weak var point: Point?
-    weak var ruler: Ruler?
-    
-    init(_ point: Point, _ ruler: Ruler) {
-        self.point = point
-        self.ruler = ruler
-        appendToContext()
-    }
+    var directedLineStorage: DirectedLineStorage
+    init (_ s: DirectedLineStorage) { directedLineStorage = s }
     
     func calculateArrowDirection() -> RawPointResult {
         return ruler?.result.arrow.vector.orthogonal ?? .none

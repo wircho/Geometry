@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol OneDimensional: class {
+protocol OneDimensional: FigureBase {
 //    func intersectionPointsNotWith(other: Transmitter?) -> [Point]
     var oneDimensionalStorage: OneDimensionalStorage { get set }
     var touchingDefiningPoints: [Point] { get }

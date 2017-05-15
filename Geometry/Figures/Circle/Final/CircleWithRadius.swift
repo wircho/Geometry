@@ -9,10 +9,7 @@ import CoreGraphics
 import Result
 
 final class CircleWithRadius: Figure, Circle, ParentComparable {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawCircle>()
     var circleStorage = CircleStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
     
     weak var center: Point?
     weak var radius: Scalar?
@@ -23,7 +20,7 @@ final class CircleWithRadius: Figure, Circle, ParentComparable {
     init(_ center: Point, _ radius: Scalar) {
         self.center = center
         self.radius = radius
-        appendToContext()
+        setChildOf([center, radius])
     }
     
     var touchingDefiningPoints: [Point] {

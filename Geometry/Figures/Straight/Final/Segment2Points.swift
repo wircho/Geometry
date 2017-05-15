@@ -9,24 +9,13 @@ import CoreGraphics
 import Result
 
 final class Segment2Points: Figure, Ruler2Points, Segment {
-    var appearance = StrokeAppearance()
-    var storage = FigureStorage<RawRuler>()
-    var rulerStorage = RulerStorage()
-    var oneDimensionalStorage = OneDimensionalStorage()
-    
-    weak var point0: Point?
-    weak var point1: Point?
+    var ruler2PointsStorage: Ruler2PointsStorage
+    init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     
     let parentOrder = ParentOrder.unsorted
     
-    init(_ p0: Point, _ p1: Point) {
-        point0 = p0
-        point1 = p1
-        appendToContext()
-    }
-    
-    func equals(_ other: Segment2Points) -> Bool {
-        return ObjectSet<AnyObject>.compareWholeSets([point0, point1], [other.point0, other.point1])
+    func at(_ pos: Float) -> RawPoint? {
+        return result.value?.arrow.at(min(max(pos,0),1))
     }
 }
 
