@@ -8,16 +8,16 @@
 import CoreGraphics
 import Result
 
-protocol Circle: FigureBase, OneDimensional, StrokeAppears, Drawable, Touchable {
+protocol Circle: FigureBase, OneDimensional, StrokeAppears, Touchable {
     var result: RawCircleResult { get }
     var circleStorage: CircleStorage { get set }
 }
 
 extension Circle {
-    func drawIn(_ rect: CGRect) {
+    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
-        color.setStroke()
-        UIBezierPath(circle: value, lineWidth: lineWidth).stroke()
+        appearance.color.setStroke()
+        UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()
     }
     
     func at(_ pos: Float) -> RawPointResult {
@@ -27,7 +27,7 @@ extension Circle {
         }
     }
     
-    func closest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> FloatResult {
         return result.map {
             circle in
             return (point - circle.center).angle.value

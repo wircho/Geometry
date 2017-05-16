@@ -18,7 +18,7 @@ final class Line2Points: Figure, Ruler2Points, Line {
         return result.map { $0.arrow.at(pos) }
     }
     
-    func closest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> FloatResult {
         return result.arrow.project(point)
     }
 }

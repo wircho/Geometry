@@ -13,7 +13,7 @@ protocol OneDimensional: FigureBase {
     var oneDimensionalStorage: OneDimensionalStorage { get set }
     var touchingDefiningPoints: [Point] { get }
     func at(_ pos: Float) -> RawPointResult
-    func closest(from point: RawPoint) -> FloatResult
+    func nearest(from point: RawPoint) -> FloatResult
 }
 
 struct OneDimensionalStorage {

@@ -24,7 +24,7 @@ final class Ray2Points: Figure, Ruler2Points, Ray {
         }
     }
     
-    func closest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> FloatResult {
         return result.arrow.projectIso(point).map { max($0, 0) }
     }
 }

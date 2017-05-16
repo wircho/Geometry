@@ -18,8 +18,7 @@ final class Segment2Points: Figure, Ruler2Points, Segment {
         return result.map { $0.arrow.at(min(max(pos,0),1)) }
     }
     
-    func closest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> FloatResult {
         return result.arrow.project(point).map { min(max($0, 0), 1) }
     }
 }
-

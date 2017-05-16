@@ -44,7 +44,6 @@
 		AEE3ABEE1EC6D4690071D7D9 /* TwoCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */; };
 		AEE3ABEF1EC6D4690071D7D9 /* TwoRulers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */; };
 		AEE3ABF01EC6D4690071D7D9 /* SlidingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */; };
-		AEE3ABF21EC6D4FF0071D7D9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABF11EC6D4FF0071D7D9 /* Appearance.swift */; };
 		AEE3AC0D1EC753DF0071D7D9 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC081EC753DF0071D7D9 /* Circle.swift */; };
 		AEE3AC0E1EC753DF0071D7D9 /* CircleToPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0A1EC753DF0071D7D9 /* CircleToPoint.swift */; };
 		AEE3AC0F1EC753DF0071D7D9 /* CircleWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */; };
@@ -62,6 +61,7 @@
 		AEE3ACAA1ECA55300071D7D9 /* PerpendicularLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA21ECA55300071D7D9 /* PerpendicularLine.swift */; };
 		AEE3ACAB1ECA55300071D7D9 /* Ray2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */; };
 		AEE3ACAC1ECA55300071D7D9 /* Segment2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */; };
+		AEE3ACAE1ECA9F340071D7D9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */; };
 		AEF1FF8A1EC4FA8C003A902D /* AngleMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1FF891EC4FA8C003A902D /* AngleMath.swift */; };
 /* End PBXBuildFile section */
 
@@ -119,7 +119,6 @@
 		AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoCircles.swift; sourceTree = "<group>"; };
 		AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoRulers.swift; sourceTree = "<group>"; };
 		AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlidingPoint.swift; sourceTree = "<group>"; };
-		AEE3ABF11EC6D4FF0071D7D9 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		AEE3AC081EC753DF0071D7D9 /* Circle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circle.swift; sourceTree = "<group>"; };
 		AEE3AC0A1EC753DF0071D7D9 /* CircleToPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleToPoint.swift; sourceTree = "<group>"; };
 		AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleWithRadius.swift; sourceTree = "<group>"; };
@@ -137,6 +136,7 @@
 		AEE3ACA21ECA55300071D7D9 /* PerpendicularLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PerpendicularLine.swift; sourceTree = "<group>"; };
 		AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray2Points.swift; sourceTree = "<group>"; };
 		AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment2Points.swift; sourceTree = "<group>"; };
+		AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		AEF1FF891EC4FA8C003A902D /* AngleMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleMath.swift; sourceTree = "<group>"; };
 		B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +178,7 @@
 			children = (
 				AE4ECFD11EC36C340053AFEA /* CGExtensions.swift */,
 				AE4ECFCF1EC2BFB60053AFEA /* Drawable.swift */,
+				AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -302,7 +303,6 @@
 		AEE3ABD51EC6D2910071D7D9 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				AEE3ABF11EC6D4FF0071D7D9 /* Appearance.swift */,
 				AEE3AC981ECA37950071D7D9 /* Touchable.swift */,
 				AEE3ABD61EC6D2910071D7D9 /* FreeValue.swift */,
 				AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */,
@@ -666,6 +666,7 @@
 				AE4ECFC71EC23B680053AFEA /* ObjectSet.swift in Sources */,
 				AEE3ACAC1ECA55300071D7D9 /* Segment2Points.swift in Sources */,
 				AEE3ACA81ECA55300071D7D9 /* Line2Points.swift in Sources */,
+				AEE3ACAE1ECA9F340071D7D9 /* Appearance.swift in Sources */,
 				AEA287A61EBCCC04002E425F /* Getter.swift in Sources */,
 				AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */,
 				AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */,
@@ -706,7 +707,6 @@
 				AEE3ACAA1ECA55300071D7D9 /* PerpendicularLine.swift in Sources */,
 				AEE3AC0F1EC753DF0071D7D9 /* CircleWithRadius.swift in Sources */,
 				AEE3ABD91EC6D2910071D7D9 /* OneDimensional.swift in Sources */,
-				AEE3ABF21EC6D4FF0071D7D9 /* Appearance.swift in Sources */,
 				AEE3ACA61ECA55300071D7D9 /* Ruler.swift in Sources */,
 				AE4ED21A1EC39F5F0053AFEA /* FigureContext.swift in Sources */,
 				AEA287A21EBCCC04002E425F /* RawTypes.swift in Sources */,

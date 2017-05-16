@@ -9,16 +9,16 @@
 import CoreGraphics
 import Result
 
-protocol Arc: FigureBase, OneDimensional, StrokeAppears, Drawable, Touchable {
+protocol Arc: FigureBase, OneDimensional, StrokeAppears, Touchable {
     var result: RawArcResult { get }
     var arcStorage: ArcStorage { get set }
 }
 
 extension Arc {
-    func drawIn(_ rect: CGRect) {
+    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
-        color.setStroke()
-        UIBezierPath(arc: value, lineWidth: lineWidth).stroke()
+        appearance.color.setStroke()
+        UIBezierPath(arc: value, lineWidth: appearance.lineWidth).stroke()
     }
     
     func at(_ pos: Float) -> RawPointResult {
@@ -35,7 +35,7 @@ extension Arc {
         }
     }
     
-    func closest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             arc in
             var angles = arc.angleValues
@@ -75,7 +75,7 @@ extension Arc {
     func distanceFrom(point: RawPoint) -> FloatResult {
         return result.flatMap {
             arc in
-            closest(from: point).map {
+            nearest(from: point).map {
                 c in
                 let angle = arc.angles.v0.value + (arc.angles.v1.value - arc.angles.v0.value) * (arc.fromFirst ? c : (1 - c))
                 return distance(point, arc.center + Angle(value: angle).vector(radius: arc.radius))

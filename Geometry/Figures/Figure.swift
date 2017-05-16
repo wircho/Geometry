@@ -11,6 +11,7 @@ import Result
 
 protocol FigureBase: Transmitter {
     var context: FigureContext? { get set }
+    var selected: Bool { get set }
 }
 
 struct FigureStorage<Value> {
@@ -20,6 +21,13 @@ struct FigureStorage<Value> {
     var _needsRecalculation = true {
         didSet {
             if _needsRecalculation && !oldValue {
+                context?.setFiguresWillRecalculate()
+            }
+        }
+    }
+    var selected = false {
+        didSet {
+            if selected != oldValue {
                 context?.setFiguresWillRecalculate()
             }
         }
@@ -51,6 +59,11 @@ extension Figure {
     var context: FigureContext? {
         get { return storage.context }
         set { storage.context = newValue }
+    }
+    
+    var selected: Bool {
+        get { return storage.selected }
+        set { storage.selected = newValue }
     }
     
     func setChildOf(_ array: [FigureBase]) {

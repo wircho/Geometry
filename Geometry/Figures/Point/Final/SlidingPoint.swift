@@ -25,4 +25,9 @@ final class SlidingPoint: Figure, Point, FreeValued {
     func recalculate() -> RawPointResult {
         return floor?.at(position) ?? .none
     }
+    
+    func nearestPosition(from point: RawPoint) -> Result<CGFloat, MathError> {
+        guard let floor = floor else { return .none }
+        return floor.nearest(from: point)
+    }
 }

@@ -8,16 +8,16 @@
 import CoreGraphics
 import Result
 
-protocol Point: FigureBase, PointAppears, Drawable, Touchable {
+protocol Point: FigureBase, PointAppears, Touchable {
     var result: RawPointResult { get }
     var pointStorage: PointStorage { get set }
 }
 
 extension Point {
-    func drawIn(_ rect: CGRect) {
+    func drawIn(_ rect: CGRect, appearance: PointAppearance) {
         guard let center = result.value else { return }
-        color.setFill()
-        UIBezierPath(circle: RawCircle(center: center, radius: radius)).fill()
+        appearance.color.setFill()
+        UIBezierPath(circle: RawCircle(center: center, radius: appearance.radius)).fill()
     }
     
     var cedula: Cedula { return pointStorage.cedula }

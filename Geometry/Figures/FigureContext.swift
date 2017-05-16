@@ -15,6 +15,11 @@ class FigureContext: Drawable {
     
     func drawIn(_ rect: CGRect) {
         for figure in figures {
+            if figure.selected {
+                (figure as? SelectionDrawable)?.drawSelectionIn(rect)
+            }
+        }
+        for figure in figures {
             (figure as? Drawable)?.drawIn(rect)
         }
     }

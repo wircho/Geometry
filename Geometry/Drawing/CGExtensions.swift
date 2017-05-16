@@ -38,3 +38,39 @@ extension UIBezierPath {
         self.lineCapStyle = .round
     }
 }
+
+private var _selectionImage: UIImage? = nil
+extension UIImage {
+    static var selection: UIImage {
+        if let sel = _selectionImage {
+            return sel
+        } else {
+            let squareWidth: CGFloat = 2
+            let imageWidth = 2 * squareWidth
+            let imageSize = CGSize(width: imageWidth, height: imageWidth)
+            UIGraphicsBeginImageContextWithOptions(imageSize, true, 1)
+            UIColor.white.setFill()
+            UIRectFill(CGRect(x: 0, y: 0, width: imageWidth, height: imageWidth))
+            UIColor.black.setFill()
+            UIRectFill(CGRect(x: 0, y: 0, width: squareWidth, height: squareWidth))
+            UIRectFill(CGRect(x: squareWidth, y: squareWidth, width: squareWidth, height: squareWidth))
+            let sel = UIGraphicsGetImageFromCurrentImageContext()!
+            UIGraphicsEndImageContext()
+            _selectionImage = sel
+            return sel
+        }
+    }
+}
+
+private var _selectionColor: UIColor? = nil
+extension UIColor {
+    static var selection: UIColor {
+        if let sel = _selectionColor {
+            return sel
+        } else {
+            let sel = UIColor(patternImage: .selection)
+            _selectionColor = sel
+            return sel
+        }
+    }
+}

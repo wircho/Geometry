@@ -12,7 +12,7 @@ import Result
 
 private let one = Result<Float, MathError>.success(1)
 
-protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Drawable, Touchable {
+protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Touchable {
     var result: RawRulerResult { get }
     var rulerStorage: RulerStorage { get set }
     func calculateArrow() -> ArrowResult
@@ -25,11 +25,11 @@ extension Ruler {
         return RawRulerResult(kind: kind, arrow: arrow)
     }
     
-    func drawIn(_ rect: CGRect) {
+    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
         guard let ruler = result.value, let exits:Two<RawPoint?> = intersections(ruler, rect).value else { return }
         let (point0, point1) = (exits.v0 ?? ruler.arrow.points.0,  exits.v1 ?? ruler.arrow.points.1)
-        color.setStroke()
-        UIBezierPath(segment: point0, point1, lineWidth: lineWidth).stroke()
+        appearance.color.setStroke()
+        UIBezierPath(segment: point0, point1, lineWidth: appearance.lineWidth).stroke()
     }
     
     var appearance: StrokeAppearance {

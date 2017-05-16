@@ -9,9 +9,14 @@
 import CoreGraphics
 import Result
 
-protocol FreeValued: class {
+protocol FreeValuedBase: class {
+    func placeNear(point: RawPoint)
+}
+
+protocol FreeValued: FreeValuedBase {
     associatedtype FreeValue
     var _position: FreeValue { get set }
+    func nearestPosition(from point: RawPoint) -> Result<FreeValue, MathError>
 }
 
 extension FreeValued where Self: Recalculator, Self: Transmitter {
@@ -23,6 +28,12 @@ extension FreeValued where Self: Recalculator, Self: Transmitter {
             _position = newValue
             needsRecalculation = true
         }
+    }
+    func placeNear(point: RawPoint) {
+        guard let position = nearestPosition(from: point).value else {
+            return
+        }
+        self.position = position
     }
 }
 

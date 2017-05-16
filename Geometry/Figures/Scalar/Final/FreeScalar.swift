@@ -16,4 +16,8 @@ final class FreeScalar: Figure, Scalar, FreeValued {
         _position = initial
         context.append(self)
     }
+    
+    func nearestPosition(from point: RawPoint) -> Result<CGFloat, MathError> {
+        return .none
+    }
 }

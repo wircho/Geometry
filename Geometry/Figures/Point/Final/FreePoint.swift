@@ -20,4 +20,8 @@ final class FreePoint: Figure, Point, FreeValued {
     convenience init(x: Float, y: Float, `in` context: FigureContext) {
         self.init(at: RawPoint(x: x, y: y), in: context)
     }
+    
+    func nearestPosition(from point: RawPoint) -> Result<CGPoint, MathError> {
+        return .success(point)
+    }
 }

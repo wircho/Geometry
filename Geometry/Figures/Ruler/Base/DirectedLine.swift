@@ -34,7 +34,7 @@ extension DirectedLine {
         }
     }
     
-    func closest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> FloatResult {
         return result.arrow.projectIso(point)
     }
     
