@@ -32,13 +32,11 @@ extension Point {
         set { pointStorage.figureStorage = newValue }
     }
     
-    func distanceFrom(point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> FloatResult {
         return result.map { distance($0, point) }
     }
     
-    var touchRadius: Float { return 50 }
-    
-    var touchPriority: Int { return 1000 }
+    var touchPriority: Float { return 1000 }
 }
 
 struct PointStorage {

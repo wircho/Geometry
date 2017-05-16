@@ -53,16 +53,14 @@ extension Circle {
         set { circleStorage.oneDimensionalStorage = newValue }
     }
     
-    func distanceFrom(point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> FloatResult {
         return result.map {
             circle in
             return abs(circle.radius - distance(point, circle.center))
         }
     }
     
-    var touchRadius: Float { return 40 }
-    
-    var touchPriority: Int { return 901 }
+    var touchPriority: Float { return 600 }
 }
 
 struct CircleStorage {

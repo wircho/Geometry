@@ -9,8 +9,8 @@
 import CoreGraphics
 import Result
 
+
 protocol Touchable: FigureBase {
-    func distanceFrom(point: RawPoint) -> FloatResult
-    var touchRadius: Float { get }
-    var touchPriority: Int { get }
+    func gap(from point: RawPoint) -> FloatResult
+    var touchPriority: Float { get }
 }

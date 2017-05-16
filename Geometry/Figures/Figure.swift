@@ -17,7 +17,13 @@ protocol FigureBase: Transmitter {
 struct FigureStorage<Value> {
     weak var context: FigureContext?
     var receivers: [Getter<Transmitter?>] = []
-    var _result: Result<Value, MathError> = .failure(.none)
+    var _result: Result<Value, MathError> = .failure(.none) {
+        didSet {
+            if case .success = oldValue, case .failure = _result, selected {
+                selected = false
+            }
+        }
+    }
     var _needsRecalculation = true {
         didSet {
             if _needsRecalculation && !oldValue {

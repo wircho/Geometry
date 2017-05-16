@@ -83,27 +83,56 @@ private func createFigureContext() -> FigureContext {
     }
     let arc0 = Circumarc(p0, p2, p1)
     
-    for i in 0 ... 100 {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (1 / 60.0) * Double(i)) {
-            p2.position.y -= 1
-            sl0.position -= 0.1
-        }
-    }
+//    for i in 0 ... 100 {
+//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + (1 / 60.0) * Double(i)) {
+//            p2.position.y -= 1
+//            sl0.position -= 0.1
+//        }
+//    }
     return ctx
 }
 
-class ContextView: UIView, FigureContextDelegate {
+class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
 
     var context = createFigureContext()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        context.delegate = self
+        setUp()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setUp()
+    }
+    
+    func setUp() {
         context.delegate = self
+        let t = UITapGestureRecognizer(target: self, action: #selector(tapped))
+        t.delegate = self
+        let p = UIPanGestureRecognizer(target: self, action: #selector(panned))
+        p.delegate = self
+        p.maximumNumberOfTouches = 1
+        self.addGestureRecognizer(t)
+        self.addGestureRecognizer(p)
+    }
+    
+    func tapped(t: UITapGestureRecognizer) {
+        let point = t.location(in: self)
+        context.tap(point, scale: 1)
+    }
+    
+    func panned(p: UIPanGestureRecognizer) {
+        switch p.state {
+        case .began:
+            let point = p.location(in: self)
+            context.beginPan(point, scale: 1)
+        case .changed:
+            let point = p.location(in: self)
+            context.pan(point, scale: 1)
+        default:
+            context.endPan()
+        }
     }
     
     func contextFiguresWillRecalculate(_: FigureContext) {

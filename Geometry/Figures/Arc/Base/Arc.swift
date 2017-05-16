@@ -72,7 +72,7 @@ extension Arc {
         set { arcStorage.oneDimensionalStorage = newValue }
     }
     
-    func distanceFrom(point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             arc in
             nearest(from: point).map {
@@ -83,9 +83,7 @@ extension Arc {
         }
     }
     
-    var touchRadius: Float { return 40 }
-    
-    var touchPriority: Int { return 901 }
+    var touchPriority: Float { return 850 }
 }
 
 struct ArcStorage {

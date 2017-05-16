@@ -47,8 +47,6 @@ extension Ruler {
         set { rulerStorage.oneDimensionalStorage = newValue }
     }
     
-    var touchRadius: Float { return 40 }
-    
     var normReciprocal: FloatResult {
         if let nRec = rulerStorage._normReciprocal {
             return nRec
@@ -78,7 +76,7 @@ protocol Ray: Ruler { }
 extension Line {
     var kind: RawRuler.Kind { return .line }
     
-    func distanceFrom(point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> FloatResult {
         return result.flatMap { ruler in
             ruler.arrow.project(point).map { pos in
                 distance(point, ruler.arrow.at(pos))
@@ -86,13 +84,13 @@ extension Line {
         }
     }
     
-    var touchPriority: Int { return 900 }
+    var touchPriority: Float { return 700 }
 }
 
 extension Ray {
     var kind: RawRuler.Kind { return .ray }
     
-    func distanceFrom(point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point).map {
@@ -106,13 +104,13 @@ extension Ray {
         }
     }
     
-    var touchPriority: Int { return 901 }
+    var touchPriority: Float { return 800 }
 }
 
 extension Segment {
     var kind: RawRuler.Kind { return .segment }
     
-    func distanceFrom(point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point)
@@ -130,7 +128,7 @@ extension Segment {
         }
     }
     
-    var touchPriority: Int { return 902 }
+    var touchPriority: Float { return 900 }
 }
 
 // TODO: - Angle bisector, Perpendicular Bisector
