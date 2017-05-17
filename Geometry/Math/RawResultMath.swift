@@ -44,8 +44,16 @@ func +(lhs: RawPointResult, rhs: RawPointResult) -> RawPointResult {
     return RawPointResult(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
 
+func +=(lhs: inout RawPointResult, rhs: RawPointResult) {
+    lhs = lhs + rhs
+}
+
 func -(lhs: RawPointResult, rhs: RawPointResult) -> RawPointResult {
     return RawPointResult(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+}
+
+func -=(lhs: inout RawPointResult, rhs: RawPointResult) {
+    lhs = lhs - rhs
 }
 
 prefix func -(point: RawPointResult) -> RawPointResult {

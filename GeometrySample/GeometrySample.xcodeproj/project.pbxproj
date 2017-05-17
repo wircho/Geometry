@@ -62,6 +62,7 @@
 		AEE3ACAB1ECA55300071D7D9 /* Ray2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */; };
 		AEE3ACAC1ECA55300071D7D9 /* Segment2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */; };
 		AEE3ACAE1ECA9F340071D7D9 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */; };
+		AEE3ACB21ECC02610071D7D9 /* Baricenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */; };
 		AEF1FF8A1EC4FA8C003A902D /* AngleMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEF1FF891EC4FA8C003A902D /* AngleMath.swift */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +138,7 @@
 		AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ray2Points.swift; sourceTree = "<group>"; };
 		AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segment2Points.swift; sourceTree = "<group>"; };
 		AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Baricenter.swift; sourceTree = "<group>"; };
 		AEF1FF891EC4FA8C003A902D /* AngleMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AngleMath.swift; sourceTree = "<group>"; };
 		B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GeometrySample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -359,6 +361,7 @@
 			children = (
 				AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */,
 				AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */,
+				AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */,
 				AEE3ABE61EC6D4690071D7D9 /* Intersections */,
 			);
 			path = Final;
@@ -683,6 +686,7 @@
 				AEE3ACAB1ECA55300071D7D9 /* Ray2Points.swift in Sources */,
 				AEE3AC101EC753DF0071D7D9 /* Circumcircle.swift in Sources */,
 				AEA287A31EBCCC04002E425F /* Transmitter.swift in Sources */,
+				AEE3ACB21ECC02610071D7D9 /* Baricenter.swift in Sources */,
 				AEE3ABE01EC6D2BF0071D7D9 /* FreeScalar.swift in Sources */,
 				AEE3AC0D1EC753DF0071D7D9 /* Circle.swift in Sources */,
 				AEE3AC0E1EC753DF0071D7D9 /* CircleToPoint.swift in Sources */,

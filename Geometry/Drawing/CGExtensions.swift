@@ -48,11 +48,10 @@ extension UIImage {
             let squareWidth: CGFloat = 2
             let imageWidth = 2 * squareWidth
             let imageSize = CGSize(width: imageWidth, height: imageWidth)
-            UIGraphicsBeginImageContextWithOptions(imageSize, true, 1)
-            UIColor.white.setFill()
-            UIRectFill(CGRect(x: 0, y: 0, width: imageWidth, height: imageWidth))
-            UIColor.black.setFill()
+            UIGraphicsBeginImageContextWithOptions(imageSize, false, 1)
+            UIColor.black.withAlphaComponent(0.5).setFill()
             UIRectFill(CGRect(x: 0, y: 0, width: squareWidth, height: squareWidth))
+            UIColor.white.withAlphaComponent(0.5).setFill()
             UIRectFill(CGRect(x: squareWidth, y: squareWidth, width: squareWidth, height: squareWidth))
             let sel = UIGraphicsGetImageFromCurrentImageContext()!
             UIGraphicsEndImageContext()
