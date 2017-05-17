@@ -59,8 +59,9 @@ class FigureContext: Drawable {
     }
     
     private let sameError: Float = 0.01
-    private let oneDimensionalToPointGap: Float = 40
-    private let maxDistance: Float = 60
+    private let oneDimensionalToPointGap: Float = 18
+    private let maxDistance: Float = 25
+    let maxSolidDistance: Float = 22
     
     private func touch(this: (figure: Touchable, gap: Float), over other: (figure: Touchable, gap: Float)) -> TouchOver {
         switch (this.figure, other.figure) {

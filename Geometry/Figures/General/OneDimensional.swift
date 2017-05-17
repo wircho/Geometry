@@ -14,6 +14,7 @@ protocol OneDimensional: FigureBase {
     var touchingDefiningPoints: [Point] { get }
     func at(_ pos: Float) -> RawPointResult
     func nearest(from point: RawPoint) -> FloatResult
+    func gapToCenter(from point: RawPoint) -> FloatResult
 }
 
 struct OneDimensionalStorage {
@@ -57,6 +58,16 @@ extension OneDimensional {
             if otherSet.contains(p) {
                 guard closure(p) else { break }
             }
+        }
+    }
+}
+
+extension OneDimensional where Self: StrokeAppears, Self: FigureBase {
+    func gap(from point: RawPoint) -> FloatResult {
+        return gapToCenter(from: point).map {
+            gap in
+            guard let context = context, gap < appearance.lineWidth / 2 else { return gap }
+            return min(gap, context.maxSolidDistance)
         }
     }
 }

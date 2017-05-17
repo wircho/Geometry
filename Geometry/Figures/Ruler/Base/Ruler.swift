@@ -76,7 +76,7 @@ protocol Ray: Ruler { }
 extension Line {
     var kind: RawRuler.Kind { return .line }
     
-    func gap(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> FloatResult {
         return result.flatMap { ruler in
             ruler.arrow.project(point).map { pos in
                 distance(point, ruler.arrow.at(pos))
@@ -90,7 +90,7 @@ extension Line {
 extension Ray {
     var kind: RawRuler.Kind { return .ray }
     
-    func gap(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point).map {
@@ -110,7 +110,7 @@ extension Ray {
 extension Segment {
     var kind: RawRuler.Kind { return .segment }
     
-    func gap(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point)

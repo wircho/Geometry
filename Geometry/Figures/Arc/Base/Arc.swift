@@ -72,13 +72,16 @@ extension Arc {
         set { arcStorage.oneDimensionalStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> FloatResult {
         return result.flatMap {
             arc in
             nearest(from: point).map {
                 c in
-                let angle = arc.angles.v0.value + (arc.angles.v1.value - arc.angles.v0.value) * (arc.fromFirst ? c : (1 - c))
-                return distance(point, arc.center + Angle(value: angle).vector(radius: arc.radius))
+                let angleValues = arc.angleValues
+                let angle = angleValues.v0 + (angleValues.v1 - angleValues.v0) * (arc.fromFirst ? c : (1 - c))
+                let d = distance(point, arc.center + Angle(value: angle).vector(radius: arc.radius))
+                print(c)
+                return d
             }
         }
     }

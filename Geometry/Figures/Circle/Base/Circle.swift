@@ -53,7 +53,7 @@ extension Circle {
         set { circleStorage.oneDimensionalStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> FloatResult {
         return result.map {
             circle in
             return abs(circle.radius - distance(point, circle.center))
