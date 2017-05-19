@@ -9,10 +9,10 @@ import CoreGraphics
 import Result
 
 final class FreeScalar: Figure, Scalar, FreeValued {
-    var storage = FigureStorage<Float>()
-    var _position: Float
+    var storage = FigureStorage<CGFloat>()
+    var _position: CGFloat
     
-    init(at initial: Float, `in` context: FigureContext) {
+    init(at initial: CGFloat, `in` context: FigureContext) {
         _position = initial
         context.append(self)
     }

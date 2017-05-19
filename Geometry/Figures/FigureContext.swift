@@ -58,12 +58,12 @@ class FigureContext: Drawable {
         case both
     }
     
-    private let sameError: Float = 0.01
-    private let oneDimensionalToPointGap: Float = 18
-    private let maxDistance: Float = 25
-    let maxSolidDistance: Float = 22
+    private let sameError: CGFloat = 0.01
+    private let oneDimensionalToPointGap: CGFloat = 18
+    private let maxDistance: CGFloat = 25
+    let maxSolidDistance: CGFloat = 22
     
-    private func touch(this: (figure: Touchable, gap: Float), over other: (figure: Touchable, gap: Float)) -> TouchOver {
+    private func touch(this: (figure: Touchable, gap: CGFloat), over other: (figure: Touchable, gap: CGFloat)) -> TouchOver {
         switch (this.figure, other.figure) {
         case (is Point, is Point):
             if this.gap < other.gap + sameError {
@@ -104,8 +104,8 @@ class FigureContext: Drawable {
         }
     }
     
-    func touchables(near point: CGPoint, scale: Float, filter:((Touchable) -> Bool)? = nil) -> [Touchable] {
-        let touchables: [(figure: Touchable, gap: Float)] = figures.flatMap {
+    func touchables(near point: CGPoint, scale: CGFloat, filter:((Touchable) -> Bool)? = nil) -> [Touchable] {
+        let touchables: [(figure: Touchable, gap: CGFloat)] = figures.flatMap {
             figure in
             guard let touchable = figure as? Touchable, let gap = touchable.gap(from: point).value else {
                 return nil
@@ -116,7 +116,7 @@ class FigureContext: Drawable {
             return (figure: touchable, gap: gap * scale)
         }
         
-        var current: [(figure: Touchable, gap: Float)] = []
+        var current: [(figure: Touchable, gap: CGFloat)] = []
         
         for this in touchables {
             guard let other = current.first else {
@@ -141,7 +141,7 @@ class FigureContext: Drawable {
         return current.map { $0.figure }
     }
     
-    func tap(_ point: CGPoint, scale: Float) {
+    func tap(_ point: CGPoint, scale: CGFloat) {
         let touchables = self.touchables(near: point, scale: scale)
         
         guard let first = touchables.first else {
@@ -159,12 +159,12 @@ class FigureContext: Drawable {
     
     var panningFigure: FreeValuedBase? = nil
     
-    func beginPan(_ point: CGPoint, scale: Float) {
+    func beginPan(_ point: CGPoint, scale: CGFloat) {
         let touchables = self.touchables(near: point, scale: scale) { $0.selected && $0 is FreeValuedBase }
         panningFigure = touchables.first as? FreeValuedBase
     }
     
-    func pan(_ point: CGPoint, scale: Float) {
+    func pan(_ point: CGPoint, scale: CGFloat) {
         guard let figure = panningFigure else {
             return
         }

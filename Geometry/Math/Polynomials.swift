@@ -9,10 +9,10 @@
 import CoreGraphics
 
 struct Complex: CustomStringConvertible {
-    let re: Float
-    let im: Float?
+    let re: CGFloat
+    let im: CGFloat?
     
-    init(_ re: Float, _ im: Float? = nil) {
+    init(_ re: CGFloat, _ im: CGFloat? = nil) {
         self.re = re
         guard let im = im else {
             self.im = nil
@@ -21,7 +21,7 @@ struct Complex: CustomStringConvertible {
         self.im = im.isZero ? nil : im
     }
     
-    init(norm: Float, angle: Float) {
+    init(norm: CGFloat, angle: CGFloat) {
         re = norm * cos(angle)
         im = norm * sin(angle)
     }
@@ -31,11 +31,11 @@ struct Complex: CustomStringConvertible {
         return im.isZero
     }
     
-    static func +(lhs: Complex, rhs: Float) -> Complex {
+    static func +(lhs: Complex, rhs: CGFloat) -> Complex {
         return Complex(lhs.re + rhs, lhs.im)
     }
     
-    static func +(lhs: Float, rhs: Complex) -> Complex {
+    static func +(lhs: CGFloat, rhs: Complex) -> Complex {
         return rhs + lhs
     }
     
@@ -47,7 +47,7 @@ struct Complex: CustomStringConvertible {
         return Complex(lhs.re - rhs.re, lhs.im.flatMap { l in rhs.im.map { r in l - r } })
     }
     
-    static func -(lhs: Complex, rhs: Float) -> Complex {
+    static func -(lhs: Complex, rhs: CGFloat) -> Complex {
         return Complex(lhs.re - rhs, lhs.im)
     }
     
@@ -55,7 +55,7 @@ struct Complex: CustomStringConvertible {
         return Complex(-v.re, v.im.map { -$0 })
     }
     
-    static func *(lhs: Float, rhs: Complex) -> Complex {
+    static func *(lhs: CGFloat, rhs: Complex) -> Complex {
         return Complex(lhs * rhs.re, rhs.im.map { lhs * $0 })
     }
     
@@ -81,11 +81,11 @@ struct Complex: CustomStringConvertible {
         return Complex(sqrt(squareNorm.re))
     }
     
-    static func /(lhs: Complex, rhs: Float) -> Complex {
+    static func /(lhs: Complex, rhs: CGFloat) -> Complex {
         return Complex(lhs.re / rhs, lhs.im.map { $0 / rhs })
     }
     
-    static func /(lhs: Float, rhs: Complex) -> Complex {
+    static func /(lhs: CGFloat, rhs: Complex) -> Complex {
         return Complex(lhs) / rhs
     }
     
@@ -153,9 +153,9 @@ enum Roots<T> {
 }
 
 typealias ComplexRoots = Roots<Complex>
-typealias RealRoots = Roots<Float>
+typealias RealRoots = Roots<CGFloat>
 
-extension Float {
+extension CGFloat {
     var complex: Complex {
         return Complex(self)
     }
@@ -167,11 +167,11 @@ protocol Polynomial: CustomStringConvertible {
     var popped: Lower { get }
     var shifted: Lower { get }
     var derivative: Lower { get }
-    func of(_ x: Float) -> Float
+    func of(_ x: CGFloat) -> CGFloat
 }
 
 protocol Divisible: Polynomial {
-    func dividedBy(_ root: Float) -> Lower
+    func dividedBy(_ root: CGFloat) -> Lower
 }
 
 protocol RealSolvable {
@@ -194,18 +194,18 @@ extension Polynomial {
     }
 }
 
-extension Float: Polynomial, ComplexSolvable {
+extension CGFloat: Polynomial, ComplexSolvable {
     static var degree: UInt { return 0 }
     var roots: ComplexRoots { return isZero ? .all : .some([]) }
-    var popped: Float { return 0 }
-    var shifted: Float { return 0 }
-    var derivative: Float { return 0 }
-    func of(_ x: Float) -> Float { return self }
+    var popped: CGFloat { return 0 }
+    var shifted: CGFloat { return 0 }
+    var derivative: CGFloat { return 0 }
+    func of(_ x: CGFloat) -> CGFloat { return self }
 }
 
 struct LinearPolynomial: Polynomial, ComplexSolvable {
-    let a0: Float
-    let a1: Float
+    let a0: CGFloat
+    let a1: CGFloat
     static let degree: UInt = 1
     var roots: ComplexRoots {
         let value = (-a0) / a1
@@ -214,10 +214,10 @@ struct LinearPolynomial: Polynomial, ComplexSolvable {
         }
         return .some([value.complex])
     }
-    var popped: Float { return a0 }
-    var shifted: Float { return a1 }
-    var derivative: Float { return a1 }
-    func of(_ x: Float) -> Float {
+    var popped: CGFloat { return a0 }
+    var shifted: CGFloat { return a1 }
+    var derivative: CGFloat { return a1 }
+    func of(_ x: CGFloat) -> CGFloat {
         return a0 + a1 * x
     }
     var description: String {
@@ -226,9 +226,9 @@ struct LinearPolynomial: Polynomial, ComplexSolvable {
 }
 
 struct QuadraticPolynomial: Polynomial, ComplexSolvable {
-    let a0: Float
-    let a1: Float
-    let a2: Float
+    let a0: CGFloat
+    let a1: CGFloat
+    let a2: CGFloat
     static let degree: UInt = 2
     var roots: ComplexRoots {
         guard !a2.isZero else {
@@ -253,7 +253,7 @@ struct QuadraticPolynomial: Polynomial, ComplexSolvable {
     var popped: LinearPolynomial { return LinearPolynomial(a0: a0, a1: a1) }
     var shifted: LinearPolynomial { return LinearPolynomial(a0: a1, a1: a2) }
     var derivative: LinearPolynomial { return LinearPolynomial(a0: a1, a1: 2 * a2) }
-    func of(_ x: Float) -> Float {
+    func of(_ x: CGFloat) -> CGFloat {
         return a0 + a1 * x + a2 * x * x
     }
     var description: String {
@@ -261,8 +261,8 @@ struct QuadraticPolynomial: Polynomial, ComplexSolvable {
     }
 }
 
-private let oneThird: Float = 1 / 3
-private func cur(_ v: Float) -> Float {
+private let oneThird: CGFloat = 1 / 3
+private func cur(_ v: CGFloat) -> CGFloat {
     if v >= 0 {
         return pow(v, oneThird)
     } else {
@@ -270,14 +270,14 @@ private func cur(_ v: Float) -> Float {
     }
 }
 
-private let zeta = Complex(-0.5, sqrt(Float(3.0)) * 0.5)
+private let zeta = Complex(-0.5, sqrt(CGFloat(3.0)) * 0.5)
 private let zeta2 = zeta.conjugate
-private let twoPi3 = Float(2 * M_PI / 3)
+private let twoPi3 = CGFloat(2 * M_PI / 3)
 struct CubicPolynomial: Polynomial, ComplexSolvable {
-    let a0: Float
-    let a1: Float
-    let a2: Float
-    let a3: Float
+    let a0: CGFloat
+    let a1: CGFloat
+    let a2: CGFloat
+    let a3: CGFloat
     static let degree: UInt = 3
     var roots: ComplexRoots {
         guard !a3.isZero else {
@@ -324,7 +324,7 @@ struct CubicPolynomial: Polynomial, ComplexSolvable {
     var popped: QuadraticPolynomial { return QuadraticPolynomial(a0: a0, a1: a1, a2: a2) }
     var shifted: QuadraticPolynomial { return QuadraticPolynomial(a0: a1, a1: a2, a2: a3) }
     var derivative: QuadraticPolynomial { return QuadraticPolynomial(a0: a1, a1: 2 * a2, a2: 3 * a3) }
-    func of(_ x: Float) -> Float {
+    func of(_ x: CGFloat) -> CGFloat {
         let x2 = x * x
         return a0 + a1 * x + a2 * x2 + a3 * x2 * x
     }
@@ -334,11 +334,11 @@ struct CubicPolynomial: Polynomial, ComplexSolvable {
 }
 
 struct QuarticPolynomial: Polynomial, ComplexSolvable {
-    let a0: Float
-    let a1: Float
-    let a2: Float
-    let a3: Float
-    let a4: Float
+    let a0: CGFloat
+    let a1: CGFloat
+    let a2: CGFloat
+    let a3: CGFloat
+    let a4: CGFloat
     static let degree: UInt = 4
     var roots: ComplexRoots {
         guard !a4.isZero else {
@@ -425,7 +425,7 @@ struct QuarticPolynomial: Polynomial, ComplexSolvable {
     var popped: CubicPolynomial { return CubicPolynomial(a0: a0, a1: a1, a2: a2, a3: a3) }
     var shifted: CubicPolynomial { return CubicPolynomial(a0: a1, a1: a2, a2: a3, a3: a4) }
     var derivative: CubicPolynomial { return CubicPolynomial(a0: a1, a1: 2 * a2, a2: 3 * a3, a3: 4 * a4) }
-    func of(_ x: Float) -> Float {
+    func of(_ x: CGFloat) -> CGFloat {
         let x2 = x * x
         let x3 = x2 * x
         return a0 + a1 * x + a2 * x2 + a3 * x3 + a4 * x3 * x
@@ -435,15 +435,15 @@ struct QuarticPolynomial: Polynomial, ComplexSolvable {
     }
 }
 
-private let quinticError: Float = 0.01
+private let quinticError: CGFloat = 0.01
 private let twiceQuinticError = 2 * quinticError
 struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
-    let a0: Float
-    let a1: Float
-    let a2: Float
-    let a3: Float
-    let a4: Float
-    let a5: Float
+    let a0: CGFloat
+    let a1: CGFloat
+    let a2: CGFloat
+    let a3: CGFloat
+    let a4: CGFloat
+    let a5: CGFloat
     static let degree: UInt = 5
     var realRoots: RealRoots {
         guard !a5.isZero else {
@@ -460,8 +460,8 @@ struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
                 return dividedBy(c).realRoots
             }
         }
-        var lower: Float = -1
-        var upper: Float = 1
+        var lower: CGFloat = -1
+        var upper: CGFloat = 1
         if a5 < 0 {
             while of(lower) <= 0 {
                 lower *= 2
@@ -480,7 +480,7 @@ struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
         critical.append(upper)
         var lower0 = lower
         var sign = of(lower0).sign
-        var array: [Float] = []
+        var array: [CGFloat] = []
         for upper0 in critical {
             let upperSign = of(upper0).sign
             if upperSign != sign {
@@ -494,13 +494,13 @@ struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
     var popped: QuarticPolynomial { return QuarticPolynomial(a0: a0, a1: a1, a2: a2, a3: a3, a4: a4) }
     var shifted: QuarticPolynomial { return QuarticPolynomial(a0: a1, a1: a2, a2: a3, a3: a4, a4: a5) }
     var derivative: QuarticPolynomial { return QuarticPolynomial(a0: a1, a1: 2 * a2, a2: 3 * a3, a3: 4 * a4, a4: 5 * a5) }
-    func of(_ x: Float) -> Float {
+    func of(_ x: CGFloat) -> CGFloat {
         let x2 = x * x
         let x3 = x2 * x
         let x4 = x3 * x
         return a0 + a1 * x + a2 * x2 + a3 * x3 + a4 * x4 + a5 * x4 * x
     }
-    func dividedBy(_ root: Float) -> QuarticPolynomial {
+    func dividedBy(_ root: CGFloat) -> QuarticPolynomial {
         let shifted4 = shifted
         let shifted3 = shifted4.shifted
         let shifted2 = shifted3.shifted
@@ -514,7 +514,7 @@ struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
             a4: shifted0.of(root)
         )
     }
-    private func findRoot(_ lower: Float, _ upper: Float) -> Float {
+    private func findRoot(_ lower: CGFloat, _ upper: CGFloat) -> CGFloat {
         let middle = (lower + upper) / 2
         guard abs(upper - lower) > twiceQuinticError else {
             return middle

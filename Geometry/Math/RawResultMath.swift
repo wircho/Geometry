@@ -28,7 +28,7 @@ func *(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
     return lhs.flatMap { lhs in return rhs.map { rhs in return lhs * rhs } }
 }
 
-func *(lhs: Float, rhs: FloatResult) -> FloatResult {
+func *(lhs: CGFloat, rhs: FloatResult) -> FloatResult {
     return rhs.map { rhs in return lhs * rhs }
 }
 
@@ -68,7 +68,7 @@ func *(lhs: RawPointResult, rhs: FloatResult) -> RawPointResult {
     return RawPointResult(x: rhs * lhs.x, y: rhs * lhs.y)
 }
 
-func /(lhs: RawPoint, rhs: Float) -> RawPointResult {
+func /(lhs: RawPoint, rhs: CGFloat) -> RawPointResult {
     return (lhs.x ~/ rhs).flatMap { x in (lhs.y ~/ rhs).map { y in RawPoint(x: x, y: y) } }
 }
 
@@ -237,7 +237,7 @@ extension ArrowProtocol {
         }
     }
     
-    func project(_ rawPoint: RawPoint) -> Result<Float, MathError> {
+    func project(_ rawPoint: RawPoint) -> Result<CGFloat, MathError> {
         let nRec2 = 1 ~/ vector.squaredNorm
         return nRec2.map {
             nRec2 in
@@ -245,7 +245,7 @@ extension ArrowProtocol {
         }
     }
     
-    func projectIso(_ rawPoint: RawPoint) -> Result<Float, MathError> {
+    func projectIso(_ rawPoint: RawPoint) -> Result<CGFloat, MathError> {
         let nRec = 1 ~/ vector.norm
         return nRec.map {
             nRec in
@@ -263,23 +263,23 @@ extension Result where T: ArrowProtocol, Error: MathErrorProtocol {
         return rawPoint.flatMap { reflect($0) }
     }
     
-    func project(_ rawPoint: RawPoint) -> Result<Float, Error> {
+    func project(_ rawPoint: RawPoint) -> Result<CGFloat, Error> {
         return flatMap { $0.project(rawPoint).mapError { Error($0) } }
     }
     
-    func project(_ rawPoint: Result<RawPoint, Error>) -> Result<Float, Error> {
+    func project(_ rawPoint: Result<RawPoint, Error>) -> Result<CGFloat, Error> {
         return rawPoint.flatMap { project($0) }
     }
     
-    func projectIso(_ rawPoint: RawPoint) -> Result<Float, Error> {
+    func projectIso(_ rawPoint: RawPoint) -> Result<CGFloat, Error> {
         return flatMap { $0.projectIso(rawPoint).mapError { Error($0) } }
     }
     
-    func projectIso(_ rawPoint: Result<RawPoint, Error>) -> Result<Float, Error> {
+    func projectIso(_ rawPoint: Result<RawPoint, Error>) -> Result<CGFloat, Error> {
         return rawPoint.flatMap { projectIso($0) }
     }
     
-    func at(_ v: Result<Float, Error>) -> Result<RawPoint, Error> {
+    func at(_ v: Result<CGFloat, Error>) -> Result<RawPoint, Error> {
         return flatMap { s in v.map { v in s.at(v) } }
     }
 }

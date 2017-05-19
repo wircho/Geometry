@@ -6,7 +6,8 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Foundation
+import CoreGraphics
+import Result
 
 protocol DirectedLine: Ruler, Line, ParentComparable {
     var directedLineStorage: DirectedLineStorage { get set }
@@ -24,7 +25,7 @@ extension DirectedLine {
         return [point].flatMap { $0 }
     }
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.flatMap {
             value in
             normReciprocal.map {

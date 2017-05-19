@@ -12,7 +12,7 @@ import UIKit
 
 struct StrokeAppearance {
     var color: UIColor = .black
-    var lineWidth: Float = 2
+    var lineWidth: CGFloat = 2
 }
 
 protocol StrokeAppears: SelectionDrawable {
@@ -34,7 +34,7 @@ extension StrokeAppears {
 
 struct PointAppearance {
     var color: UIColor = .black
-    var radius: Float = 6
+    var radius: CGFloat = 6
 }
 
 protocol PointAppears: SelectionDrawable {

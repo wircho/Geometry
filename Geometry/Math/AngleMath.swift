@@ -13,7 +13,7 @@ extension Angle {
         value = atan2(vector.y, vector.x)
     }
     
-    func vector(radius: Float) -> RawPoint {
+    func vector(radius: CGFloat) -> RawPoint {
         return CGPoint(x: radius * cos(value), y: radius * sin(value))
     }
 }

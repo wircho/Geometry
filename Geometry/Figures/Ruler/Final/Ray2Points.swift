@@ -14,7 +14,7 @@ final class Ray2Points: Figure, Ruler2Points, Ray {
     
     let parentOrder = ParentOrder.sorted
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.flatMap {
             value in
             normReciprocal.map {

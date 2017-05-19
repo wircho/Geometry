@@ -14,7 +14,7 @@ final class Segment2Points: Figure, Ruler2Points, Segment {
     
     let parentOrder = ParentOrder.unsorted
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.map { $0.arrow.at(min(max(pos,0),1)) }
     }
     

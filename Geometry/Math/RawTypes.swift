@@ -9,7 +9,6 @@ import CoreGraphics
 
 // MARK: - Typealiases
 
-typealias Float = CGFloat
 typealias RawPoint = CGPoint
 
 // MARK: - New Types
@@ -28,25 +27,25 @@ struct TwoByTwo<T> {
 
 
 struct Angle {
-    var value: Float
+    var value: CGFloat
     
-    static var piValue = Float(M_PI)
-    static var twoPiValue = Float(2 * M_PI)
+    static var piValue = CGFloat(M_PI)
+    static var twoPiValue = CGFloat(2 * M_PI)
     
-    init (value: Float) {
+    init (value: CGFloat) {
         var val = value
         while val > Angle.piValue { val -= Angle.twoPiValue }
         while val <= -Angle.piValue { val += Angle.twoPiValue }
         self.value = val
     }
     
-    func greaterValue(_ other: Angle) -> Float {
+    func greaterValue(_ other: Angle) -> CGFloat {
         var value1 = other.value
         while value1 < value { value1 += Angle.twoPiValue }
         return value1
     }
     
-    func lesserValue(_ other: Angle) -> Float {
+    func lesserValue(_ other: Angle) -> CGFloat {
         var value1 = other.value
         while value1 > value { value1 -= Angle.twoPiValue }
         return value1
@@ -55,7 +54,7 @@ struct Angle {
 
 struct RawCircle {
     var center: RawPoint
-    var radius: Float
+    var radius: CGFloat
 }
 
 struct RawArc {
@@ -63,7 +62,7 @@ struct RawArc {
     var angles: Two<Angle>
     var fromFirst: Bool
     
-    var angleValues: Two<Float> {
+    var angleValues: Two<CGFloat> {
         return Two(v0: angles.v0.value, v1: angles.v0.greaterValue(angles.v1))
     }
     
@@ -72,7 +71,7 @@ struct RawArc {
         set { circle.center = newValue }
     }
     
-    var radius: Float {
+    var radius: CGFloat {
         get { return circle.radius }
         set { circle.radius = newValue }
     }
@@ -90,7 +89,7 @@ struct RawRuler {
         case segment
         case line
         case ray
-        func covers(_ value: Float) -> Bool {
+        func covers(_ value: CGFloat) -> Bool {
             switch self {
             case .segment: return value >= 0 && value <= 1
             case .line: return true
@@ -134,15 +133,15 @@ protocol FloatProtocol {
 }
 
 protocol RawPointProtocol {
-    var x: Float { get }
-    var y: Float { get }
-    init(x: Float, y: Float)
+    var x: CGFloat { get }
+    var y: CGFloat { get }
+    init(x: CGFloat, y: CGFloat)
 }
 
 protocol RawCircleProtocol {
     var center: RawPoint { get }
-    var radius: Float { get }
-    init(center: RawPoint, radius: Float)
+    var radius: CGFloat { get }
+    init(center: RawPoint, radius: CGFloat)
     init(center: RawPoint, point: RawPoint)
 }
 
@@ -196,7 +195,7 @@ protocol TwoProtocol {
     init(v0: T, v1: T)
 }
 
-extension Float: FloatProtocol {}
+extension CGFloat: FloatProtocol {}
 extension RawPoint: RawPointProtocol {
     var angle: Angle {
         return Angle(value: atan2(y, x))
@@ -226,7 +225,7 @@ extension ArrowProtocol {
         return points.1 - points.0
     }
     
-    func at(_ v: Float) -> RawPoint {
+    func at(_ v: CGFloat) -> RawPoint {
         return points.0 + vector * v
     }
 }
@@ -246,7 +245,7 @@ extension RawRulerProtocol {
 }
 
 extension RawCurveProtocol {
-    func at(_ pos: Float) -> RawPoint {
+    func at(_ pos: CGFloat) -> RawPoint {
         let oneMinusPos = 1 - pos
         let pos2 = pos * pos
         let oneMinusPos2 = oneMinusPos * oneMinusPos

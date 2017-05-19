@@ -20,7 +20,7 @@ extension Circle {
         UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.map {
             circle in
             return  circle.center + Angle(value: pos).vector(radius: circle.radius)
@@ -60,7 +60,7 @@ extension Circle {
         }
     }
     
-    var touchPriority: Float { return 600 }
+    var touchPriority: CGFloat { return 600 }
 }
 
 struct CircleStorage {

@@ -10,7 +10,7 @@ import Result
 
 // MARK: Result types
 
-typealias FloatResult = Result<Float, MathError>
+typealias FloatResult = Result<CGFloat, MathError>
 typealias RawPointResult = Result<RawPoint, MathError>
 typealias RawCircleResult = Result<RawCircle, MathError>
 typealias RawArcResult = Result<RawArc, MathError>
@@ -18,13 +18,13 @@ typealias ArrowResult = Result<Arrow, MathError>
 typealias RawRulerResult = Result<RawRuler, MathError>
 typealias RawCurveResult = Result<RawCurve, MathError>
 typealias RawQuadCurveResult = Result<RawQuadCurve, MathError>
-typealias TwoByTwoFloatResult = Result<TwoByTwo<Float>, MathError>
-typealias TwoFloatResult = Result<Two<Float>, MathError>
+typealias TwoByTwoFloatResult = Result<TwoByTwo<CGFloat>, MathError>
+typealias TwoFloatResult = Result<Two<CGFloat>, MathError>
 typealias TwoRawPoint = Two<RawPoint>
 typealias TwoRawPointResult = Result<TwoRawPoint, MathError>
 typealias TwoOptionalRawPoint = Two<RawPoint?>
 typealias TwoOptionalRawPointResult = Result<TwoOptionalRawPoint, MathError>
-typealias TwoOptionalFloatResult = Result<Two<Float?>, MathError>
+typealias TwoOptionalFloatResult = Result<Two<CGFloat?>, MathError>
 
 
 // MARK: Result extensions
@@ -48,7 +48,7 @@ extension Result {
 }
 
 extension Result where T: RawPointProtocol {
-    typealias FloatResult = Result<Float, Error>
+    typealias FloatResult = Result<CGFloat, Error>
     
     var x: FloatResult {
         return self.map { $0.x }
@@ -58,7 +58,7 @@ extension Result where T: RawPointProtocol {
         return self.map { $0.y }
     }
     
-    init (x: Float, y: Float) {
+    init (x: CGFloat, y: CGFloat) {
         self = .success(T(x: x, y: y))
     }
     
@@ -90,7 +90,7 @@ extension Result where T: RawCircleProtocol {
         return self.map { $0.radius }
     }
     
-    init (center: RawPoint, radius: Float) {
+    init (center: RawPoint, radius: CGFloat) {
         self = .success(T(center: center, radius: radius))
     }
     

@@ -11,11 +11,11 @@ import Result
 
 final class SlidingPoint: Figure, Point, FreeValued {
     var pointStorage = PointStorage()
-    var _position: Float
+    var _position: CGFloat
     
     weak var floor: OneDimensional?
     
-    init(_ floor: OneDimensional, at initial: Float) {
+    init(_ floor: OneDimensional, at initial: CGFloat) {
         self.floor = floor
         _position = initial
         floor.slidingPoints.append(self)

@@ -17,7 +17,7 @@ final class FreePoint: Figure, Point, FreeValued {
         context.append(self)
     }
     
-    convenience init(x: Float, y: Float, `in` context: FigureContext) {
+    convenience init(x: CGFloat, y: CGFloat, `in` context: FigureContext) {
         self.init(at: RawPoint(x: x, y: y), in: context)
     }
     

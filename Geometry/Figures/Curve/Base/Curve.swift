@@ -23,7 +23,7 @@ extension Curve {
         UIBezierPath(curve: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.map { $0.at(min(max(pos,0),1)) }
     }
     
@@ -47,8 +47,8 @@ extension Curve {
             guard let roots = quintic.realRoots.array?.filter({ $0 >= 0 && $0 <= 1 }) else {
                 return 0.5
             }
-            var minDist: Float? = nil
-            var minRoot: Float? = nil
+            var minDist: CGFloat? = nil
+            var minRoot: CGFloat? = nil
             for root in roots {
                 let near = curve.at(root)
                 let dist = distance(point, near)
@@ -89,7 +89,7 @@ extension Curve {
         return nearest(from: point).flatMap { distance(at($0), .success(point)) }
     }
     
-    var touchPriority: Float { return 600 }
+    var touchPriority: CGFloat { return 600 }
 }
 
 struct CurveStorage {

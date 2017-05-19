@@ -21,10 +21,10 @@ extension Arc {
         UIBezierPath(arc: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.map {
             arc in
-            let angle: Float
+            let angle: CGFloat
             let angles = arc.angleValues
             if arc.fromFirst {
                 angle = angles.v0 + (angles.v1 - angles.v0) * min(max(pos, 0), 1)
@@ -84,7 +84,7 @@ extension Arc {
         }
     }
     
-    var touchPriority: Float { return 850 }
+    var touchPriority: CGFloat { return 850 }
 }
 
 struct ArcStorage {

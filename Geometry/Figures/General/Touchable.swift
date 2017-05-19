@@ -12,5 +12,5 @@ import Result
 
 protocol Touchable: FigureBase {
     func gap(from point: RawPoint) -> FloatResult
-    var touchPriority: Float { get }
+    var touchPriority: CGFloat { get }
 }

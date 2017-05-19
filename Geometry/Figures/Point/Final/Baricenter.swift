@@ -29,6 +29,6 @@ final class Baricenter: Figure, Point, ParentComparable {
             guard let point = getter()?.result else { continue }
             sum += point
         }
-        return sum / FloatResult.success(Float(points.count))
+        return sum / FloatResult.success(CGFloat(points.count))
     }
 }

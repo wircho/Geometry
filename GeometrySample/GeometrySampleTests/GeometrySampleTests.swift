@@ -24,8 +24,8 @@ import Result
 //    }
 //}
 //
-//let staticFloat0: GeometrySample.Float = 3944.23
-//let staticFloat1: GeometrySample.Float = 92.1
+//let staticFloat0: GeometrySample.CGFloat = 3944.23
+//let staticFloat1: GeometrySample.CGFloat = 92.1
 //let staticRawPoint0 = RawPoint(x: 3234.234, y: 4597.234)
 //let staticRawPoint1 = RawPoint(x: 90923.1, y: 9343.546)
 
@@ -43,8 +43,8 @@ class GeometrySampleTests: XCTestCase {
 
 //    func testFreeScalar() {
 //        // Constants
-//        let position0: GeometrySample.Float = 856.24
-//        let position1: GeometrySample.Float = 83456.1524
+//        let position0: GeometrySample.CGFloat = 856.24
+//        let position1: GeometrySample.CGFloat = 83456.1524
 //        // Create free scalar
 //        let freeScalar = FreeScalar(at: position0)
 //        guard let value0 = freeScalar.result.value else {

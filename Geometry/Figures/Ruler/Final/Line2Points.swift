@@ -14,7 +14,7 @@ final class Line2Points: Figure, Ruler2Points, Line {
     
     let parentOrder = ParentOrder.unsorted
     
-    func at(_ pos: Float) -> RawPointResult {
+    func at(_ pos: CGFloat) -> RawPointResult {
         return result.map { $0.arrow.at(pos) }
     }
     

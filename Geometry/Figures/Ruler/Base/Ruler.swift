@@ -10,7 +10,7 @@ import Result
 
 // MARK: - Ruler Base Class
 
-private let one = Result<Float, MathError>.success(1)
+private let one = Result<CGFloat, MathError>.success(1)
 
 protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Touchable {
     var result: RawRulerResult { get }
@@ -84,7 +84,7 @@ extension Line {
         }
     }
     
-    var touchPriority: Float { return 700 }
+    var touchPriority: CGFloat { return 700 }
 }
 
 extension Ray {
@@ -104,7 +104,7 @@ extension Ray {
         }
     }
     
-    var touchPriority: Float { return 800 }
+    var touchPriority: CGFloat { return 800 }
 }
 
 extension Segment {
@@ -128,7 +128,7 @@ extension Segment {
         }
     }
     
-    var touchPriority: Float { return 900 }
+    var touchPriority: CGFloat { return 900 }
 }
 
 // TODO: - Angle bisector, Perpendicular Bisector

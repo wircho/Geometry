@@ -36,7 +36,7 @@ extension Point {
         return result.map { distance($0, point) }
     }
     
-    var touchPriority: Float { return 1000 }
+    var touchPriority: CGFloat { return 1000 }
 }
 
 struct PointStorage {
