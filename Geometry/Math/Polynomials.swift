@@ -161,7 +161,7 @@ extension Float {
     }
 }
 
-protocol Polynomial {
+protocol Polynomial: CustomStringConvertible {
     associatedtype Lower
     static var degree: UInt { get }
     var popped: Lower { get }
@@ -220,6 +220,9 @@ struct LinearPolynomial: Polynomial, ComplexSolvable {
     func of(_ x: Float) -> Float {
         return a0 + a1 * x
     }
+    var description: String {
+        return a1.description + "x + " + a0.description
+    }
 }
 
 struct QuadraticPolynomial: Polynomial, ComplexSolvable {
@@ -252,6 +255,9 @@ struct QuadraticPolynomial: Polynomial, ComplexSolvable {
     var derivative: LinearPolynomial { return LinearPolynomial(a0: a1, a1: 2 * a2) }
     func of(_ x: Float) -> Float {
         return a0 + a1 * x + a2 * x * x
+    }
+    var description: String {
+        return a2.description + "x^2 + " + popped.description
     }
 }
 
@@ -321,6 +327,9 @@ struct CubicPolynomial: Polynomial, ComplexSolvable {
     func of(_ x: Float) -> Float {
         let x2 = x * x
         return a0 + a1 * x + a2 * x2 + a3 * x2 * x
+    }
+    var description: String {
+        return a3.description + "x^3 + " + popped.description
     }
 }
 
@@ -421,6 +430,9 @@ struct QuarticPolynomial: Polynomial, ComplexSolvable {
         let x3 = x2 * x
         return a0 + a1 * x + a2 * x2 + a3 * x3 + a4 * x3 * x
     }
+    var description: String {
+        return a4.description + "x^4 + " + popped.description
+    }
 }
 
 private let quinticError: Float = 0.01
@@ -515,6 +527,9 @@ struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
         } else {
             return middle
         }
+    }
+    var description: String {
+        return a5.description + "x^5 + " + popped.description
     }
 }
 

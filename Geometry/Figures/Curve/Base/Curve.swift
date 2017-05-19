@@ -44,7 +44,7 @@ extension Curve {
             let a4 = p2 • d2 + p3 • d1
             let a5 = p3 • d2
             let quintic = QuinticPolynomial(a0: a0, a1: a1, a2: a2, a3: a3, a4: a4, a5: a5)
-            guard let roots = quintic.realRoots.array else {
+            guard let roots = quintic.realRoots.array?.filter({ $0 >= 0 && $0 <= 1 }) else {
                 return 0.5
             }
             var minDist: Float? = nil
@@ -57,7 +57,12 @@ extension Curve {
                     minRoot = root
                 }
             }
-            return min(max(minRoot ?? 0.5,0),1)
+            guard let r = minRoot else {
+                let dist0 = distance(curve.point0, point)
+                let dist1 = distance(curve.point1, point)
+                return dist0 < dist1 ? 0 : 1
+            }
+            return min(max(r,0),1)
         }
     }
     
