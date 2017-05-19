@@ -24,7 +24,7 @@ extension Curve {
     }
     
     func at(_ pos: Float) -> RawPointResult {
-        return result.map { $0.at(pos) }
+        return result.map { $0.at(min(max(pos,0),1)) }
     }
     
     func nearest(from point: RawPoint) -> FloatResult {
@@ -57,7 +57,7 @@ extension Curve {
                     minRoot = root
                 }
             }
-            return minRoot ?? 0.5
+            return min(max(minRoot ?? 0.5,0),1)
         }
     }
     
@@ -70,7 +70,7 @@ extension Curve {
         set { curveStorage.appearance = newValue }
     }
     
-    var storage: FigureStorage<RawCircle> {
+    var storage: FigureStorage<RawCurve> {
         get { return curveStorage.figureStorage }
         set { curveStorage.figureStorage = newValue }
     }
@@ -90,6 +90,6 @@ extension Curve {
 struct CurveStorage {
     let cedula = Cedula()
     var appearance = StrokeAppearance()
-    var figureStorage = FigureStorage<RawCircle>()
+    var figureStorage = FigureStorage<RawCurve>()
     var oneDimensionalStorage = OneDimensionalStorage()
 }
