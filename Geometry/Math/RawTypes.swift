@@ -109,6 +109,19 @@ struct RawRuler {
     }
 }
 
+struct RawCurve {
+    var point0: RawPoint
+    var control0: RawPoint
+    var control1: RawPoint
+    var point1: RawPoint
+}
+
+struct RawQuadCurve {
+    var point0: RawPoint
+    var control: RawPoint
+    var point1: RawPoint
+}
+
 // MARK: Protocols
 protocol FloatProtocol {
     static func *(lhs: Self, rhs: Self) -> Self
@@ -152,6 +165,21 @@ protocol RawRulerProtocol {
     init?(kind: RawRuler.Kind, points: (RawPoint, RawPoint))
 }
 
+protocol RawCurveProtocol {
+    var point0: RawPoint { get }
+    var control0: RawPoint { get }
+    var control1: RawPoint { get }
+    var point1: RawPoint { get }
+    init(point0: RawPoint, control0: RawPoint, control1: RawPoint, point1: RawPoint)
+}
+
+protocol RawQuadCurveProtocol {
+    var point0: RawPoint { get }
+    var control: RawPoint { get }
+    var point1: RawPoint { get }
+    init(point0: RawPoint, control: RawPoint, point1: RawPoint)
+}
+
 protocol TwoByTwoProtocol {
     associatedtype T
     var a00: T { get }
@@ -186,6 +214,8 @@ extension RawRuler: RawRulerProtocol {
         self.init(kind: kind, arrow: Arrow(points: points))
     }
 }
+extension RawCurve: RawCurveProtocol {}
+extension RawQuadCurve: RawQuadCurveProtocol {}
 extension TwoByTwo: TwoByTwoProtocol {}
 extension Two: TwoProtocol { }
 
@@ -213,6 +243,24 @@ extension RawRulerProtocol {
     func ray(arrow: Arrow) -> Self? {
         return Self(kind: .ray, arrow: arrow)
     }
+}
+
+extension RawCurveProtocol {
+    func at(_ pos: Float) -> RawPoint {
+        let oneMinusPos = 1 - pos
+        let pos2 = pos * pos
+        let oneMinusPos2 = oneMinusPos * oneMinusPos
+        let pos3 = pos2 * pos
+        let oneMinusPos3 = oneMinusPos2 * oneMinusPos
+        return oneMinusPos3 * point0
+            + 3 * oneMinusPos2 * pos * control0
+            + 3 * oneMinusPos * pos2 * control1
+            + pos3 * point1
+    }
+}
+
+extension RawQuadCurveProtocol {
+    
 }
 
 extension TwoByTwoProtocol {

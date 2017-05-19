@@ -1,0 +1,95 @@
+//
+//  Curve.swift
+//  GeometrySample
+//
+//  Created by AdolfoX Rodriguez on 2017-05-17.
+//  Copyright © 2017 Trovy. All rights reserved.
+//
+
+import Foundation
+
+import CoreGraphics
+import Result
+
+protocol Curve: FigureBase, OneDimensional, StrokeAppears, Touchable {
+    var result: RawCurveResult { get }
+    var curveStorage: CurveStorage { get set }
+}
+
+extension Curve {
+    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
+        guard let value = result.value else { return }
+        appearance.color.setStroke()
+        UIBezierPath(curve: value, lineWidth: appearance.lineWidth).stroke()
+    }
+    
+    func at(_ pos: Float) -> RawPointResult {
+        return result.map { $0.at(pos) }
+    }
+    
+    func nearest(from point: RawPoint) -> FloatResult {
+        return result.map {
+            curve in
+            let p0 = curve.point0 - point
+            let p1 = 3 * (curve.control0 - curve.point0)
+            let p2 = 3 * (curve.point0 - 2 * curve.control0 + curve.control1)
+            let p3 = -curve.point0 + 3 * curve.control0 - 3 * curve.control1 + curve.point0
+            let d0 = p1
+            let d1 = 2 * p2
+            let d2 = 3 * p3
+            let a0 = p0 • d0
+            let a1 = p0 • d1 + p1 • d0
+            let a2 = p0 • d2 + p1 • d1 + p2 • d0
+            let a3 = p1 • d2 + p2 • d1 + p3 • d0
+            let a4 = p2 • d2 + p3 • d1
+            let a5 = p3 • d2
+            let quintic = QuinticPolynomial(a0: a0, a1: a1, a2: a2, a3: a3, a4: a4, a5: a5)
+            guard let roots = quintic.realRoots.array else {
+                return 0.5
+            }
+            var minDist: Float? = nil
+            var minRoot: Float? = nil
+            for root in roots {
+                let near = curve.at(root)
+                let dist = distance(point, near)
+                if minDist.map({ $0 > dist }) ?? true {
+                    minDist = dist
+                    minRoot = root
+                }
+            }
+            return minRoot ?? 0.5
+        }
+    }
+    
+    var cedula: Cedula {
+        return curveStorage.cedula
+    }
+    
+    var appearance: StrokeAppearance {
+        get { return curveStorage.appearance }
+        set { curveStorage.appearance = newValue }
+    }
+    
+    var storage: FigureStorage<RawCircle> {
+        get { return curveStorage.figureStorage }
+        set { curveStorage.figureStorage = newValue }
+    }
+    
+    var oneDimensionalStorage: OneDimensionalStorage {
+        get { return curveStorage.oneDimensionalStorage }
+        set { curveStorage.oneDimensionalStorage = newValue }
+    }
+    
+    func gapToCenter(from point: RawPoint) -> FloatResult {
+        return nearest(from: point).flatMap { distance(at($0), .success(point)) }
+    }
+    
+    var touchPriority: Float { return 600 }
+}
+
+struct CurveStorage {
+    let cedula = Cedula()
+    var appearance = StrokeAppearance()
+    var figureStorage = FigureStorage<RawCircle>()
+    var oneDimensionalStorage = OneDimensionalStorage()
+}

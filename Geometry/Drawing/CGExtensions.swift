@@ -37,6 +37,22 @@ extension UIBezierPath {
         self.lineWidth = lineWidth
         self.lineCapStyle = .round
     }
+    
+    convenience init(curve: RawCurve, lineWidth: CGFloat = 1) {
+        self.init()
+        self.move(to: curve.point0)
+        self.addCurve(to: curve.point1, controlPoint1: curve.control0, controlPoint2: curve.control1)
+        self.lineWidth = lineWidth
+        self.lineCapStyle = .round
+    }
+    
+    convenience init(quadCurve: RawQuadCurve, lineWidth: CGFloat = 1) {
+        self.init()
+        self.move(to: quadCurve.point0)
+        self.addQuadCurve(to: quadCurve.point1, controlPoint: quadCurve.control)
+        self.lineWidth = lineWidth
+        self.lineCapStyle = .round
+    }
 }
 
 private var _selectionImage: UIImage? = nil

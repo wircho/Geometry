@@ -79,9 +79,7 @@ extension Arc {
                 c in
                 let angleValues = arc.angleValues
                 let angle = angleValues.v0 + (angleValues.v1 - angleValues.v0) * (arc.fromFirst ? c : (1 - c))
-                let d = distance(point, arc.center + Angle(value: angle).vector(radius: arc.radius))
-                print(c)
-                return d
+                return distance(point, arc.center + Angle(value: angle).vector(radius: arc.radius))
             }
         }
     }

@@ -115,7 +115,7 @@ class FigureContext: Drawable {
             }
             return (figure: touchable, gap: gap * scale)
         }
-
+        
         var current: [(figure: Touchable, gap: Float)] = []
         
         for this in touchables {

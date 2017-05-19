@@ -8,7 +8,8 @@
 
 import UIKit
 
-private func createFigureContext() -> FigureContext {
+// Lots of things
+private func createFigureContext0() -> FigureContext {
     let ctx = FigureContext()
     let p0 = FreePoint(x: 20, y: 170, in: ctx)
     p0.appearance.color = .brown
@@ -92,9 +93,21 @@ private func createFigureContext() -> FigureContext {
     return ctx
 }
 
+// Arc with sliding point
+private func createFigureContext1() -> FigureContext {
+    let ctx = FigureContext()
+    let p0 = FreePoint(x: 50, y: 50, in: ctx)
+    let p1 = FreePoint(x: 70, y: 250, in: ctx)
+    let p2 = FreePoint(x: 250, y: 280, in: ctx)
+    let arc = Circumarc(p0, p1, p2)
+    let arcPoint = SlidingPoint(arc, at: 0.5)
+    arcPoint.appearance.color = .red
+    return ctx
+}
+
 class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
 
-    var context = createFigureContext()
+    var context = createFigureContext0()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
