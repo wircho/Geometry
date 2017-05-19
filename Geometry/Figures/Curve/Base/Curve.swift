@@ -33,7 +33,7 @@ extension Curve {
             let p0 = curve.point0 - point
             let p1 = 3 * (curve.control0 - curve.point0)
             let p2 = 3 * (curve.point0 - 2 * curve.control0 + curve.control1)
-            let p3 = -curve.point0 + 3 * curve.control0 - 3 * curve.control1 + curve.point0
+            let p3 = -curve.point0 + 3 * curve.control0 - 3 * curve.control1 + curve.point1
             let d0 = p1
             let d1 = 2 * p2
             let d2 = 3 * p3
