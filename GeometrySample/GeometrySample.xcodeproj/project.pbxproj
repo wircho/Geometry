@@ -18,6 +18,7 @@
 		AE4ED21C1EC3A4D60053AFEA /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
 		AE4ED2241EC40BFE0053AFEA /* Cedula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2231EC40BFE0053AFEA /* Cedula.swift */; };
 		AE4ED22E1EC4C34E0053AFEA /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22D1EC4C34E0053AFEA /* Association.swift */; };
+		AE7327121ECFF15300A47F25 /* Bounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7327111ECFF15300A47F25 /* Bounded.swift */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
@@ -94,6 +95,7 @@
 		AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextView.swift; sourceTree = "<group>"; };
 		AE4ED2231EC40BFE0053AFEA /* Cedula.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cedula.swift; sourceTree = "<group>"; };
 		AE4ED22D1EC4C34E0053AFEA /* Association.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Association.swift; sourceTree = "<group>"; };
+		AE7327111ECFF15300A47F25 /* Bounded.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bounded.swift; sourceTree = "<group>"; };
 		AEA2873E1EBCCB2C002E425F /* GeometrySample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GeometrySample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEA287411EBCCB2C002E425F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEA287431EBCCB2C002E425F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 				AEE3AC981ECA37950071D7D9 /* Touchable.swift */,
 				AEE3ABD61EC6D2910071D7D9 /* FreeValue.swift */,
 				AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */,
+				AE7327111ECFF15300A47F25 /* Bounded.swift */,
 				AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */,
 			);
 			path = General;
@@ -733,6 +736,7 @@
 				AEE3ACAE1ECA9F340071D7D9 /* Appearance.swift in Sources */,
 				AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */,
 				AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */,
+				AE7327121ECFF15300A47F25 /* Bounded.swift in Sources */,
 				AEE3ABEE1EC6D4690071D7D9 /* TwoCircles.swift in Sources */,
 				AEA287921EBCCC04002E425F /* Figure.swift in Sources */,
 				AEF1FF8A1EC4FA8C003A902D /* AngleMath.swift in Sources */,

@@ -10,7 +10,6 @@ import CoreGraphics
 import Result
 
 protocol OneDimensional: FigureBase {
-//    func intersectionPointsNotWith(other: Transmitter?) -> [Point]
     var oneDimensionalStorage: OneDimensionalStorage { get set }
     var touchingDefiningPoints: [Point] { get }
     func at(_ pos: CGFloat) -> Res<RawPoint>

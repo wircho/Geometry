@@ -9,7 +9,7 @@
 import CoreGraphics
 import Result
 
-final class Curve4Points: Figure, Curve {
+final class Curve4Points: Figure, Curve, Bounded {
     var curveStorage = CurveStorage()
     
     weak var point0: Point?
@@ -37,4 +37,7 @@ final class Curve4Points: Figure, Curve {
     func recalculate() -> Res<RawCurve> {
         return Res(point0: point0?.result ?? .none, control0: control0?.result ?? .none, control1: control1?.result ?? .none, point1: point1?.result ?? .none)
     }
+    
+    var startingPoint: Point? { return point0 }
+    var endingPoint: Point? { return point1 }
 }

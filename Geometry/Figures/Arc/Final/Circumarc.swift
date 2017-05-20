@@ -9,7 +9,7 @@
 import CoreGraphics
 import Result
 
-final class Circumarc: Figure, Arc, ParentComparable {
+final class Circumarc: Figure, Arc, Bounded, ParentComparable {
     var arcStorage = ArcStorage()
     
     weak var point0: Point?
@@ -34,4 +34,7 @@ final class Circumarc: Figure, Arc, ParentComparable {
     func recalculate() -> Res<RawArc> {
         return Res<RawArc>(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
     }
+    
+    var startingPoint: Point? { return point0 }
+    var endingPoint: Point? { return point1 }
 }

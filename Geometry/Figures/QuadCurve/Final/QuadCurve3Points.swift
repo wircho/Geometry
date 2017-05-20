@@ -9,7 +9,7 @@
 import CoreGraphics
 import Result
 
-final class QuadCurve3Points: Figure, QuadCurve {
+final class QuadCurve3Points: Figure, QuadCurve, Bounded {
     var quadCurveStorage = QuadCurveStorage()
     
     weak var point0: Point?
@@ -35,4 +35,7 @@ final class QuadCurve3Points: Figure, QuadCurve {
     func recalculate() -> Res<RawQuadCurve> {
         return Res(point0: point0?.result ?? .none, control: control?.result ?? .none, point1: point1?.result ?? .none)
     }
+    
+    var startingPoint: Point? { return point0 }
+    var endingPoint: Point? { return point1 }
 }

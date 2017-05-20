@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class Segment2Points: Figure, Ruler2Points, Segment {
+final class Segment2Points: Figure, Ruler2Points, Segment, Bounded {
     var ruler2PointsStorage: Ruler2PointsStorage
     init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     
@@ -21,4 +21,7 @@ final class Segment2Points: Figure, Ruler2Points, Segment {
     func nearest(from point: RawPoint) -> Res<CGFloat> {
         return result.arrow.project(point).map { min(max($0, 0), 1) }
     }
+    
+    var startingPoint: Point? { return point0 }
+    var endingPoint: Point? { return point1 }
 }
