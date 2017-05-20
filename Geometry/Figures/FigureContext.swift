@@ -15,9 +15,9 @@ class FigureContext: Drawable {
     
     let distanceError: CGFloat = 0.01
     
-    func drawIn(_ rect: CGRect) {
+    func draw(in rect: CGRect) {
         for figure in figures {
-            (figure as? Drawable)?.drawIn(rect)
+            (figure as? Drawable)?.draw(in: rect)
         }
         for figure in figures {
             if figure.selected {

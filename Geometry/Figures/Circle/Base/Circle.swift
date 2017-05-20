@@ -14,7 +14,7 @@ protocol Circle: FigureBase, OneDimensional, StrokeAppears, Touchable {
 }
 
 extension Circle {
-    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()

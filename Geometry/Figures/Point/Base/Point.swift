@@ -14,7 +14,7 @@ protocol Point: FigureBase, PointAppears, Touchable {
 }
 
 extension Point {
-    func drawIn(_ rect: CGRect, appearance: PointAppearance) {
+    func draw(in rect: CGRect, appearance: PointAppearance) {
         guard let center = result.value else { return }
         appearance.color.setFill()
         UIBezierPath(circle: RawCircle(center: center, radius: appearance.radius)).fill()

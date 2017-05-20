@@ -15,7 +15,7 @@ protocol Curve: FigureBase, OneDimensional, StrokeAppears, Touchable {
 }
 
 extension Curve {
-    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(curve: value, lineWidth: appearance.lineWidth).stroke()

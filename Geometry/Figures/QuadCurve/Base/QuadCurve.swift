@@ -15,7 +15,7 @@ protocol QuadCurve: FigureBase, OneDimensional, StrokeAppears, Touchable {
 }
 
 extension QuadCurve {
-    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(quadCurve: value, lineWidth: appearance.lineWidth).stroke()

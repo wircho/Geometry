@@ -17,16 +17,16 @@ struct StrokeAppearance {
 
 protocol StrokeAppears: SelectionDrawable {
     var appearance: StrokeAppearance { get set }
-    func drawIn(_ rect: CGRect, appearance: StrokeAppearance)
+    func draw(in rect: CGRect, appearance: StrokeAppearance)
 }
 
 extension StrokeAppears {
-    func drawIn(_ rect: CGRect) {
-        drawIn(rect, appearance: appearance)
+    func draw(in rect: CGRect) {
+        draw(in: rect, appearance: appearance)
     }
     
     func drawSelectionIn(_ rect: CGRect) {
-        drawIn(rect, appearance: StrokeAppearance(color: .selection, lineWidth: appearance.lineWidth + 6))
+        draw(in: rect, appearance: StrokeAppearance(color: .selection, lineWidth: appearance.lineWidth + 6))
     }
 }
 
@@ -39,16 +39,16 @@ struct PointAppearance {
 
 protocol PointAppears: SelectionDrawable {
     var appearance: PointAppearance { get set }
-    func drawIn(_ rect: CGRect, appearance: PointAppearance)
+    func draw(in rect: CGRect, appearance: PointAppearance)
 }
 
 extension PointAppears {
-    func drawIn(_ rect: CGRect) {
-        drawIn(rect, appearance: appearance)
+    func draw(in rect: CGRect) {
+        draw(in: rect, appearance: appearance)
     }
     
     func drawSelectionIn(_ rect: CGRect) {
-        drawIn(rect, appearance: PointAppearance(color: .selection, radius: appearance.radius + 3))
+        draw(in: rect, appearance: PointAppearance(color: .selection, radius: appearance.radius + 3))
     }
 }
 
@@ -60,15 +60,15 @@ struct FillAppearance {
 
 protocol FillAppears: SelectionDrawable {
     var appearance: FillAppearance { get set }
-    func drawIn(_ rect: CGRect, appearance: FillAppearance)
+    func draw(in rect: CGRect, appearance: FillAppearance)
 }
 
 extension FillAppears {
-    func drawIn(_ rect: CGRect) {
-        drawIn(rect, appearance: appearance)
+    func draw(in rect: CGRect) {
+        draw(in: rect, appearance: appearance)
     }
     
     func drawSelectionIn(_ rect: CGRect) {
-        drawIn(rect, appearance: FillAppearance(color: .selection))
+        draw(in: rect, appearance: FillAppearance(color: .selection))
     }
 }

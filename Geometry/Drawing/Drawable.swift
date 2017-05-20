@@ -12,7 +12,7 @@ import Result
 // MARK: - Protocol
 
 protocol Drawable: class {
-    func drawIn(_ rect: CGRect)
+    func draw(in rect: CGRect)
 }
 
 protocol SelectionDrawable: Drawable {

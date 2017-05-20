@@ -184,6 +184,6 @@ class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
     }
     
     override func draw(_ rect: CGRect) {
-        context.drawIn(rect)
+        context.draw(in: rect)
     }
 }

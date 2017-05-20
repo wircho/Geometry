@@ -25,7 +25,7 @@ extension Ruler {
         return Res<RawRuler>(kind: kind, arrow: arrow)
     }
     
-    func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let ruler = result.value, let exits:Two<RawPoint?> = intersections(ruler, rect).value else { return }
         let (point0, point1) = (exits.v0 ?? ruler.arrow.points.0,  exits.v1 ?? ruler.arrow.points.1)
         appearance.color.setStroke()

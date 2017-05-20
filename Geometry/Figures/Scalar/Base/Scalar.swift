@@ -15,7 +15,7 @@ protocol Scalar: FigureBase {
 }
 
 extension Scalar {
-    func drawIn(_ rect: CGRect) {
+    func draw(in rect: CGRect) {
         // Does nothing
     }
 }
