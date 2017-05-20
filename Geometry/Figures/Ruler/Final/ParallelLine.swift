@@ -13,7 +13,7 @@ final class ParallelLine: Figure, DirectedLine {
     var directedLineStorage: DirectedLineStorage
     init (_ s: DirectedLineStorage) { directedLineStorage = s }
     
-    func calculateArrowDirection() -> RawPointResult {
+    func calculateArrowDirection() -> Res<RawPoint> {
         return ruler?.result.arrow.vector ?? .none
     }
 }

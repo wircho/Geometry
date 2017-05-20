@@ -10,7 +10,7 @@ import CoreGraphics
 import Result
 
 protocol Arc: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: RawArcResult { get }
+    var result: Res<RawArc> { get }
     var arcStorage: ArcStorage { get set }
 }
 
@@ -21,7 +21,7 @@ extension Arc {
         UIBezierPath(arc: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: CGFloat) -> RawPointResult {
+    func at(_ pos: CGFloat) -> Res<RawPoint> {
         return result.map {
             arc in
             let angle: CGFloat
@@ -35,7 +35,7 @@ extension Arc {
         }
     }
     
-    func nearest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             arc in
             var angles = arc.angleValues
@@ -72,7 +72,7 @@ extension Arc {
         set { arcStorage.oneDimensionalStorage = newValue }
     }
     
-    func gapToCenter(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             arc in
             nearest(from: point).map {

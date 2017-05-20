@@ -12,7 +12,7 @@ import Result
 // MARK: - Intersection Mediator
 
 final class TwoCircleMediator: Figure, ParentComparable {
-    var storage = FigureStorage<TwoRawPoint>()
+    var storage = FigureStorage<Two<RawPoint>>()
     
     var existing: CoupleOfPoints = .none
     
@@ -30,13 +30,13 @@ final class TwoCircleMediator: Figure, ParentComparable {
         setChildOf([cl0, cl1])
     }
     
-    func recalculate() -> TwoRawPointResult {
+    func recalculate() -> Res<Two<RawPoint>> {
         switch existing {
         case .none:
             return intersections(circle0?.result ?? .none, circle1?.result ?? .none)
         case let .one(pt):
             guard let point = pt.point else { return .none }
-            return TwoRawPointResult(v0: point.result, v1: ArrowResult(points: (circle0?.result.center ?? .none, circle1?.result.center ?? .none)).reflect(point.result))
+            return Res<Two<RawPoint>>(v0: point.result, v1: Res<Arrow>(points: (circle0?.result.center ?? .none, circle1?.result.center ?? .none)).reflect(point.result))
         case .two:
             return .none
         }
@@ -89,7 +89,7 @@ final class TwoCircleIntersection: Figure, Point {
         }
     }
     
-    func recalculate() -> RawPointResult {
+    func recalculate() -> Res<RawPoint> {
         guard let mediator = mediator else { return .none }
         switch mediator.existing {
         case .two: return .none

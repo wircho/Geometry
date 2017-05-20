@@ -28,7 +28,7 @@ final class RulerCircleMediator: Figure, ParentComparable {
         setChildOf([ruler, circle])
     }
     
-    func recalculate() -> TwoOptionalRawPointResult {
+    func recalculate() -> Res<Two<RawPoint?>> {
         switch existing {
         case .none:
             return intersections(ruler?.result ?? .none, circle?.result ?? .none)
@@ -39,7 +39,7 @@ final class RulerCircleMediator: Figure, ParentComparable {
             let pointProj = arrow.project(point.result)
             let p0 = (point.result).map { $0 as RawPoint? }
             let p1 = arrow.at((2 * centerProj - pointProj)).map { $0 as RawPoint? }
-            return TwoOptionalRawPointResult(v0: p0, v1: p1)
+            return Res<Two<RawPoint?>>(v0: p0, v1: p1)
         case .two:
             return .none
         }
@@ -92,7 +92,7 @@ final class RulerCircleIntersection: Figure, Point {
         }
     }
     
-    func recalculate() -> RawPointResult {
+    func recalculate() -> Res<RawPoint> {
         guard let mediator = mediator else { return .none }
         switch mediator.existing {
         case .two: return .none

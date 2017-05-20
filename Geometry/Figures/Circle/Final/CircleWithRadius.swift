@@ -27,7 +27,7 @@ final class CircleWithRadius: Figure, Circle, ParentComparable {
         return []
     }
     
-    func recalculate() -> RawCircleResult {
-        return RawCircleResult(center: center?.result ?? .none, radius: radius?.result ?? .none)
+    func recalculate() -> Res<RawCircle> {
+        return Res<RawCircle>(center: center?.result ?? .none, radius: radius?.result ?? .none)
     }
 }

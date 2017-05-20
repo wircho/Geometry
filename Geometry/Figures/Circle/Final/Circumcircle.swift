@@ -29,7 +29,7 @@ final class Circumcircle: Figure, Circle, ParentComparable {
         return [point0, point1, point2].flatMap { $0 }
     }
     
-    func recalculate() -> RawCircleResult {
-        return RawCircleResult(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
+    func recalculate() -> Res<RawCircle> {
+        return Res<RawCircle>(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
     }
 }

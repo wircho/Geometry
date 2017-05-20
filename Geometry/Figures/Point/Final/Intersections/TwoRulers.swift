@@ -30,7 +30,7 @@ final class TwoRulerMediator: Figure, ParentComparable {
         setChildOf([s0, s1])
     }
     
-    func recalculate() -> RawPointResult {
+    func recalculate() -> Res<RawPoint> {
         guard existing == nil else { return .none }
         return intersection(ruler0?.result ?? .none, ruler1?.result ?? .none)
     }
@@ -53,7 +53,7 @@ class TwoRulerIntersection: Figure, Point {
         return mediator === otherMediator
     }
     
-    func recalculate() -> RawPointResult {
+    func recalculate() -> Res<RawPoint> {
         guard let mediator = mediator, mediator.existing == nil else { return .none }
         return mediator.result
     }

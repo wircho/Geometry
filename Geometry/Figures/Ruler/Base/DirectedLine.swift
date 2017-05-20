@@ -11,21 +11,21 @@ import Result
 
 protocol DirectedLine: Ruler, Line, ParentComparable {
     var directedLineStorage: DirectedLineStorage { get set }
-    func calculateArrowDirection() -> RawPointResult
+    func calculateArrowDirection() -> Res<RawPoint>
     init(_ directedLineStorage: DirectedLineStorage)
 }
 
 extension DirectedLine {
-    func calculateArrow() -> ArrowResult {
+    func calculateArrow() -> Res<Arrow> {
         let p = point?.result ?? .none
-        return ArrowResult(points: (p, p + calculateArrowDirection()))
+        return Res<Arrow>(points: (p, p + calculateArrowDirection()))
     }
     
     var touchingDefiningPoints: [Point] {
         return [point].flatMap { $0 }
     }
     
-    func at(_ pos: CGFloat) -> RawPointResult {
+    func at(_ pos: CGFloat) -> Res<RawPoint> {
         return result.flatMap {
             value in
             normReciprocal.map {
@@ -35,7 +35,7 @@ extension DirectedLine {
         }
     }
     
-    func nearest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> Res<CGFloat> {
         return result.arrow.projectIso(point)
     }
     

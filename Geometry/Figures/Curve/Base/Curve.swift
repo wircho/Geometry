@@ -12,7 +12,7 @@ import CoreGraphics
 import Result
 
 protocol Curve: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: RawCurveResult { get }
+    var result: Res<RawCurve> { get }
     var curveStorage: CurveStorage { get set }
 }
 
@@ -23,11 +23,11 @@ extension Curve {
         UIBezierPath(curve: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: CGFloat) -> RawPointResult {
+    func at(_ pos: CGFloat) -> Res<RawPoint> {
         return result.map { $0.at(min(max(pos,0),1)) }
     }
     
-    func nearest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> Res<CGFloat> {
         return result.map {
             curve in
             let p0 = curve.point0 - point
@@ -81,7 +81,7 @@ extension Curve {
         set { curveStorage.oneDimensionalStorage = newValue }
     }
     
-    func gapToCenter(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return nearest(from: point).flatMap { distance(at($0), .success(point)) }
     }
     

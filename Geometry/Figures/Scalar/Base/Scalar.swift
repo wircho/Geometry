@@ -11,7 +11,7 @@ import Result
 // MARK: - Scalar Base Class
 
 protocol Scalar: FigureBase {
-    var result: FloatResult { get }
+    var result: Res<CGFloat> { get }
 }
 
 extension Scalar {

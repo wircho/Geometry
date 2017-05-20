@@ -22,7 +22,7 @@ final class SlidingPoint: Figure, Point, FreeValued {
         setChildOf([floor])
     }
     
-    func recalculate() -> RawPointResult {
+    func recalculate() -> Res<RawPoint> {
         return floor?.at(position) ?? .none
     }
     

@@ -14,7 +14,7 @@ final class Ray2Points: Figure, Ruler2Points, Ray {
     
     let parentOrder = ParentOrder.sorted
     
-    func at(_ pos: CGFloat) -> RawPointResult {
+    func at(_ pos: CGFloat) -> Res<RawPoint> {
         return result.flatMap {
             value in
             normReciprocal.map {
@@ -24,7 +24,7 @@ final class Ray2Points: Figure, Ruler2Points, Ray {
         }
     }
     
-    func nearest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> Res<CGFloat> {
         return result.arrow.projectIso(point).map { max($0, 0) }
     }
 }

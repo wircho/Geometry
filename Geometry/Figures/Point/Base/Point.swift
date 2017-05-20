@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 protocol Point: FigureBase, PointAppears, Touchable {
-    var result: RawPointResult { get }
+    var result: Res<RawPoint> { get }
     var pointStorage: PointStorage { get set }
 }
 
@@ -32,7 +32,7 @@ extension Point {
         set { pointStorage.figureStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> Res<CGFloat> {
         return result.map { distance($0, point) }
     }
     

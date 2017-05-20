@@ -13,9 +13,9 @@ protocol OneDimensional: FigureBase {
 //    func intersectionPointsNotWith(other: Transmitter?) -> [Point]
     var oneDimensionalStorage: OneDimensionalStorage { get set }
     var touchingDefiningPoints: [Point] { get }
-    func at(_ pos: CGFloat) -> RawPointResult
-    func nearest(from point: RawPoint) -> FloatResult
-    func gapToCenter(from point: RawPoint) -> FloatResult
+    func at(_ pos: CGFloat) -> Res<RawPoint>
+    func nearest(from point: RawPoint) -> Res<CGFloat>
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat>
 }
 
 struct OneDimensionalStorage {
@@ -64,7 +64,7 @@ extension OneDimensional {
 }
 
 extension OneDimensional where Self: StrokeAppears, Self: FigureBase {
-    func gap(from point: RawPoint) -> FloatResult {
+    func gap(from point: RawPoint) -> Res<CGFloat> {
         return gapToCenter(from: point).map {
             gap in
             guard let context = context, gap < appearance.lineWidth / 2 else { return gap }

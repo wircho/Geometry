@@ -23,12 +23,12 @@ final class Baricenter: Figure, Point, ParentComparable {
         setChildOf(points)
     }
     
-    func recalculate() -> RawPointResult {
-        var sum = RawPointResult.success(RawPoint.zero)
+    func recalculate() -> Res<RawPoint> {
+        var sum = Res<RawPoint>.success(RawPoint.zero)
         for getter in points {
             guard let point = getter()?.result else { continue }
             sum += point
         }
-        return sum / FloatResult.success(CGFloat(points.count))
+        return sum / Res<CGFloat>.success(CGFloat(points.count))
     }
 }

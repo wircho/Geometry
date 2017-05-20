@@ -16,10 +16,10 @@ protocol Ruler2Points: Ruler, ParentComparable {
 }
 
 extension Ruler2Points {
-    func calculateArrow() -> ArrowResult {
+    func calculateArrow() -> Res<Arrow> {
         let p0 = point0?.result ?? .none
         let p1 = point1?.result ?? .none
-        return ArrowResult(points: (p0, p1))
+        return Res<Arrow>(points: (p0, p1))
     }
     
     var touchingDefiningPoints: [Point] {

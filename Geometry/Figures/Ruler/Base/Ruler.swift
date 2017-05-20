@@ -13,16 +13,16 @@ import Result
 private let one = Result<CGFloat, MathError>.success(1)
 
 protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: RawRulerResult { get }
+    var result: Res<RawRuler> { get }
     var rulerStorage: RulerStorage { get set }
-    func calculateArrow() -> ArrowResult
+    func calculateArrow() -> Res<Arrow>
     var kind: RawRuler.Kind { get }
 }
 
 extension Ruler {
-    func recalculate() -> RawRulerResult {
+    func recalculate() -> Res<RawRuler> {
         let arrow = calculateArrow()
-        return RawRulerResult(kind: kind, arrow: arrow)
+        return Res<RawRuler>(kind: kind, arrow: arrow)
     }
     
     func drawIn(_ rect: CGRect, appearance: StrokeAppearance) {
@@ -47,7 +47,7 @@ extension Ruler {
         set { rulerStorage.oneDimensionalStorage = newValue }
     }
     
-    var normReciprocal: FloatResult {
+    var normReciprocal: Res<CGFloat> {
         if let nRec = rulerStorage._normReciprocal {
             return nRec
         } else {
@@ -59,7 +59,7 @@ extension Ruler {
 }
 
 struct RulerStorage {
-    var _normReciprocal: FloatResult? = nil
+    var _normReciprocal: Res<CGFloat>? = nil
     var appearance = StrokeAppearance()
     var figureStorage = FigureStorage<RawRuler>() {
         didSet {
@@ -76,7 +76,7 @@ protocol Ray: Ruler { }
 extension Line {
     var kind: RawRuler.Kind { return .line }
     
-    func gapToCenter(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap { ruler in
             ruler.arrow.project(point).map { pos in
                 distance(point, ruler.arrow.at(pos))
@@ -90,7 +90,7 @@ extension Line {
 extension Ray {
     var kind: RawRuler.Kind { return .ray }
     
-    func gapToCenter(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point).map {
@@ -110,7 +110,7 @@ extension Ray {
 extension Segment {
     var kind: RawRuler.Kind { return .segment }
     
-    func gapToCenter(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point)

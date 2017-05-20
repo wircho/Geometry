@@ -16,71 +16,71 @@ func ~/<T: FloatProtocol>(lhs: T, rhs: T) -> Result<T, MathError> {
     return value.isInfinite ? .failure(MathError.infinity) : .success(value)
 }
 
-func +(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
+func +(lhs: Res<CGFloat>, rhs: Res<CGFloat>) -> Res<CGFloat> {
     return lhs.flatMap { lhs in return rhs.map { rhs in return lhs + rhs } }
 }
 
-func -(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
+func -(lhs: Res<CGFloat>, rhs: Res<CGFloat>) -> Res<CGFloat> {
     return lhs.flatMap { lhs in return rhs.map { rhs in return lhs - rhs } }
 }
 
-func *(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
+func *(lhs: Res<CGFloat>, rhs: Res<CGFloat>) -> Res<CGFloat> {
     return lhs.flatMap { lhs in return rhs.map { rhs in return lhs * rhs } }
 }
 
-func *(lhs: CGFloat, rhs: FloatResult) -> FloatResult {
+func *(lhs: CGFloat, rhs: Res<CGFloat>) -> Res<CGFloat> {
     return rhs.map { rhs in return lhs * rhs }
 }
 
-func /(lhs: FloatResult, rhs: FloatResult) -> FloatResult {
+func /(lhs: Res<CGFloat>, rhs: Res<CGFloat>) -> Res<CGFloat> {
     return lhs.flatMap { lhs in return rhs.flatMap { rhs in return lhs ~/ rhs } }
 }
 
-prefix func -(value: FloatResult) -> FloatResult {
+prefix func -(value: Res<CGFloat>) -> Res<CGFloat> {
     return value.map { -$0 }
 }
 
-func +(lhs: RawPointResult, rhs: RawPointResult) -> RawPointResult {
-    return RawPointResult(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
+func +(lhs: Res<RawPoint>, rhs: Res<RawPoint>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: lhs.x + rhs.x, y: lhs.y + rhs.y)
 }
 
-func +=(lhs: inout RawPointResult, rhs: RawPointResult) {
+func +=(lhs: inout Res<RawPoint>, rhs: Res<RawPoint>) {
     lhs = lhs + rhs
 }
 
-func -(lhs: RawPointResult, rhs: RawPointResult) -> RawPointResult {
-    return RawPointResult(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
+func -(lhs: Res<RawPoint>, rhs: Res<RawPoint>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: lhs.x - rhs.x, y: lhs.y - rhs.y)
 }
 
-func -=(lhs: inout RawPointResult, rhs: RawPointResult) {
+func -=(lhs: inout Res<RawPoint>, rhs: Res<RawPoint>) {
     lhs = lhs - rhs
 }
 
-prefix func -(point: RawPointResult) -> RawPointResult {
-    return RawPointResult(x: -point.x, y: -point.y)
+prefix func -(point: Res<RawPoint>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: -point.x, y: -point.y)
 }
 
-func *(lhs: FloatResult, rhs: RawPointResult) -> RawPointResult {
-    return RawPointResult(x: lhs * rhs.x, y: lhs * rhs.y)
+func *(lhs: Res<CGFloat>, rhs: Res<RawPoint>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: lhs * rhs.x, y: lhs * rhs.y)
 }
 
-func *(lhs: RawPointResult, rhs: FloatResult) -> RawPointResult {
-    return RawPointResult(x: rhs * lhs.x, y: rhs * lhs.y)
+func *(lhs: Res<RawPoint>, rhs: Res<CGFloat>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: rhs * lhs.x, y: rhs * lhs.y)
 }
 
-func /(lhs: RawPoint, rhs: CGFloat) -> RawPointResult {
+func /(lhs: RawPoint, rhs: CGFloat) -> Res<RawPoint> {
     return (lhs.x ~/ rhs).flatMap { x in (lhs.y ~/ rhs).map { y in RawPoint(x: x, y: y) } }
 }
 
-func /(lhs: RawPointResult, rhs: FloatResult) -> RawPointResult {
-    return RawPointResult(x: lhs.x / rhs, y: lhs.y / rhs)
+func /(lhs: Res<RawPoint>, rhs: Res<CGFloat>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: lhs.x / rhs, y: lhs.y / rhs)
 }
 
-func •(lhs: RawPointResult, rhs: RawPointResult) -> FloatResult {
+func •(lhs: Res<RawPoint>, rhs: Res<RawPoint>) -> Res<CGFloat> {
     return lhs.x * rhs.x + lhs.y * rhs.y
 }
 
-func •(lhs: TwoFloatResult, rhs: TwoFloatResult) -> FloatResult {
+func •(lhs: Res<Two<CGFloat>>, rhs: Res<Two<CGFloat>>) -> Res<CGFloat> {
     return lhs.flatMap { lhs in return rhs.map { rhs in return lhs • rhs } }
 }
 
@@ -90,15 +90,15 @@ func /<T: FloatProtocol>(lhs: TwoByTwo<T>, rhs: T) -> Result<TwoByTwo<T>, MathEr
 
 // MARK: Global functions
 
-func squareDistance(_ point0: RawPointResult, _ point1: RawPointResult) -> FloatResult {
+func squareDistance(_ point0: Res<RawPoint>, _ point1: Res<RawPoint>) -> Res<CGFloat> {
     return (point0 - point1).squaredNorm
 }
 
-func distance(_ point0: RawPointResult, _ point1: RawPointResult) -> FloatResult {
+func distance(_ point0: Res<RawPoint>, _ point1: Res<RawPoint>) -> Res<CGFloat> {
     return (point0 - point1).norm
 }
 
-func sqrt(_ value: FloatResult) -> FloatResult {
+func sqrt(_ value: Res<CGFloat>) -> Res<CGFloat> {
     return value.flatMap {
         value in
         let s = sqrt(value)
@@ -109,12 +109,12 @@ func sqrt(_ value: FloatResult) -> FloatResult {
     }
 }
 
-func intersectionCoordinates(_ arrow0: Arrow, _ arrow1: Arrow) -> TwoFloatResult {
+func intersectionCoordinates(_ arrow0: Arrow, _ arrow1: Arrow) -> Res<Two<CGFloat>> {
     //(01 - 00) * alpha - (11 - 10) * beta =  10 - 00
     return (arrow0.vector | -arrow1.vector).inverse.map { $0 * (arrow1.points.0 - arrow0.points.0).coordinates }
 }
 
-func intersection(_ ruler0: RawRuler, _ ruler1: RawRuler) -> RawPointResult {
+func intersection(_ ruler0: RawRuler, _ ruler1: RawRuler) -> Res<RawPoint> {
     return intersectionCoordinates(ruler0.arrow, ruler1.arrow).flatMap {
         coords in
         guard ruler0.kind.covers(coords.v0) && ruler1.kind.covers(coords.v1) else {
@@ -124,11 +124,11 @@ func intersection(_ ruler0: RawRuler, _ ruler1: RawRuler) -> RawPointResult {
     }
 }
 
-func intersection(_ ruler0: RawRulerResult, _ ruler1: RawRulerResult) -> RawPointResult {
+func intersection(_ ruler0: Res<RawRuler>, _ ruler1: Res<RawRuler>) -> Res<RawPoint> {
     return ruler0.flatMap { s0 in return ruler1.flatMap { s1 in return intersection(s0, s1) } }
 }
 
-func intersectionCoordinates(_ arrow: Arrow, _ circle: RawCircle) -> TwoFloatResult {
+func intersectionCoordinates(_ arrow: Arrow, _ circle: RawCircle) -> Res<Two<CGFloat>> {
     return (1 ~/ arrow.vector.norm).flatMap {
         nRec in
         let c = (circle.center - arrow.points.0) • arrow.vector * nRec
@@ -143,7 +143,7 @@ func intersectionCoordinates(_ arrow: Arrow, _ circle: RawCircle) -> TwoFloatRes
     
 }
 
-func intersectionCoordinates(_ arrow: Arrow, _ rect: CGRect) -> TwoFloatResult {
+func intersectionCoordinates(_ arrow: Arrow, _ rect: CGRect) -> Res<Two<CGFloat>> {
     let vector = arrow.vector
     let minX = rect.minX
     let minY = rect.minY
@@ -174,7 +174,7 @@ func intersectionCoordinates(_ arrow: Arrow, _ rect: CGRect) -> TwoFloatResult {
     return .success(Two(v0: max(x0, y0), v1: min(x1, y1)))
 }
 
-func intersections(_ ruler: RawRuler, _ circle: RawCircle) -> TwoOptionalRawPointResult {
+func intersections(_ ruler: RawRuler, _ circle: RawCircle) -> Res<Two<RawPoint?>> {
     return intersectionCoordinates(ruler.arrow, circle).map {
         coords in
         let v0: RawPoint? = ruler.kind.covers(coords.v0) ? ruler.arrow.at(coords.v0) : nil
@@ -186,7 +186,7 @@ func intersections(_ ruler: RawRuler, _ circle: RawCircle) -> TwoOptionalRawPoin
     }
 }
 
-func intersections(_ ruler: RawRuler, _ rect: CGRect) -> TwoOptionalRawPointResult {
+func intersections(_ ruler: RawRuler, _ rect: CGRect) -> Res<Two<RawPoint?>> {
     return intersectionCoordinates(ruler.arrow, rect).map {
         coords in
         return Two<RawPoint?>(
@@ -196,7 +196,7 @@ func intersections(_ ruler: RawRuler, _ rect: CGRect) -> TwoOptionalRawPointResu
     }
 }
 
-func intersections(_ c0: RawCircle, _ c1: RawCircle) -> TwoRawPointResult {
+func intersections(_ c0: RawCircle, _ c1: RawCircle) -> Res<Two<RawPoint>> {
     let arrow = Arrow(points: (c0.center, c1.center))
     let d = arrow.vector.norm
     return (1 ~/ d).flatMap {
@@ -213,11 +213,11 @@ func intersections(_ c0: RawCircle, _ c1: RawCircle) -> TwoRawPointResult {
     }
 }
 
-func intersections(_ ruler: RawRulerResult, _ circle: RawCircleResult) -> TwoOptionalRawPointResult {
+func intersections(_ ruler: Res<RawRuler>, _ circle: Res<RawCircle>) -> Res<Two<RawPoint?>> {
     return ruler.flatMap { s in circle.flatMap { c in intersections(s,c) } }
 }
 
-func intersections(_ c0: RawCircleResult, _ c1: RawCircleResult) -> TwoRawPointResult {
+func intersections(_ c0: Res<RawCircle>, _ c1: Res<RawCircle>) -> Res<Two<RawPoint>> {
     return c0.flatMap { c0 in c1.flatMap { c1 in intersections(c0, c1) } }
 }
 
@@ -302,7 +302,7 @@ extension Result where T: RawCircleProtocol, Error: MathErrorProtocol {
             .mapError { Error($0) }
     }
     
-    init (cicumscribing points: (RawPointResult, RawPointResult, RawPointResult)) {
+    init (cicumscribing points: (Res<RawPoint>, Res<RawPoint>, Res<RawPoint>)) {
         self = points.0.flatMap { p0 in return points.1.flatMap{ p1 in return points.2.flatMap { p2 in return Result(cicumscribing: (p0, p1, p2)) } } }
     }
 }
@@ -331,7 +331,7 @@ extension Result where T: RawArcProtocol, Error: MathErrorProtocol {
             .mapError { Error($0) }
     }
     
-    init (cicumscribing points: (RawPointResult, RawPointResult, RawPointResult)) {
+    init (cicumscribing points: (Res<RawPoint>, Res<RawPoint>, Res<RawPoint>)) {
         self = points.0.flatMap { p0 in return points.1.flatMap{ p1 in return points.2.flatMap { p2 in return Result(cicumscribing: (p0, p1, p2)) } } }
     }
 }

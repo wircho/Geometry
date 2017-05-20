@@ -9,7 +9,7 @@ import CoreGraphics
 import Result
 
 protocol Circle: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: RawCircleResult { get }
+    var result: Res<RawCircle> { get }
     var circleStorage: CircleStorage { get set }
 }
 
@@ -20,14 +20,14 @@ extension Circle {
         UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: CGFloat) -> RawPointResult {
+    func at(_ pos: CGFloat) -> Res<RawPoint> {
         return result.map {
             circle in
             return  circle.center + Angle(value: pos).vector(radius: circle.radius)
         }
     }
     
-    func nearest(from point: RawPoint) -> FloatResult {
+    func nearest(from point: RawPoint) -> Res<CGFloat> {
         return result.map {
             circle in
             return (point - circle.center).angle.value
@@ -53,7 +53,7 @@ extension Circle {
         set { circleStorage.oneDimensionalStorage = newValue }
     }
     
-    func gapToCenter(from point: RawPoint) -> FloatResult {
+    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return result.map {
             circle in
             return abs(circle.radius - distance(point, circle.center))

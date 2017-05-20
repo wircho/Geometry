@@ -34,7 +34,7 @@ final class Curve4Points: Figure, Curve {
         return [point0, point3].flatMap { $0 }
     }
     
-    func recalculate() -> RawCurveResult {
-        return RawCurveResult(point0: point0?.result ?? .none, control0: point1?.result ?? .none, control1: point2?.result ?? .none, point1: point3?.result ?? .none)
+    func recalculate() -> Res<RawCurve> {
+        return Res<RawCurve>(point0: point0?.result ?? .none, control0: point1?.result ?? .none, control1: point2?.result ?? .none, point1: point3?.result ?? .none)
     }
 }

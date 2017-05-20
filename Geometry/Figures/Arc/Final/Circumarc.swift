@@ -31,7 +31,7 @@ final class Circumarc: Figure, Arc, ParentComparable {
         return [point0, point1, point2].flatMap { $0 }
     }
     
-    func recalculate() -> RawArcResult {
-        return RawArcResult(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
+    func recalculate() -> Res<RawArc> {
+        return Res<RawArc>(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
     }
 }
