@@ -16,7 +16,7 @@ protocol FigureBase: Transmitter {
 
 struct FigureStorage<Value> {
     weak var context: FigureContext?
-    var receivers: [Getter<Transmitter?>] = []
+    var receivers: [() -> Transmitter?] = []
     var _result: Result<Value, MathError> = .failure(.none) {
         didSet {
             if case .success = oldValue, case .failure = _result, selected {
@@ -47,7 +47,7 @@ protocol Figure: FigureBase, Recalculator {
 }
 
 extension Figure {
-    var receivers: [Getter<Transmitter?>] {
+    var receivers: [() -> Transmitter?] {
         get { return storage.receivers }
         set { storage.receivers = newValue }
     }

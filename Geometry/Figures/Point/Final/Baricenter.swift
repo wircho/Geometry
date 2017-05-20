@@ -12,7 +12,7 @@ import Result
 final class Baricenter: Figure, Point, ParentComparable {
     var pointStorage = PointStorage()
     
-    let points: [Getter<Point?>]
+    let points: [() -> Point?]
     
     let parentOrder = ParentOrder.unsorted
     var parents: [AnyObject?] { return points.map { $0() } }

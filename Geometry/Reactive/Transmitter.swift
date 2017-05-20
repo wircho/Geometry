@@ -18,9 +18,7 @@ enum TransmitterSignalAlgorithm {
 // MARK: - Object That Propagates A Signal
 
 protocol Transmitter: class {
-    
-    var receivers: [Getter<Transmitter?>] { get set }
-    
+    var receivers: [() -> Transmitter?] { get set }
 }
 
 extension Transmitter {

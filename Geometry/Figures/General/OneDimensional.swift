@@ -19,8 +19,8 @@ protocol OneDimensional: FigureBase {
 }
 
 struct OneDimensionalStorage {
-    var slidingPointGetters: [Getter<Point?>] = []
-    var intersectionPointGetters: [Getter<Point?>] = []
+    var slidingPointGetters: [() -> Point?] = []
+    var intersectionPointGetters: [() -> Point?] = []
 }
 
 extension OneDimensional {
