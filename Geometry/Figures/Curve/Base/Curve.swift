@@ -6,8 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Foundation
-
 import CoreGraphics
 import Result
 

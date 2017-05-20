@@ -121,9 +121,24 @@ private func createFigureContext2() -> FigureContext {
     return ctx
 }
 
+// Curve with sliding point
+private func createFigureContext3() -> FigureContext {
+    let ctx = FigureContext()
+    let p0 = FreePoint(x: 50, y: 50, in: ctx)
+    let p1 = FreePoint(x: 70, y: 100, in: ctx)
+    let p2 = FreePoint(x: 200, y: 100, in: ctx)
+    let curve = QuadCurve3Points(p0, p1, p2)
+    let curvePoint = SlidingPoint(curve, at: 0.5)
+    curvePoint.appearance.color = .red
+    //let arc = Circumarc(p0, p1, p2)
+    //let arcPoint = SlidingPoint(arc, at: 0.5)
+    //arcPoint.appearance.color = .red
+    return ctx
+}
+
 class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
 
-    var context = createFigureContext2()
+    var context = createFigureContext3()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

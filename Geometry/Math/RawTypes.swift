@@ -259,7 +259,14 @@ extension RawCurveProtocol {
 }
 
 extension RawQuadCurveProtocol {
-    
+    func at(_ pos: CGFloat) -> RawPoint {
+        let oneMinusPos = 1 - pos
+        let pos2 = pos * pos
+        let oneMinusPos2 = oneMinusPos * oneMinusPos
+        return oneMinusPos2 * point0
+            + 2 * oneMinusPos * pos * control
+            + pos2 * point1
+    }
 }
 
 extension TwoByTwoProtocol {
