@@ -43,10 +43,14 @@ extension Curve {
             let a3 = p1 • d2 + p2 • d1 + p3 • d0
             let a4 = p2 • d2 + p3 • d1
             let a5 = p3 • d2
+            let start = Date().timeIntervalSince1970
             let quintic = QuinticPolynomial(a0: a0, a1: a1, a2: a2, a3: a3, a4: a4, a5: a5)
-            guard let roots = quintic.realRoots.array?.filter({ $0 >= 0 && $0 <= 1 }) else {
+            guard var roots = quintic.realRoots.array?.filter({ $0 >= 0 && $0 <= 1 }) else {
                 return 0.5
             }
+            let end = Date().timeIntervalSince1970
+            print(end - start)
+            roots += [0,1]
             var minDist: CGFloat? = nil
             var minRoot: CGFloat? = nil
             for root in roots {
@@ -57,12 +61,7 @@ extension Curve {
                     minRoot = root
                 }
             }
-            guard let r = minRoot else {
-                let dist0 = distance(curve.point0, point)
-                let dist1 = distance(curve.point1, point)
-                return dist0 < dist1 ? 0 : 1
-            }
-            return min(max(r,0),1)
+            return min(max(minRoot ?? 0.5,0),1)
         }
     }
     

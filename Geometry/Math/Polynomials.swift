@@ -435,7 +435,7 @@ struct QuarticPolynomial: Polynomial, ComplexSolvable {
     }
 }
 
-private let quinticError: CGFloat = 0.01
+private let quinticError: CGFloat = 0.00001
 private let twiceQuinticError = 2 * quinticError
 struct QuinticPolynomial: Polynomial, RealSolvable, Divisible {
     let a0: CGFloat
