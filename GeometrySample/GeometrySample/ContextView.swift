@@ -138,7 +138,7 @@ private func createFigureContext3() -> FigureContext {
 
 // Playful circles/arcs
 private func createFigureContext4() -> FigureContext {
-    let clear = UIColor.lightGray.withAlphaComponent(0.05)
+    let clear = UIColor.clear
     let ctx = FigureContext()
     let radius0 = FreeScalar(at: 100, in: ctx)
     let radius1 = FreeScalar(at: 200, in: ctx)
