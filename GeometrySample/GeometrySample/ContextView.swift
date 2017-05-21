@@ -140,7 +140,7 @@ private func createFigureContext3() -> FigureContext {
 private func createFigureContext4() -> FigureContext {
     let clear = UIColor.clear
     let ctx = FigureContext()
-    let radius0 = FreeScalar(at: 100, in: ctx)
+    let radius0 = FreeScalar(at: 50, in: ctx)
     let radius1 = FreeScalar(at: 200, in: ctx)
     let center0 = FreePoint(x: 110, y: 250, in: ctx)
     let center1 = FreePoint(x: 205, y: 250, in: ctx)
@@ -187,7 +187,7 @@ private func createFigureContext4() -> FigureContext {
     guard let f = _f else {
         fatalError("No intersection points!")
     }
-    f.appearance.color = clear
+    f.appearance.color = .orange
     let redCircle1 = CircleToPoint(center1, f)
     redCircle1.appearance.color = .red
     let outRay = Ray2Points(y0, center1)
