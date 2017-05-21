@@ -8,23 +8,9 @@
 import CoreGraphics
 import Result
 
-final class Ray2Points: Figure, Ruler2Points, Ray {
+final class Ray2Points: Figure, Ruler2PointsStandard, Ray {
     var ruler2PointsStorage: Ruler2PointsStorage
     init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     
     let parentOrder = ParentOrder.sorted
-    
-    func at(_ pos: CGFloat) -> Res<RawPoint> {
-        return result.flatMap {
-            value in
-            normReciprocal.map {
-                normReciprocal in
-                value.arrow.at(max(pos,0) * normReciprocal)
-            }
-        }
-    }
-    
-    func nearest(from point: RawPoint) -> Res<CGFloat> {
-        return result.arrow.projectIso(point).map { max($0, 0) }
-    }
 }

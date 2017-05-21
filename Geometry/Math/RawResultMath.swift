@@ -60,6 +60,10 @@ prefix func -(point: Res<RawPoint>) -> Res<RawPoint> {
     return Res<RawPoint>(x: -point.x, y: -point.y)
 }
 
+func *(lhs: CGFloat, rhs: Res<RawPoint>) -> Res<RawPoint> {
+    return Res<RawPoint>(x: lhs * rhs.x, y: lhs * rhs.y)
+}
+
 func *(lhs: Res<CGFloat>, rhs: Res<RawPoint>) -> Res<RawPoint> {
     return Res<RawPoint>(x: lhs * rhs.x, y: lhs * rhs.y)
 }

@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class Line2Points: Figure, Ruler2Points, Line {
+final class Line2Points: Figure, Ruler2PointsStandard, Line {
     var ruler2PointsStorage: Ruler2PointsStorage
     init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     

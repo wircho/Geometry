@@ -138,7 +138,7 @@ private func createFigureContext3() -> FigureContext {
 
 // Playful circles/arcs
 private func createFigureContext4() -> FigureContext {
-    let clear = UIColor.clear
+    let clear = UIColor.green
     let ctx = FigureContext()
     let radius0 = FreeScalar(at: 50, in: ctx)
     let radius1 = FreeScalar(at: 200, in: ctx)
@@ -172,22 +172,14 @@ private func createFigureContext4() -> FigureContext {
     let arc1 = Circumarc(a,x1,b)
     arc0.appearance.color = .red
     arc1.appearance.color = .red
-    let circle1Copy = CircleWithRadius(x0,radius1)
-    circle1Copy.appearance.color = clear
-    let (_, _c, _d) = RulerCircleIntersection.create(l, circle1Copy)
-    _d?.appearance.color = clear
-    guard let c = _c else {
-        fatalError("No intersection points!")
-    }
-    c.appearance.color = clear
-    let inRay = Ray2Points(x0, c)
+    let inRay = RayAway(center1, x0)
     inRay.appearance.color = clear
     let (_, _e, _f) = RulerCircleIntersection.create(inRay, circle1)
     _e?.appearance.color = clear
     guard let f = _f else {
         fatalError("No intersection points!")
     }
-    f.appearance.color = .orange
+    f.appearance.color = clear
     let redCircle1 = CircleToPoint(center1, f)
     redCircle1.appearance.color = .red
     let outRay = Ray2Points(y0, center1)

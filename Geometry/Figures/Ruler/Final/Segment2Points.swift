@@ -8,7 +8,7 @@
 import CoreGraphics
 import Result
 
-final class Segment2Points: Figure, Ruler2Points, Segment, Bounded {
+final class Segment2Points: Figure, Ruler2PointsStandard, Segment, Bounded {
     var ruler2PointsStorage: Ruler2PointsStorage
     init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
     

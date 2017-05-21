@@ -90,6 +90,20 @@ extension Line {
 extension Ray {
     var kind: RawRuler.Kind { return .ray }
     
+    func at(_ pos: CGFloat) -> Res<RawPoint> {
+        return result.flatMap {
+            value in
+            normReciprocal.map {
+                normReciprocal in
+                value.arrow.at(max(pos,0) * normReciprocal)
+            }
+        }
+    }
+    
+    func nearest(from point: RawPoint) -> Res<CGFloat> {
+        return result.arrow.projectIso(point).map { max($0, 0) }
+    }
+    
     func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             ruler in
