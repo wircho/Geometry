@@ -121,6 +121,32 @@ struct RawQuadCurve {
     var point1: RawPoint
 }
 
+struct RawPath {
+    struct Segment {
+        var point: RawPoint
+    }
+    
+    struct Curve {
+        var control0: RawPoint
+        var control1: RawPoint
+        var point1: RawPoint
+    }
+    
+    struct QuadCurve {
+        var control: RawPoint
+        var point1: RawPoint
+    }
+    
+    enum Component {
+        case segment(Segment)
+        case curve(Curve)
+        case quadCurve(QuadCurve)
+    }
+    
+    var start: RawPoint
+    var components: [Component]
+}
+
 // MARK: Protocols
 protocol FloatProtocol {
     static func *(lhs: Self, rhs: Self) -> Self
