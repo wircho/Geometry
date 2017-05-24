@@ -21,11 +21,11 @@ extension QuadCurve {
         UIBezierPath(quadCurve: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: CGFloat) -> Res<RawPoint> {
-        return result.map { $0.at(min(max(pos,0),1)) }
+    func at(offset: CGFloat) -> Res<RawPoint> {
+        return result.map { $0.at(offset: min(max(pos,0),1)) }
     }
     
-    func nearest(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
         return result.map {
             curve in
             let p0 = curve.point0 - point
@@ -45,7 +45,7 @@ extension QuadCurve {
             var minDist: CGFloat? = nil
             var minRoot: CGFloat? = nil
             for root in roots {
-                let near = curve.at(root)
+                let near = curve.at(offset: root)
                 let dist = distance(point, near)
                 if minDist.map({ $0 > dist }) ?? true {
                     minDist = dist
@@ -75,8 +75,8 @@ extension QuadCurve {
         set { quadCurveStorage.oneDimensionalStorage = newValue }
     }
     
-    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
-        return nearest(from: point).flatMap { distance(at($0), .success(point)) }
+    func gap(from point: RawPoint) -> Res<CGFloat> {
+        return nearestOffset(from: point).flatMap { distance(at(offset: $0), .success(point)) }
     }
     
     var touchPriority: CGFloat { return 600 }

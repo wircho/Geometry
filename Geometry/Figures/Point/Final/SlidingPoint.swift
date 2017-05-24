@@ -6,28 +6,26 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
-final class SlidingPoint: Figure, Point, FreeValued {
-    var pointStorage = PointStorage()
-    var _position: CGFloat
+final class SlidingPoint<P: RawPointProtocol>: Point, FreeValued {
+    var pointStorage = PointStorage<P>()
+    var _freeValue: P.Value
     
-    weak var floor: OneDimensional?
+    var floor: AnyWeakOneDimensional<P>
     
-    init(_ floor: OneDimensional, at initial: CGFloat) {
-        self.floor = floor
-        _position = initial
-        floor.slidingPoints.append(self)
+    init<F: OneDimensional>(_ floor: F, at initial: P.Value) where F.P == P {
+        self.floor = AnyWeakOneDimensional(floor)
+        _freeValue = initial
+        floor.slidingPoints.append(AnyFigure(self))
         setChildOf([floor])
     }
     
-    func recalculate() -> Res<RawPoint> {
-        return floor?.at(position) ?? .none
+    func recalculate() -> Res<P> {
+        return floor.atOffset(freeValue) ?? .none
     }
     
-    func nearestPosition(from point: RawPoint) -> Result<CGFloat, MathError> {
-        guard let floor = floor else { return .none }
-        return floor.nearest(from: point)
+    func nearestFreeValue(from point: P) -> Res<P.Value> {
+        return floor.nearestOffsetFrom(point) ?? .none
     }
 }

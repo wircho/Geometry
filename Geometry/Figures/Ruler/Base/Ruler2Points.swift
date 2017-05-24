@@ -11,52 +11,51 @@ import Result
 // MARK: - Ruler Figures Through 2 Points
 
 protocol Ruler2Points: Ruler, ParentComparable {
-    var ruler2PointsStorage: Ruler2PointsStorage { get set }
-    init(_ ruler2PointsStorage: Ruler2PointsStorage)
+    var ruler2PointsStorage: Ruler2PointsStorage<R> { get set }
+    init(_ ruler2PointsStorage: Ruler2PointsStorage<R>)
 }
 
 extension Ruler2Points {
-    var parents: [AnyObject?] { return [point0, point1] }
+    var parents: [AnyObject?] { return [point0.figure, point1.figure] }
     
-    var rulerStorage: RulerStorage {
+    var rulerStorage: RulerStorage<R> {
         get { return  ruler2PointsStorage.rulerStorage }
         set { ruler2PointsStorage.rulerStorage = newValue }
     }
     
-    var point0: Point? { return ruler2PointsStorage.point0 }
-    
-    var point1: Point? { return ruler2PointsStorage.point1 }
+    var point0: AnyWeakFigure<R.Arrow.Point> { return ruler2PointsStorage.point0 }
+    var point1: AnyWeakFigure<R.Arrow.Point> { return ruler2PointsStorage.point1 }
 }
 
 protocol Ruler2PointsStandard: Ruler2Points { }
 
 extension Ruler2PointsStandard {
-    func calculateArrow() -> Res<Arrow> {
-        let p0 = point0?.result ?? .none
-        let p1 = point1?.result ?? .none
-        return Res<Arrow>(points: (p0, p1))
+    func calculateArrow() -> Res<R.Arrow> {
+        let p0 = point0.result ?? .none
+        let p1 = point1.result ?? .none
+        return Res<R.Arrow>(points: (p0, p1))
     }
     
-    var touchingDefiningPoints: [Point] {
-        return [point0, point1].flatMap { $0 }
+    var touchingDefiningPoints: [AnyFigure<R.Arrow.Point>] {
+        return [point0, point1].flatMap { $0.anyFigure }
     }
 }
 
 extension Ruler2Points where Self: Figure {
-    init(_ p0: Point, _ p1: Point) {
+    init<T0: Point, T1: Point>(_ p0: T0, _ p1: T1) where T0.ResultValue == Res<R.Arrow.Point>, T1.ResultValue == Res<R.Arrow.Point> {
         self.init(Ruler2PointsStorage(p0, p1))
         setChildOf([p0, p1])
     }
 }
 
-struct Ruler2PointsStorage {
-    var rulerStorage = RulerStorage()
+struct Ruler2PointsStorage<R: RawRulerProtocol> {
+    var rulerStorage = RulerStorage<R>()
     
-    weak var point0: Point? = nil
-    weak var point1: Point? = nil
+    var point0 = AnyWeakFigure<R.Arrow.Point>()
+    var point1 = AnyWeakFigure<R.Arrow.Point>()
     
-    init(_ p0: Point, _ p1: Point) {
-        point0 = p0
-        point1 = p1
+    init<T0: Point, T1: Point>(_ p0: T0, _ p1: T1) where T0.ResultValue == Res<R.Arrow.Point>, T1.ResultValue == Res<R.Arrow.Point> {
+        point0 = AnyWeakFigure<R.Arrow.Point>(p0)
+        point1 = AnyWeakFigure<R.Arrow.Point>(p1)
     }
 }

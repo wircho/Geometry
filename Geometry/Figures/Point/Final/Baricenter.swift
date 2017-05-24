@@ -9,26 +9,26 @@
 import CoreGraphics
 import Result
 
-final class Baricenter: Figure, Point, ParentComparable {
-    var pointStorage = PointStorage()
+final class Baricenter<P: RawPointProtocol>: Point, ParentComparable {
+    var pointStorage = PointStorage<P>()
     
-    let points: [() -> Point?]
+    let points: [AnyWeakFigure<P>]
     
     let parentOrder = ParentOrder.unsorted
-    var parents: [AnyObject?] { return points.map { $0() } }
+    var parents: [AnyObject?] { return points.map { $0.figure } }
     
-    init?(points: [Point]) {
+    init?(points: [AnyFigure<P>]) {
         guard points.count >= 2 else { return nil }
-        self.points = points.map { (point: Point) in { [weak point] in point } }
-        setChildOf(points)
+        self.points = points.map { $0.anyWeakFigure }
+        setChildOf(points.map { $0.figure })
     }
     
-    func recalculate() -> Res<RawPoint> {
-        var sum = Res<RawPoint>.success(RawPoint.zero)
-        for getter in points {
-            guard let point = getter()?.result else { continue }
+    func recalculate() -> Res<P> {
+        var sum = Res<P>.success(.zero)
+        for any in points {
+            guard let point = any.result else { continue }
             sum += point
         }
-        return sum / Res<CGFloat>.success(CGFloat(points.count))
+        return sum / Res<P.Value>.success(P.Value(points.count))
     }
 }

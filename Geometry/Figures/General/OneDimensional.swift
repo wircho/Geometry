@@ -9,59 +9,61 @@
 import CoreGraphics
 import Result
 
-protocol OneDimensional: FigureBase {
-    var oneDimensionalStorage: OneDimensionalStorage { get set }
-    var touchingDefiningPoints: [Point] { get }
-    func at(_ pos: CGFloat) -> Res<RawPoint>
-    func nearest(from point: RawPoint) -> Res<CGFloat>
-    func gapToCenter(from point: RawPoint) -> Res<CGFloat>
+protocol OneDimensional: Figure {
+    associatedtype P: RawPointProtocol
+    var oneDimensionalStorage: OneDimensionalStorage<P> { get set }
+    var touchingDefiningPoints: [AnyFigure<P>] { get }
+    func at(offset: P.Value) -> Res<P>
+    func nearestOffset(from point: P) -> Res<P.Value>
+    func gap(from point: P) -> Res<P.Value>
 }
 
-struct OneDimensionalStorage {
-    var slidingPointGetters: [() -> Point?] = []
-    var intersectionPointGetters: [() -> Point?] = []
+struct OneDimensionalStorage<P> {
+    var weakSlidingPoints: [AnyWeakFigure<P>] = []
+    var weakIntersectionPoints: [AnyWeakFigure<P>] = []
 }
 
 extension OneDimensional {
-    var slidingPoints: [Point] {
+    var slidingPoints: [AnyFigure<P>] {
         get {
-            oneDimensionalStorage.slidingPointGetters = oneDimensionalStorage.slidingPointGetters.filter { $0() != nil }
-            return oneDimensionalStorage.slidingPointGetters.flatMap { $0() }
+            oneDimensionalStorage.weakSlidingPoints = oneDimensionalStorage.weakSlidingPoints.filter { $0.figure != nil }
+            return oneDimensionalStorage.weakSlidingPoints.flatMap { $0.anyFigure }
         }
         set {
-            oneDimensionalStorage.slidingPointGetters = newValue.map { (point: Point) in return { [weak point] in point } }
+            oneDimensionalStorage.weakSlidingPoints = newValue.map { $0.anyWeakFigure }
         }
     }
     
-    var intersectionPoints: [Point] {
+    var intersectionPoints: [AnyFigure<P>] {
         get {
-            oneDimensionalStorage.intersectionPointGetters = oneDimensionalStorage.intersectionPointGetters.filter { $0() != nil }
-            return oneDimensionalStorage.intersectionPointGetters.flatMap { $0() }
+            oneDimensionalStorage.weakIntersectionPoints = oneDimensionalStorage.weakIntersectionPoints.filter { $0.figure != nil }
+            return oneDimensionalStorage.weakIntersectionPoints.flatMap { $0.anyFigure }
         }
         set {
-            oneDimensionalStorage.intersectionPointGetters = newValue.map { (point: Point) in return { [weak point] in point } }
+            oneDimensionalStorage.weakIntersectionPoints = newValue.map { $0.anyWeakFigure }
         }
     }
     
-    var allTouchingPoints: [Point] {
+    var allTouchingPoints: [AnyFigure<P>] {
         return touchingDefiningPoints + intersectionPoints + slidingPoints
     }
     
     var touchingPointsSet: ObjectSet<AnyObject> {
-        return ObjectSet<AnyObject>(allTouchingPoints as [AnyObject])
+        return ObjectSet<AnyObject>(allTouchingPoints.map { $0.figure })
     }
     
-    func findCommonPoints(with other: OneDimensional, _ closure: (Point) -> Bool) {
+    func findCommonPoints<Other: OneDimensional>(with other: Other, _ closure: (AnyFigure<P>) -> Bool) {
         let array = allTouchingPoints
         let otherSet = other.touchingPointsSet
         for p in array {
-            if otherSet.contains(p) {
+            if otherSet.contains(p.figure) {
                 guard closure(p) else { break }
             }
         }
     }
 }
 
+/*
 extension OneDimensional where Self: StrokeAppears, Self: FigureBase {
     func gap(from point: RawPoint) -> Res<CGFloat> {
         return gapToCenter(from: point).map {
@@ -71,3 +73,4 @@ extension OneDimensional where Self: StrokeAppears, Self: FigureBase {
         }
     }
 }
+*/

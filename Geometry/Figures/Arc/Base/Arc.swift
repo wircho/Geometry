@@ -21,7 +21,7 @@ extension Arc {
         UIBezierPath(arc: value, lineWidth: appearance.lineWidth).stroke()
     }
     
-    func at(_ pos: CGFloat) -> Res<RawPoint> {
+    func at(offset: CGFloat) -> Res<RawPoint> {
         return result.map {
             arc in
             let angle: CGFloat
@@ -35,7 +35,7 @@ extension Arc {
         }
     }
     
-    func nearest(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             arc in
             var angles = arc.angleValues
@@ -72,10 +72,10 @@ extension Arc {
         set { arcStorage.oneDimensionalStorage = newValue }
     }
     
-    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: RawPoint) -> Res<CGFloat> {
         return result.flatMap {
             arc in
-            nearest(from: point).map {
+            nearestOffset(from: point).map {
                 c in
                 let angleValues = arc.angleValues
                 let angle = angleValues.v0 + (angleValues.v1 - angleValues.v0) * (arc.fromFirst ? c : (1 - c))

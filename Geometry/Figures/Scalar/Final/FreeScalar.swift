@@ -8,16 +8,16 @@
 import CoreGraphics
 import Result
 
-final class FreeScalar: Figure, Scalar, FreeValued {
-    var storage = FigureStorage<CGFloat>()
-    var _position: CGFloat
+final class FreeScalar<P: RawPointProtocol>: Scalar, FreeValued {
+    var storage = FigureStorage<P.Value>()
+    var _freeValue: P.Value
     
-    init(at initial: CGFloat, `in` context: FigureContext) {
-        _position = initial
+    init(at initial: P.Value, `in` context: FigureContext) {
+        _freeValue = initial
         context.append(self)
     }
     
-    func nearestPosition(from point: RawPoint) -> Result<CGFloat, MathError> {
+    func nearestFreeValue(from point: P) -> Res<P.Value> {
         return .none
     }
 }

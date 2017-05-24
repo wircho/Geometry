@@ -9,8 +9,9 @@
 import CoreGraphics
 import Result
 
-
+/*
 protocol Touchable: FigureBase {
-    func gap(from point: RawPoint) -> Res<CGFloat>
+    func gap(from point: CGPoint) -> Res<CGFloat>
     var touchPriority: CGFloat { get }
 }
+*/

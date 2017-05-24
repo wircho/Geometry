@@ -8,20 +8,20 @@
 import CoreGraphics
 import Result
 
-final class FreePoint: Figure, Point, FreeValued {
-    var pointStorage = PointStorage()
-    var _position: RawPoint
+final class FreePoint<P: RawPointProtocol>: Point, FreeValued {
+    var pointStorage = PointStorage<P>()
+    var _freeValue: P
     
-    init(at initial: RawPoint, `in` context: FigureContext) {
-        _position = initial
+    init(at initial: P, `in` context: FigureContext) {
+        _freeValue = initial
         context.append(self)
     }
     
-    convenience init(x: CGFloat, y: CGFloat, `in` context: FigureContext) {
-        self.init(at: RawPoint(x: x, y: y), in: context)
+    convenience init(x: P.Value, y: P.Value, `in` context: FigureContext) {
+        self.init(at: P(x: x, y: y), in: context)
     }
     
-    func nearestPosition(from point: RawPoint) -> Result<CGPoint, MathError> {
+    func nearestFreeValue(from point: P) -> Res<P> {
         return .success(point)
     }
 }

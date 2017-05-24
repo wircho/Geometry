@@ -1,45 +1,41 @@
 //
-//  FreeValue.swift
+//  FreeValued.swift
 //  GeometrySample
 //
 //  Created by AdolfoX Rodriguez on 2017-05-13.
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
-protocol FreeValuedBase: class {
-    func placeNear(point: RawPoint)
-}
-
-protocol FreeValued: FreeValuedBase {
+protocol FreeValued: class {
     associatedtype FreeValue
-    var _position: FreeValue { get set }
-    func nearestPosition(from point: RawPoint) -> Result<FreeValue, MathError>
+    associatedtype P: RawPointProtocol
+    var _freeValue: FreeValue { get set }
+    func nearestFreeValue(from point: P) -> Res<FreeValue>
 }
 
 extension FreeValued where Self: Recalculator, Self: Transmitter {
-    var position: FreeValue {
+    var freeValue: FreeValue {
         get {
-            return _position
+            return _freeValue
         }
         set {
-            _position = newValue
+            _freeValue = newValue
             needsRecalculation = true
         }
     }
-    func placeNear(point: RawPoint) {
-        guard let position = nearestPosition(from: point).value else {
+    func placeNear(point: P) {
+        guard let freeValue = nearestFreeValue(from: point).value else {
             return
         }
-        self.position = position
+        self.freeValue = freeValue
     }
 }
 
 extension FreeValued where Self: Recalculator, Self: Transmitter, Self.ResultValue: ResultProtocol, Self.ResultValue.Value == FreeValue {
     func recalculate() -> ResultValue {
-        return ResultValue(value: position)
+        return ResultValue(value: freeValue)
     }
 }
 

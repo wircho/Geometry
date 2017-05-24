@@ -14,11 +14,11 @@ final class Segment2Points: Figure, Ruler2PointsStandard, Segment, Bounded {
     
     let parentOrder = ParentOrder.unsorted
     
-    func at(_ pos: CGFloat) -> Res<RawPoint> {
-        return result.map { $0.arrow.at(min(max(pos,0),1)) }
+    func at(offset: CGFloat) -> Res<RawPoint> {
+        return result.map { $0.arrow.at(offset: min(max(pos,0),1)) }
     }
     
-    func nearest(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
         return result.arrow.project(point).map { min(max($0, 0), 1) }
     }
     

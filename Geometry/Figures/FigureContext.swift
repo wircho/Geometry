@@ -6,9 +6,49 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Foundation
-import CoreGraphics
+protocol FigureContext: class {
+    var figures: [FigureBase] { get set }
+    var delegate: FigureContextDelegate? { get set }
+}
 
+extension FigureContext {
+    @discardableResult func append<T: FigureBase>(_ figure: T) -> T {
+        figures.append(figure)
+        figure.context = self
+        return figure
+    }
+    
+    private func removeOnly(_ figure: FigureBase) {
+        guard let index = figures.index(where: { $0 === figure }) else {
+            return
+        }
+        figures.remove(at: index)
+    }
+    
+    func remove(_ object: FigureBase) -> Bool {
+        var set = ObjectSet<AnyObject>()
+        object.send { _ = set.insert($0) }
+        guard set.count > 0 else {
+            return false
+        }
+        for object in set {
+            guard let figure = object as? FigureBase else { continue }
+            removeOnly(figure)
+        }
+        return true
+    }
+    
+    func setFiguresWillRecalculate() {
+        delegate?.contextFiguresWillRecalculate(self)
+    }
+}
+
+protocol FigureContextDelegate: class {
+    func contextFiguresWillRecalculate(_: FigureContext)
+}
+
+
+/*
 class FigureContext: Drawable {
     var figures: [FigureBase] = []
     weak var delegate: FigureContextDelegate? = nil
@@ -21,7 +61,7 @@ class FigureContext: Drawable {
         }
         for figure in figures {
             if figure.selected {
-                (figure as? SelectionDrawable)?.drawSelectionIn(rect)
+                (figure as? SelectionDrawable)?.drawSelection(in: rect)
             }
         }
     }
@@ -182,4 +222,4 @@ class FigureContext: Drawable {
 
 protocol FigureContextDelegate: class {
     func contextFiguresWillRecalculate(_: FigureContext)
-}
+}*/

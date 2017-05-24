@@ -10,21 +10,21 @@ import Result
 
 // MARK: - Ruler Base Class
 
-private let one = Result<CGFloat, MathError>.success(1)
-
-protocol Ruler: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: Res<RawRuler> { get }
-    var rulerStorage: RulerStorage { get set }
-    func calculateArrow() -> Res<Arrow>
-    var kind: RawRuler.Kind { get }
+protocol Ruler: OneDimensional {
+    associatedtype R: RawRulerProtocol
+    var result: Res<R> { get }
+    var rulerStorage: RulerStorage<R> { get set }
+    func calculateArrow() -> Res<R.Arrow>
+    var kind: RulerKind { get }
 }
 
 extension Ruler {
-    func recalculate() -> Res<RawRuler> {
+    func recalculate() -> Res<R> {
         let arrow = calculateArrow()
-        return Res<RawRuler>(kind: kind, arrow: arrow)
+        return Res<R>(kind: kind, arrow: arrow)
     }
     
+    /*
     func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let ruler = result.value, let exits:Two<RawPoint?> = intersections(ruler, rect).value else { return }
         let (point0, point1) = (exits.v0 ?? ruler.arrow.points.0,  exits.v1 ?? ruler.arrow.points.1)
@@ -36,37 +36,38 @@ extension Ruler {
         get { return rulerStorage.appearance }
         set { rulerStorage.appearance = newValue }
     }
+    */
     
-    var storage: FigureStorage<RawRuler> {
+    var storage: FigureStorage<R> {
         get { return rulerStorage.figureStorage }
         set { rulerStorage.figureStorage = newValue }
     }
     
-    var oneDimensionalStorage: OneDimensionalStorage {
+    var oneDimensionalStorage: OneDimensionalStorage<R.Arrow.Point> {
         get { return rulerStorage.oneDimensionalStorage }
         set { rulerStorage.oneDimensionalStorage = newValue }
     }
     
-    var normReciprocal: Res<CGFloat> {
+    var normReciprocal: Res<R.Arrow.Point.Value> {
         if let nRec = rulerStorage._normReciprocal {
             return nRec
         } else {
-            let nRec = one / result.arrow.vector.norm
+            let nRec = Result.success(1) / result.arrow.vector.norm
             rulerStorage._normReciprocal = nRec
             return nRec
         }
     }
 }
 
-struct RulerStorage {
-    var _normReciprocal: Res<CGFloat>? = nil
-    var appearance = StrokeAppearance()
-    var figureStorage = FigureStorage<RawRuler>() {
+struct RulerStorage<R: RawRulerProtocol> {
+    var _normReciprocal: Res<R.Arrow.Point.Value>? = nil
+    /*var appearance = StrokeAppearance() */
+    var figureStorage = FigureStorage<R>() {
         didSet {
             _normReciprocal = nil
         }
     }
-    var oneDimensionalStorage = OneDimensionalStorage()
+    var oneDimensionalStorage = OneDimensionalStorage<R.Arrow.Point>()
 }
 
 protocol Line: Ruler { }
@@ -74,37 +75,37 @@ protocol Segment: Ruler { }
 protocol Ray: Ruler { }
 
 extension Line {
-    var kind: RawRuler.Kind { return .line }
+    var kind: RulerKind { return .line }
     
-    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: R.Arrow.Point) -> Res<R.Arrow.Point.Value> {
         return result.flatMap { ruler in
             ruler.arrow.project(point).map { pos in
-                distance(point, ruler.arrow.at(pos))
+                distance(point, ruler.arrow.at(offset: pos))
             }
         }
     }
-    
-    var touchPriority: CGFloat { return 700 }
+    /*
+    var touchPriority: CGFloat { return 700 }*/
 }
 
 extension Ray {
-    var kind: RawRuler.Kind { return .ray }
+    var kind: RulerKind { return .ray }
     
-    func at(_ pos: CGFloat) -> Res<RawPoint> {
+    func at(offset: R.Arrow.Point.Value) -> Res<R.Arrow.Point> {
         return result.flatMap {
             value in
             normReciprocal.map {
                 normReciprocal in
-                value.arrow.at(max(pos,0) * normReciprocal)
+                value.arrow.at(offset: max(offset,0) * normReciprocal)
             }
         }
     }
     
-    func nearest(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: R.Arrow.Point) -> Res<R.Arrow.Point.Value> {
         return result.arrow.projectIso(point).map { max($0, 0) }
     }
     
-    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: R.Arrow.Point) -> Res<R.Arrow.Point.Value> {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point).map {
@@ -112,19 +113,19 @@ extension Ray {
                 if pos < 0 {
                     return distance(point, ruler.arrow.points.0)
                 } else {
-                    return distance(point, ruler.arrow.at(pos))
+                    return distance(point, ruler.arrow.at(offset: pos))
                 }
             }
         }
     }
     
-    var touchPriority: CGFloat { return 800 }
+    /*var touchPriority: CGFloat { return 800 }*/
 }
 
 extension Segment {
-    var kind: RawRuler.Kind { return .segment }
+    var kind: RulerKind { return .segment }
     
-    func gapToCenter(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: R.Arrow.Point) -> Res<R.Arrow.Point.Value> {
         return result.flatMap {
             ruler in
             return ruler.arrow.project(point)
@@ -135,14 +136,14 @@ extension Segment {
                     } else if pos > 1 {
                         return distance(point, ruler.arrow.points.1)
                     } else {
-                        return distance(point, ruler.arrow.at(pos))
+                        return distance(point, ruler.arrow.at(offset: pos))
                     }
                 }
                 .flatMapError { _ in .success(distance(point, ruler.arrow.points.0)) }
         }
     }
     
-    var touchPriority: CGFloat { return 900 }
+    /*var touchPriority: CGFloat { return 900 }*/
 }
 
 // TODO: - Angle bisector, Perpendicular Bisector

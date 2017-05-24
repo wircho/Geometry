@@ -38,7 +38,7 @@ final class RulerCircleMediator: Figure, ParentComparable {
             let centerProj = arrow.project((circle?.result ?? .none).center)
             let pointProj = arrow.project(point.result)
             let p0 = (point.result).map { $0 as RawPoint? }
-            let p1 = arrow.at((2 * centerProj - pointProj)).map { $0 as RawPoint? }
+            let p1 = arrow.at(offset: (2 * centerProj - pointProj)).map { $0 as RawPoint? }
             return Res<Two<RawPoint?>>(v0: p0, v1: p1)
         case .two:
             return .none

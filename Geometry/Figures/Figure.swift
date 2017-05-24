@@ -52,7 +52,7 @@ extension Figure {
         set { storage.receivers = newValue }
     }
     
-    var _result: Result<Value, MathError> {
+    var _result: Res<Value> {
         get { return storage._result }
         set { storage._result = newValue }
     }
@@ -76,6 +76,6 @@ extension Figure {
         if let first = array.first {
             first.context?.append(self)
         }
-        receiveFrom(array as [Transmitter])
+        receive(from: array as [Transmitter])
     }
 }

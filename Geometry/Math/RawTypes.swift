@@ -5,13 +5,7 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
-
-// MARK: - Typealiases
-
-typealias RawPoint = CGPoint
-
-// MARK: - New Types
+import Darwin
 
 struct Two<T> {
     var v0:T
@@ -26,274 +20,133 @@ struct TwoByTwo<T> {
 }
 
 
-struct Angle {
-    var value: CGFloat
+struct Angle<Value: RawValueProtocol> {
+    var value: Value
     
-    static var piValue = CGFloat(M_PI)
-    static var twoPiValue = CGFloat(2 * M_PI)
-    
-    init (value: CGFloat) {
+    init (value: Value) {
         var val = value
-        while val > Angle.piValue { val -= Angle.twoPiValue }
-        while val <= -Angle.piValue { val += Angle.twoPiValue }
+        while val > Value.pi { val -= Value.twoPi }
+        while val <= -Value.pi { val += Value.twoPi }
         self.value = val
     }
     
-    func greaterValue(_ other: Angle) -> CGFloat {
+    func greaterValue(_ other: Angle) -> Value {
         var value1 = other.value
-        while value1 < value { value1 += Angle.twoPiValue }
+        while value1 < value { value1 += Value.twoPi }
         return value1
     }
     
-    func lesserValue(_ other: Angle) -> CGFloat {
+    func lesserValue(_ other: Angle) -> Value {
         var value1 = other.value
-        while value1 > value { value1 -= Angle.twoPiValue }
+        while value1 > value { value1 -= Value.twoPi }
         return value1
     }
 }
 
-struct RawCircle {
-    var center: RawPoint
-    var radius: CGFloat
+
+struct RawCircle<Point: RawPointProtocol> {
+    var center: Point
+    var radius: Point.Value
 }
 
-struct RawArc {
-    var circle: RawCircle
-    var angles: Two<Angle>
+struct RawArc<Point: RawPointProtocol> {
+    var circle: RawCircle<Point>
+    var angles: Two<Angle<Point.Value>>
     var fromFirst: Bool
     
-    var angleValues: Two<CGFloat> {
+    var angleValues: Two<Point.Value> {
         return Two(v0: angles.v0.value, v1: angles.v0.greaterValue(angles.v1))
     }
     
-    var center: RawPoint {
+    var center: Point {
         get { return circle.center }
         set { circle.center = newValue }
     }
     
-    var radius: CGFloat {
+    var radius: Point.Value {
         get { return circle.radius }
         set { circle.radius = newValue }
     }
 }
 
-struct Arrow {
-    var points: (RawPoint, RawPoint)
-    var isPoint: Bool {
-        return (1 / (points.0 - points.1).squaredNorm).isNaN
-    }
+struct Arrow<Point: RawPointProtocol> {
+    var points: (Point, Point)
 }
 
-struct RawRuler {
-    enum Kind {
-        case segment
-        case line
-        case ray
-        func covers(_ value: CGFloat) -> Bool {
-            switch self {
-            case .segment: return value >= 0 && value <= 1
-            case .line: return true
-            case .ray: return value >= 0
-            }
+enum RulerKind {
+    case segment
+    case line
+    case ray
+    func covers<Value: RawValueProtocol>(_ value: Value) -> Bool {
+        switch self {
+        case .segment: return value >= 0 && value <= 1
+        case .line: return true
+        case .ray: return value >= 0
         }
     }
-    var kind: Kind
-    var arrow: Arrow
-    init?(kind: Kind, arrow: Arrow) {
-        guard kind == .segment || !arrow.isPoint else {
-            return nil
-        }
-        self.kind = kind
-        self.arrow = arrow
+}
+
+struct RawRuler<Point: RawPointProtocol> {
+    var kind: RulerKind
+    var arrow: Arrow<Point>
+    init(forcedKind: RulerKind, forcedArrow: Arrow<Point>) {
+        self.kind = forcedKind
+        self.arrow = forcedArrow
     }
 }
 
-struct RawCurve {
-    var point0: RawPoint
-    var control0: RawPoint
-    var control1: RawPoint
-    var point1: RawPoint
+struct RawCurve<Point: RawPointProtocol> {
+    var point0: Point
+    var control0: Point
+    var control1: Point
+    var point1: Point
 }
 
-struct RawQuadCurve {
-    var point0: RawPoint
-    var control: RawPoint
-    var point1: RawPoint
+struct RawQuadCurve<Point: RawPointProtocol> {
+    var point0: Point
+    var control: Point
+    var point1: Point
 }
 
-struct RawPath {
-    struct Segment {
-        var point: RawPoint
-    }
-    
-    struct Curve {
-        var control0: RawPoint
-        var control1: RawPoint
-        var point1: RawPoint
-    }
-    
-    struct QuadCurve {
-        var control: RawPoint
-        var point1: RawPoint
-    }
-    
-    enum Component {
-        case segment(Segment)
-        case curve(Curve)
-        case quadCurve(QuadCurve)
-    }
-    
-    var start: RawPoint
-    var components: [Component]
+struct RawPathSegment<Point: RawPointProtocol> {
+    var point: Point
 }
 
-// MARK: Protocols
-protocol FloatProtocol {
-    static func *(lhs: Self, rhs: Self) -> Self
-    static func +(lhs: Self, rhs: Self) -> Self
-    static func -(lhs: Self, rhs: Self) -> Self
-    static func /(lhs: Self, rhs: Self) -> Self
-    static prefix func -(value: Self) -> Self
-    var isNaN: Bool { get }
-    var isInfinite: Bool { get }
+struct RawPathCurve<Point: RawPointProtocol> {
+    var control0: Point
+    var control1: Point
+    var point1: Point
 }
 
-protocol RawPointProtocol {
-    var x: CGFloat { get }
-    var y: CGFloat { get }
-    init(x: CGFloat, y: CGFloat)
+struct RawPathQuadCurve<Point: RawPointProtocol> {
+    var control: Point
+    var point1: Point
 }
 
-protocol RawCircleProtocol {
-    var center: RawPoint { get }
-    var radius: CGFloat { get }
-    init(center: RawPoint, radius: CGFloat)
-    init(center: RawPoint, point: RawPoint)
+enum RawPathComponent<Point: RawPointProtocol> {
+    case segment(RawPathSegment<Point>)
+    case curve(RawPathCurve<Point>)
+    case quadCurve(RawPathQuadCurve<Point>)
 }
 
-protocol RawArcProtocol {
-    var circle: RawCircle { get }
-    var angles: Two<Angle> { get }
-    var fromFirst: Bool { get }
-    init(circle: RawCircle, angles: Two<Angle>, fromFirst: Bool)
+struct RawPath<Point: RawPointProtocol> {
+    var start: Point
+    var components: [RawPathComponent<Point>]
 }
 
-protocol ArrowProtocol {
-    var points: (RawPoint, RawPoint) { get }
-    init(points: (RawPoint, RawPoint))
-}
+// MARK: Protocol comformance
 
-protocol RawRulerProtocol {
-    var kind: RawRuler.Kind { get }
-    var arrow: Arrow { get }
-    init?(kind: RawRuler.Kind, arrow: Arrow)
-    init?(kind: RawRuler.Kind, points: (RawPoint, RawPoint))
-}
-
-protocol RawCurveProtocol {
-    var point0: RawPoint { get }
-    var control0: RawPoint { get }
-    var control1: RawPoint { get }
-    var point1: RawPoint { get }
-    init(point0: RawPoint, control0: RawPoint, control1: RawPoint, point1: RawPoint)
-}
-
-protocol RawQuadCurveProtocol {
-    var point0: RawPoint { get }
-    var control: RawPoint { get }
-    var point1: RawPoint { get }
-    init(point0: RawPoint, control: RawPoint, point1: RawPoint)
-}
-
-protocol TwoByTwoProtocol {
-    associatedtype T
-    var a00: T { get }
-    var a01: T { get }
-    var a10: T { get }
-    var a11: T { get }
-    init(a00: T, a01: T, a10: T, a11: T)
-}
-
-protocol TwoProtocol {
-    associatedtype T
-    var v0: T { get }
-    var v1: T { get }
-    init(v0: T, v1: T)
-}
-
-extension CGFloat: FloatProtocol {}
-extension RawPoint: RawPointProtocol {
-    var angle: Angle {
-        return Angle(value: atan2(y, x))
-    }
-}
-extension RawCircle: RawCircleProtocol {
-    init(center: CGPoint, point: CGPoint) {
-        self.init(center: center, radius: distance(center, point))
-    }
-}
-extension RawArc: RawArcProtocol {}
+extension Angle: AngleProtocol { }
+extension RawCircle: RawCircleProtocol { }
 extension Arrow: ArrowProtocol {}
-extension RawRuler: RawRulerProtocol {
-    init?(kind: RawRuler.Kind, points: (RawPoint, RawPoint)) {
-        self.init(kind: kind, arrow: Arrow(points: points))
-    }
-}
+extension RawRuler: RawRulerProtocol {}
+extension RawArc: RawArcProtocol {}
 extension RawCurve: RawCurveProtocol {}
 extension RawQuadCurve: RawQuadCurveProtocol {}
 extension TwoByTwo: TwoByTwoProtocol {}
 extension Two: TwoProtocol { }
 
 // MARK: Protocol extensions
-
-extension ArrowProtocol {
-    var vector: RawPoint {
-        return points.1 - points.0
-    }
-    
-    func at(_ v: CGFloat) -> RawPoint {
-        return points.0 + vector * v
-    }
-}
-
-extension RawRulerProtocol {
-    func segment(arrow: Arrow) -> Self? {
-        return Self(kind: .segment, arrow: arrow)
-    }
-    
-    func line(arrow: Arrow) -> Self? {
-        return Self(kind: .line, arrow: arrow)
-    }
-    
-    func ray(arrow: Arrow) -> Self? {
-        return Self(kind: .ray, arrow: arrow)
-    }
-}
-
-extension RawCurveProtocol {
-    func at(_ pos: CGFloat) -> RawPoint {
-        let oneMinusPos = 1 - pos
-        let pos2 = pos * pos
-        let oneMinusPos2 = oneMinusPos * oneMinusPos
-        let pos3 = pos2 * pos
-        let oneMinusPos3 = oneMinusPos2 * oneMinusPos
-        return oneMinusPos3 * point0
-            + 3 * oneMinusPos2 * pos * control0
-            + 3 * oneMinusPos * pos2 * control1
-            + pos3 * point1
-    }
-}
-
-extension RawQuadCurveProtocol {
-    func at(_ pos: CGFloat) -> RawPoint {
-        let oneMinusPos = 1 - pos
-        let pos2 = pos * pos
-        let oneMinusPos2 = oneMinusPos * oneMinusPos
-        return oneMinusPos2 * point0
-            + 2 * oneMinusPos * pos * control
-            + pos2 * point1
-    }
-}
 
 extension TwoByTwoProtocol {
     init (row0: Two<T>, row1: Two<T>) {
@@ -305,8 +158,15 @@ extension TwoByTwoProtocol {
     }
 }
 
-extension TwoByTwoProtocol where T: FloatProtocol {
-    var determinant: T {
-        return a00 * a11 - a01 * a10
+extension RawCircleProtocol {
+    init(center: Point, point: Point) {
+        self.init(center: center, radius: distance(center, point))
+    }
+}
+
+extension RawRectProtocol {
+    init(circle: RawCircle<Point>) {
+        let side = 2 * circle.radius
+        self.init(x: circle.center.x - circle.radius, y: circle.center.y - circle.radius, width: side, height: side)
     }
 }

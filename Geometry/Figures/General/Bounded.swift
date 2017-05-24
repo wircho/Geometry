@@ -10,6 +10,7 @@ import CoreGraphics
 import Result
 
 protocol Bounded {
-    var startingPoint: Point? { get }
-    var endingPoint: Point? { get }
+    associatedtype P: RawPointProtocol
+    var startingPoint: AnyWeakFigure<P> { get }
+    var endingPoint: AnyWeakFigure<P> { get }
 }

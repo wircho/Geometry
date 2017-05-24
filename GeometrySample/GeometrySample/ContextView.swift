@@ -9,7 +9,7 @@
 import UIKit
 
 // Lots of things
-private func createFigureContext0() -> FigureContext {
+/*private func createFigureContext0() -> FigureContext {
     let ctx = FigureContext()
     let p0 = FreePoint(x: 20, y: 170, in: ctx)
     p0.appearance.color = .brown
@@ -203,10 +203,10 @@ private func createFigureContext4() -> FigureContext {
     redCircle0.appearance.color = .red
     return ctx
 }
+*/
+class ContextView: UIView/*, FigureContextDelegate*/, UIGestureRecognizerDelegate {
 
-class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
-
-    var context = createFigureContext4()
+    //var context = createFigureContext4()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -219,16 +219,16 @@ class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
     }
     
     func setUp() {
-        context.delegate = self
+    /*    context.delegate = self
         let t = UITapGestureRecognizer(target: self, action: #selector(tapped))
         t.delegate = self
         let p = UIPanGestureRecognizer(target: self, action: #selector(panned))
         p.delegate = self
         p.maximumNumberOfTouches = 1
         self.addGestureRecognizer(t)
-        self.addGestureRecognizer(p)
+        self.addGestureRecognizer(p) */
     }
-    
+    /*
     func tapped(t: UITapGestureRecognizer) {
         let point = t.location(in: self)
         context.tap(point, scale: 1)
@@ -253,5 +253,5 @@ class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate {
     
     override func draw(_ rect: CGRect) {
         context.draw(in: rect)
-    }
+    }*/
 }

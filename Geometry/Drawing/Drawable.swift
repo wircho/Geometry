@@ -9,6 +9,7 @@
 import UIKit
 import Result
 
+/*
 // MARK: - Protocol
 
 protocol Drawable: class {
@@ -16,5 +17,6 @@ protocol Drawable: class {
 }
 
 protocol SelectionDrawable: Drawable {
-    func drawSelectionIn(_ rect: CGRect)
+    func drawSelection(in rect: R)
 }
+*/

@@ -8,41 +8,46 @@
 import CoreGraphics
 import Result
 
-protocol Point: FigureBase, PointAppears, Touchable {
-    var result: Res<RawPoint> { get }
-    var pointStorage: PointStorage { get set }
+protocol Point: Figure {
+    associatedtype P: RawPointProtocol
+    var result: Res<P> { get }
+    var pointStorage: PointStorage<P> { get set }
 }
 
 extension Point {
-    func draw(in rect: CGRect, appearance: PointAppearance) {
+   /* func draw(in rect: CGRect, appearance: PointAppearance) {
         guard let center = result.value else { return }
         appearance.color.setFill()
         UIBezierPath(circle: RawCircle(center: center, radius: appearance.radius)).fill()
     }
+    */
     
     var cedula: Cedula { return pointStorage.cedula }
-    
+  /*
     var appearance: PointAppearance {
         get { return pointStorage.appearance }
         set { pointStorage.appearance = newValue }
     }
     
-    var storage: FigureStorage<RawPoint> {
+ */
+    var storage: FigureStorage<P> {
         get { return pointStorage.figureStorage }
         set { pointStorage.figureStorage = newValue }
     }
-    
-    func gap(from point: RawPoint) -> Res<CGFloat> {
+  /*
+    func gap(from point: P) -> Res<P.V> {
         return result.map { distance($0, point) }
     }
     
     var touchPriority: CGFloat { return 1000 }
+ 
+ */
 }
 
-struct PointStorage {
+struct PointStorage<P: RawPointProtocol> {
     let cedula = Cedula()
-    var appearance = PointAppearance()
-    var figureStorage = FigureStorage<RawPoint>()
+    /*var appearance = PointAppearance()*/
+    var figureStorage = FigureStorage<P>()
 }
 
 // TODO: - Circumcenter, Baricenter, Point On object

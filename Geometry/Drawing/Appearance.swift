@@ -8,16 +8,29 @@
 
 import UIKit
 
+
+/*
+// MARK: - Appearrance
+
+protocol Appearance {
+    func prepare()
+}
+
+protocol Appears {
+    associatedtype AppearanceType: Appearance
+    var appearance: AppearanceType { get }
+}
+
 // MARK: - Stroke
 
-struct StrokeAppearance {
-    var color: UIColor = .black
-    var lineWidth: CGFloat = 2
+struct StrokeAppearance<C: ColorProtocol> {
+    var color: C = .black
 }
 
 protocol StrokeAppears: SelectionDrawable {
-    var appearance: StrokeAppearance { get set }
-    func draw(in rect: CGRect, appearance: StrokeAppearance)
+    associatedtype C: ColorProtocol
+    var appearance: StrokeAppearance<C> { get set }
+    func draw(in rect: CGRect, appearance: StrokeAppearance<C>)
 }
 
 extension StrokeAppears {
@@ -25,8 +38,8 @@ extension StrokeAppears {
         draw(in: rect, appearance: appearance)
     }
     
-    func drawSelectionIn(_ rect: CGRect) {
-        draw(in: rect, appearance: StrokeAppearance(color: .selection, lineWidth: appearance.lineWidth + 6))
+    func drawSelection(in rect: CGRect) {
+        draw(in: rect, appearance: StrokeAppearance(color: .selection, lineWidth: appearance.lineWidth + (6 as V)))
     }
 }
 
@@ -47,7 +60,7 @@ extension PointAppears {
         draw(in: rect, appearance: appearance)
     }
     
-    func drawSelectionIn(_ rect: CGRect) {
+    func drawSelection(in rect: CGRect) {
         draw(in: rect, appearance: PointAppearance(color: .selection, radius: appearance.radius + 3))
     }
 }
@@ -68,7 +81,9 @@ extension FillAppears {
         draw(in: rect, appearance: appearance)
     }
     
-    func drawSelectionIn(_ rect: CGRect) {
+    func drawSelection(in rect: CGRect) {
         draw(in: rect, appearance: FillAppearance(color: .selection))
     }
 }
+
+ */

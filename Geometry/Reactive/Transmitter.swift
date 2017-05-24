@@ -44,32 +44,32 @@ extension Transmitter {
     
 // MARK: - Adding Receivers of Emitters
     
-    func emitTo(_ receivers: [Transmitter]) {
+    func emit(to receivers: [Transmitter]) {
         for receiver in receivers {
             self.receivers.append({ [weak receiver] in receiver })
         }
     }
     
-    func emitTo(_ receiver: Transmitter) {
+    func emit(to receiver: Transmitter) {
         receivers.append({ [weak receiver] in receiver })
     }
     
-    func stopEmittingTo(_ receiver: Transmitter) {
+    func stopEmitting(to receiver: Transmitter) {
         receivers = receivers.filter { $0() !== receiver }
     }
     
-    func receiveFrom(_ emitters: [Transmitter]) {
+    func receive(from emitters: [Transmitter]) {
         for emitter in emitters {
-            emitter.emitTo(self)
+            emitter.emit(to: self)
         }
     }
     
-    func receiveFrom(_ emitter: Transmitter) {
-        emitter.emitTo(self)
+    func receive(from emitter: Transmitter) {
+        emitter.emit(to: self)
     }
     
-    func stopReceivingFrom(_ emitter: Transmitter) {
-        emitter.stopEmittingTo(self)
+    func stopReceiving(from emitter: Transmitter) {
+        emitter.stopEmitting(to: self)
     }
     
 }

@@ -8,17 +8,32 @@
 import CoreGraphics
 import Result
 
-final class Line2Points: Figure, Ruler2PointsStandard, Line {
-    var ruler2PointsStorage: Ruler2PointsStorage
-    init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
+final class Line2Points<R: RawRulerProtocol>: Line, Ruler2PointsStandard {
+    var ruler2PointsStorage: Ruler2PointsStorage<R>
+    init(_ s: Ruler2PointsStorage<R>) { self.ruler2PointsStorage = s }
+    
+    // FIXING
+//    var rulerStorage: RulerStorage<R> {
+//        get { return  ruler2PointsStorage.rulerStorage }
+//        set { ruler2PointsStorage.rulerStorage = newValue }
+//    }
+//    
+    // END FIXING
     
     let parentOrder = ParentOrder.unsorted
     
-    func at(_ pos: CGFloat) -> Res<RawPoint> {
-        return result.map { $0.arrow.at(pos) }
+    func at(offset: R.Arrow.Point.Value) -> Res<R.Arrow.Point> {
+        fatalError()
+        /*let x = result.map{
+            (ruler: R) -> R.Arrow.Point.Value in
+            let y = ruler.arrow.at(offset: offset)
+            return y
+        }
+        return result.map { $0.arrow.at(offset: offset) }*/
     }
     
-    func nearest(from point: RawPoint) -> Res<CGFloat> {
-        return result.arrow.project(point)
+    func nearestOffset(from point: R.Arrow.Point) -> Res<R.Arrow.Point.Value> {
+        fatalError()
+        //return result.arrow.project(point)
     }
 }
