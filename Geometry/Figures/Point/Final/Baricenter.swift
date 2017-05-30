@@ -24,7 +24,7 @@ final class Baricenter<P: RawPointProtocol>: Point, ParentComparable {
     }
     
     func recalculate() -> Res<P> {
-        var sum = Res<P>.success(.zero)
+        var sum = Res<P>.success(P(x: 0, y: 0))
         for any in points {
             guard let point = any.result else { continue }
             sum += point

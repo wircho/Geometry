@@ -17,7 +17,7 @@ protocol FigureBase: Transmitter {
 struct FigureStorage<Value> {
     weak var context: FigureContext?
     var receivers: [() -> Transmitter?] = []
-    var _result: Result<Value, MathError> = .failure(.none) /* {
+    var _result: Res<Value> = .none /* {
         didSet {
             if case .success = oldValue, case .failure = _result, selected {
                 selected = false
@@ -38,11 +38,14 @@ struct FigureStorage<Value> {
             }
         }
     }*/
+//    init(_ initial: ResultValue) {
+//        self._result = initial
+//    }
 }
 
 protocol Figure: FigureBase, Recalculator {
-    associatedtype Value
-    var storage: FigureStorage<Value> { get set }
+    associatedtype FigureValue
+    var storage: FigureStorage<FigureValue> { get set }
     func compare(with other: Self) -> Bool
 }
 
@@ -52,7 +55,7 @@ extension Figure {
         set { storage.receivers = newValue }
     }
     
-    var _result: Res<Value> {
+    var _result: Res<FigureValue> {
         get { return storage._result }
         set { storage._result = newValue }
     }

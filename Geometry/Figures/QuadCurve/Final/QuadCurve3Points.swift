@@ -10,6 +10,7 @@ import CoreGraphics
 import Result
 
 final class QuadCurve3Points<C: RawQuadCurveProtocol>: QuadCurve, Bounded {
+    typealias FigureValue = C
     var quadCurveStorage = QuadCurveStorage<C>()
     
     var point0: AnyWeakFigure<C.Point>

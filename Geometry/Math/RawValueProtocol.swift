@@ -7,6 +7,8 @@
 //
 
 import Darwin
+import CoreGraphics
+//import UIKit
 
 protocol RawValueProtocol: FloatingPoint {
     func sine() -> Self

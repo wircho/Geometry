@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import UIKit
 
 extension CGFloat: RawValueProtocol {
@@ -23,7 +22,9 @@ extension CGFloat: RawValueProtocol {
 }
 
 extension CGPoint: RawPointProtocol { }
+ 
 extension CGRect: RawRectProtocol { }
+
 
 extension UIBezierPath {
     convenience init(circle: RawCircle<CGPoint>, lineWidth: CGFloat = 1) {

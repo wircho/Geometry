@@ -10,6 +10,7 @@ import CoreGraphics
 import Result
 
 final class Curve4Points<C: RawCurveProtocol>: Curve, Bounded {
+    typealias FigureValue = C
     var curveStorage = CurveStorage<C>()
     
     var point0: AnyWeakFigure<C.Point>

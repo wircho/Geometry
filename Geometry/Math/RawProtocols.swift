@@ -10,7 +10,7 @@
 
 protocol RawPointProtocol {
     associatedtype Value: RawValueProtocol
-    static var zero: Self { get }
+    // TODO: Figure out why this breaks a project: static var zero: Self { get }
     var x: Value { get }
     var y: Value { get }
     init(x: Value, y: Value)

@@ -6,8 +6,8 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import UIKit
-import Result
+//import UIKit
+//import Result
 
 /*
 // MARK: - Protocol

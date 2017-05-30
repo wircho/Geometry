@@ -30,6 +30,7 @@ extension Ruler2Points {
 
 protocol Ruler2PointsStandard: Ruler2Points {
     associatedtype R: RawRulerProtocol
+    var result: Res<R> { get }
 }
 
 extension Ruler2PointsStandard {

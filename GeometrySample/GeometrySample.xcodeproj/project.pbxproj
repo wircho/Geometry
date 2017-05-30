@@ -9,75 +9,74 @@
 /* Begin PBXBuildFile section */
 		4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */; };
 		A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */; };
-		AE1931641ED47A0800596BB4 /* RawResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* RawResult.swift */; };
-		AE1931851ED4BD1C00596BB4 /* RawResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* RawResultMath.swift */; };
-		AE1931861ED4BE9300596BB4 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56133A1ED292490004763B /* Complex.swift */; };
-		AE1931871ED4BEBC00596BB4 /* Polynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613501ED29E750004763B /* Polynomial.swift */; };
-		AE1931881ED4BEBC00596BB4 /* PolynomialRoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613511ED29E750004763B /* PolynomialRoots.swift */; };
-		AE1931891ED4BEBC00596BB4 /* LinearPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134F1ED29E750004763B /* LinearPolynomial.swift */; };
-		AE19318A1ED4BEBC00596BB4 /* QuadraticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613521ED29E750004763B /* QuadraticPolynomial.swift */; };
-		AE19318B1ED4BEBC00596BB4 /* CubicPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134E1ED29E750004763B /* CubicPolynomial.swift */; };
-		AE19318C1ED4BEBC00596BB4 /* QuarticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613531ED29E750004763B /* QuarticPolynomial.swift */; };
-		AE19318D1ED4BEBC00596BB4 /* QuinticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613541ED29E750004763B /* QuinticPolynomial.swift */; };
-		AE19318E1ED4BF1500596BB4 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* Transmitter.swift */; };
-		AE19318F1ED4BF1800596BB4 /* Recalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287891EBCCC04002E425F /* Recalculator.swift */; };
-		AE1931901ED4BF1B00596BB4 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFCF1EC2BFB60053AFEA /* Drawable.swift */; };
-		AE1931911ED4BF1D00596BB4 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */; };
-		AE1931921ED4BF2000596BB4 /* CGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFD11EC36C340053AFEA /* CGExtensions.swift */; };
-		AE1931931ED4BF4000596BB4 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876A1EBCCC04002E425F /* Figure.swift */; };
-		AE1931941ED4BF4800596BB4 /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
-		AE1931951ED4BF6A00596BB4 /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC981ECA37950071D7D9 /* Touchable.swift */; };
-		AE1931961ED4BF6E00596BB4 /* AnyFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1931411ED3A54B00596BB4 /* AnyFigure.swift */; };
-		AE1931971ED4BF7C00596BB4 /* FreeValued.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD61EC6D2910071D7D9 /* FreeValued.swift */; };
-		AE1931981ED4BF8000596BB4 /* OneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */; };
-		AE1931991ED4BF8C00596BB4 /* AnyWeakOneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */; };
-		AE19319A1ED4BF9C00596BB4 /* Bounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7327111ECFF15300A47F25 /* Bounded.swift */; };
-		AE19319B1ED4BFA000596BB4 /* ParentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */; };
-		AE19319C1ED4BFB700596BB4 /* Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDC1EC6D2BF0071D7D9 /* Scalar.swift */; };
-		AE19319D1ED4BFBB00596BB4 /* FreeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDE1EC6D2BF0071D7D9 /* FreeScalar.swift */; };
-		AE19319E1ED4BFD500596BB4 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE31EC6D4690071D7D9 /* Point.swift */; };
-		AE19319F1ED4BFE500596BB4 /* CoupleOfPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */; };
-		AE1931A01ED4BFEA00596BB4 /* FreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */; };
-		AE1931A11ED4BFF000596BB4 /* SlidingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */; };
-		AE1931A21ED4BFF500596BB4 /* Baricenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */; };
-		AE1931A31ED4BFFB00596BB4 /* Ruler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9D1ECA55300071D7D9 /* Ruler.swift */; };
-		AE1931A41ED4C05000596BB4 /* Ruler2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9E1ECA55300071D7D9 /* Ruler2Points.swift */; };
-		AE4ECFC31EC1001B0053AFEA /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */; };
-		AE4ECFC71EC23B680053AFEA /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */; };
-		AE4ECFC91EC23BC60053AFEA /* HashableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */; };
-		AE4ED21C1EC3A4D60053AFEA /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
-		AE4ED2241EC40BFE0053AFEA /* Cedula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2231EC40BFE0053AFEA /* Cedula.swift */; };
-		AE4ED22E1EC4C34E0053AFEA /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22D1EC4C34E0053AFEA /* Association.swift */; };
-		AE5613321ED27C760004763B /* RawProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F211ED26C8600E89AB3 /* RawProtocols.swift */; };
-		AE5613341ED27DEA0004763B /* RawMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* RawMath.swift */; };
-		AE5613351ED27ECB0004763B /* RawExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F231ED26CAF00E89AB3 /* RawExtensions.swift */; };
-		AE5613361ED27FF60004763B /* MathError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* MathError.swift */; };
-		AE5613461ED295840004763B /* RawValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613451ED295840004763B /* RawValueProtocol.swift */; };
-		AE5D155E1ED4FE830097D9B5 /* DirectedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9C1ECA55300071D7D9 /* DirectedLine.swift */; };
-		AE9FA8CE1EDCC3AE001F4AB4 /* Ray2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */; };
-		AE9FA8CF1EDCC4D0001F4AB4 /* RayAway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE184DBE1ED1F64B00D9EB8D /* RayAway.swift */; };
-		AE9FA8D01EDCC54B001F4AB4 /* Segment2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */; };
-		AE9FA8D11EDCC6CE001F4AB4 /* ParallelLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA11ECA55300071D7D9 /* ParallelLine.swift */; };
-		AE9FA8D21EDCC7E0001F4AB4 /* PerpendicularLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA21ECA55300071D7D9 /* PerpendicularLine.swift */; };
-		AE9FA8D31EDCC8EF001F4AB4 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC081EC753DF0071D7D9 /* Circle.swift */; };
-		AE9FA8D41EDCCA43001F4AB4 /* CircleToPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0A1EC753DF0071D7D9 /* CircleToPoint.swift */; };
-		AE9FA8D51EDCCB9B001F4AB4 /* CircleWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */; };
-		AE9FA8D61EDCCDEE001F4AB4 /* Circumcircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */; };
-		AE9FA8D91EDCD0AD001F4AB4 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC161EC967AC0071D7D9 /* Arc.swift */; };
-		AE9FA8DA1EDCD169001F4AB4 /* Circumarc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */; };
-		AE9FA8DB1EDCE5A6001F4AB4 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBD1ECE1FD90071D7D9 /* Curve.swift */; };
-		AE9FA8DC1EDCE6A1001F4AB4 /* Curve4Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBF1ECE1FD90071D7D9 /* Curve4Points.swift */; };
-		AE9FA8DD1EDCE8D1001F4AB4 /* QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC21ECE1FD90071D7D9 /* QuadCurve.swift */; };
-		AE9FA8DF1EDCEA7E001F4AB4 /* QuadCurve3Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC41ECE1FD90071D7D9 /* QuadCurve3Points.swift */; };
+		AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
+		AE0F7D1F1EDD23DC00BD8414 /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */; };
+		AE0F7D201EDD23DC00BD8414 /* HashableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */; };
+		AE0F7D211EDD23DC00BD8414 /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */; };
+		AE0F7D221EDD23DC00BD8414 /* Cedula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2231EC40BFE0053AFEA /* Cedula.swift */; };
+		AE0F7D231EDD23DC00BD8414 /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22D1EC4C34E0053AFEA /* Association.swift */; };
+		AE0F7D2A1EDD23E000BD8414 /* RawValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613451ED295840004763B /* RawValueProtocol.swift */; };
+		AE0F7D2B1EDD23E000BD8414 /* RawProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F211ED26C8600E89AB3 /* RawProtocols.swift */; };
+		AE0F7D2C1EDD23E000BD8414 /* RawTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* RawTypes.swift */; };
+		AE0F7D2D1EDD23E000BD8414 /* RawMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* RawMath.swift */; };
+		AE0F7D2E1EDD23E000BD8414 /* RawExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F231ED26CAF00E89AB3 /* RawExtensions.swift */; };
+		AE0F7D2F1EDD23E000BD8414 /* MathError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* MathError.swift */; };
+		AE0F7D301EDD23E000BD8414 /* RawResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* RawResult.swift */; };
+		AE0F7D311EDD23E000BD8414 /* RawResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* RawResultMath.swift */; };
+		AE0F7D321EDD23E000BD8414 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56133A1ED292490004763B /* Complex.swift */; };
+		AE0F7D331EDD23EE00BD8414 /* Polynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613501ED29E750004763B /* Polynomial.swift */; };
+		AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613511ED29E750004763B /* PolynomialRoots.swift */; };
+		AE0F7D351EDD23EE00BD8414 /* LinearPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134F1ED29E750004763B /* LinearPolynomial.swift */; };
+		AE0F7D361EDD23EE00BD8414 /* QuadraticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613521ED29E750004763B /* QuadraticPolynomial.swift */; };
+		AE0F7D371EDD23EE00BD8414 /* CubicPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134E1ED29E750004763B /* CubicPolynomial.swift */; };
+		AE0F7D381EDD23EE00BD8414 /* QuarticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613531ED29E750004763B /* QuarticPolynomial.swift */; };
+		AE0F7D391EDD23EE00BD8414 /* QuinticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613541ED29E750004763B /* QuinticPolynomial.swift */; };
+		AE0F7D3A1EDD23F800BD8414 /* Transmitter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* Transmitter.swift */; };
+		AE0F7D3B1EDD23F800BD8414 /* Recalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287891EBCCC04002E425F /* Recalculator.swift */; };
+		AE0F7D3E1EDD23FC00BD8414 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFCF1EC2BFB60053AFEA /* Drawable.swift */; };
+		AE0F7D3F1EDD23FC00BD8414 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACAD1ECA9F340071D7D9 /* Appearance.swift */; };
+		AE0F7D401EDD23FC00BD8414 /* CGExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFD11EC36C340053AFEA /* CGExtensions.swift */; };
+		AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
+		AE0F7D421EDD241600BD8414 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876A1EBCCC04002E425F /* Figure.swift */; };
+		AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1931411ED3A54B00596BB4 /* AnyFigure.swift */; };
+		AE0F7D441EDD242100BD8414 /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC981ECA37950071D7D9 /* Touchable.swift */; };
+		AE0F7D451EDD242100BD8414 /* FreeValued.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD61EC6D2910071D7D9 /* FreeValued.swift */; };
+		AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */; };
+		AE0F7D471EDD242100BD8414 /* AnyWeakOneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */; };
+		AE0F7D481EDD242100BD8414 /* Bounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7327111ECFF15300A47F25 /* Bounded.swift */; };
+		AE0F7D491EDD242100BD8414 /* ParentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */; };
+		AE0F7D4A1EDD242D00BD8414 /* Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDC1EC6D2BF0071D7D9 /* Scalar.swift */; };
+		AE0F7D4B1EDD243300BD8414 /* FreeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDE1EC6D2BF0071D7D9 /* FreeScalar.swift */; };
+		AE0F7D4C1EDD243B00BD8414 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE31EC6D4690071D7D9 /* Point.swift */; };
+		AE0F7D4D1EDD243B00BD8414 /* CoupleOfPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */; };
+		AE0F7D4E1EDD244100BD8414 /* FreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */; };
+		AE0F7D4F1EDD248B00BD8414 /* SlidingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */; };
+		AE0F7D511EDD249E00BD8414 /* Baricenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */; };
+		AE0F7D5B1EDD285E00BD8414 /* Ruler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9D1ECA55300071D7D9 /* Ruler.swift */; };
+		AE0F7D5F1EDD374800BD8414 /* Ruler2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9E1ECA55300071D7D9 /* Ruler2Points.swift */; };
+		AE0F7D601EDD374D00BD8414 /* DirectedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9C1ECA55300071D7D9 /* DirectedLine.swift */; };
+		AE0F7D611EDD375300BD8414 /* Line2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA01ECA55300071D7D9 /* Line2Points.swift */; };
+		AE0F7D621EDD3A6C00BD8414 /* Ray2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */; };
+		AE0F7D631EDD3A9900BD8414 /* RayAway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE184DBE1ED1F64B00D9EB8D /* RayAway.swift */; };
+		AE0F7D641EDD3B8500BD8414 /* Segment2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */; };
+		AE0F7D651EDD3B9500BD8414 /* ParallelLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA11ECA55300071D7D9 /* ParallelLine.swift */; };
+		AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA21ECA55300071D7D9 /* PerpendicularLine.swift */; };
+		AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC081EC753DF0071D7D9 /* Circle.swift */; };
+		AE0F7D681EDD3BA600BD8414 /* CircleToPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0A1EC753DF0071D7D9 /* CircleToPoint.swift */; };
+		AE0F7D691EDD3CC200BD8414 /* CircleWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */; };
+		AE0F7D6A1EDD3CDC00BD8414 /* Circumcircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */; };
+		AE0F7D6B1EDD3CE400BD8414 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC161EC967AC0071D7D9 /* Arc.swift */; };
+		AE0F7D6C1EDD3CEF00BD8414 /* Circumarc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */; };
+		AE0F7D6D1EDD3CFE00BD8414 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBD1ECE1FD90071D7D9 /* Curve.swift */; };
+		AE0F7D6E1EDD421500BD8414 /* Curve4Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBF1ECE1FD90071D7D9 /* Curve4Points.swift */; };
+		AE0F7D6F1EDD422E00BD8414 /* QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC21ECE1FD90071D7D9 /* QuadCurve.swift */; };
+		AE0F7D701EDD423500BD8414 /* QuadCurve3Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC41ECE1FD90071D7D9 /* QuadCurve3Points.swift */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
 		AEA287491EBCCB2C002E425F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA287481EBCCB2C002E425F /* Assets.xcassets */; };
 		AEA2874C1EBCCB2C002E425F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2874A1EBCCB2C002E425F /* LaunchScreen.storyboard */; };
 		AEA287571EBCCB2C002E425F /* GeometrySampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287561EBCCB2C002E425F /* GeometrySampleTests.swift */; };
-		AEA287A21EBCCC04002E425F /* RawTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* RawTypes.swift */; };
-		AEA287A81EBCCC04002E425F /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
-		AEEBCCB21ED5F8A100654469 /* Line2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA01ECA55300071D7D9 /* Line2Points.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -768,71 +767,70 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE1931871ED4BEBC00596BB4 /* Polynomial.swift in Sources */,
-				AE1931931ED4BF4000596BB4 /* Figure.swift in Sources */,
-				AE9FA8D91EDCD0AD001F4AB4 /* Arc.swift in Sources */,
-				AE9FA8DC1EDCE6A1001F4AB4 /* Curve4Points.swift in Sources */,
-				AE19318E1ED4BF1500596BB4 /* Transmitter.swift in Sources */,
-				AE1931851ED4BD1C00596BB4 /* RawResultMath.swift in Sources */,
-				AE9FA8D01EDCC54B001F4AB4 /* Segment2Points.swift in Sources */,
-				AE9FA8D41EDCCA43001F4AB4 /* CircleToPoint.swift in Sources */,
-				AE9FA8DF1EDCEA7E001F4AB4 /* QuadCurve3Points.swift in Sources */,
-				AE1931901ED4BF1B00596BB4 /* Drawable.swift in Sources */,
-				AE19319C1ED4BFB700596BB4 /* Scalar.swift in Sources */,
-				AE1931891ED4BEBC00596BB4 /* LinearPolynomial.swift in Sources */,
-				AE4ED21C1EC3A4D60053AFEA /* ContextView.swift in Sources */,
-				AE4ECFC71EC23B680053AFEA /* ObjectSet.swift in Sources */,
-				AE19319B1ED4BFA000596BB4 /* ParentComparable.swift in Sources */,
-				AE1931A11ED4BFF000596BB4 /* SlidingPoint.swift in Sources */,
-				AE9FA8CE1EDCC3AE001F4AB4 /* Ray2Points.swift in Sources */,
-				AE1931A01ED4BFEA00596BB4 /* FreePoint.swift in Sources */,
-				AE1931961ED4BF6E00596BB4 /* AnyFigure.swift in Sources */,
-				AE1931991ED4BF8C00596BB4 /* AnyWeakOneDimensional.swift in Sources */,
-				AE1931971ED4BF7C00596BB4 /* FreeValued.swift in Sources */,
+				AE0F7D331EDD23EE00BD8414 /* Polynomial.swift in Sources */,
+				AE0F7D421EDD241600BD8414 /* Figure.swift in Sources */,
+				AE0F7D3A1EDD23F800BD8414 /* Transmitter.swift in Sources */,
+				AE0F7D471EDD242100BD8414 /* AnyWeakOneDimensional.swift in Sources */,
+				AE0F7D311EDD23E000BD8414 /* RawResultMath.swift in Sources */,
+				AE0F7D6E1EDD421500BD8414 /* Curve4Points.swift in Sources */,
+				AE0F7D351EDD23EE00BD8414 /* LinearPolynomial.swift in Sources */,
 				AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */,
-				AE1931641ED47A0800596BB4 /* RawResult.swift in Sources */,
-				AE1931921ED4BF2000596BB4 /* CGExtensions.swift in Sources */,
-				AE1931911ED4BF1D00596BB4 /* Appearance.swift in Sources */,
+				AE0F7D211EDD23DC00BD8414 /* ObjectSet.swift in Sources */,
+				AE0F7D2F1EDD23E000BD8414 /* MathError.swift in Sources */,
+				AE0F7D611EDD375300BD8414 /* Line2Points.swift in Sources */,
+				AE0F7D6A1EDD3CDC00BD8414 /* Circumcircle.swift in Sources */,
+				AE0F7D621EDD3A6C00BD8414 /* Ray2Points.swift in Sources */,
+				AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */,
+				AE0F7D301EDD23E000BD8414 /* RawResult.swift in Sources */,
+				AE0F7D4C1EDD243B00BD8414 /* Point.swift in Sources */,
+				AE0F7D4B1EDD243300BD8414 /* FreeScalar.swift in Sources */,
+				AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */,
+				AE0F7D6F1EDD422E00BD8414 /* QuadCurve.swift in Sources */,
+				AE0F7D221EDD23DC00BD8414 /* Cedula.swift in Sources */,
+				AE0F7D641EDD3B8500BD8414 /* Segment2Points.swift in Sources */,
+				AE0F7D1F1EDD23DC00BD8414 /* OptionalProtocol.swift in Sources */,
+				AE0F7D5F1EDD374800BD8414 /* Ruler2Points.swift in Sources */,
+				AE0F7D451EDD242100BD8414 /* FreeValued.swift in Sources */,
+				AE0F7D2C1EDD23E000BD8414 /* RawTypes.swift in Sources */,
+				AE0F7D3F1EDD23FC00BD8414 /* Appearance.swift in Sources */,
+				AE0F7D2A1EDD23E000BD8414 /* RawValueProtocol.swift in Sources */,
+				AE0F7D401EDD23FC00BD8414 /* CGExtensions.swift in Sources */,
+				AE0F7D481EDD242100BD8414 /* Bounded.swift in Sources */,
+				AE0F7D5B1EDD285E00BD8414 /* Ruler.swift in Sources */,
+				AE0F7D2E1EDD23E000BD8414 /* RawExtensions.swift in Sources */,
+				AE0F7D601EDD374D00BD8414 /* DirectedLine.swift in Sources */,
+				AE0F7D681EDD3BA600BD8414 /* CircleToPoint.swift in Sources */,
+				AE0F7D321EDD23E000BD8414 /* Complex.swift in Sources */,
 				AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */,
-				AE5613351ED27ECB0004763B /* RawExtensions.swift in Sources */,
-				AE9FA8CF1EDCC4D0001F4AB4 /* RayAway.swift in Sources */,
-				AE9FA8D61EDCCDEE001F4AB4 /* Circumcircle.swift in Sources */,
-				AE4ED2241EC40BFE0053AFEA /* Cedula.swift in Sources */,
-				AE1931A41ED4C05000596BB4 /* Ruler2Points.swift in Sources */,
-				AE4ED22E1EC4C34E0053AFEA /* Association.swift in Sources */,
-				AEA287A81EBCCC04002E425F /* Weak.swift in Sources */,
-				AE1931861ED4BE9300596BB4 /* Complex.swift in Sources */,
-				AE19319A1ED4BF9C00596BB4 /* Bounded.swift in Sources */,
-				AE5D155E1ED4FE830097D9B5 /* DirectedLine.swift in Sources */,
-				AE5613461ED295840004763B /* RawValueProtocol.swift in Sources */,
-				AE19318F1ED4BF1800596BB4 /* Recalculator.swift in Sources */,
-				AE5613361ED27FF60004763B /* MathError.swift in Sources */,
-				AE1931941ED4BF4800596BB4 /* FigureContext.swift in Sources */,
-				AE1931981ED4BF8000596BB4 /* OneDimensional.swift in Sources */,
-				AE9FA8D21EDCC7E0001F4AB4 /* PerpendicularLine.swift in Sources */,
-				AE19318C1ED4BEBC00596BB4 /* QuarticPolynomial.swift in Sources */,
-				AE19319D1ED4BFBB00596BB4 /* FreeScalar.swift in Sources */,
-				AEEBCCB21ED5F8A100654469 /* Line2Points.swift in Sources */,
-				AE19319F1ED4BFE500596BB4 /* CoupleOfPoints.swift in Sources */,
-				AE19318D1ED4BEBC00596BB4 /* QuinticPolynomial.swift in Sources */,
-				AE9FA8DA1EDCD169001F4AB4 /* Circumarc.swift in Sources */,
-				AE19319E1ED4BFD500596BB4 /* Point.swift in Sources */,
-				AE4ECFC31EC1001B0053AFEA /* OptionalProtocol.swift in Sources */,
-				AE19318A1ED4BEBC00596BB4 /* QuadraticPolynomial.swift in Sources */,
-				AE1931A31ED4BFFB00596BB4 /* Ruler.swift in Sources */,
-				AE5613341ED27DEA0004763B /* RawMath.swift in Sources */,
-				AEA287A21EBCCC04002E425F /* RawTypes.swift in Sources */,
-				AE9FA8D51EDCCB9B001F4AB4 /* CircleWithRadius.swift in Sources */,
-				AE1931A21ED4BFF500596BB4 /* Baricenter.swift in Sources */,
-				AE9FA8D31EDCC8EF001F4AB4 /* Circle.swift in Sources */,
-				AE5613321ED27C760004763B /* RawProtocols.swift in Sources */,
-				AE4ECFC91EC23BC60053AFEA /* HashableObject.swift in Sources */,
-				AE9FA8DD1EDCE8D1001F4AB4 /* QuadCurve.swift in Sources */,
-				AE9FA8DB1EDCE5A6001F4AB4 /* Curve.swift in Sources */,
-				AE9FA8D11EDCC6CE001F4AB4 /* ParallelLine.swift in Sources */,
-				AE1931881ED4BEBC00596BB4 /* PolynomialRoots.swift in Sources */,
-				AE19318B1ED4BEBC00596BB4 /* CubicPolynomial.swift in Sources */,
-				AE1931951ED4BF6A00596BB4 /* Touchable.swift in Sources */,
+				AE0F7D4F1EDD248B00BD8414 /* SlidingPoint.swift in Sources */,
+				AE0F7D3E1EDD23FC00BD8414 /* Drawable.swift in Sources */,
+				AE0F7D691EDD3CC200BD8414 /* CircleWithRadius.swift in Sources */,
+				AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */,
+				AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */,
+				AE0F7D511EDD249E00BD8414 /* Baricenter.swift in Sources */,
+				AE0F7D4E1EDD244100BD8414 /* FreePoint.swift in Sources */,
+				AE0F7D3B1EDD23F800BD8414 /* Recalculator.swift in Sources */,
+				AE0F7D631EDD3A9900BD8414 /* RayAway.swift in Sources */,
+				AE0F7D2D1EDD23E000BD8414 /* RawMath.swift in Sources */,
+				AE0F7D6D1EDD3CFE00BD8414 /* Curve.swift in Sources */,
+				AE0F7D381EDD23EE00BD8414 /* QuarticPolynomial.swift in Sources */,
+				AE0F7D391EDD23EE00BD8414 /* QuinticPolynomial.swift in Sources */,
+				AE0F7D361EDD23EE00BD8414 /* QuadraticPolynomial.swift in Sources */,
+				AE0F7D701EDD423500BD8414 /* QuadCurve3Points.swift in Sources */,
+				AE0F7D201EDD23DC00BD8414 /* HashableObject.swift in Sources */,
+				AE0F7D6C1EDD3CEF00BD8414 /* Circumarc.swift in Sources */,
+				AE0F7D6B1EDD3CE400BD8414 /* Arc.swift in Sources */,
+				AE0F7D4A1EDD242D00BD8414 /* Scalar.swift in Sources */,
+				AE0F7D491EDD242100BD8414 /* ParentComparable.swift in Sources */,
+				AE0F7D4D1EDD243B00BD8414 /* CoupleOfPoints.swift in Sources */,
+				AE0F7D231EDD23DC00BD8414 /* Association.swift in Sources */,
+				AE0F7D2B1EDD23E000BD8414 /* RawProtocols.swift in Sources */,
+				AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */,
+				AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */,
+				AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */,
+				AE0F7D651EDD3B9500BD8414 /* ParallelLine.swift in Sources */,
+				AE0F7D371EDD23EE00BD8414 /* CubicPolynomial.swift in Sources */,
+				AE0F7D441EDD242100BD8414 /* Touchable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

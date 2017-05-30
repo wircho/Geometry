@@ -12,8 +12,8 @@ import Result
 
 protocol Ruler: OneDimensional {
     associatedtype R: RawRulerProtocol
-    var result: Res<R> { get }
     var rulerStorage: RulerStorage<R> { get set }
+    var result: Res<R> { get }
     func calculateArrow() -> Res<R.Arrow>
     var kind: RulerKind { get }
 }

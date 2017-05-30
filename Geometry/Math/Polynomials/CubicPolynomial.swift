@@ -6,6 +6,8 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
+import Foundation
+
 struct CubicPolynomial<V: RawValueProtocol>: Polynomial, ComplexSolvable {
     let a0: V
     let a1: V
@@ -13,6 +15,7 @@ struct CubicPolynomial<V: RawValueProtocol>: Polynomial, ComplexSolvable {
     let a3: V
     static var degree: UInt { return 3 }
     var roots: ComplexRoots<V> {
+        
         guard !a3.isZero else {
             return popped.roots
         }
@@ -42,20 +45,30 @@ struct CubicPolynomial<V: RawValueProtocol>: Polynomial, ComplexSolvable {
         let p27 = p3 * p3 * p3
         let q4 = q2 * q2
         let d = q4 + p27
+        
         if d >= 0 {
             let zeta = Complex<V>(-1 / 2, (3 as V).squareRoot() / 2)
             let zeta2 = zeta.conjugate
             let sqD = d.squareRoot()
+            
             let r1 = (-q2 + sqD).cubeRoot()
             let r2 = (-q2 - sqD).cubeRoot()
-            return .some([Complex(r1 + r2), r1 * zeta + r2 * zeta2, r1 * zeta2 + r2 * zeta])
+            
+            let c0 = Complex(r1 + r2)
+            let c1 = r1 * zeta + r2 * zeta2
+            let c2 = r1 * zeta2 + r2 * zeta
+            
+            return .some([c0, c1, c2])
         } else {
             let sqD = (-d).squareRoot()
             let angle = sqD.arctangent2(-q2)
             let norm3 = 2 * (-d + q4).squareRoot().cubeRoot()
             let angle3 = angle / 3
             let twoPiThirds = V.twoPiThirds
-            return .some([norm3 * angle3.cosine(), norm3 * (angle3 + twoPiThirds).cosine(), norm3 * (angle3 - twoPiThirds).cosine()].map{ Complex($0) })
+            let c0 = norm3 * angle3.cosine()
+            let c1 = norm3 * (angle3 + twoPiThirds).cosine()
+            let c2 = norm3 * (angle3 - twoPiThirds).cosine()
+            return .some([c0, c1, c2].map{ Complex($0) })
         }
     }
     var popped: QuadraticPolynomial<V> { return QuadraticPolynomial(a0: a0, a1: a1, a2: a2) }

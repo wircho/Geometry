@@ -10,6 +10,7 @@ import CoreGraphics
 import Result
 
 final class Circumarc<A: RawArcProtocol>: Arc, Bounded, ParentComparable {
+    typealias FigureValue = A
     var arcStorage = ArcStorage<A>()
     
     var point0: AnyWeakFigure<A.Circle.Point>

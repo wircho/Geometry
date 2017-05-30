@@ -9,6 +9,7 @@ import CoreGraphics
 import Result
 
 final class CircleToPoint<C: RawCircleProtocol>: Circle, ParentComparable {
+    typealias FigureValue = C
     var circleStorage = CircleStorage<C>()
     
     var center: AnyWeakFigure<C.Point>

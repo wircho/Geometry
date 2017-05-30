@@ -10,7 +10,6 @@ import Result
 
 protocol Point: Figure {
     associatedtype P: RawPointProtocol
-    var result: Res<P> { get }
     var pointStorage: PointStorage<P> { get set }
 }
 
