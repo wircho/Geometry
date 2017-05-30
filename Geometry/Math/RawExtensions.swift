@@ -53,6 +53,14 @@ extension RawRulerProtocol {
     }
 }
 
+extension RawArcProtocol {
+    var angleValues: Two<Circle.Point.Value> {
+        return Two(v0: angles.v0.value, v1: angles.v0.greaterValue(angles.v1))
+    }
+    var center: Circle.Point { return circle.center }
+    var radius: Circle.Point.Value { return circle.radius }
+}
+
 extension RawCurveProtocol {
     func at(offset: Point.Value) -> Point {
         let oneMinusPos = 1 - offset

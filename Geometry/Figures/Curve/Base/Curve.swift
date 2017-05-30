@@ -9,23 +9,24 @@
 import CoreGraphics
 import Result
 
-protocol Curve: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: Res<RawCurve> { get }
-    var curveStorage: CurveStorage { get set }
+protocol Curve: OneDimensional /*, StrokeAppears, Touchable*/ {
+    associatedtype C: RawCurveProtocol
+    var result: Res<C> { get }
+    var curveStorage: CurveStorage<C> { get set }
 }
 
 extension Curve {
-    func draw(in rect: CGRect, appearance: StrokeAppearance) {
+    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(curve: value, lineWidth: appearance.lineWidth).stroke()
+    }*/
+    
+    func at(offset: C.Point.Value) -> Res<C.Point> {
+        return result.map { $0.at(offset: min(max(offset,0),1)) }
     }
     
-    func at(offset: CGFloat) -> Res<RawPoint> {
-        return result.map { $0.at(offset: min(max(pos,0),1)) }
-    }
-    
-    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: C.Point) -> Res<C.Point.Value> {
         return result.map {
             curve in
             let p0 = curve.point0 - point
@@ -43,11 +44,11 @@ extension Curve {
             let a5 = p3 • d2
             let quintic = QuinticPolynomial(a0: a0, a1: a1, a2: a2, a3: a3, a4: a4, a5: a5)
             guard var roots = quintic.realRoots.array?.filter({ $0 >= 0 && $0 <= 1 }) else {
-                return 0.5
+                return 1/2
             }
             roots += [0,1]
-            var minDist: CGFloat? = nil
-            var minRoot: CGFloat? = nil
+            var minDist: C.Point.Value? = nil
+            var minRoot: C.Point.Value? = nil
             for root in roots {
                 let near = curve.at(offset: root)
                 let dist = distance(point, near)
@@ -56,7 +57,7 @@ extension Curve {
                     minRoot = root
                 }
             }
-            return min(max(minRoot ?? 0.5,0),1)
+            return min(max(minRoot ?? 1/2,0),1)
         }
     }
     
@@ -64,31 +65,31 @@ extension Curve {
         return curveStorage.cedula
     }
     
-    var appearance: StrokeAppearance {
+   /* var appearance: StrokeAppearance {
         get { return curveStorage.appearance }
         set { curveStorage.appearance = newValue }
-    }
+    }*/
     
-    var storage: FigureStorage<RawCurve> {
+    var storage: FigureStorage<C> {
         get { return curveStorage.figureStorage }
         set { curveStorage.figureStorage = newValue }
     }
     
-    var oneDimensionalStorage: OneDimensionalStorage {
+    var oneDimensionalStorage: OneDimensionalStorage<C.Point> {
         get { return curveStorage.oneDimensionalStorage }
         set { curveStorage.oneDimensionalStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: C.Point) -> Res<C.Point.Value> {
         return nearestOffset(from: point).flatMap { distance(at(offset: $0), .success(point)) }
     }
     
     var touchPriority: CGFloat { return 600 }
 }
 
-struct CurveStorage {
+struct CurveStorage<C: RawCurveProtocol> {
     let cedula = Cedula()
-    var appearance = StrokeAppearance()
-    var figureStorage = FigureStorage<RawCurve>()
-    var oneDimensionalStorage = OneDimensionalStorage()
+    /*var appearance = StrokeAppearance()*/
+    var figureStorage = FigureStorage<C>()
+    var oneDimensionalStorage = OneDimensionalStorage<C.Point>()
 }

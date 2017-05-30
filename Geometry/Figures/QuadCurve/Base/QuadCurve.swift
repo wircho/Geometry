@@ -9,23 +9,24 @@
 import CoreGraphics
 import Result
 
-protocol QuadCurve: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: Res<RawQuadCurve> { get }
-    var quadCurveStorage: QuadCurveStorage { get set }
+protocol QuadCurve: OneDimensional /*, StrokeAppears, Touchable*/ {
+    associatedtype C: RawQuadCurveProtocol
+    var result: Res<C> { get }
+    var quadCurveStorage: QuadCurveStorage<C> { get set }
 }
 
 extension QuadCurve {
-    func draw(in rect: CGRect, appearance: StrokeAppearance) {
+    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(quadCurve: value, lineWidth: appearance.lineWidth).stroke()
+    }*/
+    
+    func at(offset: C.Point.Value) -> Res<C.Point> {
+        return result.map { $0.at(offset: min(max(offset,0),1)) }
     }
     
-    func at(offset: CGFloat) -> Res<RawPoint> {
-        return result.map { $0.at(offset: min(max(pos,0),1)) }
-    }
-    
-    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: C.Point) -> Res<C.Point.Value> {
         return result.map {
             curve in
             let p0 = curve.point0 - point
@@ -39,11 +40,11 @@ extension QuadCurve {
             let a3 = p2 • d1
             let cubic = CubicPolynomial(a0: a0, a1: a1, a2: a2, a3: a3)
             guard var roots = cubic.realRoots.array?.filter({ $0 >= 0 && $0 <= 1 }) else {
-                return 0.5
+                return 1/2
             }
             roots += [0,1]
-            var minDist: CGFloat? = nil
-            var minRoot: CGFloat? = nil
+            var minDist: C.Point.Value? = nil
+            var minRoot: C.Point.Value? = nil
             for root in roots {
                 let near = curve.at(offset: root)
                 let dist = distance(point, near)
@@ -52,7 +53,7 @@ extension QuadCurve {
                     minRoot = root
                 }
             }
-            return min(max(minRoot ?? 0.5,0),1)
+            return min(max(minRoot ?? 1/2,0),1)
         }
     }
     
@@ -60,31 +61,31 @@ extension QuadCurve {
         return quadCurveStorage.cedula
     }
     
-    var appearance: StrokeAppearance {
+    /*var appearance: StrokeAppearance {
         get { return quadCurveStorage.appearance }
         set { quadCurveStorage.appearance = newValue }
-    }
+    }*/
     
-    var storage: FigureStorage<RawQuadCurve> {
+    var storage: FigureStorage<C> {
         get { return quadCurveStorage.figureStorage }
         set { quadCurveStorage.figureStorage = newValue }
     }
     
-    var oneDimensionalStorage: OneDimensionalStorage {
+    var oneDimensionalStorage: OneDimensionalStorage<C.Point> {
         get { return quadCurveStorage.oneDimensionalStorage }
         set { quadCurveStorage.oneDimensionalStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: C.Point) -> Res<C.Point.Value> {
         return nearestOffset(from: point).flatMap { distance(at(offset: $0), .success(point)) }
     }
     
     var touchPriority: CGFloat { return 600 }
 }
 
-struct QuadCurveStorage {
+struct QuadCurveStorage<C: RawQuadCurveProtocol> {
     let cedula = Cedula()
-    var appearance = StrokeAppearance()
-    var figureStorage = FigureStorage<RawQuadCurve>()
-    var oneDimensionalStorage = OneDimensionalStorage()
+    /*var appearance = StrokeAppearance()*/
+    var figureStorage = FigureStorage<C>()
+    var oneDimensionalStorage = OneDimensionalStorage<C.Point>()
 }

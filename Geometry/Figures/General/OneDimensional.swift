@@ -18,7 +18,7 @@ protocol OneDimensional: Figure {
     func gap(from point: P) -> Res<P.Value>
 }
 
-struct OneDimensionalStorage<P> {
+struct OneDimensionalStorage<P: RawPointProtocol> {
     var weakSlidingPoints: [AnyWeakFigure<P>] = []
     var weakIntersectionPoints: [AnyWeakFigure<P>] = []
 }

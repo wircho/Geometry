@@ -11,6 +11,7 @@ import Result
 // MARK: - Ruler Figures Through 2 Points
 
 protocol Ruler2Points: Ruler, ParentComparable {
+    associatedtype R: RawRulerProtocol
     var ruler2PointsStorage: Ruler2PointsStorage<R> { get set }
     init(_ ruler2PointsStorage: Ruler2PointsStorage<R>)
 }

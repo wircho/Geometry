@@ -9,19 +9,19 @@
 import CoreGraphics
 import Result
 
-final class RayAway: Figure, Ruler2Points, Ray {
-    var ruler2PointsStorage: Ruler2PointsStorage
-    init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
+final class RayAway<R: RawRulerProtocol>: Ray, Ruler2Points {
+    var ruler2PointsStorage: Ruler2PointsStorage<R>
+    init(_ s: Ruler2PointsStorage<R>) { ruler2PointsStorage = s }
     
     let parentOrder = ParentOrder.sorted
     
-    func calculateArrow() -> Res<Arrow> {
-        let p0 = point0?.result ?? .none
-        let p1 = point1?.result ?? .none
-        return Res<Arrow>(points: (p1, 2 * p1 - p0))
+    func calculateArrow() -> Res<R.Arrow> {
+        let p0 = point0.result ?? .none
+        let p1 = point1.result ?? .none
+        return Res(points: (p1, 2 * p1 - p0))
     }
     
-    var touchingDefiningPoints: [Point] {
-        return [point1].flatMap { $0 }
+    var touchingDefiningPoints: [AnyFigure<R.Arrow.Point>] {
+        return [point1].flatMap { $0.anyFigure }
     }
 }

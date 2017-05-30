@@ -8,26 +8,26 @@
 import CoreGraphics
 import Result
 
-final class CircleWithRadius: Figure, Circle, ParentComparable {
-    var circleStorage = CircleStorage()
+final class CircleWithRadius<C: RawCircleProtocol>: Circle, ParentComparable {
+    var circleStorage = CircleStorage<C>()
     
-    weak var center: Point?
-    weak var radius: Scalar?
+    var center: AnyWeakFigure<C.Point>
+    var radius: AnyWeakFigure<C.Point.Value>
     
     let parentOrder = ParentOrder.sorted
-    var parents: [AnyObject?] { return [center, radius] }
+    var parents: [AnyObject?] { return [center.figure, radius.figure] }
     
-    init(_ center: Point, _ radius: Scalar) {
-        self.center = center
-        self.radius = radius
+    init<P: Point, S: Scalar>(_ center: P, _ radius: S) where P.ResultValue == Res<C.Point>, S.ResultValue == Res<C.Point.Value> {
+        self.center = AnyWeakFigure(center)
+        self.radius = AnyWeakFigure(radius)
         setChildOf([center, radius])
     }
     
-    var touchingDefiningPoints: [Point] {
+    var touchingDefiningPoints: [AnyFigure<C.Point>] {
         return []
     }
     
-    func recalculate() -> Res<RawCircle> {
-        return Res<RawCircle>(center: center?.result ?? .none, radius: radius?.result ?? .none)
+    func recalculate() -> Res<C> {
+        return Res(center: center.result ?? .none, radius: radius.result ?? .none)
     }
 }

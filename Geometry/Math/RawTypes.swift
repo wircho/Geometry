@@ -53,20 +53,6 @@ struct RawArc<Point: RawPointProtocol> {
     var circle: RawCircle<Point>
     var angles: Two<Angle<Point.Value>>
     var fromFirst: Bool
-    
-    var angleValues: Two<Point.Value> {
-        return Two(v0: angles.v0.value, v1: angles.v0.greaterValue(angles.v1))
-    }
-    
-    var center: Point {
-        get { return circle.center }
-        set { circle.center = newValue }
-    }
-    
-    var radius: Point.Value {
-        get { return circle.radius }
-        set { circle.radius = newValue }
-    }
 }
 
 struct Arrow<Point: RawPointProtocol> {

@@ -9,33 +9,34 @@
 import CoreGraphics
 import Result
 
-protocol Arc: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: Res<RawArc> { get }
-    var arcStorage: ArcStorage { get set }
+protocol Arc: OneDimensional /*, StrokeAppears, Touchable*/ {
+    associatedtype A: RawArcProtocol
+    var result: Res<A> { get }
+    var arcStorage: ArcStorage<A> { get set }
 }
 
 extension Arc {
-    func draw(in rect: CGRect, appearance: StrokeAppearance) {
+   /* func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(arc: value, lineWidth: appearance.lineWidth).stroke()
-    }
+    }*/
     
-    func at(offset: CGFloat) -> Res<RawPoint> {
+    func at(offset: A.Circle.Point.Value) -> Res<A.Circle.Point> {
         return result.map {
             arc in
-            let angle: CGFloat
+            let angle: A.Circle.Point.Value
             let angles = arc.angleValues
             if arc.fromFirst {
-                angle = angles.v0 + (angles.v1 - angles.v0) * min(max(pos, 0), 1)
+                angle = angles.v0 + (angles.v1 - angles.v0) * min(max(offset, 0), 1)
             } else {
-                angle = angles.v1 + (angles.v0 - angles.v1) * min(max(pos, 0), 1)
+                angle = angles.v1 + (angles.v0 - angles.v1) * min(max(offset, 0), 1)
             }
             return  arc.center + Angle(value: angle).vector(radius: arc.radius)
         }
     }
     
-    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: A.Circle.Point) -> Res<A.Circle.Point.Value> {
         return result.flatMap {
             arc in
             var angles = arc.angleValues
@@ -43,7 +44,7 @@ extension Arc {
             if angle <= angles.v1 {
                 return arc.fromFirst ? ((angle - angles.v0) ~/ (angles.v1 - angles.v0)) : ((angles.v1 - angle) ~/ (angles.v1 - angles.v0))
             } else {
-                angles.v0 += Angle.twoPiValue
+                angles.v0 += A.Circle.Point.Value.twoPi
                 if (abs(angle - angles.v1) < abs(angles.v0 - angle)) == arc.fromFirst {
                     return .success(1)
                 } else {
@@ -57,22 +58,23 @@ extension Arc {
         return arcStorage.cedula
     }
     
-    var appearance: StrokeAppearance {
+   /* var appearance: StrokeAppearance {
         get { return arcStorage.appearance }
         set { arcStorage.appearance = newValue }
     }
+    */
     
-    var storage: FigureStorage<RawArc> {
+    var storage: FigureStorage<A> {
         get { return arcStorage.figureStorage }
         set { arcStorage.figureStorage = newValue }
     }
     
-    var oneDimensionalStorage: OneDimensionalStorage {
+    var oneDimensionalStorage: OneDimensionalStorage<A.Circle.Point> {
         get { return arcStorage.oneDimensionalStorage }
         set { arcStorage.oneDimensionalStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: A.Circle.Point) -> Res<A.Circle.Point.Value> {
         return result.flatMap {
             arc in
             nearestOffset(from: point).map {
@@ -84,12 +86,12 @@ extension Arc {
         }
     }
     
-    var touchPriority: CGFloat { return 850 }
+    /*var touchPriority: CGFloat { return 850 }*/
 }
 
-struct ArcStorage {
+struct ArcStorage<A: RawArcProtocol> {
     let cedula = Cedula()
-    var appearance = StrokeAppearance()
-    var figureStorage = FigureStorage<RawArc>()
-    var oneDimensionalStorage = OneDimensionalStorage()
+    /*var appearance = StrokeAppearance()*/
+    var figureStorage = FigureStorage<A>()
+    var oneDimensionalStorage = OneDimensionalStorage<A.Circle.Point>()
 }

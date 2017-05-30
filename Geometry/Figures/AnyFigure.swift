@@ -20,6 +20,12 @@ struct AnyFigure<T> {
     }
 }
 
+extension AnyFigure: Equatable {
+    static func ==(lhs: AnyFigure, rhs: AnyFigure) -> Bool {
+        return lhs.figure === rhs.figure
+    }
+}
+
 struct AnyWeakFigure<T> {
     private(set) weak var figure: FigureBase?
     private let getResult: () -> Res<T>?
@@ -41,5 +47,11 @@ struct AnyWeakFigure<T> {
         figure = nil
         getResult = { nil }
         getAnyFigure = { nil }
+    }
+}
+
+extension AnyWeakFigure: Equatable {
+    static func ==(lhs: AnyWeakFigure, rhs: AnyWeakFigure) -> Bool {
+        return lhs.figure === rhs.figure
     }
 }

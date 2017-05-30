@@ -8,9 +8,9 @@
 import CoreGraphics
 import Result
 
-final class Ray2Points: Figure, Ruler2PointsStandard, Ray {
-    var ruler2PointsStorage: Ruler2PointsStorage
-    init(_ s: Ruler2PointsStorage) { ruler2PointsStorage = s }
+final class Ray2Points<R: RawRulerProtocol>: Ray, Ruler2PointsStandard {
+    var ruler2PointsStorage: Ruler2PointsStorage<R>
+    init(_ s: Ruler2PointsStorage<R>) { ruler2PointsStorage = s }
     
     let parentOrder = ParentOrder.sorted
 }

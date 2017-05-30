@@ -9,32 +9,36 @@
 import CoreGraphics
 import Result
 
-final class Circumarc: Figure, Arc, Bounded, ParentComparable {
-    var arcStorage = ArcStorage()
+final class Circumarc<A: RawArcProtocol>: Arc, Bounded, ParentComparable {
+    var arcStorage = ArcStorage<A>()
     
-    weak var point0: Point?
-    weak var point1: Point?
-    weak var point2: Point?
+    var point0: AnyWeakFigure<A.Circle.Point>
+    var point1: AnyWeakFigure<A.Circle.Point>
+    var point2: AnyWeakFigure<A.Circle.Point>
     
     let parentOrder = ParentOrder.sorted
-    var parents: [AnyObject?] { return [point0, point1, point2] }
+    var parents: [AnyObject?] { return [point0.figure, point1.figure, point2.figure] }
     
-    init(_ pt0: Point, _ pt1: Point, _ pt2: Point) {
-        let (p0, p1, p2) = (pt0.cedula.value < pt2.cedula.value) ? (pt0, pt1, pt2) : (pt2, pt1, pt0)
-        point0 = p0
-        point1 = p1
-        point2 = p2
+    init<P0: Point, P1: Point, P2: Point>(_ p0: P0, _ p1: P1, _ p2: P2) where P0.ResultValue == Res<A.Circle.Point>, P1.ResultValue == Res<A.Circle.Point>, P2.ResultValue == Res<A.Circle.Point> {
+        point1 = AnyWeakFigure(p1)
+        if (p0.cedula.value < p2.cedula.value) {
+            point0 = AnyWeakFigure(p0)
+            point2 = AnyWeakFigure(p2)
+        } else {
+            point0 = AnyWeakFigure(p2)
+            point2 = AnyWeakFigure(p0)
+        }
         setChildOf([p0, p1, p2])
     }
     
-    var touchingDefiningPoints: [Point] {
-        return [point0, point1, point2].flatMap { $0 }
+    var touchingDefiningPoints: [AnyFigure<A.Circle.Point>] {
+        return [point0, point1, point2].flatMap { $0.anyFigure }
     }
     
-    func recalculate() -> Res<RawArc> {
-        return Res<RawArc>(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
+    func recalculate() -> Res<A> {
+        return Res(cicumscribing: (point0.result ?? .none, point1.result ?? .none, point2.result ?? .none))
     }
     
-    var startingPoint: Point? { return point0 }
-    var endingPoint: Point? { return point1 }
+    var startingPoint: AnyWeakFigure<A.Circle.Point> { return point0 }
+    var endingPoint: AnyWeakFigure<A.Circle.Point> { return point1 }
 }

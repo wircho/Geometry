@@ -8,26 +8,27 @@
 import CoreGraphics
 import Result
 
-protocol Circle: FigureBase, OneDimensional, StrokeAppears, Touchable {
-    var result: Res<RawCircle> { get }
-    var circleStorage: CircleStorage { get set }
+protocol Circle: OneDimensional /*, StrokeAppears, Touchable*/ {
+    associatedtype C: RawCircleProtocol
+    var result: Res<C> { get }
+    var circleStorage: CircleStorage<C> { get set }
 }
 
 extension Circle {
-    func draw(in rect: CGRect, appearance: StrokeAppearance) {
+    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
         appearance.color.setStroke()
         UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()
-    }
+    }*/
     
-    func at(offset: CGFloat) -> Res<RawPoint> {
+    func at(offset: C.Point.Value) -> Res<C.Point> {
         return result.map {
             circle in
-            return  circle.center + Angle(value: pos).vector(radius: circle.radius)
+            return  circle.center + Angle(value: offset).vector(radius: circle.radius)
         }
     }
     
-    func nearestOffset(from point: RawPoint) -> Res<CGFloat> {
+    func nearestOffset(from point: C.Point) -> Res<C.Point.Value> {
         return result.map {
             circle in
             return (point - circle.center).angle.value
@@ -37,23 +38,24 @@ extension Circle {
     var cedula: Cedula {
         return circleStorage.cedula
     }
-    
+   /*
     var appearance: StrokeAppearance {
         get { return circleStorage.appearance }
         set { circleStorage.appearance = newValue }
     }
+    */
     
-    var storage: FigureStorage<RawCircle> {
+    var storage: FigureStorage<C> {
         get { return circleStorage.figureStorage }
         set { circleStorage.figureStorage = newValue }
     }
     
-    var oneDimensionalStorage: OneDimensionalStorage {
+    var oneDimensionalStorage: OneDimensionalStorage<C.Point> {
         get { return circleStorage.oneDimensionalStorage }
         set { circleStorage.oneDimensionalStorage = newValue }
     }
     
-    func gap(from point: RawPoint) -> Res<CGFloat> {
+    func gap(from point: C.Point) -> Res<C.Point.Value> {
         return result.map {
             circle in
             return abs(circle.radius - distance(point, circle.center))
@@ -63,9 +65,9 @@ extension Circle {
     var touchPriority: CGFloat { return 600 }
 }
 
-struct CircleStorage {
+struct CircleStorage<C: RawCircleProtocol> {
     let cedula = Cedula()
-    var appearance = StrokeAppearance()
-    var figureStorage = FigureStorage<RawCircle>()
-    var oneDimensionalStorage = OneDimensionalStorage()
+    /* var appearance = StrokeAppearance() */
+    var figureStorage = FigureStorage<C>()
+    var oneDimensionalStorage = OneDimensionalStorage<C.Point>()
 }

@@ -9,12 +9,11 @@
 import CoreGraphics
 import Result
 
-final class PerpendicularLine: Figure, DirectedLine {
-    var directedLineStorage: DirectedLineStorage
-    init (_ s: DirectedLineStorage) { directedLineStorage = s }
+final class PerpendicularLine<R: RawRulerProtocol>: DirectedLine {
+    var directedLineStorage: DirectedLineStorage<R>
+    init (_ s: DirectedLineStorage<R>) { directedLineStorage = s }
     
-    func calculateArrowDirection() -> Res<RawPoint> {
-        return ruler?.result.arrow.vector.orthogonal ?? .none
+    func calculateArrowDirection() -> Res<R.Arrow.Point> {
+        return ruler.result?.arrow.vector.orthogonal ?? .none
     }
 }
-

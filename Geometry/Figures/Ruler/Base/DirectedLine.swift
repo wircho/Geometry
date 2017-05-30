@@ -9,7 +9,8 @@
 import CoreGraphics
 import Result
 
-protocol DirectedLine: Ruler, Line, ParentComparable {
+protocol DirectedLine: Line, ParentComparable {
+    associatedtype R: RawRulerProtocol
     var directedLineStorage: DirectedLineStorage<R> { get set }
     func calculateArrowDirection() -> Res<R.Arrow.Point>
     init(_ directedLineStorage: DirectedLineStorage<R>)

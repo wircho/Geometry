@@ -8,28 +8,28 @@
 import CoreGraphics
 import Result
 
-final class Circumcircle: Figure, Circle, ParentComparable {
-    var circleStorage = CircleStorage()
+final class Circumcircle<C: RawCircleProtocol>: Circle, ParentComparable {
+    var circleStorage = CircleStorage<C>()
     
-    weak var point0: Point?
-    weak var point1: Point?
-    weak var point2: Point?
+    var point0: AnyWeakFigure<C.Point>
+    var point1: AnyWeakFigure<C.Point>
+    var point2: AnyWeakFigure<C.Point>
     
     let parentOrder = ParentOrder.unsorted
-    var parents: [AnyObject?] { return [point0, point1, point2] }
+    var parents: [AnyObject?] { return [point0.figure, point1.figure, point2.figure] }
     
-    init(_ p0: Point, _ p1: Point, _ p2: Point) {
-        point0 = p0
-        point1 = p1
-        point2 = p2
+    init<P0: Point, P1: Point, P2: Point>(_ p0: P0, _ p1: P1, _ p2: P2) where P0.ResultValue == Res<C.Point>,  P1.ResultValue == Res<C.Point>,  P2.ResultValue == Res<C.Point> {
+        point0 = AnyWeakFigure(p0)
+        point1 = AnyWeakFigure(p1)
+        point2 = AnyWeakFigure(p2)
         setChildOf([p0, p1, p2])
     }
     
-    var touchingDefiningPoints: [Point] {
-        return [point0, point1, point2].flatMap { $0 }
+    var touchingDefiningPoints: [AnyFigure<C.Point>] {
+        return [point0, point1, point2].flatMap { $0.anyFigure }
     }
     
-    func recalculate() -> Res<RawCircle> {
-        return Res<RawCircle>(cicumscribing: (point0?.result ?? .none, point1?.result ?? .none, point2?.result ?? .none))
+    func recalculate() -> Res<C> {
+        return Res(cicumscribing: (point0.result ?? .none, point1.result ?? .none, point2.result ?? .none))
     }
 }

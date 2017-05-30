@@ -9,11 +9,11 @@
 import CoreGraphics
 import Result
 
-final class ParallelLine: Figure, DirectedLine {
-    var directedLineStorage: DirectedLineStorage
-    init (_ s: DirectedLineStorage) { directedLineStorage = s }
+final class ParallelLine<R: RawRulerProtocol>: DirectedLine {
+    var directedLineStorage: DirectedLineStorage<R>
+    init (_ s: DirectedLineStorage<R>) { directedLineStorage = s }
     
-    func calculateArrowDirection() -> Res<RawPoint> {
-        return ruler?.result.arrow.vector ?? .none
+    func calculateArrowDirection() -> Res<R.Arrow.Point> {
+        return ruler.result?.arrow.vector ?? .none
     }
 }

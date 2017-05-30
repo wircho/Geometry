@@ -11,19 +11,19 @@ import Result
 
 protocol FigureBase: Transmitter {
     var context: FigureContext? { get set }
-    var selected: Bool { get set }
+    //var selected: Bool { get set }
 }
 
 struct FigureStorage<Value> {
     weak var context: FigureContext?
     var receivers: [() -> Transmitter?] = []
-    var _result: Result<Value, MathError> = .failure(.none) {
+    var _result: Result<Value, MathError> = .failure(.none) /* {
         didSet {
             if case .success = oldValue, case .failure = _result, selected {
                 selected = false
             }
         }
-    }
+    } */
     var _needsRecalculation = true {
         didSet {
             if _needsRecalculation && !oldValue {
@@ -31,13 +31,13 @@ struct FigureStorage<Value> {
             }
         }
     }
-    var selected = false {
+    /*var selected = false {
         didSet {
             if selected != oldValue {
                 context?.setFiguresWillRecalculate()
             }
         }
-    }
+    }*/
 }
 
 protocol Figure: FigureBase, Recalculator {
@@ -67,10 +67,11 @@ extension Figure {
         set { storage.context = newValue }
     }
     
-    var selected: Bool {
+   /* var selected: Bool {
         get { return storage.selected }
         set { storage.selected = newValue }
     }
+    */
     
     func setChildOf(_ array: [FigureBase]) {
         if let first = array.first {
