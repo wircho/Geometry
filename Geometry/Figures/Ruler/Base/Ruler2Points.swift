@@ -28,7 +28,9 @@ extension Ruler2Points {
     var point1: AnyWeakFigure<R.Arrow.Point> { return ruler2PointsStorage.point1 }
 }
 
-protocol Ruler2PointsStandard: Ruler2Points { }
+protocol Ruler2PointsStandard: Ruler2Points {
+    associatedtype R: RawRulerProtocol
+}
 
 extension Ruler2PointsStandard {
     func calculateArrow() -> Res<R.Arrow> {
