@@ -11,6 +11,9 @@ struct OnePoint<P: RawPointProtocol> {
     init<T: Point>(_ point: T) where T.ResultValue == Res<P> {
         self.point = AnyWeakFigure(point)
     }
+    init(_ point: AnyFigure<P>) {
+        self.point = point.anyWeakFigure
+    }
 }
 
 struct TwoPoints<P: RawPointProtocol> {
@@ -24,6 +27,10 @@ struct TwoPoints<P: RawPointProtocol> {
         self.point0 = point0.point
         self.point1 = AnyWeakFigure(point1)
     }
+    init(_ point0: OnePoint<P>, _ point1: AnyFigure<P>) {
+        self.point0 = point0.point
+        self.point1 = point1.anyWeakFigure
+    }
 }
 
 enum CoupleOfPoints<P: RawPointProtocol> {
@@ -32,6 +39,19 @@ enum CoupleOfPoints<P: RawPointProtocol> {
     case two(TwoPoints<P>)
     
     mutating func add<T: Point>(_ point: T) -> Bool where T.ResultValue == Res<P> {
+        switch self {
+        case .none:
+            self = .one(OnePoint(point))
+            return true
+        case let .one(pt):
+            self = .two(TwoPoints(pt, point))
+            fallthrough
+        case .two:
+            return false
+        }
+    }
+    
+    mutating func add(_ point: AnyFigure<P>) -> Bool {
         switch self {
         case .none:
             self = .one(OnePoint(point))

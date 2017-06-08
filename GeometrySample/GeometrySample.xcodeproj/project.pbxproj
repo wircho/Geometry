@@ -71,6 +71,9 @@
 		AE0F7D6E1EDD421500BD8414 /* Curve4Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBF1ECE1FD90071D7D9 /* Curve4Points.swift */; };
 		AE0F7D6F1EDD422E00BD8414 /* QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC21ECE1FD90071D7D9 /* QuadCurve.swift */; };
 		AE0F7D701EDD423500BD8414 /* QuadCurve3Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC41ECE1FD90071D7D9 /* QuadCurve3Points.swift */; };
+		AE0F7D711EDD8EA300BD8414 /* TwoRulers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */; };
+		AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE71EC6D4690071D7D9 /* RulerCircle.swift */; };
+		AE0F86BD1EE5EB7E00BD8414 /* TwoCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
@@ -782,6 +785,7 @@
 				AE0F7D621EDD3A6C00BD8414 /* Ray2Points.swift in Sources */,
 				AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */,
 				AE0F7D301EDD23E000BD8414 /* RawResult.swift in Sources */,
+				AE0F7D711EDD8EA300BD8414 /* TwoRulers.swift in Sources */,
 				AE0F7D4C1EDD243B00BD8414 /* Point.swift in Sources */,
 				AE0F7D4B1EDD243300BD8414 /* FreeScalar.swift in Sources */,
 				AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */,
@@ -808,6 +812,7 @@
 				AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */,
 				AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */,
 				AE0F7D511EDD249E00BD8414 /* Baricenter.swift in Sources */,
+				AE0F86BD1EE5EB7E00BD8414 /* TwoCircles.swift in Sources */,
 				AE0F7D4E1EDD244100BD8414 /* FreePoint.swift in Sources */,
 				AE0F7D3B1EDD23F800BD8414 /* Recalculator.swift in Sources */,
 				AE0F7D631EDD3A9900BD8414 /* RayAway.swift in Sources */,
@@ -826,6 +831,7 @@
 				AE0F7D231EDD23DC00BD8414 /* Association.swift in Sources */,
 				AE0F7D2B1EDD23E000BD8414 /* RawProtocols.swift in Sources */,
 				AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */,
+				AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */,
 				AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */,
 				AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */,
 				AE0F7D651EDD3B9500BD8414 /* ParallelLine.swift in Sources */,

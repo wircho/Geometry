@@ -10,41 +10,41 @@ import Foundation
 import CoreGraphics
 import Result
 
-final class TwoRulerMediator: Figure, ParentComparable {
-    var storage = FigureStorage<RawPoint>()
-    weak var existing: Point?
+final class TwoRulerMediator<R: RawRulerProtocol>: Figure, ParentComparable {
+    var storage = FigureStorage<R.Arrow.Point>()
+    var existing: AnyWeakFigure<R.Arrow.Point>? = nil
     
-    weak var ruler0: Ruler?
-    weak var ruler1: Ruler?
+    var ruler0: AnyWeakOneDimensional<R, R.Arrow.Point>
+    var ruler1: AnyWeakOneDimensional<R, R.Arrow.Point>
     
     let parentOrder = ParentOrder.unsorted
-    var parents: [AnyObject?] { return [ruler0, ruler1] }
+    var parents: [AnyObject?] { return [ruler0.anyWeakFigure.figure, ruler1.anyWeakFigure.figure] }
     
-    init(_ s0: Ruler, _ s1: Ruler) {
-        ruler0 = s0
-        ruler1 = s1
+    init<S0: Ruler, S1: Ruler>(_ s0: S0, _ s1: S1) where S0.ResultValue == Res<R>, S1.ResultValue == Res<R>, S0.P == R.Arrow.Point, S1.P == R.Arrow.Point {
+        ruler0 = AnyWeakOneDimensional(s0)
+        ruler1 = AnyWeakOneDimensional(s1)
         s0.findCommonPoints(with: s1) {
-            existing = $0
+            existing = $0.anyWeakFigure
             return false
         }
         setChildOf([s0, s1])
     }
     
-    func recalculate() -> Res<RawPoint> {
+    func recalculate() -> Res<R.Arrow.Point> {
         guard existing == nil else { return .none }
-        return intersection(ruler0?.result ?? .none, ruler1?.result ?? .none)
+        return intersection(ruler0.anyWeakFigure.result ?? .none, ruler1.anyWeakFigure.result ?? .none)
     }
 }
 
-class TwoRulerIntersection: Figure, Point {
-    var pointStorage = PointStorage()
+class TwoRulerIntersection<R: RawRulerProtocol>: Point {
+    var pointStorage = PointStorage<R.Arrow.Point>()
     
-    weak var mediator: TwoRulerMediator?
+    weak var mediator: TwoRulerMediator<R>?
     
-    init(_ mediator: TwoRulerMediator) {
+    init(_ mediator: TwoRulerMediator<R>) {
         self.mediator = mediator
-        mediator.ruler0?.intersectionPoints.append(self)
-        mediator.ruler1?.intersectionPoints.append(self)
+        mediator.ruler0.intersectionPoints.append(AnyFigure(self))
+        mediator.ruler1.intersectionPoints.append(AnyFigure(self))
         setChildOf([mediator])
     }
     
@@ -53,12 +53,12 @@ class TwoRulerIntersection: Figure, Point {
         return mediator === otherMediator
     }
     
-    func recalculate() -> Res<RawPoint> {
+    func recalculate() -> Res<R.Arrow.Point> {
         guard let mediator = mediator, mediator.existing == nil else { return .none }
         return mediator.result
     }
     
-    static func create(_ s0: Ruler, _ s1: Ruler) -> (mediator: TwoRulerMediator, intersection: TwoRulerIntersection?) {
+    static func create<S0: Ruler, S1: Ruler>(_ s0: S0, _ s1: S1) -> (mediator: TwoRulerMediator<R>, intersection: TwoRulerIntersection<R>?) where S0.ResultValue == Res<R>, S1.ResultValue == Res<R>, S0.P == R.Arrow.Point, S1.P == R.Arrow.Point {
         let mediator = TwoRulerMediator(s0, s1)
         guard mediator.existing == nil else { return (mediator, nil) }
         return (mediator, TwoRulerIntersection(mediator))

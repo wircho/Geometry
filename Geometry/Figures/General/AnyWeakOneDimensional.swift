@@ -6,25 +6,25 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-struct AnyWeakOneDimensional<P: RawPointProtocol> {
-    private(set) weak var object: AnyObject?
+struct AnyWeakOneDimensional<T, P: RawPointProtocol> {
+    private let getIntersectionPoints:() -> [AnyFigure<P>]
+    private let setIntersectionPoints:([AnyFigure<P>]) -> Void
     
-    private let getOneDimensionalStorage: () -> OneDimensionalStorage<P>?
-    private let getTouchingDefiningPoints: () -> [AnyFigure<P>]?
-    
+    let anyWeakFigure: AnyWeakFigure<T>
     let atOffset: (P.Value) -> Res<P>?
     let nearestOffsetFrom: (P) -> Res<P.Value>?
     let gapFrom: (P) -> Res<P.Value>?
+    var intersectionPoints: [AnyFigure<P>] {
+        get { return getIntersectionPoints() }
+        set { setIntersectionPoints(newValue) }
+    }
     
-    var oneDimensionalStorage: OneDimensionalStorage<P>? { return getOneDimensionalStorage() }
-    var touchingDefiningPoints: [AnyFigure<P>]? { return getTouchingDefiningPoints() }
-    
-    init<F: OneDimensional>(_ figure: F) where F.P == P {
-        object = figure
-        getOneDimensionalStorage = { [weak figure] in return figure?.oneDimensionalStorage }
-        getTouchingDefiningPoints = { [weak figure] in return figure?.touchingDefiningPoints }
+    init<F: OneDimensional>(_ figure: F) where F.P == P, F.ResultValue == Res<T> {
+        anyWeakFigure = AnyWeakFigure(figure)
         atOffset = { [weak figure] offset in return figure?.at(offset: offset) }
         nearestOffsetFrom = { [weak figure] point in return figure?.nearestOffset(from: point) }
         gapFrom = { [weak figure] point in return figure?.gap(from: point) }
+        getIntersectionPoints = { [weak figure] in return figure?.intersectionPoints ?? [] }
+        setIntersectionPoints = { [weak figure] array in figure?.intersectionPoints = array }
     }
 }

@@ -11,32 +11,32 @@ import Result
 
 // MARK: - Intersection Mediator
 
-final class TwoCircleMediator: Figure, ParentComparable {
-    var storage = FigureStorage<Two<RawPoint>>()
+final class TwoCircleMediator<C: RawCircleProtocol>: Figure, ParentComparable {
+    var storage = FigureStorage<Two<C.Point>>()
     
-    var existing: CoupleOfPoints = .none
+    var existing: CoupleOfPoints<C.Point> = .none
     
-    weak var circle0: Circle?
-    weak var circle1: Circle?
+    var circle0: AnyWeakOneDimensional<C, C.Point>
+    var circle1: AnyWeakOneDimensional<C, C.Point>
     
     let parentOrder = ParentOrder.unsorted
-    var parents: [AnyObject?] { return [circle0, circle1] }
+    var parents: [AnyObject?] { return [circle0.anyWeakFigure.figure, circle1.anyWeakFigure.figure] }
     
-    init(_ cl0: Circle, _ cl1: Circle) {
+    init<O: Circle>(_ cl0: O, _ cl1: O) where O.ResultValue == Res<C>, O.P == C.Point {
         let (c0, c1) = (cl0.cedula.value < cl1.cedula.value) ? (cl0, cl1) : (cl1, cl0)
-        circle0 = c0
-        circle1 = c1
+        circle0 = AnyWeakOneDimensional<C, C.Point>(c0)
+        circle1 = AnyWeakOneDimensional<C, C.Point>(c1)
         c0.findCommonPoints(with: c1) { existing.add($0) }
-        setChildOf([cl0, cl1])
+        setChildOf([c0, c1])
     }
     
-    func recalculate() -> Res<Two<RawPoint>> {
+    func recalculate() -> Res<Two<C.Point>> {
         switch existing {
         case .none:
-            return intersections(circle0?.result ?? .none, circle1?.result ?? .none)
+            return intersections(circle0.anyWeakFigure.result ?? .none, circle1.anyWeakFigure.result ?? .none)
         case let .one(pt):
-            guard let point = pt.point else { return .none }
-            return Res<Two<RawPoint>>(v0: point.result, v1: Res<Arrow>(points: (circle0?.result.center ?? .none, circle1?.result.center ?? .none)).reflect(point.result))
+            guard let pointResult = pt.point.result else { return .none }
+            return Res<Two<C.Point>>(v0: pointResult, v1: Res<Arrow<C.Point>>(points: (circle0.anyWeakFigure.result?.center ?? .none, circle1.anyWeakFigure.result?.center ?? .none)).reflect(pointResult))
         case .two:
             return .none
         }
@@ -45,22 +45,22 @@ final class TwoCircleMediator: Figure, ParentComparable {
 
 // MARK: - Intersection Point
 
-final class TwoCircleIntersection: Figure, Point {
+final class TwoCircleIntersection<C: RawCircleProtocol>: Point {
     enum Index {
         case first
         case second
     }
     
-    var pointStorage = PointStorage()
+    var pointStorage = PointStorage<C.Point>()
     
-    weak var mediator: TwoCircleMediator?
+    weak var mediator: TwoCircleMediator<C>?
     var index: Index
     
-    init(_ mediator: TwoCircleMediator, _ index: Index) {
+    init(_ mediator: TwoCircleMediator<C>, _ index: Index) {
         self.mediator = mediator
         self.index = index
-        mediator.circle0?.intersectionPoints.append(self)
-        mediator.circle1?.intersectionPoints.append(self)
+        mediator.circle0.intersectionPoints.append(AnyFigure(self))
+        mediator.circle1.intersectionPoints.append(AnyFigure(self))
         setChildOf([mediator])
     }
     
@@ -69,7 +69,7 @@ final class TwoCircleIntersection: Figure, Point {
         return mediator === otherMediator && index == other.index
     }
     
-    static func create(_ c0: Circle, _ c1: Circle) -> (mediator: TwoCircleMediator, intersection0: TwoCircleIntersection?, intersection0: TwoCircleIntersection?) {
+    static func create<O: Circle>(_ c0: O, _ c1: O) -> (mediator: TwoCircleMediator<C>, intersection0: TwoCircleIntersection?, intersection0: TwoCircleIntersection?) where O.ResultValue == Res<C>, O.P == C.Point {
         let mediator = TwoCircleMediator(c0, c1)
         switch mediator.existing {
         case .none:
@@ -89,7 +89,7 @@ final class TwoCircleIntersection: Figure, Point {
         }
     }
     
-    func recalculate() -> Res<RawPoint> {
+    func recalculate() -> Res<C.Point> {
         guard let mediator = mediator else { return .none }
         switch mediator.existing {
         case .two: return .none

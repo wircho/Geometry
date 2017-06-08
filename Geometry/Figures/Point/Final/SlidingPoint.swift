@@ -8,13 +8,13 @@
 
 import Result
 
-final class SlidingPoint<P: RawPointProtocol>: Point, FreeValued {
+final class SlidingPoint<T, P: RawPointProtocol>: Point, FreeValued {
     var pointStorage = PointStorage<P>()
     var _freeValue: P.Value
     
-    var floor: AnyWeakOneDimensional<P>
+    var floor: AnyWeakOneDimensional<T, P>
     
-    init<F: OneDimensional>(_ floor: F, at initial: P.Value) where F.P == P {
+    init<F: OneDimensional>(_ floor: F, at initial: P.Value) where F.P == P, F.ResultValue == Res<T> {
         self.floor = AnyWeakOneDimensional(floor)
         _freeValue = initial
         floor.slidingPoints.append(AnyFigure(self))
