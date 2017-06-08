@@ -29,8 +29,8 @@ struct QuinticPolynomial<V: RawValueProtocol>: Polynomial, RealSolvable, Divisib
                 return dividedBy(c).realRoots
             }
         }
-        var lower: V = -1
-        var upper: V = 1
+        var lower: V = (critical.min() ?? 0) - 1
+        var upper: V = (critical.max() ?? 0) + 1
         if a5 < 0 {
             while of(lower) <= 0 {
                 lower *= 2
