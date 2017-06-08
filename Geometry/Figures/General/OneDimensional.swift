@@ -63,14 +63,14 @@ extension OneDimensional {
     }
 }
 
-/*
 extension OneDimensional where Self: StrokeAppears, Self: FigureBase {
-    func gap(from point: RawPoint) -> Res<CGFloat> {
-        return gapToCenter(from: point).map {
-            gap in
-            guard let context = context, gap < appearance.lineWidth / 2 else { return gap }
-            return min(gap, context.maxSolidDistance)
+    func gapToBorder(from cgPoint: CGPoint) -> Res<CGFloat> {
+        let point = cgPoint as! P
+        return gap(from: point).map {
+            (gap: P.Value) -> CGFloat in
+            let cgGap = gap as! CGFloat
+            guard let context = context, cgGap < appearance.lineWidth / 2 else { return cgGap }
+            return min(cgGap, context.maxSolidDistance)
         }
     }
 }
-*/

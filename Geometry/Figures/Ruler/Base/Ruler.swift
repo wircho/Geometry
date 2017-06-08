@@ -10,7 +10,7 @@ import Result
 
 // MARK: - Ruler Base Class
 
-protocol Ruler: OneDimensional {
+protocol Ruler: OneDimensional, StrokeAppears, Touchable {
     associatedtype R: RawRulerProtocol
     var rulerStorage: RulerStorage<R> { get set }
     var result: Res<R> { get }
@@ -24,9 +24,10 @@ extension Ruler {
         return Res<R>(kind: kind, arrow: arrow)
     }
     
-    /*
     func draw(in rect: CGRect, appearance: StrokeAppearance) {
-        guard let ruler = result.value, let exits:Two<RawPoint?> = intersections(ruler, rect).value else { return }
+        guard let value = result.value else { return }
+        let ruler = value as! RawRuler<CGPoint>
+        guard let exits:Two<CGPoint?> = intersections(ruler, rect).value else { return }
         let (point0, point1) = (exits.v0 ?? ruler.arrow.points.0,  exits.v1 ?? ruler.arrow.points.1)
         appearance.color.setStroke()
         UIBezierPath(segment: point0, point1, lineWidth: appearance.lineWidth).stroke()
@@ -36,7 +37,6 @@ extension Ruler {
         get { return rulerStorage.appearance }
         set { rulerStorage.appearance = newValue }
     }
-    */
     
     var storage: FigureStorage<R> {
         get { return rulerStorage.figureStorage }
@@ -61,7 +61,7 @@ extension Ruler {
 
 struct RulerStorage<R: RawRulerProtocol> {
     var _normReciprocal: Res<R.Arrow.Point.Value>? = nil
-    /*var appearance = StrokeAppearance() */
+    var appearance = StrokeAppearance()
     var figureStorage = FigureStorage<R>() {
         didSet {
             _normReciprocal = nil
@@ -84,8 +84,8 @@ extension Line {
             }
         }
     }
-    /*
-    var touchPriority: CGFloat { return 700 }*/
+    
+    var touchPriority: CGFloat { return 700 }
 }
 
 extension Ray {
@@ -119,7 +119,7 @@ extension Ray {
         }
     }
     
-    /*var touchPriority: CGFloat { return 800 }*/
+    var touchPriority: CGFloat { return 800 }
 }
 
 extension Segment {
@@ -143,7 +143,7 @@ extension Segment {
         }
     }
     
-    /*var touchPriority: CGFloat { return 900 }*/
+    var touchPriority: CGFloat { return 900 }
 }
 
 // TODO: - Angle bisector, Perpendicular Bisector

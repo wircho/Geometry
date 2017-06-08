@@ -6,10 +6,9 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-//import UIKit
-//import Result
+import UIKit
+import Result
 
-/*
 // MARK: - Protocol
 
 protocol Drawable: class {
@@ -17,6 +16,6 @@ protocol Drawable: class {
 }
 
 protocol SelectionDrawable: Drawable {
-    func drawSelection(in rect: R)
+    func drawSelection(in rect: CGRect)
 }
-*/
+

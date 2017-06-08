@@ -6,7 +6,51 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-//import UIKit
+import UIKit
+
+// MARK: - Stroke
+
+struct StrokeAppearance {
+    var color: UIColor = .black
+    var lineWidth: CGFloat = 2
+}
+
+protocol StrokeAppears: Drawable, SelectionDrawable {
+    var appearance: StrokeAppearance { get set }
+    func draw(in rect: CGRect, appearance: StrokeAppearance)
+}
+
+extension StrokeAppears {
+    func draw(in rect: CGRect) {
+        draw(in: rect, appearance: appearance)
+    }
+    
+    func drawSelection(in rect: CGRect) {
+        draw(in: rect, appearance: StrokeAppearance(color: .selection, lineWidth: appearance.lineWidth + 6))
+    }
+}
+
+// MARK: - Point
+
+struct PointAppearance {
+    var color: UIColor = .black
+    var radius: CGFloat = 6
+}
+
+protocol PointAppears: SelectionDrawable {
+    var appearance: PointAppearance { get set }
+    func draw(in rect: CGRect, appearance: PointAppearance)
+}
+
+extension PointAppears {
+    func draw(in rect: CGRect) {
+        draw(in: rect, appearance: appearance)
+    }
+    
+    func drawSelection(in rect: CGRect) {
+        draw(in: rect, appearance: PointAppearance(color: .selection, radius: appearance.radius + 3))
+    }
+}
 
 
 /*

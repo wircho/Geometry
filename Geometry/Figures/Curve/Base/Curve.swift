@@ -9,18 +9,19 @@
 import CoreGraphics
 import Result
 
-protocol Curve: OneDimensional /*, StrokeAppears, Touchable*/ {
+protocol Curve: OneDimensional, StrokeAppears, Touchable {
     associatedtype C: RawCurveProtocol
     var result: Res<C> { get }
     var curveStorage: CurveStorage<C> { get set }
 }
 
 extension Curve {
-    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
+        let cgValue = value as! RawCurve<CGPoint>
         appearance.color.setStroke()
-        UIBezierPath(curve: value, lineWidth: appearance.lineWidth).stroke()
-    }*/
+        UIBezierPath(curve: cgValue, lineWidth: appearance.lineWidth).stroke()
+    }
     
     func at(offset: C.Point.Value) -> Res<C.Point> {
         return result.map { $0.at(offset: min(max(offset,0),1)) }
@@ -78,10 +79,10 @@ extension Curve {
         return curveStorage.cedula
     }
     
-   /* var appearance: StrokeAppearance {
+    var appearance: StrokeAppearance {
         get { return curveStorage.appearance }
         set { curveStorage.appearance = newValue }
-    }*/
+    }
     
     var storage: FigureStorage<C> {
         get { return curveStorage.figureStorage }
@@ -102,7 +103,7 @@ extension Curve {
 
 struct CurveStorage<C: RawCurveProtocol> {
     let cedula = Cedula()
-    /*var appearance = StrokeAppearance()*/
+    var appearance = StrokeAppearance()
     var figureStorage = FigureStorage<C>()
     var oneDimensionalStorage = OneDimensionalStorage<C.Point>()
 }

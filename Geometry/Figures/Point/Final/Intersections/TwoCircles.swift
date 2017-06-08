@@ -22,12 +22,14 @@ final class TwoCircleMediator<C: RawCircleProtocol>: Figure, ParentComparable {
     let parentOrder = ParentOrder.unsorted
     var parents: [AnyObject?] { return [circle0.anyWeakFigure.figure, circle1.anyWeakFigure.figure] }
     
-    init<O: Circle>(_ cl0: O, _ cl1: O) where O.ResultValue == Res<C>, O.P == C.Point {
-        let (c0, c1) = (cl0.cedula.value < cl1.cedula.value) ? (cl0, cl1) : (cl1, cl0)
-        circle0 = AnyWeakOneDimensional<C, C.Point>(c0)
-        circle1 = AnyWeakOneDimensional<C, C.Point>(c1)
-        c0.findCommonPoints(with: c1) { existing.add($0) }
-        setChildOf([c0, c1])
+    init<O0: Circle, O1: Circle>(_ cl0: O0, _ cl1: O1) where O0.ResultValue == Res<C>, O1.ResultValue == Res<C>, O0.P == C.Point, O1.P == C.Point {
+        let ac0 = AnyWeakOneDimensional<C, C.Point>(cl0)
+        let ac1 = AnyWeakOneDimensional<C, C.Point>(cl1)
+        let (c0, c1) = (cl0.cedula.value < cl1.cedula.value) ? (ac0, ac1) : (ac1, ac0)
+        circle0 = c0
+        circle1 = c1
+        cl0.findCommonPoints(with: cl1) { existing.add($0) }
+        setChildOf([cl0, cl1])
     }
     
     func recalculate() -> Res<Two<C.Point>> {
@@ -69,7 +71,7 @@ final class TwoCircleIntersection<C: RawCircleProtocol>: Point {
         return mediator === otherMediator && index == other.index
     }
     
-    static func create<O: Circle>(_ c0: O, _ c1: O) -> (mediator: TwoCircleMediator<C>, intersection0: TwoCircleIntersection?, intersection0: TwoCircleIntersection?) where O.ResultValue == Res<C>, O.P == C.Point {
+    static func create<O0: Circle, O1: Circle>(_ c0: O0, _ c1: O1) -> (mediator: TwoCircleMediator<C>, intersection0: TwoCircleIntersection?, intersection0: TwoCircleIntersection?) where O0.ResultValue == Res<C>, O1.ResultValue == Res<C>, O0.P == C.Point, O1.P == C.Point {
         let mediator = TwoCircleMediator(c0, c1)
         switch mediator.existing {
         case .none:

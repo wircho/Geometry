@@ -8,7 +8,11 @@
 
 import Result
 
-protocol FreeValued: class {
+protocol FreeValuedBase: class {
+    func placeNear(cgPoint: CGPoint)
+}
+
+protocol FreeValued: FreeValuedBase {
     associatedtype FreeValue
     associatedtype P: RawPointProtocol
     var _freeValue: FreeValue { get set }
@@ -30,6 +34,9 @@ extension FreeValued where Self: Recalculator, Self: Transmitter {
             return
         }
         self.freeValue = freeValue
+    }
+    func placeNear(cgPoint: CGPoint) {
+        placeNear(point: cgPoint as! P)
     }
 }
 

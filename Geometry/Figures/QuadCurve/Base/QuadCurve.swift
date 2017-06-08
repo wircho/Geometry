@@ -9,18 +9,19 @@
 import CoreGraphics
 import Result
 
-protocol QuadCurve: OneDimensional /*, StrokeAppears, Touchable*/ {
+protocol QuadCurve: OneDimensional, StrokeAppears, Touchable {
     associatedtype C: RawQuadCurveProtocol
     var result: Res<C> { get }
     var quadCurveStorage: QuadCurveStorage<C> { get set }
 }
 
 extension QuadCurve {
-    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
+        let cgValue = value as! RawQuadCurve<CGPoint>
         appearance.color.setStroke()
-        UIBezierPath(quadCurve: value, lineWidth: appearance.lineWidth).stroke()
-    }*/
+        UIBezierPath(quadCurve: cgValue, lineWidth: appearance.lineWidth).stroke()
+    }
     
     func at(offset: C.Point.Value) -> Res<C.Point> {
         return result.map { $0.at(offset: min(max(offset,0),1)) }
@@ -61,10 +62,10 @@ extension QuadCurve {
         return quadCurveStorage.cedula
     }
     
-    /*var appearance: StrokeAppearance {
+    var appearance: StrokeAppearance {
         get { return quadCurveStorage.appearance }
         set { quadCurveStorage.appearance = newValue }
-    }*/
+    }
     
     var storage: FigureStorage<C> {
         get { return quadCurveStorage.figureStorage }
@@ -85,7 +86,7 @@ extension QuadCurve {
 
 struct QuadCurveStorage<C: RawQuadCurveProtocol> {
     let cedula = Cedula()
-    /*var appearance = StrokeAppearance()*/
+    var appearance = StrokeAppearance()
     var figureStorage = FigureStorage<C>()
     var oneDimensionalStorage = OneDimensionalStorage<C.Point>()
 }

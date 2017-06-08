@@ -9,18 +9,19 @@
 import CoreGraphics
 import Result
 
-protocol Arc: OneDimensional /*, StrokeAppears, Touchable*/ {
+protocol Arc: OneDimensional, StrokeAppears, Touchable {
     associatedtype A: RawArcProtocol
     var result: Res<A> { get }
     var arcStorage: ArcStorage<A> { get set }
 }
 
 extension Arc {
-   /* func draw(in rect: CGRect, appearance: StrokeAppearance) {
+   func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
+        let cgValue = value as! RawArc<CGPoint>
         appearance.color.setStroke()
-        UIBezierPath(arc: value, lineWidth: appearance.lineWidth).stroke()
-    }*/
+        UIBezierPath(arc: cgValue, lineWidth: appearance.lineWidth).stroke()
+    }
     
     func at(offset: A.Circle.Point.Value) -> Res<A.Circle.Point> {
         return result.map {
@@ -58,11 +59,10 @@ extension Arc {
         return arcStorage.cedula
     }
     
-   /* var appearance: StrokeAppearance {
+    var appearance: StrokeAppearance {
         get { return arcStorage.appearance }
         set { arcStorage.appearance = newValue }
     }
-    */
     
     var storage: FigureStorage<A> {
         get { return arcStorage.figureStorage }
@@ -86,12 +86,12 @@ extension Arc {
         }
     }
     
-    /*var touchPriority: CGFloat { return 850 }*/
+    var touchPriority: CGFloat { return 850 }
 }
 
 struct ArcStorage<A: RawArcProtocol> {
     let cedula = Cedula()
-    /*var appearance = StrokeAppearance()*/
+    var appearance = StrokeAppearance()
     var figureStorage = FigureStorage<A>()
     var oneDimensionalStorage = OneDimensionalStorage<A.Circle.Point>()
 }

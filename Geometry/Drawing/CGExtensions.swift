@@ -26,6 +26,8 @@ extension CGPoint: RawPointProtocol { }
 extension CGRect: RawRectProtocol { }
 
 
+private let defaultLineCapStyle = CGLineCap.round
+
 extension UIBezierPath {
     convenience init(circle: RawCircle<CGPoint>, lineWidth: CGFloat = 1) {
         let rect = CGRect(circle: circle)
@@ -38,7 +40,7 @@ extension UIBezierPath {
         self.move(to: point0)
         self.addLine(to: point1)
         self.lineWidth = lineWidth
-        self.lineCapStyle = .round
+        self.lineCapStyle = defaultLineCapStyle
     }
     
     convenience init(arc: RawArc<CGPoint>, lineWidth: CGFloat = 1) {
@@ -46,7 +48,7 @@ extension UIBezierPath {
         let angleValues = arc.angleValues
         self.addArc(withCenter: arc.circle.center, radius: arc.circle.radius, startAngle: angleValues.v0, endAngle: angleValues.v1, clockwise: true)
         self.lineWidth = lineWidth
-        self.lineCapStyle = .round
+        self.lineCapStyle = defaultLineCapStyle
     }
     
     convenience init(curve: RawCurve<CGPoint>, lineWidth: CGFloat = 1) {
@@ -54,7 +56,7 @@ extension UIBezierPath {
         self.move(to: curve.point0)
         self.addCurve(to: curve.point1, controlPoint1: curve.control0, controlPoint2: curve.control1)
         self.lineWidth = lineWidth
-        self.lineCapStyle = .round
+        self.lineCapStyle = defaultLineCapStyle
     }
     
     convenience init(quadCurve: RawQuadCurve<CGPoint>, lineWidth: CGFloat = 1) {
@@ -62,7 +64,7 @@ extension UIBezierPath {
         self.move(to: quadCurve.point0)
         self.addQuadCurve(to: quadCurve.point1, controlPoint: quadCurve.control)
         self.lineWidth = lineWidth
-        self.lineCapStyle = .round
+        self.lineCapStyle = defaultLineCapStyle
     }
 
 }

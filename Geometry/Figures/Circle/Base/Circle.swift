@@ -8,18 +8,19 @@
 import CoreGraphics
 import Result
 
-protocol Circle: OneDimensional /*, StrokeAppears, Touchable*/ {
+protocol Circle: OneDimensional, StrokeAppears, Touchable {
     associatedtype C: RawCircleProtocol
     var result: Res<C> { get }
     var circleStorage: CircleStorage<C> { get set }
 }
 
 extension Circle {
-    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
+    func draw(in rect: CGRect, appearance: StrokeAppearance) {
         guard let value = result.value else { return }
+        let cgValue = value as! RawCircle<CGPoint>
         appearance.color.setStroke()
-        UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()
-    }*/
+        UIBezierPath(circle: cgValue, lineWidth: appearance.lineWidth).stroke()
+    }
     
     func at(offset: C.Point.Value) -> Res<C.Point> {
         return result.map {
@@ -38,12 +39,11 @@ extension Circle {
     var cedula: Cedula {
         return circleStorage.cedula
     }
-   /*
+   
     var appearance: StrokeAppearance {
         get { return circleStorage.appearance }
         set { circleStorage.appearance = newValue }
     }
-    */
     
     var storage: FigureStorage<C> {
         get { return circleStorage.figureStorage }
@@ -67,7 +67,7 @@ extension Circle {
 
 struct CircleStorage<C: RawCircleProtocol> {
     let cedula = Cedula()
-    /* var appearance = StrokeAppearance() */
+    var appearance = StrokeAppearance()
     var figureStorage = FigureStorage<C>()
     var oneDimensionalStorage = OneDimensionalStorage<C.Point>()
 }

@@ -6,9 +6,36 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-protocol FigureContext: class {
-    var figures: [FigureBase] { get set }
-    var delegate: FigureContextDelegate? { get set }
+import UIKit
+
+class FigureContext: Drawable {
+    var figures: [FigureBase] = []
+    weak var delegate: FigureContextDelegate? = nil
+    
+    let distanceError: CGFloat = 0.01
+    fileprivate let sameError: CGFloat = 0.01
+    fileprivate let oneDimensionalToPointGap: CGFloat = 18
+    fileprivate let maxDistance: CGFloat = 25
+    let maxSolidDistance: CGFloat = 22
+    
+    var panningFigure: FreeValuedBase? = nil
+    
+    fileprivate enum TouchOver {
+        case this
+        case other
+        case both
+    }
+    
+    func draw(in rect: CGRect) {
+        for figure in figures {
+            (figure as? Drawable)?.draw(in: rect)
+        }
+        for figure in figures {
+            if figure.selected {
+                (figure as? SelectionDrawable)?.drawSelection(in: rect)
+            }
+        }
+    }
 }
 
 extension FigureContext {
@@ -41,67 +68,6 @@ extension FigureContext {
     func setFiguresWillRecalculate() {
         delegate?.contextFiguresWillRecalculate(self)
     }
-}
-
-protocol FigureContextDelegate: class {
-    func contextFiguresWillRecalculate(_: FigureContext)
-}
-
-
-/*
-class FigureContext: Drawable {
-    var figures: [FigureBase] = []
-    weak var delegate: FigureContextDelegate? = nil
-    
-    let distanceError: CGFloat = 0.01
-    
-    func draw(in rect: CGRect) {
-        for figure in figures {
-            (figure as? Drawable)?.draw(in: rect)
-        }
-        for figure in figures {
-            if figure.selected {
-                (figure as? SelectionDrawable)?.drawSelection(in: rect)
-            }
-        }
-    }
-    
-    @discardableResult func append<T: FigureBase>(_ figure: T) -> T {
-        figures.append(figure)
-        figure.context = self
-        return figure
-    }
-    
-    private func removeOnly(_ figure: FigureBase) {
-        guard let index = figures.index(where: { $0 === figure }) else {
-            return
-        }
-        figures.remove(at: index)
-    }
-    
-    func remove(_ object: FigureBase) -> Bool {
-        var set = ObjectSet<AnyObject>()
-        object.send { _ = set.insert($0) }
-        guard set.count > 0 else {
-            return false
-        }
-        for object in set {
-            guard let figure = object as? FigureBase else { continue }
-            removeOnly(figure)
-        }
-        return true
-    }
-    
-    private enum TouchOver {
-        case this
-        case other
-        case both
-    }
-    
-    private let sameError: CGFloat = 0.01
-    private let oneDimensionalToPointGap: CGFloat = 18
-    private let maxDistance: CGFloat = 25
-    let maxSolidDistance: CGFloat = 22
     
     private func touch(this: (figure: Touchable, gap: CGFloat), over other: (figure: Touchable, gap: CGFloat)) -> TouchOver {
         switch (this.figure, other.figure) {
@@ -147,7 +113,7 @@ class FigureContext: Drawable {
     func touchables(near point: CGPoint, scale: CGFloat, filter:((Touchable) -> Bool)? = nil) -> [Touchable] {
         let touchables: [(figure: Touchable, gap: CGFloat)] = figures.flatMap {
             figure in
-            guard let touchable = figure as? Touchable, let gap = touchable.gap(from: point).value else {
+            guard let touchable = figure as? Touchable, let gap = touchable.gapToBorder(from: point).value else {
                 return nil
             }
             guard filter?(touchable) ?? true else {
@@ -197,8 +163,6 @@ class FigureContext: Drawable {
         first.selected = !first.selected
     }
     
-    var panningFigure: FreeValuedBase? = nil
-    
     func beginPan(_ point: CGPoint, scale: CGFloat) {
         let touchables = self.touchables(near: point, scale: scale) { $0.selected && $0 is FreeValuedBase }
         panningFigure = touchables.first as? FreeValuedBase
@@ -208,18 +172,16 @@ class FigureContext: Drawable {
         guard let figure = panningFigure else {
             return
         }
-        figure.placeNear(point: point)
+        figure.placeNear(cgPoint: point)
     }
     
     func endPan() {
         panningFigure = nil
     }
     
-    func setFiguresWillRecalculate() {
-        delegate?.contextFiguresWillRecalculate(self)
-    }
 }
 
 protocol FigureContextDelegate: class {
     func contextFiguresWillRecalculate(_: FigureContext)
-}*/
+}
+

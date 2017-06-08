@@ -74,6 +74,8 @@
 		AE0F7D711EDD8EA300BD8414 /* TwoRulers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */; };
 		AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE71EC6D4690071D7D9 /* RulerCircle.swift */; };
 		AE0F86BD1EE5EB7E00BD8414 /* TwoCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */; };
+		AE28EE821EE99BF90001C03F /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
+		AE28EE841EE9A7370001C03F /* ReflectionPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE28EE831EE9A7370001C03F /* ReflectionPoint.swift */; };
 		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
@@ -100,6 +102,7 @@
 		AE184DBE1ED1F64B00D9EB8D /* RayAway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayAway.swift; sourceTree = "<group>"; };
 		AE1931411ED3A54B00596BB4 /* AnyFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyFigure.swift; sourceTree = "<group>"; };
 		AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyWeakOneDimensional.swift; sourceTree = "<group>"; };
+		AE28EE831EE9A7370001C03F /* ReflectionPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReflectionPoint.swift; sourceTree = "<group>"; };
 		AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalProtocol.swift; sourceTree = "<group>"; };
 		AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjectSet.swift; sourceTree = "<group>"; };
 		AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashableObject.swift; sourceTree = "<group>"; };
@@ -417,6 +420,7 @@
 				AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */,
 				AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */,
 				AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */,
+				AE28EE831EE9A7370001C03F /* ReflectionPoint.swift */,
 				AEE3ABE61EC6D4690071D7D9 /* Intersections */,
 			);
 			path = Final;
@@ -770,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE28EE841EE9A7370001C03F /* ReflectionPoint.swift in Sources */,
 				AE0F7D331EDD23EE00BD8414 /* Polynomial.swift in Sources */,
 				AE0F7D421EDD241600BD8414 /* Figure.swift in Sources */,
 				AE0F7D3A1EDD23F800BD8414 /* Transmitter.swift in Sources */,
@@ -830,6 +835,7 @@
 				AE0F7D4D1EDD243B00BD8414 /* CoupleOfPoints.swift in Sources */,
 				AE0F7D231EDD23DC00BD8414 /* Association.swift in Sources */,
 				AE0F7D2B1EDD23E000BD8414 /* RawProtocols.swift in Sources */,
+				AE28EE821EE99BF90001C03F /* ContextView.swift in Sources */,
 				AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */,
 				AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */,
 				AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */,
