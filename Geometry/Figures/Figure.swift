@@ -27,7 +27,7 @@ struct FigureStorage<Value> {
     var _needsUpdate = true {
         didSet {
             if _needsUpdate && !oldValue {
-                context?.setFiguresWillRecalculate()
+                context?.setFiguresWillUpdate()
             }
         }
     }

@@ -6,13 +6,13 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-class FigureContext {
+final class FigureContext {
     var figures: [LazyNodeBase] = []
     weak var delegate: FigureContextDelegate? = nil
 }
 
 extension FigureContext {
-    @discardableResult func append<T: FigureBase>(_ figure: T) -> T {
+    @discardableResult func append<F: Figure>(_ figure: F) -> F {
         figures.append(figure)
         figure.context = self
         return figure
@@ -25,7 +25,7 @@ extension FigureContext {
         figures.remove(at: index)
     }
     
-    func remove(_ object: FigureBase) -> Bool {
+    func remove<F: Figure>(_ object: F) -> Bool {
         var set = [LazyNodeBase]()
         object.send { _ = set.append($0) }
         guard set.count > 0 else {
@@ -35,13 +35,13 @@ extension FigureContext {
         return true
     }
     
-    func setFiguresWillRecalculate() {
-        delegate?.contextFiguresWillRecalculate(self)
+    func setFiguresWillUpdate() {
+        delegate?.contextFiguresWillUpdate(self)
     }
 }
 
 protocol FigureContextDelegate: class {
-    func contextFiguresWillRecalculate(_: FigureContext)
+    func contextFiguresWillUpdate(_: FigureContext)
 }
 
 
