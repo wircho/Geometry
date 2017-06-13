@@ -19,7 +19,7 @@ protocol Ruler: OneDimensional {
 }
 
 extension Ruler {
-    func recalculate() -> Res<R> {
+    func update() -> Res<R> {
         let arrow = calculateArrow()
         return Res<R>(kind: kind, arrow: arrow)
     }

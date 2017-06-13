@@ -28,7 +28,7 @@ final class CircleToPoint<C: RawCircleProtocol>: Circle, ParentComparable {
         return [point].flatMap { $0.anyFigure }
     }
     
-    func recalculate() -> Res<C> {
+    func update() -> Res<C> {
         return Res(center: center.result ?? .none, point: point.result ?? .none)
     }
 }

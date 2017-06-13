@@ -15,14 +15,14 @@ protocol FreeValued: class {
     func nearestFreeValue(from point: P) -> Res<FreeValue>
 }
 
-extension FreeValued where Self: Recalculator, Self: Transmitter {
+extension FreeValued where Self: LazyNode {
     var freeValue: FreeValue {
         get {
             return _freeValue
         }
         set {
             _freeValue = newValue
-            needsRecalculation = true
+            needsUpdate = true
         }
     }
     func placeNear(point: P) {
@@ -33,8 +33,8 @@ extension FreeValued where Self: Recalculator, Self: Transmitter {
     }
 }
 
-extension FreeValued where Self: Recalculator, Self: Transmitter, Self.ResultValue: ResultProtocol, Self.ResultValue.Value == FreeValue {
-    func recalculate() -> ResultValue {
+extension FreeValued where Self: LazyNode, Self.ResultValue: ResultProtocol, Self.ResultValue.Value == FreeValue {
+    func update() -> ResultValue {
         return ResultValue(value: freeValue)
     }
 }

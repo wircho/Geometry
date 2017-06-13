@@ -30,7 +30,7 @@ final class TwoCircleMediator<C: RawCircleProtocol>: Figure, ParentComparable {
         setChildOf([c0, c1])
     }
     
-    func recalculate() -> Res<Two<C.Point>> {
+    func update() -> Res<Two<C.Point>> {
         switch existing {
         case .none:
             return intersections(circle0.anyWeakFigure.result ?? .none, circle1.anyWeakFigure.result ?? .none)
@@ -89,7 +89,7 @@ final class TwoCircleIntersection<C: RawCircleProtocol>: Point {
         }
     }
     
-    func recalculate() -> Res<C.Point> {
+    func update() -> Res<C.Point> {
         guard let mediator = mediator else { return .none }
         switch mediator.existing {
         case .two: return .none

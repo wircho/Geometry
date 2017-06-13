@@ -28,7 +28,7 @@ final class CircleWithRadius<C: RawCircleProtocol>: Circle, ParentComparable {
         return []
     }
     
-    func recalculate() -> Res<C> {
+    func update() -> Res<C> {
         return Res(center: center.result ?? .none, radius: radius.result ?? .none)
     }
 }

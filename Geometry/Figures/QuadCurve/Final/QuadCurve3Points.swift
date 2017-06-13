@@ -33,7 +33,7 @@ final class QuadCurve3Points<C: RawQuadCurveProtocol>: QuadCurve, Bounded {
         return [point0, point1].flatMap { $0.anyFigure }
     }
     
-    func recalculate() -> Res<C> {
+    func update() -> Res<C> {
         return Res(point0: point0.result ?? .none, control: control.result ?? .none, point1: point1.result ?? .none)
     }
     

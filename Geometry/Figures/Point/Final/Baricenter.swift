@@ -23,7 +23,7 @@ final class Baricenter<P: RawPointProtocol>: Point, ParentComparable {
         setChildOf(points.map { $0.figure })
     }
     
-    func recalculate() -> Res<P> {
+    func update() -> Res<P> {
         var sum = Res<P>.success(P(x: 0, y: 0))
         for any in points {
             guard let point = any.result else { continue }

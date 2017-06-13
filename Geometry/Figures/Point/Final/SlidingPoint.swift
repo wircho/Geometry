@@ -21,7 +21,7 @@ final class SlidingPoint<T, P: RawPointProtocol>: Point, FreeValued {
         setChildOf([floor])
     }
     
-    func recalculate() -> Res<P> {
+    func update() -> Res<P> {
         return floor.atOffset(freeValue) ?? .none
     }
     

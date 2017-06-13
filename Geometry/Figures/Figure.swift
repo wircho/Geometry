@@ -9,14 +9,14 @@ import Result
 
 // MARK: - Figure
 
-protocol FigureBase: Transmitter {
+protocol FigureBase: LazyNodeBase {
     var context: FigureContext? { get set }
     //var selected: Bool { get set }
 }
 
 struct FigureStorage<Value> {
     weak var context: FigureContext?
-    var receivers: [() -> Transmitter?] = []
+    var receivers: [() -> LazyNodeBase?] = []
     var _result: Res<Value> = .none /* {
         didSet {
             if case .success = oldValue, case .failure = _result, selected {
@@ -24,9 +24,9 @@ struct FigureStorage<Value> {
             }
         }
     } */
-    var _needsRecalculation = true {
+    var _needsUpdate = true {
         didSet {
-            if _needsRecalculation && !oldValue {
+            if _needsUpdate && !oldValue {
                 context?.setFiguresWillRecalculate()
             }
         }
@@ -43,14 +43,14 @@ struct FigureStorage<Value> {
 //    }
 }
 
-protocol Figure: FigureBase, Recalculator {
+protocol Figure: FigureBase, LazyNode {
     associatedtype FigureValue
     var storage: FigureStorage<FigureValue> { get set }
     func compare(with other: Self) -> Bool
 }
 
 extension Figure {
-    var receivers: [() -> Transmitter?] {
+    var receivers: [() -> LazyNodeBase?] {
         get { return storage.receivers }
         set { storage.receivers = newValue }
     }
@@ -60,9 +60,9 @@ extension Figure {
         set { storage._result = newValue }
     }
     
-    var _needsRecalculation: Bool {
-        get { return storage._needsRecalculation }
-        set { storage._needsRecalculation = newValue }
+    var _needsUpdate: Bool {
+        get { return storage._needsUpdate }
+        set { storage._needsUpdate = newValue }
     }
     
     var context: FigureContext? {
@@ -80,6 +80,6 @@ extension Figure {
         if let first = array.first {
             first.context?.append(self)
         }
-        receive(from: array as [Transmitter])
+        receive(from: array as [LazyNodeBase])
     }
 }

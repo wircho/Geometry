@@ -6,9 +6,9 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-protocol FigureContext: class {
-    var figures: [FigureBase] { get set }
-    var delegate: FigureContextDelegate? { get set }
+class FigureContext {
+    var figures: [LazyNodeBase] = []
+    weak var delegate: FigureContextDelegate? = nil
 }
 
 extension FigureContext {
@@ -18,7 +18,7 @@ extension FigureContext {
         return figure
     }
     
-    private func removeOnly(_ figure: FigureBase) {
+    private func removeOnly(_ figure: LazyNodeBase) {
         guard let index = figures.index(where: { $0 === figure }) else {
             return
         }
@@ -26,15 +26,12 @@ extension FigureContext {
     }
     
     func remove(_ object: FigureBase) -> Bool {
-        var set = ObjectSet<AnyObject>()
-        object.send { _ = set.insert($0) }
+        var set = [LazyNodeBase]()
+        object.send { _ = set.append($0) }
         guard set.count > 0 else {
             return false
         }
-        for object in set {
-            guard let figure = object as? FigureBase else { continue }
-            removeOnly(figure)
-        }
+        for object in set { removeOnly(object) }
         return true
     }
     

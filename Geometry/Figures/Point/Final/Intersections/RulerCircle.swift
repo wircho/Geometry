@@ -28,7 +28,7 @@ final class RulerCircleMediator<R: RawRulerProtocol, C: RawCircleProtocol>: Figu
         setChildOf([ruler, circle])
     }
     
-    func recalculate() -> Res<Two<R.Arrow.Point?>> {
+    func update() -> Res<Two<R.Arrow.Point?>> {
         switch existing {
         case .none:
             return intersections(ruler.anyWeakFigure.result ?? .none, circle.anyWeakFigure.result ?? .none)
@@ -92,7 +92,7 @@ final class RulerCircleIntersection<R: RawRulerProtocol, C: RawCircleProtocol>: 
         }
     }
     
-    func recalculate() -> Res<R.Arrow.Point> {
+    func update() -> Res<R.Arrow.Point> {
         guard let mediator = mediator else { return .none }
         switch mediator.existing {
         case .two: return .none
