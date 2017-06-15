@@ -27,10 +27,11 @@ extension Arc {
             arc in
             let angle: A.Circle.Point.Value
             let angles = arc.angleValues
+            let smallOffset = min(max(offset, 0), 1)
             if arc.fromFirst {
-                angle = angles.v0 + (angles.v1 - angles.v0) * min(max(offset, 0), 1)
+                angle = angles.v0 + (angles.v1 - angles.v0) * smallOffset
             } else {
-                angle = angles.v1 + (angles.v0 - angles.v1) * min(max(offset, 0), 1)
+                angle = angles.v1 + (angles.v0 - angles.v1) * smallOffset
             }
             return  arc.center + Angle(value: angle).vector(radius: arc.radius)
         }
