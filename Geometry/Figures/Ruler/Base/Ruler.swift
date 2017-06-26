@@ -5,7 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 // MARK: - Ruler Base Class
@@ -23,20 +22,6 @@ extension Ruler {
         let arrow = calculateArrow()
         return Res<R>(kind: kind, arrow: arrow)
     }
-    
-    /*
-    func draw(in rect: CGRect, appearance: StrokeAppearance) {
-        guard let ruler = result.value, let exits:Two<RawPoint?> = intersections(ruler, rect).value else { return }
-        let (point0, point1) = (exits.v0 ?? ruler.arrow.points.0,  exits.v1 ?? ruler.arrow.points.1)
-        appearance.color.setStroke()
-        UIBezierPath(segment: point0, point1, lineWidth: appearance.lineWidth).stroke()
-    }
-    
-    var appearance: StrokeAppearance {
-        get { return rulerStorage.appearance }
-        set { rulerStorage.appearance = newValue }
-    }
-    */
     
     var storage: FigureStorage<R> {
         get { return rulerStorage.figureStorage }

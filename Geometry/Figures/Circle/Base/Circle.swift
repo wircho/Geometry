@@ -5,7 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 protocol Circle: OneDimensional /*, StrokeAppears, Touchable*/ {
@@ -15,12 +14,6 @@ protocol Circle: OneDimensional /*, StrokeAppears, Touchable*/ {
 }
 
 extension Circle {
-    /*func draw(in rect: CGRect, appearance: StrokeAppearance) {
-        guard let value = result.value else { return }
-        appearance.color.setStroke()
-        UIBezierPath(circle: value, lineWidth: appearance.lineWidth).stroke()
-    }*/
-    
     func at(offset: C.Point.Value) -> Res<C.Point> {
         return result.map {
             circle in
@@ -38,12 +31,6 @@ extension Circle {
     var cedula: Cedula {
         return circleStorage.cedula
     }
-   /*
-    var appearance: StrokeAppearance {
-        get { return circleStorage.appearance }
-        set { circleStorage.appearance = newValue }
-    }
-    */
     
     var storage: FigureStorage<C> {
         get { return circleStorage.figureStorage }
@@ -62,7 +49,7 @@ extension Circle {
         }
     }
     
-    var touchPriority: CGFloat { return 600 }
+    /*var touchPriority: CGFloat { return 600 } */
 }
 
 struct CircleStorage<C: RawCircleProtocol> {

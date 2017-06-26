@@ -1,5 +1,5 @@
 //
-//  CGExtensions.swift
+//  CoreExtensions.swift
 //  GeometrySample
 //
 //  Created by AdolfoX Rodriguez on 2017-05-10.
@@ -88,6 +88,8 @@ extension UIImage {
         }
     }
 }
+
+extension UIColor: FigureColor { }
 
 private var _selectionColor: UIColor? = nil
 extension UIColor {

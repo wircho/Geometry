@@ -8,53 +8,31 @@
 
 import Foundation
 
-//enum DrawableOrSkinnable<R: RawRectProtocol, L: Layer>: LayerDrawable {
-//    case drawable(AnyDrawable<R>, L)
-//    case skinnable(AnySkinnable<R, L>)
-//    
-//    func draw(in rect: R, layer: L) {
-//        switch self {
-//        case .drawable(let d, let dLayer):
-//            guard dLayer == layer else { return }
-//            d.draw(in: rect)
-//        case .skinnable(let s):
-//            s.draw(in: rect, layer: layer)
-//        }
-//    }
-//}
-
 protocol LayerCanvas: class, Drawable, LayerDrawable {
-    associatedtype LayerSkinnableType: LayerSkinnable
-    var layers:[LayerSkinnableType.LayerType] { get }
-    var elements: [LayerSkinnableType] { get set }
+    associatedtype RectType: RawRectProtocol
+    associatedtype LayerType: Layer
+    var layers: [LayerType] { get }
+    var elements: [AnyLayerDrawable<RectType, LayerType>] { get set }
 }
 
 extension LayerCanvas {
-//    func trim() {
-//        figures = figures.filter {
-//            figure in
-//            guard case .skinnable(let s) = figure else { return true }
-//            return !s.isWrappedNone
-//        }
-//    }
-//    
-    func draw(in rect: LayerSkinnableType.RectType, layer: LayerSkinnableType.LayerType) {
+    func draw(in rect: RectType, layer: LayerType) {
         for element in elements {
             element.draw(in: rect, layer: layer)
         }
     }
     
-    func draw(in rect: LayerSkinnableType.RectType) {
+    func draw(in rect: RectType) {
         for layer in layers {
             draw(in: rect, layer: layer)
         }
     }
     
-//    func append<S: Skinnable>(_ figure: S) where S.RectType == RectType, S.LayerType == LayerType {
-//        figures.append(.skinnable(AnySkinnable(figure)))
-//    }
-//    
-//    func append<D: Drawable>(_ figure: D, layer: LayerType) where D.RectType == RectType {
-//        figures.append(.drawable(AnyDrawable(figure), layer))
-//    }
+    func add(_ element: AnyLayerDrawable<RectType, LayerType>) {
+        elements.append(element)
+    }
+    
+    func add<T: LayerDrawable>(_ element: T) where T.RectType == RectType, T.LayerType == LayerType {
+        add(AnyLayerDrawable(element))
+    }
 }

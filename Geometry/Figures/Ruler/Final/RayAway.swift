@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 final class RayAway<R: RawRulerProtocol>: Ray, Ruler2Points {

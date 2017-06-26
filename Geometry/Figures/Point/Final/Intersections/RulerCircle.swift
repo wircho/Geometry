@@ -5,7 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 // MARK: - Intersection Mediator
@@ -24,7 +23,7 @@ final class RulerCircleMediator<R: RawRulerProtocol, C: RawCircleProtocol>: Figu
     init<L: Ruler, O: Circle>(_ ruler: L, _ circle: O) where L.ResultValue == Res<R>, O.ResultValue == Res<C>,  L.P == R.Arrow.Point, O.P == C.Point {
         self.ruler = AnyWeakOneDimensional(ruler)
         self.circle = AnyWeakOneDimensional(circle)
-        ruler.findCommonPoints(with: circle) { existing.add($0) }
+        ruler.findPreexistingCommonPoints(with: circle) { existing.add($0) }
         setChildOf([ruler, circle])
     }
     

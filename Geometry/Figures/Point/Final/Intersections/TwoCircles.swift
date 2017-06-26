@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 // MARK: - Intersection Mediator
@@ -26,7 +25,7 @@ final class TwoCircleMediator<C: RawCircleProtocol>: Figure, ParentComparable {
         let (c0, c1) = (cl0.cedula.value < cl1.cedula.value) ? (cl0, cl1) : (cl1, cl0)
         circle0 = AnyWeakOneDimensional<C, C.Point>(c0)
         circle1 = AnyWeakOneDimensional<C, C.Point>(c1)
-        c0.findCommonPoints(with: c1) { existing.add($0) }
+        c0.findPreexistingCommonPoints(with: c1) { existing.add($0) }
         setChildOf([c0, c1])
     }
     

@@ -5,7 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 final class CircleWithRadius<C: RawCircleProtocol>: Circle, ParentComparable {

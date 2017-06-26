@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 final class Curve4Points<C: RawCurveProtocol>: Curve, Bounded {

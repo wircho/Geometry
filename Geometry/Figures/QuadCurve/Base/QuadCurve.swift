@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 protocol QuadCurve: OneDimensional /*, StrokeAppears, Touchable*/ {
@@ -80,7 +79,7 @@ extension QuadCurve {
         return nearestOffset(from: point).flatMap { distance(at(offset: $0), .success(point)) }
     }
     
-    var touchPriority: CGFloat { return 600 }
+    /*var touchPriority: CGFloat { return 600 } */
 }
 
 struct QuadCurveStorage<C: RawQuadCurveProtocol> {

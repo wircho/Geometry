@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 protocol DirectedLine: Line, ParentComparable {
@@ -62,8 +61,8 @@ extension DirectedLine where Self: Figure {
 struct DirectedLineStorage<R: RawRulerProtocol> {
     var rulerStorage = RulerStorage<R>()
     
-    var point = AnyWeakFigure<R.Arrow.Point>()
-    var ruler = AnyWeakFigure<R>()
+    var point: AnyWeakFigure<R.Arrow.Point>
+    var ruler: AnyWeakFigure<R>
     
     init<T: Point, S: Ruler>(_ p: T, _ r: S) where T.ResultValue == Res<R.Arrow.Point>, S.ResultValue == Res<R> {
         point = AnyWeakFigure(p)

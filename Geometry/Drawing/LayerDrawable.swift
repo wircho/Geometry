@@ -15,3 +15,15 @@ protocol LayerDrawable {
     associatedtype LayerType: Layer
     func draw(in rect: RectType, layer: LayerType)
 }
+
+struct AnyLayerDrawable<R: RawRectProtocol, L: Layer> {
+    private var _drawOnLayer: (R, L) -> Void
+    
+    init<T: LayerDrawable>(_ styleable: T) where T.RectType == R, T.LayerType == L {
+        _drawOnLayer = { styleable.draw(in: $0, layer: $1) }
+    }
+    
+    func draw(in rect: R, layer: L) {
+        _drawOnLayer(rect, layer)
+    }
+}

@@ -5,9 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Foundation
-
-import CoreGraphics
 import Result
 
 final class TwoRulerMediator<R: RawRulerProtocol>: Figure, ParentComparable {
@@ -23,7 +20,7 @@ final class TwoRulerMediator<R: RawRulerProtocol>: Figure, ParentComparable {
     init<S0: Ruler, S1: Ruler>(_ s0: S0, _ s1: S1) where S0.ResultValue == Res<R>, S1.ResultValue == Res<R>, S0.P == R.Arrow.Point, S1.P == R.Arrow.Point {
         ruler0 = AnyWeakOneDimensional(s0)
         ruler1 = AnyWeakOneDimensional(s1)
-        s0.findCommonPoints(with: s1) {
+        s0.findPreexistingCommonPoints(with: s1) {
             existing = $0.anyWeakFigure
             return false
         }

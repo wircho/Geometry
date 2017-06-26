@@ -5,7 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 final class Line2Points<R: RawRulerProtocol>: Line, Ruler2PointsStandard {

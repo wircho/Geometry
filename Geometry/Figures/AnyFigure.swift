@@ -43,11 +43,11 @@ struct AnyWeakFigure<T> {
         }
     }
     
-    init() {
-        figure = nil
-        getResult = { nil }
-        getAnyFigure = { nil }
-    }
+//    init() {
+//        figure = nil
+//        getResult = { nil }
+//        getAnyFigure = { nil }
+//    }
 }
 
 extension AnyWeakFigure: Equatable {

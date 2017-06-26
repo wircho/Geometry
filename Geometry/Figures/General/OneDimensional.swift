@@ -6,7 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 protocol OneDimensional: Figure {
@@ -21,6 +20,12 @@ protocol OneDimensional: Figure {
 struct OneDimensionalStorage<P: RawPointProtocol> {
     var weakSlidingPoints: [AnyWeakFigure<P>] = []
     var weakIntersectionPoints: [AnyWeakFigure<P>] = []
+}
+
+private extension ObjectSet where T == AnyObject {
+    init<T>(figures: [AnyFigure<T>]) {
+        self.init(figures.map { $0.figure })
+    }
 }
 
 extension OneDimensional {
@@ -44,19 +49,26 @@ extension OneDimensional {
         }
     }
     
+    var nonIntersectionTouchingPoints: [AnyFigure<P>] {
+        return touchingDefiningPoints + slidingPoints
+    }
+    
     var allTouchingPoints: [AnyFigure<P>] {
-        return touchingDefiningPoints + intersectionPoints + slidingPoints
+        return nonIntersectionTouchingPoints + intersectionPoints
     }
     
-    var touchingPointsSet: ObjectSet<AnyObject> {
-        return ObjectSet<AnyObject>(allTouchingPoints.map { $0.figure })
-    }
-    
-    func findCommonPoints<Other: OneDimensional>(with other: Other, _ closure: (AnyFigure<P>) -> Bool) {
-        let array = allTouchingPoints
-        let otherSet = other.touchingPointsSet
-        for p in array {
-            if otherSet.contains(p.figure) {
+    func findPreexistingCommonPoints<Other: OneDimensional>(with other: Other, _ closure: (AnyFigure<P>) -> Bool) {
+        let intersections = intersectionPoints
+        let nonIntersections = nonIntersectionTouchingPoints
+        let otherAll = ObjectSet(figures: other.allTouchingPoints)
+        let otherNonIntersections = ObjectSet(figures: other.nonIntersectionTouchingPoints)
+        for p in nonIntersections {
+            if otherAll.contains(p.figure) {
+                guard closure(p) else { break }
+            }
+        }
+        for p in intersections {
+            if otherNonIntersections.contains(p.figure) {
                 guard closure(p) else { break }
             }
         }

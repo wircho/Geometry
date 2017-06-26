@@ -5,7 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import CoreGraphics
 import Result
 
 // MARK: - Ruler Figures Through 2 Points
@@ -55,8 +54,8 @@ extension Ruler2Points where Self: Figure {
 struct Ruler2PointsStorage<R: RawRulerProtocol> {
     var rulerStorage = RulerStorage<R>()
     
-    var point0 = AnyWeakFigure<R.Arrow.Point>()
-    var point1 = AnyWeakFigure<R.Arrow.Point>()
+    var point0: AnyWeakFigure<R.Arrow.Point>
+    var point1: AnyWeakFigure<R.Arrow.Point>
     
     init<T0: Point, T1: Point>(_ p0: T0, _ p1: T1) where T0.ResultValue == Res<R.Arrow.Point>, T1.ResultValue == Res<R.Arrow.Point> {
         point0 = AnyWeakFigure<R.Arrow.Point>(p0)

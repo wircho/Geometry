@@ -206,16 +206,20 @@ private func createFigureContext4() -> FigureContext {
 */
 class ContextView: UIView/*, FigureContextDelegate*/, UIGestureRecognizerDelegate {
 
-    //var context = createFigureContext4()
+    let context = FigureContext()
+    let canvas = CoreFigureCanvas()
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         setUp()
+        addFigures()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setUp()
+        addFigures()
     }
     
     func setUp() {
@@ -227,6 +231,18 @@ class ContextView: UIView/*, FigureContextDelegate*/, UIGestureRecognizerDelegat
         p.maximumNumberOfTouches = 1
         self.addGestureRecognizer(t)
         self.addGestureRecognizer(p) */
+    }
+    
+    
+    func addFigures() {
+        let p0 = FreePoint<CGPoint>(x: 50, y: 150, in: context)
+        let p1 = FreePoint<CGPoint>(x: 50, y: 250, in: context)
+        let p2 = FreePoint<CGPoint>(x: 200, y: 250, in: context)
+        let circle = Circumcircle<RawCircle<CGPoint>>(p0, p1, p2)
+        canvas.add(p0)
+        canvas.add(p1)
+        canvas.add(p2)
+        canvas.add(circle, style: CoreStrokeStyle(lineWidth: 0.5, color: UIColor.green.withAlphaComponent(0.5)))
     }
     /*
     func tapped(t: UITapGestureRecognizer) {
@@ -249,9 +265,9 @@ class ContextView: UIView/*, FigureContextDelegate*/, UIGestureRecognizerDelegat
     
     func contextFiguresWillRecalculate(_: FigureContext) {
         setNeedsDisplay()
-    }
+    }*/
     
     override func draw(_ rect: CGRect) {
-        context.draw(in: rect)
-    }*/
+        canvas.draw(in: rect)
+    }
 }
