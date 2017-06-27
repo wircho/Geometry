@@ -7,7 +7,7 @@
 //
 
 protocol LayerStyleableFigure: LayerStyleable, LayerDrawableFigure {
-    
+    var canvas: FigureCanvasBase? { get set }
 }
 
 struct AnyLayerStyleableFigure<R: RawRectProtocol, L: Layer, S: Style, FV> {

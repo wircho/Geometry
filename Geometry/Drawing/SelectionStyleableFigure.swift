@@ -19,24 +19,35 @@ protocol SelectionStyleableFigure: SelectionStyleable, LayerStyleableFigure, Fig
 struct SelectionStyleableFigureStorage<FigureValue, StyleType: SelectableFigureStyle> {
     var weakFigure: AnyWeakFigure<FigureValue>
     var selected = false
-    var hidden = false
-    var normalStyle: StyleType { didSet { selectedStyle = normalStyle.selected } }
-    var selectedStyle: StyleType
-    
-    init<F: Figure>(_ figure: F, style: StyleType) where F.ResultValue == Res<FigureValue> {
-        weakFigure = AnyWeakFigure(figure)
-        normalStyle = style
-        selectedStyle = style.selected
+    var hidden: Bool
+    var style: StyleType {
+        didSet {
+            selectedStyle = style.selected
+            canvas?.setAppearanceDidUpdate()
+        }
     }
+    var selectedStyle: StyleType
+    weak var canvas: FigureCanvasBase? = nil
     
-    init<F: Figure>(_ figure: F) where F.ResultValue == Res<FigureValue> {
-        self.init(figure, style: .default)
+    init<F: Figure>(_ figure: F, style: StyleType = .default, hidden: Bool = false) where F.ResultValue == Res<FigureValue> {
+        weakFigure = AnyWeakFigure(figure)
+        self.style = style
+        selectedStyle = style.selected
+        self.hidden = hidden
     }
 }
 
 extension SelectionStyleableFigure {
+    init<F: Figure>(_ figure: F, style: StyleType, hidden: Bool) where F.ResultValue == Res<FigureValue> {
+        self.init(storage: SelectionStyleableFigureStorage(figure, style: style, hidden: hidden))
+    }
+    
     init<F: Figure>(_ figure: F, style: StyleType) where F.ResultValue == Res<FigureValue> {
         self.init(storage: SelectionStyleableFigureStorage(figure, style: style))
+    }
+    
+    init<F: Figure>(_ figure: F, hidden: Bool) where F.ResultValue == Res<FigureValue> {
+        self.init(storage: SelectionStyleableFigureStorage(figure, hidden: hidden))
     }
     
     init<F: Figure>(_ figure: F) where F.ResultValue == Res<FigureValue> {
@@ -53,9 +64,9 @@ extension SelectionStyleableFigure {
         set { storage.hidden = newValue }
     }
     
-    var normalStyle: StyleType {
-        get { return storage.normalStyle }
-        set { storage.normalStyle = newValue }
+    var style: StyleType {
+        get { return storage.style }
+        set { storage.style = newValue }
     }
     
     var selectedStyle: StyleType {
@@ -65,5 +76,10 @@ extension SelectionStyleableFigure {
     var weakFigure: AnyWeakFigure<FigureValue> {
         get { return storage.weakFigure }
         set { storage.weakFigure = newValue }
+    }
+    
+    var canvas: FigureCanvasBase? {
+        get { return storage.canvas }
+        set { storage.canvas = newValue }
     }
 }

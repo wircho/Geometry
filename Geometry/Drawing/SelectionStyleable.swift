@@ -13,7 +13,7 @@ enum SelectionLayer: Layer {
 }
 
 protocol SelectionStyleable: LayerStyleable, Selectable, Hideable {
-    var normalStyle: StyleType { get set }
+    var style: StyleType { get set }
     var selectedStyle: StyleType { get }
 }
 
@@ -24,7 +24,7 @@ extension SelectionStyleable where LayerType == SelectionLayer {
     
     func style(for layer: LayerType) -> StyleType? {
         switch layer {
-        case .normal: return normalStyle
+        case .normal: return style
         case .selected: return selectedStyle
         }
     }

@@ -17,6 +17,8 @@ final class CoreFigureCanvas: FigureCanvas {
     typealias CurveType = CoreStyleableCurve
     typealias QuadCurveType = CoreStyleableQuadCurve
     
+    weak var delegate: FigureCanvasDelegate? = nil
+    
     let layers: [SelectionLayer] = [.normal, .selected]
     var elements: [AnyLayerDrawable<CGRect, SelectionLayer>] = []
     var points: [AnyLayerStyleable<CGRect, SelectionLayer, CorePointStyle>] = []

@@ -15,6 +15,7 @@ extension FigureContext {
     @discardableResult func append<F: Figure>(_ figure: F) -> F {
         figures.append(figure)
         figure.context = self
+        setFiguresWillUpdate()
         return figure
     }
     
@@ -32,16 +33,17 @@ extension FigureContext {
             return false
         }
         for object in set { removeOnly(object) }
+        setFiguresWillUpdate()
         return true
     }
     
     func setFiguresWillUpdate() {
-        delegate?.contextFiguresWillUpdate(self)
+        delegate?.figuresWillUpdate(in: self)
     }
 }
 
 protocol FigureContextDelegate: class {
-    func contextFiguresWillUpdate(_: FigureContext)
+    func figuresWillUpdate(in context: FigureContext)
 }
 
 

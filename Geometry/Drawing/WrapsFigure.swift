@@ -6,7 +6,7 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-protocol WrapsFigure: LayerStyleable {
+protocol WrapsFigure: class {
     associatedtype FigureValue
     var weakFigure: AnyWeakFigure<FigureValue> { get }
 }
