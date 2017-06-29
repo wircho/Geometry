@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		3E6CFCE91F00695D00ACC8EC /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
 		3E6CFCEC1F05663400ACC8EC /* TouchableFigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */; };
-		3E6CFCEE1F05685500ACC8EC /* TouchableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCED1F05685500ACC8EC /* TouchableFigure.swift */; };
+		3E6CFCEE1F05685500ACC8EC /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCED1F05685500ACC8EC /* Touchable.swift */; };
 		4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */; };
 		A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */; };
 		AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
@@ -119,7 +119,7 @@
 		1AFD956535FF38239364E7D7 /* Pods-GeometrySampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		32B63DA0331CCBBC5E726895 /* Pods-GeometrySampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchableFigureCanvas.swift; sourceTree = "<group>"; };
-		3E6CFCED1F05685500ACC8EC /* TouchableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchableFigure.swift; sourceTree = "<group>"; };
+		3E6CFCED1F05685500ACC8EC /* Touchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Touchable.swift; sourceTree = "<group>"; };
 		9FF6C6F56C8645116D7BD20C /* Pods-GeometrySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample.debug.xcconfig"; sourceTree = "<group>"; };
 		AE184DBE1ED1F64B00D9EB8D /* RayAway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayAway.swift; sourceTree = "<group>"; };
 		AE1931411ED3A54B00596BB4 /* AnyFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyFigure.swift; sourceTree = "<group>"; };
@@ -266,7 +266,7 @@
 				AEE202581EF9EBC50073CE17 /* LayerDrawableFigure.swift */,
 				AEE2025A1EFAA8B60073CE17 /* LayerStyleableFigure.swift */,
 				AEE202601EFF577C0073CE17 /* StyleInitiableFigure.swift */,
-				3E6CFCED1F05685500ACC8EC /* TouchableFigure.swift */,
+				3E6CFCED1F05685500ACC8EC /* Touchable.swift */,
 				AEE202541EF9CCE70073CE17 /* SelectionStyleableFigure.swift */,
 				AEE2025E1EFDAF640073CE17 /* FigureCanvas.swift */,
 				3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */,
@@ -869,7 +869,7 @@
 				AE0F7D221EDD23DC00BD8414 /* Cedula.swift in Sources */,
 				AE5440CD1EF1AF3E004E7D54 /* LayerDrawable.swift in Sources */,
 				AE0F7D641EDD3B8500BD8414 /* Segment2Points.swift in Sources */,
-				3E6CFCEE1F05685500ACC8EC /* TouchableFigure.swift in Sources */,
+				3E6CFCEE1F05685500ACC8EC /* Touchable.swift in Sources */,
 				AE0F7D1F1EDD23DC00BD8414 /* OptionalProtocol.swift in Sources */,
 				AE0F7D5F1EDD374800BD8414 /* Ruler2Points.swift in Sources */,
 				AE0F7D451EDD242100BD8414 /* FreeValued.swift in Sources */,

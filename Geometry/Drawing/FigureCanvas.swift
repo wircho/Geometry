@@ -51,27 +51,27 @@ extension FigureCanvas {
 
 extension FigureCanvas where PointType.StyleType == PointStyleType, RulerType.StyleType == StrokeStyleType, CircleType.StyleType == StrokeStyleType, ArcType.StyleType == StrokeStyleType, CurveType.StyleType == StrokeStyleType, QuadCurveType.StyleType == StrokeStyleType, PointType.RectType == RectType, RulerType.RectType == RectType, CircleType.RectType == RectType, ArcType.RectType == RectType, CurveType.RectType == RectType, QuadCurveType.RectType == RectType, PointType.LayerType == LayerType, RulerType.LayerType == LayerType, CircleType.LayerType == LayerType, ArcType.LayerType == LayerType, CurveType.LayerType == LayerType, QuadCurveType.LayerType == LayerType {
     
-    @discardableResult func add<F: Figure>(_ figure: F, style: PointStyleType = .default, hidden: Bool = false) -> PointType where F.ResultValue == Res<PointType.FigureValue> {
+    @discardableResult func add<F: Point>(_ figure: F, style: PointStyleType = .default, hidden: Bool = false) -> PointType where F.ResultValue == Res<PointType.FigureValue> {
         return add(PointType(figure, style: style, hidden: hidden))
     }
     
-    @discardableResult func add<F: Figure>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> RulerType where F.ResultValue == Res<RulerType.FigureValue> {
+    @discardableResult func add<F: Ruler>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> RulerType where F.ResultValue == Res<RulerType.FigureValue> {
         return add(RulerType(figure, style: style, hidden: hidden))
     }
     
-    @discardableResult func add<F: Figure>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> CircleType where F.ResultValue == Res<CircleType.FigureValue> {
+    @discardableResult func add<F: Circle>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> CircleType where F.ResultValue == Res<CircleType.FigureValue> {
         return add(CircleType(figure, style: style, hidden: hidden))
     }
     
-    @discardableResult func add<F: Figure>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> ArcType where F.ResultValue == Res<ArcType.FigureValue> {
+    @discardableResult func add<F: Arc>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> ArcType where F.ResultValue == Res<ArcType.FigureValue> {
         return add(ArcType(figure, style: style, hidden: hidden))
     }
     
-    @discardableResult func add<F: Figure>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> CurveType where F.ResultValue == Res<CurveType.FigureValue> {
+    @discardableResult func add<F: Curve>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> CurveType where F.ResultValue == Res<CurveType.FigureValue> {
         return add(CurveType(figure, style: style, hidden: hidden))
     }
     
-    @discardableResult func add<F: Figure>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> QuadCurveType where F.ResultValue == Res<QuadCurveType.FigureValue> {
+    @discardableResult func add<F: QuadCurve>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> QuadCurveType where F.ResultValue == Res<QuadCurveType.FigureValue> {
         return add(QuadCurveType(figure, style: style, hidden: hidden))
     }
 }
