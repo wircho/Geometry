@@ -1,12 +1,12 @@
 //
-//  FigureStyleInitiable.swift
+//  StyleInitiableFigure.swift
 //  GeometrySample
 //
 //  Created by AdolfoX Rodriguez on 2017-06-24.
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-protocol FigureStyleInitiable {
+protocol StyleInitiableFigure {
     associatedtype FigureValue
     associatedtype StyleType
     init<T: Figure>(_: T, style: StyleType, hidden: Bool) where T.ResultValue == Res<FigureValue>

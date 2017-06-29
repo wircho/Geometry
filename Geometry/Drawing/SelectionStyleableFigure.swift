@@ -10,10 +10,10 @@ protocol SelectableFigureStyle: FigureStyle {
     var selected: Self { get }
 }
 
-protocol SelectionStyleableFigure: SelectionStyleable, LayerStyleableFigure, FigureStyleInitiable {
+protocol SelectionStyleableFigure: SelectionStyleable, LayerStyleableFigure, StyleInitiableFigure {
     associatedtype StyleType: SelectableFigureStyle
-    var storage: SelectionStyleableFigureStorage<FigureValue, StyleType> { get set }
-    init(storage: SelectionStyleableFigureStorage<FigureValue, StyleType>)
+    var selectionStyleableFigureStorage: SelectionStyleableFigureStorage<FigureValue, StyleType> { get set }
+    init(selectionStyleableFigureStorage: SelectionStyleableFigureStorage<FigureValue, StyleType>)
 }
 
 struct SelectionStyleableFigureStorage<FigureValue, StyleType: SelectableFigureStyle> {
@@ -39,47 +39,47 @@ struct SelectionStyleableFigureStorage<FigureValue, StyleType: SelectableFigureS
 
 extension SelectionStyleableFigure {
     init<F: Figure>(_ figure: F, style: StyleType, hidden: Bool) where F.ResultValue == Res<FigureValue> {
-        self.init(storage: SelectionStyleableFigureStorage(figure, style: style, hidden: hidden))
+        self.init(selectionStyleableFigureStorage: SelectionStyleableFigureStorage(figure, style: style, hidden: hidden))
     }
     
     init<F: Figure>(_ figure: F, style: StyleType) where F.ResultValue == Res<FigureValue> {
-        self.init(storage: SelectionStyleableFigureStorage(figure, style: style))
+        self.init(selectionStyleableFigureStorage: SelectionStyleableFigureStorage(figure, style: style))
     }
     
     init<F: Figure>(_ figure: F, hidden: Bool) where F.ResultValue == Res<FigureValue> {
-        self.init(storage: SelectionStyleableFigureStorage(figure, hidden: hidden))
+        self.init(selectionStyleableFigureStorage: SelectionStyleableFigureStorage(figure, hidden: hidden))
     }
     
     init<F: Figure>(_ figure: F) where F.ResultValue == Res<FigureValue> {
-        self.init(storage: SelectionStyleableFigureStorage(figure))
+        self.init(selectionStyleableFigureStorage: SelectionStyleableFigureStorage(figure))
     }
     
     var selected: Bool {
-        get { return storage.selected }
-        set { storage.selected = newValue }
+        get { return selectionStyleableFigureStorage.selected }
+        set { selectionStyleableFigureStorage.selected = newValue }
     }
     
     var hidden: Bool {
-        get { return storage.hidden }
-        set { storage.hidden = newValue }
+        get { return selectionStyleableFigureStorage.hidden }
+        set { selectionStyleableFigureStorage.hidden = newValue }
     }
     
     var style: StyleType {
-        get { return storage.style }
-        set { storage.style = newValue }
+        get { return selectionStyleableFigureStorage.style }
+        set { selectionStyleableFigureStorage.style = newValue }
     }
     
     var selectedStyle: StyleType {
-        get { return storage.selectedStyle }
+        get { return selectionStyleableFigureStorage.selectedStyle }
     }
     
     var weakFigure: AnyWeakFigure<FigureValue> {
-        get { return storage.weakFigure }
-        set { storage.weakFigure = newValue }
+        get { return selectionStyleableFigureStorage.weakFigure }
+        set { selectionStyleableFigureStorage.weakFigure = newValue }
     }
     
     var canvas: FigureCanvasBase? {
-        get { return storage.canvas }
-        set { storage.canvas = newValue }
+        get { return selectionStyleableFigureStorage.canvas }
+        set { selectionStyleableFigureStorage.canvas = newValue }
     }
 }

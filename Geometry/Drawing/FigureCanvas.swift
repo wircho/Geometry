@@ -22,12 +22,12 @@ protocol FigureCanvas: FigureCanvasBase, LayerCanvas {
     associatedtype PointStyleType: PointStyle
     associatedtype StrokeStyleType: StrokeStyle
     
-    associatedtype PointType: FigureStyleInitiable, LayerStyleableFigure
-    associatedtype RulerType: FigureStyleInitiable, LayerStyleableFigure
-    associatedtype CircleType: FigureStyleInitiable, LayerStyleableFigure
-    associatedtype ArcType: FigureStyleInitiable, LayerStyleableFigure
-    associatedtype CurveType: FigureStyleInitiable, LayerStyleableFigure
-    associatedtype QuadCurveType: FigureStyleInitiable, LayerStyleableFigure
+    associatedtype PointType: StyleInitiableFigure, LayerStyleableFigure
+    associatedtype RulerType: StyleInitiableFigure, LayerStyleableFigure
+    associatedtype CircleType: StyleInitiableFigure, LayerStyleableFigure
+    associatedtype ArcType: StyleInitiableFigure, LayerStyleableFigure
+    associatedtype CurveType: StyleInitiableFigure, LayerStyleableFigure
+    associatedtype QuadCurveType: StyleInitiableFigure, LayerStyleableFigure
     
     var points: [AnyLayerStyleable<RectType, LayerType, PointStyleType>] { get set }
     var strokes: [AnyLayerStyleable<RectType, LayerType, StrokeStyleType>] { get set }

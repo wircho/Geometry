@@ -14,8 +14,8 @@ final class CoreStyleableCircle: SelectionStyleableFigure {
     typealias RectType = CGRect
     typealias LayerType = SelectionLayer
     
-    var storage: SelectionStyleableFigureStorage<FigureValue, StyleType>
-    init(storage: SelectionStyleableFigureStorage<FigureValue, StyleType>) { self.storage = storage }
+    var selectionStyleableFigureStorage: SelectionStyleableFigureStorage<FigureValue, StyleType>
+    init(selectionStyleableFigureStorage: SelectionStyleableFigureStorage<FigureValue, StyleType>) { self.selectionStyleableFigureStorage = selectionStyleableFigureStorage }
     
     func draw(in rect: CGRect, style: CoreStrokeStyle) {
         guard let circle = self.weakFigure.result?.value else { return }
