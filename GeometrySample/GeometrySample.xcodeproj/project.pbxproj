@@ -39,7 +39,6 @@
 		AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
 		AE0F7D421EDD241600BD8414 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876A1EBCCC04002E425F /* Figure.swift */; };
 		AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1931411ED3A54B00596BB4 /* AnyFigure.swift */; };
-		AE0F7D441EDD242100BD8414 /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC981ECA37950071D7D9 /* Touchable.swift */; };
 		AE0F7D451EDD242100BD8414 /* FreeValued.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD61EC6D2910071D7D9 /* FreeValued.swift */; };
 		AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */; };
 		AE0F7D471EDD242100BD8414 /* AnyWeakOneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */; };
@@ -202,7 +201,6 @@
 		AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentComparable.swift; sourceTree = "<group>"; };
 		AEE3AC161EC967AC0071D7D9 /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Circumarc.swift; sourceTree = "<group>"; };
-		AEE3AC981ECA37950071D7D9 /* Touchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Touchable.swift; sourceTree = "<group>"; };
 		AEE3AC9C1ECA55300071D7D9 /* DirectedLine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectedLine.swift; sourceTree = "<group>"; };
 		AEE3AC9D1ECA55300071D7D9 /* Ruler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ruler.swift; sourceTree = "<group>"; };
 		AEE3AC9E1ECA55300071D7D9 /* Ruler2Points.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ruler2Points.swift; sourceTree = "<group>"; };
@@ -430,7 +428,6 @@
 		AEE3ABD51EC6D2910071D7D9 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				AEE3AC981ECA37950071D7D9 /* Touchable.swift */,
 				AEE3ABD61EC6D2910071D7D9 /* FreeValued.swift */,
 				AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */,
 				AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */,
@@ -930,7 +927,6 @@
 				AE5440BE1EF0B226004E7D54 /* LayerCanvas.swift in Sources */,
 				AE0F7D651EDD3B9500BD8414 /* ParallelLine.swift in Sources */,
 				AE0F7D371EDD23EE00BD8414 /* CubicPolynomial.swift in Sources */,
-				AE0F7D441EDD242100BD8414 /* Touchable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

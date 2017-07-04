@@ -28,11 +28,11 @@ extension LayerCanvas {
         }
     }
     
-    func add(_ element: AnyLayerDrawable<RectType, LayerType>) {
+    private func add(_ element: AnyLayerDrawable<RectType, LayerType>) {
         elements.append(element)
     }
     
-    func add<T: LayerDrawable>(_ element: T) where T.RectType == RectType, T.LayerType == LayerType {
+    func add<T: LayerDrawable>(drawable element: T) where T.RectType == RectType, T.LayerType == LayerType {
         add(AnyLayerDrawable(element))
     }
 }

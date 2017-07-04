@@ -10,17 +10,17 @@ import UIKit
 
 final class CoreFigureCanvas: FigureCanvas {
     
-    typealias PointType = CoreStyleablePoint
-    typealias RulerType = CoreStyleableRuler
-    typealias CircleType = CoreStyleableCircle
-    typealias ArcType = CoreStyleableArc
-    typealias CurveType = CoreStyleableCurve
-    typealias QuadCurveType = CoreStyleableQuadCurve
+    typealias PointStyleType = CorePointStyle
+    typealias StrokeStyleType = CoreStrokeStyle
     
     weak var delegate: FigureCanvasDelegate? = nil
     
     let layers: [SelectionLayer] = [.normal, .selected]
     var elements: [AnyLayerDrawable<CGRect, SelectionLayer>] = []
-    var points: [AnyLayerStyleable<CGRect, SelectionLayer, CorePointStyle>] = []
-    var strokes: [AnyLayerStyleable<CGRect, SelectionLayer, CoreStrokeStyle>] = []
+    var points: [CoreStyleablePoint] = []
+    var rulers: [CoreStyleableRuler] = []
+    var circles: [CoreStyleableCircle] = []
+    var arcs: [CoreStyleableArc] = []
+    var curves: [CoreStyleableCurve] = []
+    var quadCurves: [CoreStyleableQuadCurve] = []
 }
