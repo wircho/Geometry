@@ -85,13 +85,8 @@
 		AEA2874C1EBCCB2C002E425F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2874A1EBCCB2C002E425F /* LaunchScreen.storyboard */; };
 		AEA287571EBCCB2C002E425F /* GeometrySampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287561EBCCB2C002E425F /* GeometrySampleTests.swift */; };
 		AEE202171EF20E4E0073CE17 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440CF1EF1B022004E7D54 /* CoreExtensions.swift */; };
-		AEE2021B1EF2DD2A0073CE17 /* CoreStyleablePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021A1EF2DD2A0073CE17 /* CoreStyleablePoint.swift */; };
+		AEE2021B1EF2DD2A0073CE17 /* CoreStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021A1EF2DD2A0073CE17 /* CoreStyleableFigure.swift */; };
 		AEE2021D1EF30C570073CE17 /* FigureStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021C1EF30C560073CE17 /* FigureStyles.swift */; };
-		AEE2021F1EF33C6C0073CE17 /* CoreStyleableRuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021E1EF33C6C0073CE17 /* CoreStyleableRuler.swift */; };
-		AEE202211EF370D50073CE17 /* CoreStyleableCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202201EF370D50073CE17 /* CoreStyleableCircle.swift */; };
-		AEE202231EF38A4D0073CE17 /* CoreStyleableArc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202221EF38A4D0073CE17 /* CoreStyleableArc.swift */; };
-		AEE202251EF38AC50073CE17 /* CoreStyleableCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202241EF38AC50073CE17 /* CoreStyleableCurve.swift */; };
-		AEE202271EF38B320073CE17 /* CoreStyleableQuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202261EF38B320073CE17 /* CoreStyleableQuadCurve.swift */; };
 		AEE202291EF4172D0073CE17 /* Hideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202281EF4172D0073CE17 /* Hideable.swift */; };
 		AEE202501EF643A90073CE17 /* CoreFigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */; };
 		AEE202521EF70FB40073CE17 /* WrapsFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202511EF70FB40073CE17 /* WrapsFigure.swift */; };
@@ -167,13 +162,8 @@
 		AEA287851EBCCC04002E425F /* RawTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawTypes.swift; sourceTree = "<group>"; };
 		AEA287871EBCCC04002E425F /* LazyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyNode.swift; sourceTree = "<group>"; };
 		AEA2878D1EBCCC04002E425F /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
-		AEE2021A1EF2DD2A0073CE17 /* CoreStyleablePoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleablePoint.swift; sourceTree = "<group>"; };
+		AEE2021A1EF2DD2A0073CE17 /* CoreStyleableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableFigure.swift; sourceTree = "<group>"; };
 		AEE2021C1EF30C560073CE17 /* FigureStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureStyles.swift; sourceTree = "<group>"; };
-		AEE2021E1EF33C6C0073CE17 /* CoreStyleableRuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableRuler.swift; sourceTree = "<group>"; };
-		AEE202201EF370D50073CE17 /* CoreStyleableCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableCircle.swift; sourceTree = "<group>"; };
-		AEE202221EF38A4D0073CE17 /* CoreStyleableArc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableArc.swift; sourceTree = "<group>"; };
-		AEE202241EF38AC50073CE17 /* CoreStyleableCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableCurve.swift; sourceTree = "<group>"; };
-		AEE202261EF38B320073CE17 /* CoreStyleableQuadCurve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableQuadCurve.swift; sourceTree = "<group>"; };
 		AEE202281EF4172D0073CE17 /* Hideable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hideable.swift; sourceTree = "<group>"; };
 		AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFigureCanvas.swift; sourceTree = "<group>"; };
 		AEE202511EF70FB40073CE17 /* WrapsFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapsFigure.swift; sourceTree = "<group>"; };
@@ -287,12 +277,7 @@
 			children = (
 				AE5440CF1EF1B022004E7D54 /* CoreExtensions.swift */,
 				AEE202561EF9DA5D0073CE17 /* CoreStyles.swift */,
-				AEE2021A1EF2DD2A0073CE17 /* CoreStyleablePoint.swift */,
-				AEE2021E1EF33C6C0073CE17 /* CoreStyleableRuler.swift */,
-				AEE202201EF370D50073CE17 /* CoreStyleableCircle.swift */,
-				AEE202221EF38A4D0073CE17 /* CoreStyleableArc.swift */,
-				AEE202241EF38AC50073CE17 /* CoreStyleableCurve.swift */,
-				AEE202261EF38B320073CE17 /* CoreStyleableQuadCurve.swift */,
+				AEE2021A1EF2DD2A0073CE17 /* CoreStyleableFigure.swift */,
 				AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */,
 			);
 			path = CoreGraphics;
@@ -851,7 +836,6 @@
 				AE0F7D211EDD23DC00BD8414 /* ObjectSet.swift in Sources */,
 				AE0F7D2F1EDD23E000BD8414 /* MathError.swift in Sources */,
 				AE0F7D611EDD375300BD8414 /* Line2Points.swift in Sources */,
-				AEE2021F1EF33C6C0073CE17 /* CoreStyleableRuler.swift in Sources */,
 				AE0F7D6A1EDD3CDC00BD8414 /* Circumcircle.swift in Sources */,
 				AE0F7D621EDD3A6C00BD8414 /* Ray2Points.swift in Sources */,
 				AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */,
@@ -860,7 +844,6 @@
 				AE0F7D4C1EDD243B00BD8414 /* Point.swift in Sources */,
 				AE0F7D4B1EDD243300BD8414 /* FreeScalar.swift in Sources */,
 				AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */,
-				AEE202231EF38A4D0073CE17 /* CoreStyleableArc.swift in Sources */,
 				AEE202291EF4172D0073CE17 /* Hideable.swift in Sources */,
 				AE0F7D6F1EDD422E00BD8414 /* QuadCurve.swift in Sources */,
 				AE0F7D221EDD23DC00BD8414 /* Cedula.swift in Sources */,
@@ -887,7 +870,6 @@
 				AE0F7D691EDD3CC200BD8414 /* CircleWithRadius.swift in Sources */,
 				AEE202571EF9DA5D0073CE17 /* CoreStyles.swift in Sources */,
 				AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */,
-				AEE202211EF370D50073CE17 /* CoreStyleableCircle.swift in Sources */,
 				AEE202551EF9CCE70073CE17 /* SelectionStyleableFigure.swift in Sources */,
 				AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */,
 				AE5440CB1EF17052004E7D54 /* LayerStyleable.swift in Sources */,
@@ -897,9 +879,7 @@
 				AE0F7D511EDD249E00BD8414 /* Baricenter.swift in Sources */,
 				AE0F86BD1EE5EB7E00BD8414 /* TwoCircles.swift in Sources */,
 				AE0F7D4E1EDD244100BD8414 /* FreePoint.swift in Sources */,
-				AEE202251EF38AC50073CE17 /* CoreStyleableCurve.swift in Sources */,
 				AE0F7D631EDD3A9900BD8414 /* RayAway.swift in Sources */,
-				AEE202271EF38B320073CE17 /* CoreStyleableQuadCurve.swift in Sources */,
 				AE0F7D2D1EDD23E000BD8414 /* RawMath.swift in Sources */,
 				AEE202611EFF577C0073CE17 /* StyleInitiableFigure.swift in Sources */,
 				AE0F7D6D1EDD3CFE00BD8414 /* Curve.swift in Sources */,
@@ -921,7 +901,7 @@
 				AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */,
 				AEE202521EF70FB40073CE17 /* WrapsFigure.swift in Sources */,
 				AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */,
-				AEE2021B1EF2DD2A0073CE17 /* CoreStyleablePoint.swift in Sources */,
+				AEE2021B1EF2DD2A0073CE17 /* CoreStyleableFigure.swift in Sources */,
 				AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */,
 				AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */,
 				AE5440BE1EF0B226004E7D54 /* LayerCanvas.swift in Sources */,

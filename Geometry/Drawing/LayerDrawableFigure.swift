@@ -6,6 +6,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-protocol LayerDrawableFigure: LayerDrawable, WrapsFigure {
-    
-}
+//protocol LayerDrawableFigure: LayerDrawable, WrapsFigure {
+//    
+//}

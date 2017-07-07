@@ -17,10 +17,14 @@ protocol LayerDrawable {
 }
 
 struct AnyLayerDrawable<R: RawRectProtocol, L: Layer> {
-    private var _drawOnLayer: (R, L) -> Void
+    private let _drawOnLayer: (R, L) -> Void
+    
+    init(drawOnLayer: @escaping (R, L) -> Void) {
+        _drawOnLayer = drawOnLayer
+    }
     
     init<T: LayerDrawable>(_ styleable: T) where T.RectType == R, T.LayerType == L {
-        _drawOnLayer = { styleable.draw(in: $0, layer: $1) }
+        self.init { styleable.draw(in: $0, layer: $1) }
     }
     
     func draw(in rect: R, layer: L) {

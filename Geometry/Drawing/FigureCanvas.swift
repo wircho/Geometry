@@ -36,6 +36,13 @@ protocol FigureCanvas: FigureCanvasBase, LayerCanvas {
     var curves: [CurveType] { get set }
     var quadCurves: [QuadCurveType] { get set }
     
+    func draw(_ figure: PointType, in rect: RectType, style: PointStyleType)
+    func draw(_ figure: RulerType, in rect: RectType, style: StrokeStyleType)
+    func draw(_ figure: CircleType, in rect: RectType, style: StrokeStyleType)
+    func draw(_ figure: ArcType, in rect: RectType, style: StrokeStyleType)
+    func draw(_ figure: CurveType, in rect: RectType, style: StrokeStyleType)
+    func draw(_ figure: QuadCurveType, in rect: RectType, style: StrokeStyleType)
+    
     // TODO: Make it so that styleable doesn't necessarily mean drawable.
     //       That way the figures above are not styleable. They'll probably not be touchable either. Let the canvas do the whole thing!
 }
@@ -56,36 +63,52 @@ protocol FigureCanvas: FigureCanvasBase, LayerCanvas {
 //    }
 //}
 
-extension FigureCanvas where PointType.StyleType == PointStyleType, RulerType.StyleType == StrokeStyleType, CircleType.StyleType == StrokeStyleType, ArcType.StyleType == StrokeStyleType, CurveType.StyleType == StrokeStyleType, QuadCurveType.StyleType == StrokeStyleType, PointType.RectType == RectType, RulerType.RectType == RectType, CircleType.RectType == RectType, ArcType.RectType == RectType, CurveType.RectType == RectType, QuadCurveType.RectType == RectType, PointType.LayerType == LayerType, RulerType.LayerType == LayerType, CircleType.LayerType == LayerType, ArcType.LayerType == LayerType, CurveType.LayerType == LayerType, QuadCurveType.LayerType == LayerType {
+extension FigureCanvas where PointType.StyleType == PointStyleType, RulerType.StyleType == StrokeStyleType, CircleType.StyleType == StrokeStyleType, ArcType.StyleType == StrokeStyleType, CurveType.StyleType == StrokeStyleType, QuadCurveType.StyleType == StrokeStyleType, /*PointType.RectType == RectType, RulerType.RectType == RectType, CircleType.RectType == RectType, ArcType.RectType == RectType, CurveType.RectType == RectType, QuadCurveType.RectType == RectType,*/ PointType.LayerType == LayerType, RulerType.LayerType == LayerType, CircleType.LayerType == LayerType, ArcType.LayerType == LayerType, CurveType.LayerType == LayerType, QuadCurveType.LayerType == LayerType {
     
-    private func add<T: LayerDrawable>(_ figure: T, to array: inout [T]) -> T where T.RectType == RectType, T.LayerType == LayerType {
+    private func add<T: LayerStyleable>(_ figure: T, to array: inout [T], draw: @escaping (T, RectType, T.StyleType) -> Void) -> T where T.LayerType == LayerType {
         array.append(figure)
-        elements.append(AnyLayerDrawable(figure))
+        elements.append(AnyLayerDrawable {
+            rect, layer in
+            guard figure.visible(on: layer), let style = figure.style(for: layer) else { return }
+            draw(figure, rect, style)
+        })
         return figure
     }
     
     @discardableResult func add<F: Point>(_ figure: F, style: PointStyleType = .default, hidden: Bool = false) -> PointType where F.ResultValue == Res<PointType.FigureValue> {
-        return add(PointType(figure, style: style, hidden: hidden), to: &points)
+        return add(PointType(figure, style: style, hidden: hidden), to: &points) {
+            [weak self] in self?.draw($0, in: $1, style: $2)
+        }
     }
     
     @discardableResult func add<F: Ruler>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> RulerType where F.ResultValue == Res<RulerType.FigureValue> {
-        return add(RulerType(figure, style: style, hidden: hidden), to: &rulers)
+        return add(RulerType(figure, style: style, hidden: hidden), to: &rulers) {
+            [weak self] in self?.draw($0, in: $1, style: $2)
+        }
     }
     
     @discardableResult func add<F: Circle>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> CircleType where F.ResultValue == Res<CircleType.FigureValue> {
-        return add(CircleType(figure, style: style, hidden: hidden), to: &circles)
+        return add(CircleType(figure, style: style, hidden: hidden), to: &circles) {
+            [weak self] in self?.draw($0, in: $1, style: $2)
+        }
     }
     
     @discardableResult func add<F: Arc>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> ArcType where F.ResultValue == Res<ArcType.FigureValue> {
-        return add(ArcType(figure, style: style, hidden: hidden), to: &arcs)
+        return add(ArcType(figure, style: style, hidden: hidden), to: &arcs) {
+            [weak self] in self?.draw($0, in: $1, style: $2)
+        }
     }
     
     @discardableResult func add<F: Curve>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> CurveType where F.ResultValue == Res<CurveType.FigureValue> {
-        return add(CurveType(figure, style: style, hidden: hidden), to: &curves)
+        return add(CurveType(figure, style: style, hidden: hidden), to: &curves) {
+            [weak self] in self?.draw($0, in: $1, style: $2)
+        }
     }
     
     @discardableResult func add<F: QuadCurve>(_ figure: F, style: StrokeStyleType = .default, hidden: Bool = false) -> QuadCurveType where F.ResultValue == Res<QuadCurveType.FigureValue> {
-        return add(QuadCurveType(figure, style: style, hidden: hidden), to: &quadCurves)
+        return add(QuadCurveType(figure, style: style, hidden: hidden), to: &quadCurves) {
+            [weak self] in self?.draw($0, in: $1, style: $2)
+        }
     }
 }
 
