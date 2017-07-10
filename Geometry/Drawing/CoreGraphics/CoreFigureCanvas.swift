@@ -8,14 +8,14 @@
 
 import UIKit
 
-typealias CoreStyleablePoint = CoreStyleableFigure<CGPoint, CorePointStyle>
-typealias CoreStyleableRuler = CoreStyleableFigure<RawRuler<CGPoint>, CoreStrokeStyle>
-typealias CoreStyleableCircle = CoreStyleableFigure<RawCircle<CGPoint>, CoreStrokeStyle>
-typealias CoreStyleableArc = CoreStyleableFigure<RawArc<CGPoint>, CoreStrokeStyle>
-typealias CoreStyleableCurve = CoreStyleableFigure<RawCurve<CGPoint>, CoreStrokeStyle>
-typealias CoreStyleableQuadCurve = CoreStyleableFigure<RawQuadCurve<CGPoint>, CoreStrokeStyle>
+typealias CoreStyleablePoint = SelectionStyleableFigure<CGPoint, CorePointStyle>
+typealias CoreStyleableRuler = SelectionStyleableFigure<RawRuler<CGPoint>, CoreStrokeStyle>
+typealias CoreStyleableCircle = SelectionStyleableFigure<RawCircle<CGPoint>, CoreStrokeStyle>
+typealias CoreStyleableArc = SelectionStyleableFigure<RawArc<CGPoint>, CoreStrokeStyle>
+typealias CoreStyleableCurve = SelectionStyleableFigure<RawCurve<CGPoint>, CoreStrokeStyle>
+typealias CoreStyleableQuadCurve = SelectionStyleableFigure<RawQuadCurve<CGPoint>, CoreStrokeStyle>
 
-final class CoreFigureCanvas: FigureCanvas {
+final class CoreFigureCanvas: TouchableFigureCanvas {
     
     weak var delegate: FigureCanvasDelegate? = nil
     
@@ -64,4 +64,18 @@ final class CoreFigureCanvas: FigureCanvas {
         style.color.setStroke()
         UIBezierPath(quadCurve: quadCurve, lineWidth: style.lineWidth).stroke()
     }
+    
+    func touchPriority(of figure: CoreStyleablePoint) -> CGFloat? { return 1000 }
+    func touchPriority(of figure: CoreStyleableRuler) -> CGFloat? {
+        guard let ruler = figure.weakFigure.result?.value else { return nil }
+        switch ruler.kind {
+        case .line: return 700
+        case .ray: return 800
+        case .segment: return 900
+        }
+    }
+    func touchPriority(of figure: CoreStyleableCircle) -> CGFloat? { return 600 }
+    func touchPriority(of figure: CoreStyleableArc) -> CGFloat? { return 850 }
+    func touchPriority(of figure: CoreStyleableCurve) -> CGFloat? { return 600 }
+    func touchPriority(of figure: CoreStyleableQuadCurve) -> CGFloat? { return 600 }
 }

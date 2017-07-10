@@ -7,19 +7,12 @@
 //
 
 protocol TouchableFigureCanvas: FigureCanvas {
-    associatedtype TouchPointType: RawPointProtocol
+    associatedtype TouchPriorityType: RawValueProtocol
     
-    func touchPriority(of figure: PointType) -> TouchPointType.Value
-    func touchPriority(of figure: RulerType) -> TouchPointType.Value
-    func touchPriority(of figure: CircleType) -> TouchPointType.Value
-    func touchPriority(of figure: ArcType) -> TouchPointType.Value
-    func touchPriority(of figure: CurveType) -> TouchPointType.Value
-    func touchPriority(of figure: QuadCurveType) -> TouchPointType.Value
-    
-    func gap(from point: TouchPointType, to figure: PointType) -> Res<TouchPointType.Value>
-    func gap(from point: TouchPointType, to figure: RulerType) -> Res<TouchPointType.Value>
-    func gap(from point: TouchPointType, to figure: CircleType) -> Res<TouchPointType.Value>
-    func gap(from point: TouchPointType, to figure: ArcType) -> Res<TouchPointType.Value>
-    func gap(from point: TouchPointType, to figure: CurveType) -> Res<TouchPointType.Value>
-    func gap(from point: TouchPointType, to figure: QuadCurveType) -> Res<TouchPointType.Value>
+    func touchPriority(of figure: PointType) -> TouchPriorityType?
+    func touchPriority(of figure: RulerType) -> TouchPriorityType?
+    func touchPriority(of figure: CircleType) -> TouchPriorityType?
+    func touchPriority(of figure: ArcType) -> TouchPriorityType?
+    func touchPriority(of figure: CurveType) -> TouchPriorityType?
+    func touchPriority(of figure: QuadCurveType) -> TouchPriorityType?
 }

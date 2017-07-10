@@ -10,6 +10,7 @@
 		3E6CFCE91F00695D00ACC8EC /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
 		3E6CFCEC1F05663400ACC8EC /* TouchableFigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */; };
 		3E6CFCEE1F05685500ACC8EC /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCED1F05685500ACC8EC /* Touchable.swift */; };
+		3EA92F921F0FF1C100753FD8 /* SelectionStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA92F911F0FF1C100753FD8 /* SelectionStyleableFigure.swift */; };
 		4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */; };
 		A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */; };
 		AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
@@ -85,12 +86,10 @@
 		AEA2874C1EBCCB2C002E425F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2874A1EBCCB2C002E425F /* LaunchScreen.storyboard */; };
 		AEA287571EBCCB2C002E425F /* GeometrySampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287561EBCCB2C002E425F /* GeometrySampleTests.swift */; };
 		AEE202171EF20E4E0073CE17 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440CF1EF1B022004E7D54 /* CoreExtensions.swift */; };
-		AEE2021B1EF2DD2A0073CE17 /* CoreStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021A1EF2DD2A0073CE17 /* CoreStyleableFigure.swift */; };
 		AEE2021D1EF30C570073CE17 /* FigureStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021C1EF30C560073CE17 /* FigureStyles.swift */; };
 		AEE202291EF4172D0073CE17 /* Hideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202281EF4172D0073CE17 /* Hideable.swift */; };
 		AEE202501EF643A90073CE17 /* CoreFigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */; };
 		AEE202521EF70FB40073CE17 /* WrapsFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202511EF70FB40073CE17 /* WrapsFigure.swift */; };
-		AEE202551EF9CCE70073CE17 /* SelectionStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202541EF9CCE70073CE17 /* SelectionStyleableFigure.swift */; };
 		AEE202571EF9DA5D0073CE17 /* CoreStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202561EF9DA5D0073CE17 /* CoreStyles.swift */; };
 		AEE202591EF9EBC50073CE17 /* LayerDrawableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202581EF9EBC50073CE17 /* LayerDrawableFigure.swift */; };
 		AEE2025B1EFAA8B60073CE17 /* LayerStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2025A1EFAA8B60073CE17 /* LayerStyleableFigure.swift */; };
@@ -114,6 +113,7 @@
 		32B63DA0331CCBBC5E726895 /* Pods-GeometrySampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySampleTests/Pods-GeometrySampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchableFigureCanvas.swift; sourceTree = "<group>"; };
 		3E6CFCED1F05685500ACC8EC /* Touchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Touchable.swift; sourceTree = "<group>"; };
+		3EA92F911F0FF1C100753FD8 /* SelectionStyleableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionStyleableFigure.swift; sourceTree = "<group>"; };
 		9FF6C6F56C8645116D7BD20C /* Pods-GeometrySample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GeometrySample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GeometrySample/Pods-GeometrySample.debug.xcconfig"; sourceTree = "<group>"; };
 		AE184DBE1ED1F64B00D9EB8D /* RayAway.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayAway.swift; sourceTree = "<group>"; };
 		AE1931411ED3A54B00596BB4 /* AnyFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyFigure.swift; sourceTree = "<group>"; };
@@ -162,12 +162,10 @@
 		AEA287851EBCCC04002E425F /* RawTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawTypes.swift; sourceTree = "<group>"; };
 		AEA287871EBCCC04002E425F /* LazyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyNode.swift; sourceTree = "<group>"; };
 		AEA2878D1EBCCC04002E425F /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
-		AEE2021A1EF2DD2A0073CE17 /* CoreStyleableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyleableFigure.swift; sourceTree = "<group>"; };
 		AEE2021C1EF30C560073CE17 /* FigureStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FigureStyles.swift; sourceTree = "<group>"; };
 		AEE202281EF4172D0073CE17 /* Hideable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hideable.swift; sourceTree = "<group>"; };
 		AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreFigureCanvas.swift; sourceTree = "<group>"; };
 		AEE202511EF70FB40073CE17 /* WrapsFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WrapsFigure.swift; sourceTree = "<group>"; };
-		AEE202541EF9CCE70073CE17 /* SelectionStyleableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectionStyleableFigure.swift; sourceTree = "<group>"; };
 		AEE202561EF9DA5D0073CE17 /* CoreStyles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreStyles.swift; sourceTree = "<group>"; };
 		AEE202581EF9EBC50073CE17 /* LayerDrawableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerDrawableFigure.swift; sourceTree = "<group>"; };
 		AEE2025A1EFAA8B60073CE17 /* LayerStyleableFigure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerStyleableFigure.swift; sourceTree = "<group>"; };
@@ -239,6 +237,14 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		3EA92F901F0FF1C100753FD8 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				3EA92F911F0FF1C100753FD8 /* SelectionStyleableFigure.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
 		AE4ECFCE1EC2BFB60053AFEA /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
@@ -255,9 +261,9 @@
 				AEE2025A1EFAA8B60073CE17 /* LayerStyleableFigure.swift */,
 				AEE202601EFF577C0073CE17 /* StyleInitiableFigure.swift */,
 				3E6CFCED1F05685500ACC8EC /* Touchable.swift */,
-				AEE202541EF9CCE70073CE17 /* SelectionStyleableFigure.swift */,
 				AEE2025E1EFDAF640073CE17 /* FigureCanvas.swift */,
 				3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */,
+				3EA92F901F0FF1C100753FD8 /* Structs */,
 				AE5440CE1EF1B022004E7D54 /* CoreGraphics */,
 			);
 			path = Drawing;
@@ -277,7 +283,6 @@
 			children = (
 				AE5440CF1EF1B022004E7D54 /* CoreExtensions.swift */,
 				AEE202561EF9DA5D0073CE17 /* CoreStyles.swift */,
-				AEE2021A1EF2DD2A0073CE17 /* CoreStyleableFigure.swift */,
 				AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */,
 			);
 			path = CoreGraphics;
@@ -870,7 +875,6 @@
 				AE0F7D691EDD3CC200BD8414 /* CircleWithRadius.swift in Sources */,
 				AEE202571EF9DA5D0073CE17 /* CoreStyles.swift in Sources */,
 				AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */,
-				AEE202551EF9CCE70073CE17 /* SelectionStyleableFigure.swift in Sources */,
 				AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */,
 				AE5440CB1EF17052004E7D54 /* LayerStyleable.swift in Sources */,
 				AEE2025F1EFDAF640073CE17 /* FigureCanvas.swift in Sources */,
@@ -887,6 +891,7 @@
 				AE0F7D391EDD23EE00BD8414 /* QuinticPolynomial.swift in Sources */,
 				AE0F7D361EDD23EE00BD8414 /* QuadraticPolynomial.swift in Sources */,
 				AEE202591EF9EBC50073CE17 /* LayerDrawableFigure.swift in Sources */,
+				3EA92F921F0FF1C100753FD8 /* SelectionStyleableFigure.swift in Sources */,
 				AE0F7D701EDD423500BD8414 /* QuadCurve3Points.swift in Sources */,
 				AE0F7D201EDD23DC00BD8414 /* HashableObject.swift in Sources */,
 				AE0F7D6C1EDD3CEF00BD8414 /* Circumarc.swift in Sources */,
@@ -901,7 +906,6 @@
 				AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */,
 				AEE202521EF70FB40073CE17 /* WrapsFigure.swift in Sources */,
 				AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */,
-				AEE2021B1EF2DD2A0073CE17 /* CoreStyleableFigure.swift in Sources */,
 				AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */,
 				AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */,
 				AE5440BE1EF0B226004E7D54 /* LayerCanvas.swift in Sources */,

@@ -19,14 +19,12 @@ extension Point {
         get { return pointStorage.figureStorage }
         set { pointStorage.figureStorage = newValue }
     }
-  /*
-    func gap(from point: P) -> Res<P.V> {
+
+   /* func gap(from point: P) -> Res<P.Value> {
         return result.map { distance($0, point) }
-    }
+    }*/
     
     var touchPriority: CGFloat { return 1000 }
- 
- */
 }
 
 struct PointStorage<P: RawPointProtocol> {
