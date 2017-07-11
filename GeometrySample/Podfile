@@ -6,7 +6,7 @@ target 'GeometrySample' do
   use_frameworks!
 
   # Pods for GeometrySample
-  pod 'Result', '~> 3.0.0'
+  # pod 'Result', '~> 3.0.0'
 
   target 'GeometrySampleTests' do
     inherit! :search_paths
