@@ -6,10 +6,8 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Result
-
 protocol Bounded {
-    associatedtype P: RawPointProtocol
-    var startingPoint: AnyWeakFigure<P> { get }
-    var endingPoint: AnyWeakFigure<P> { get }
+    associatedtype Endpoint: RawPointProtocol
+    var startingPoint: AnyWeakFigure<Endpoint> { get }
+    var endingPoint: AnyWeakFigure<Endpoint> { get }
 }

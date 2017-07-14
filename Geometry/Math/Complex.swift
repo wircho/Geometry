@@ -103,7 +103,7 @@ struct Complex<V: RawValueProtocol>: CustomStringConvertible {
     }
 }
 
-func sqrt<V: RawValueProtocol>(_ v: Complex<V>) -> Complex<V> {
+func sqrt<V>(_ v: Complex<V>) -> Complex<V> {
     guard let im = v.im else {
         if v.re >= 0 {
             return Complex(sqrt(v.re))
@@ -114,7 +114,7 @@ func sqrt<V: RawValueProtocol>(_ v: Complex<V>) -> Complex<V> {
     return Complex(norm: sqrt(v.norm.re), angle: im.arctangent2(v.re) / 2)
 }
 
-func sqrts<V: RawValueProtocol>(_ v: Complex<V>) -> [Complex<V>] {
+func sqrts<V>(_ v: Complex<V>) -> [Complex<V>] {
     let sq = sqrt(v)
     return [sq, -sq]
 }

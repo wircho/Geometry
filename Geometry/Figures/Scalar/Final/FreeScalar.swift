@@ -5,18 +5,19 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Result
-
 final class FreeScalar<P: RawPointProtocol>: Scalar, FreeValued {
-    var storage = FigureStorage<P.Value>()
-    var _freeValue: P.Value
+    typealias FreeValue = P.Value
+    typealias FreeValuePoint = P
     
+    var storage = FigureStorage<P.Value>()
+    var _freeValue: P.Value = 5
+
     init(at initial: P.Value, `in` context: FigureContext) {
         _freeValue = initial
         context.append(self)
     }
     
-    func nearestFreeValue(from point: P) -> Res<P.Value> {
-        return .none
+    func nearestFreeValue(from point: P) -> P.Value? {
+        return nil
     }
 }

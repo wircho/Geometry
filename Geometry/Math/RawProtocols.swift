@@ -17,36 +17,40 @@ protocol RawPointProtocol {
 }
 
 protocol RawRectProtocol {
-    associatedtype Point: RawPointProtocol
+    associatedtype Value
+    associatedtype Point: RawPointProtocol where Point.Value == Value
     var origin: Point { get }
-    var width: Point.Value { get }
-    var height: Point.Value { get }
-    var minX: Point.Value { get }
-    var minY: Point.Value { get }
-    var maxX: Point.Value { get }
-    var maxY: Point.Value { get }
-    init(x: Point.Value, y: Point.Value, width: Point.Value, height: Point.Value)
+    var width: Value { get }
+    var height: Value { get }
+    var minX: Value { get }
+    var minY: Value { get }
+    var maxX: Value { get }
+    var maxY: Value { get }
+    init(x: Value, y: Value, width: Value, height: Value)
 }
 
 protocol AngleProtocol {
     associatedtype Value: RawValueProtocol
     var value: Value { get }
     init (value: Value)
+    func greaterValue(_ other: Self) -> Value
 }
 
 protocol RawCircleProtocol {
-    associatedtype Point: RawPointProtocol
+    associatedtype Value
+    associatedtype Point: RawPointProtocol where Point.Value == Value
     var center: Point { get }
-    var radius: Point.Value { get }
-    init(center: Point, radius: Point.Value)
+    var radius: Value { get }
+    init(center: Point, radius: Value)
 }
 
 protocol RawArcProtocol {
-    associatedtype Circle: RawCircleProtocol
+    associatedtype TwoAngles: TwoProtocol where TwoAngles.T: AngleProtocol
+    associatedtype Circle: RawCircleProtocol where Circle.Point.Value == TwoAngles.T.Value
     var circle: Circle { get }
-    var angles: Two<Angle<Circle.Point.Value>> { get }
+    var angles: TwoAngles { get }
     var fromFirst: Bool { get }
-    init(circle: Circle, angles: Two<Angle<Circle.Point.Value>>, fromFirst: Bool)
+    init(circle: Circle, angles: TwoAngles, fromFirst: Bool)
 }
 
 protocol ArrowProtocol {

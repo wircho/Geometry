@@ -26,7 +26,7 @@ struct Weak<T: AnyObject>: WeakProtocol, Hashable {
     }
 }
 
-func ==<T: AnyObject, S: AnyObject>(lhs: Weak<T>, rhs: Weak<S>) -> Bool {
+func ==<T, S>(lhs: Weak<T>, rhs: Weak<S>) -> Bool {
     return lhs.object === rhs.object
 }
 

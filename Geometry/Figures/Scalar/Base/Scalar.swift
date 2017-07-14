@@ -5,14 +5,9 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Result
-
 // MARK: - Scalar Base Class
 
-protocol Scalar: Figure {
-    associatedtype V: FloatingPoint
-    var result: Res<V> { get }
-}
+protocol Scalar: Figure where FigureValue: RawValueProtocol { }
 
 /*
 extension Scalar {

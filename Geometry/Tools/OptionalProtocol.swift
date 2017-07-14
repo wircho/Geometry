@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 // MARK: - OptionalProtocol
 
@@ -34,15 +33,16 @@ extension OptionalProtocol where W: OptionalProtocol {
     }
 }
 
-// MARK: - Result
+//// MARK: - Result
+//
+//extension Result where T: OptionalProtocol {
+//    var optional: Result<T.W, Error>? {
+//        return analysis(ifSuccess: {
+//            guard let value = $0.optionalCopy else { return nil }
+//            return .success(value)
+//        }, ifFailure: {
+//            return .failure($0)
+//        })
+//    }
+//}
 
-extension Result where T: OptionalProtocol {
-    var optional: Result<T.W, Error>? {
-        return analysis(ifSuccess: {
-            guard let value = $0.optionalCopy else { return nil }
-            return .success(value)
-        }, ifFailure: {
-            return .failure($0)
-        })
-    }
-}

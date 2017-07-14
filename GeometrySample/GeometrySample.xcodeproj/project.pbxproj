@@ -7,94 +7,48 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E1D8F201F17EC0000C52F34 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56133A1ED292490004763B /* Complex.swift */; };
+		3E1D8F211F17EC4B00C52F34 /* Polynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613501ED29E750004763B /* Polynomial.swift */; };
+		3E1D8F221F17EC5600C52F34 /* PolynomialRoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613511ED29E750004763B /* PolynomialRoots.swift */; };
+		3E1D8F231F17EC6300C52F34 /* LinearPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134F1ED29E750004763B /* LinearPolynomial.swift */; };
+		3E1D8F241F17EC6F00C52F34 /* QuadraticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613521ED29E750004763B /* QuadraticPolynomial.swift */; };
+		3E1D8F251F17EC7A00C52F34 /* CubicPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134E1ED29E750004763B /* CubicPolynomial.swift */; };
+		3E1D8F261F17EC8200C52F34 /* QuarticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613531ED29E750004763B /* QuarticPolynomial.swift */; };
+		3E1D8F271F17EC9200C52F34 /* QuinticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613541ED29E750004763B /* QuinticPolynomial.swift */; };
+		3E1D8F281F17EC9F00C52F34 /* LazyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* LazyNode.swift */; };
+		3E1D8F291F17ECBE00C52F34 /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
+		3E1D8F2A1F17ECC100C52F34 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876A1EBCCC04002E425F /* Figure.swift */; };
+		3E1D8F2B1F17EDB000C52F34 /* AnyFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1931411ED3A54B00596BB4 /* AnyFigure.swift */; };
+		3E1D8F2C1F17EE1800C52F34 /* FreeValued.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD61EC6D2910071D7D9 /* FreeValued.swift */; };
+		3E1D8F2D1F17EFBE00C52F34 /* OneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */; };
+		3E1D8F2E1F18640C00C52F34 /* AnyWeakOneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */; };
+		3E1D8F2F1F18646200C52F34 /* Bounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7327111ECFF15300A47F25 /* Bounded.swift */; };
+		3E1D8F301F18648500C52F34 /* ParentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */; };
+		3E1D8F311F18649600C52F34 /* Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDC1EC6D2BF0071D7D9 /* Scalar.swift */; };
+		3E1D8F331F18669200C52F34 /* FreeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDE1EC6D2BF0071D7D9 /* FreeScalar.swift */; };
+		3E21F4B91F14514200261438 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
+		3E21F4BA1F14519300261438 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
+		3E21F4BB1F14526100261438 /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */; };
+		3E21F4BC1F145BA100261438 /* HashableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */; };
+		3E21F4BD1F145BAA00261438 /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */; };
 		3E6CFCE91F00695D00ACC8EC /* ContextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED21B1EC3A4D60053AFEA /* ContextView.swift */; };
-		3E6CFCEC1F05663400ACC8EC /* TouchableFigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCEB1F05663300ACC8EC /* TouchableFigureCanvas.swift */; };
-		3E6CFCEE1F05685500ACC8EC /* Touchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6CFCED1F05685500ACC8EC /* Touchable.swift */; };
-		3EA92F921F0FF1C100753FD8 /* SelectionStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA92F911F0FF1C100753FD8 /* SelectionStyleableFigure.swift */; };
+		3E6DBD141F1479EB00BEDE9B /* Cedula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2231EC40BFE0053AFEA /* Cedula.swift */; };
+		3E6DBD151F1479F300BEDE9B /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22D1EC4C34E0053AFEA /* Association.swift */; };
+		3E6DBD161F147A1000BEDE9B /* RawValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613451ED295840004763B /* RawValueProtocol.swift */; };
+		3E6DBD171F14806800BEDE9B /* RawProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F211ED26C8600E89AB3 /* RawProtocols.swift */; };
+		3E6DBD181F14826300BEDE9B /* RawTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* RawTypes.swift */; };
+		3E6DBD191F1489A000BEDE9B /* RawMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* RawMath.swift */; };
+		3E6DBD1A1F1489B400BEDE9B /* RawExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F231ED26CAF00E89AB3 /* RawExtensions.swift */; };
+		3E6DBD1B1F1489F700BEDE9B /* MathError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* MathError.swift */; };
+		3E6DBD1C1F148A7500BEDE9B /* RawOptionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* RawOptionals.swift */; };
+		3E7F4DDC1F150B4500E1D662 /* RawOptionalMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* RawOptionalMath.swift */; };
 		4D5DE168A1170E957D3AB1B0 /* Pods_GeometrySample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BDF264A50559045ED1FE0F09 /* Pods_GeometrySample.framework */; };
 		A72506686D545E9EB52B72E4 /* Pods_GeometrySampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B8A851B423459423D13B7160 /* Pods_GeometrySampleTests.framework */; };
-		AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2878D1EBCCC04002E425F /* Weak.swift */; };
-		AE0F7D1F1EDD23DC00BD8414 /* OptionalProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC21EC1001B0053AFEA /* OptionalProtocol.swift */; };
-		AE0F7D201EDD23DC00BD8414 /* HashableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC81EC23BC60053AFEA /* HashableObject.swift */; };
-		AE0F7D211EDD23DC00BD8414 /* ObjectSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFC61EC23B680053AFEA /* ObjectSet.swift */; };
-		AE0F7D221EDD23DC00BD8414 /* Cedula.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2231EC40BFE0053AFEA /* Cedula.swift */; };
-		AE0F7D231EDD23DC00BD8414 /* Association.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED22D1EC4C34E0053AFEA /* Association.swift */; };
-		AE0F7D2A1EDD23E000BD8414 /* RawValueProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613451ED295840004763B /* RawValueProtocol.swift */; };
-		AE0F7D2B1EDD23E000BD8414 /* RawProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F211ED26C8600E89AB3 /* RawProtocols.swift */; };
-		AE0F7D2C1EDD23E000BD8414 /* RawTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287851EBCCC04002E425F /* RawTypes.swift */; };
-		AE0F7D2D1EDD23E000BD8414 /* RawMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287821EBCCC04002E425F /* RawMath.swift */; };
-		AE0F7D2E1EDD23E000BD8414 /* RawExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE502F231ED26CAF00E89AB3 /* RawExtensions.swift */; };
-		AE0F7D2F1EDD23E000BD8414 /* MathError.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287811EBCCC04002E425F /* MathError.swift */; };
-		AE0F7D301EDD23E000BD8414 /* RawResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287831EBCCC04002E425F /* RawResult.swift */; };
-		AE0F7D311EDD23E000BD8414 /* RawResultMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287841EBCCC04002E425F /* RawResultMath.swift */; };
-		AE0F7D321EDD23E000BD8414 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56133A1ED292490004763B /* Complex.swift */; };
-		AE0F7D331EDD23EE00BD8414 /* Polynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613501ED29E750004763B /* Polynomial.swift */; };
-		AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613511ED29E750004763B /* PolynomialRoots.swift */; };
-		AE0F7D351EDD23EE00BD8414 /* LinearPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134F1ED29E750004763B /* LinearPolynomial.swift */; };
-		AE0F7D361EDD23EE00BD8414 /* QuadraticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613521ED29E750004763B /* QuadraticPolynomial.swift */; };
-		AE0F7D371EDD23EE00BD8414 /* CubicPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE56134E1ED29E750004763B /* CubicPolynomial.swift */; };
-		AE0F7D381EDD23EE00BD8414 /* QuarticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613531ED29E750004763B /* QuarticPolynomial.swift */; };
-		AE0F7D391EDD23EE00BD8414 /* QuinticPolynomial.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5613541ED29E750004763B /* QuinticPolynomial.swift */; };
-		AE0F7D3A1EDD23F800BD8414 /* LazyNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287871EBCCC04002E425F /* LazyNode.swift */; };
-		AE0F7D3E1EDD23FC00BD8414 /* Drawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ECFCF1EC2BFB60053AFEA /* Drawable.swift */; };
-		AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4ED2191EC39F5F0053AFEA /* FigureContext.swift */; };
-		AE0F7D421EDD241600BD8414 /* Figure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA2876A1EBCCC04002E425F /* Figure.swift */; };
-		AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1931411ED3A54B00596BB4 /* AnyFigure.swift */; };
-		AE0F7D451EDD242100BD8414 /* FreeValued.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD61EC6D2910071D7D9 /* FreeValued.swift */; };
-		AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABD71EC6D2910071D7D9 /* OneDimensional.swift */; };
-		AE0F7D471EDD242100BD8414 /* AnyWeakOneDimensional.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE19314A1ED3DE6700596BB4 /* AnyWeakOneDimensional.swift */; };
-		AE0F7D481EDD242100BD8414 /* Bounded.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE7327111ECFF15300A47F25 /* Bounded.swift */; };
-		AE0F7D491EDD242100BD8414 /* ParentComparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC131EC93A2C0071D7D9 /* ParentComparable.swift */; };
-		AE0F7D4A1EDD242D00BD8414 /* Scalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDC1EC6D2BF0071D7D9 /* Scalar.swift */; };
-		AE0F7D4B1EDD243300BD8414 /* FreeScalar.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABDE1EC6D2BF0071D7D9 /* FreeScalar.swift */; };
-		AE0F7D4C1EDD243B00BD8414 /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE31EC6D4690071D7D9 /* Point.swift */; };
-		AE0F7D4D1EDD243B00BD8414 /* CoupleOfPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC111EC811980071D7D9 /* CoupleOfPoints.swift */; };
-		AE0F7D4E1EDD244100BD8414 /* FreePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE51EC6D4690071D7D9 /* FreePoint.swift */; };
-		AE0F7D4F1EDD248B00BD8414 /* SlidingPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABEA1EC6D4690071D7D9 /* SlidingPoint.swift */; };
-		AE0F7D511EDD249E00BD8414 /* Baricenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACB11ECC02610071D7D9 /* Baricenter.swift */; };
-		AE0F7D5B1EDD285E00BD8414 /* Ruler.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9D1ECA55300071D7D9 /* Ruler.swift */; };
-		AE0F7D5F1EDD374800BD8414 /* Ruler2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9E1ECA55300071D7D9 /* Ruler2Points.swift */; };
-		AE0F7D601EDD374D00BD8414 /* DirectedLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC9C1ECA55300071D7D9 /* DirectedLine.swift */; };
-		AE0F7D611EDD375300BD8414 /* Line2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA01ECA55300071D7D9 /* Line2Points.swift */; };
-		AE0F7D621EDD3A6C00BD8414 /* Ray2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA31ECA55300071D7D9 /* Ray2Points.swift */; };
-		AE0F7D631EDD3A9900BD8414 /* RayAway.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE184DBE1ED1F64B00D9EB8D /* RayAway.swift */; };
-		AE0F7D641EDD3B8500BD8414 /* Segment2Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA41ECA55300071D7D9 /* Segment2Points.swift */; };
-		AE0F7D651EDD3B9500BD8414 /* ParallelLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA11ECA55300071D7D9 /* ParallelLine.swift */; };
-		AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACA21ECA55300071D7D9 /* PerpendicularLine.swift */; };
-		AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC081EC753DF0071D7D9 /* Circle.swift */; };
-		AE0F7D681EDD3BA600BD8414 /* CircleToPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0A1EC753DF0071D7D9 /* CircleToPoint.swift */; };
-		AE0F7D691EDD3CC200BD8414 /* CircleWithRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0B1EC753DF0071D7D9 /* CircleWithRadius.swift */; };
-		AE0F7D6A1EDD3CDC00BD8414 /* Circumcircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC0C1EC753DF0071D7D9 /* Circumcircle.swift */; };
-		AE0F7D6B1EDD3CE400BD8414 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC161EC967AC0071D7D9 /* Arc.swift */; };
-		AE0F7D6C1EDD3CEF00BD8414 /* Circumarc.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3AC1B1EC9F67F0071D7D9 /* Circumarc.swift */; };
-		AE0F7D6D1EDD3CFE00BD8414 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBD1ECE1FD90071D7D9 /* Curve.swift */; };
-		AE0F7D6E1EDD421500BD8414 /* Curve4Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACBF1ECE1FD90071D7D9 /* Curve4Points.swift */; };
-		AE0F7D6F1EDD422E00BD8414 /* QuadCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC21ECE1FD90071D7D9 /* QuadCurve.swift */; };
-		AE0F7D701EDD423500BD8414 /* QuadCurve3Points.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ACC41ECE1FD90071D7D9 /* QuadCurve3Points.swift */; };
-		AE0F7D711EDD8EA300BD8414 /* TwoRulers.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE91EC6D4690071D7D9 /* TwoRulers.swift */; };
-		AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE71EC6D4690071D7D9 /* RulerCircle.swift */; };
-		AE0F86BD1EE5EB7E00BD8414 /* TwoCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE3ABE81EC6D4690071D7D9 /* TwoCircles.swift */; };
-		AE5440BE1EF0B226004E7D54 /* LayerCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440BD1EF0B226004E7D54 /* LayerCanvas.swift */; };
-		AE5440CB1EF17052004E7D54 /* LayerStyleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440CA1EF17052004E7D54 /* LayerStyleable.swift */; };
-		AE5440CD1EF1AF3E004E7D54 /* LayerDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440CC1EF1AF3E004E7D54 /* LayerDrawable.swift */; };
-		AE5440D41EF1D486004E7D54 /* Selectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440D31EF1D486004E7D54 /* Selectable.swift */; };
-		AE5440D61EF1D55F004E7D54 /* SelectionStyleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440D51EF1D55F004E7D54 /* SelectionStyleable.swift */; };
-		AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287411EBCCB2C002E425F /* AppDelegate.swift */; };
 		AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287431EBCCB2C002E425F /* ViewController.swift */; };
 		AEA287471EBCCB2C002E425F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA287451EBCCB2C002E425F /* Main.storyboard */; };
 		AEA287491EBCCB2C002E425F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AEA287481EBCCB2C002E425F /* Assets.xcassets */; };
 		AEA2874C1EBCCB2C002E425F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEA2874A1EBCCB2C002E425F /* LaunchScreen.storyboard */; };
 		AEA287571EBCCB2C002E425F /* GeometrySampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEA287561EBCCB2C002E425F /* GeometrySampleTests.swift */; };
-		AEE202171EF20E4E0073CE17 /* CoreExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE5440CF1EF1B022004E7D54 /* CoreExtensions.swift */; };
-		AEE2021D1EF30C570073CE17 /* FigureStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2021C1EF30C560073CE17 /* FigureStyles.swift */; };
-		AEE202291EF4172D0073CE17 /* Hideable.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202281EF4172D0073CE17 /* Hideable.swift */; };
-		AEE202501EF643A90073CE17 /* CoreFigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2024F1EF643A90073CE17 /* CoreFigureCanvas.swift */; };
-		AEE202521EF70FB40073CE17 /* WrapsFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202511EF70FB40073CE17 /* WrapsFigure.swift */; };
-		AEE202571EF9DA5D0073CE17 /* CoreStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202561EF9DA5D0073CE17 /* CoreStyles.swift */; };
-		AEE202591EF9EBC50073CE17 /* LayerDrawableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202581EF9EBC50073CE17 /* LayerDrawableFigure.swift */; };
-		AEE2025B1EFAA8B60073CE17 /* LayerStyleableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2025A1EFAA8B60073CE17 /* LayerStyleableFigure.swift */; };
-		AEE2025F1EFDAF640073CE17 /* FigureCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE2025E1EFDAF640073CE17 /* FigureCanvas.swift */; };
-		AEE202611EFF577C0073CE17 /* StyleInitiableFigure.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEE202601EFF577C0073CE17 /* StyleInitiableFigure.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -157,8 +111,8 @@
 		AEA2876A1EBCCC04002E425F /* Figure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Figure.swift; sourceTree = "<group>"; };
 		AEA287811EBCCC04002E425F /* MathError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MathError.swift; sourceTree = "<group>"; };
 		AEA287821EBCCC04002E425F /* RawMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawMath.swift; sourceTree = "<group>"; };
-		AEA287831EBCCC04002E425F /* RawResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawResult.swift; sourceTree = "<group>"; };
-		AEA287841EBCCC04002E425F /* RawResultMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawResultMath.swift; sourceTree = "<group>"; };
+		AEA287831EBCCC04002E425F /* RawOptionals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawOptionals.swift; sourceTree = "<group>"; };
+		AEA287841EBCCC04002E425F /* RawOptionalMath.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawOptionalMath.swift; sourceTree = "<group>"; };
 		AEA287851EBCCC04002E425F /* RawTypes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RawTypes.swift; sourceTree = "<group>"; };
 		AEA287871EBCCC04002E425F /* LazyNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyNode.swift; sourceTree = "<group>"; };
 		AEA2878D1EBCCC04002E425F /* Weak.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weak.swift; sourceTree = "<group>"; };
@@ -386,8 +340,8 @@
 				AEA287821EBCCC04002E425F /* RawMath.swift */,
 				AE502F231ED26CAF00E89AB3 /* RawExtensions.swift */,
 				AEA287811EBCCC04002E425F /* MathError.swift */,
-				AEA287831EBCCC04002E425F /* RawResult.swift */,
-				AEA287841EBCCC04002E425F /* RawResultMath.swift */,
+				AEA287831EBCCC04002E425F /* RawOptionals.swift */,
+				AEA287841EBCCC04002E425F /* RawOptionalMath.swift */,
 				AE56133A1ED292490004763B /* Complex.swift */,
 				AE56134D1ED29E750004763B /* Polynomials */,
 			);
@@ -676,7 +630,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = Trovy;
 				TargetAttributes = {
 					AEA2873D1EBCCB2C002E425F = {
@@ -829,88 +783,42 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AEE202501EF643A90073CE17 /* CoreFigureCanvas.swift in Sources */,
-				AE0F7D331EDD23EE00BD8414 /* Polynomial.swift in Sources */,
-				AE0F7D421EDD241600BD8414 /* Figure.swift in Sources */,
-				AE0F7D3A1EDD23F800BD8414 /* LazyNode.swift in Sources */,
-				AE0F7D471EDD242100BD8414 /* AnyWeakOneDimensional.swift in Sources */,
-				AE0F7D311EDD23E000BD8414 /* RawResultMath.swift in Sources */,
-				AE0F7D6E1EDD421500BD8414 /* Curve4Points.swift in Sources */,
-				AE0F7D351EDD23EE00BD8414 /* LinearPolynomial.swift in Sources */,
+				3E1D8F211F17EC4B00C52F34 /* Polynomial.swift in Sources */,
+				3E7F4DDC1F150B4500E1D662 /* RawOptionalMath.swift in Sources */,
+				3E1D8F231F17EC6300C52F34 /* LinearPolynomial.swift in Sources */,
+				3E21F4BC1F145BA100261438 /* HashableObject.swift in Sources */,
 				AEA287441EBCCB2C002E425F /* ViewController.swift in Sources */,
-				AE0F7D211EDD23DC00BD8414 /* ObjectSet.swift in Sources */,
-				AE0F7D2F1EDD23E000BD8414 /* MathError.swift in Sources */,
-				AE0F7D611EDD375300BD8414 /* Line2Points.swift in Sources */,
-				AE0F7D6A1EDD3CDC00BD8414 /* Circumcircle.swift in Sources */,
-				AE0F7D621EDD3A6C00BD8414 /* Ray2Points.swift in Sources */,
-				AE0F7D411EDD241600BD8414 /* FigureContext.swift in Sources */,
-				AE0F7D301EDD23E000BD8414 /* RawResult.swift in Sources */,
-				AE0F7D711EDD8EA300BD8414 /* TwoRulers.swift in Sources */,
-				AE0F7D4C1EDD243B00BD8414 /* Point.swift in Sources */,
-				AE0F7D4B1EDD243300BD8414 /* FreeScalar.swift in Sources */,
-				AE0F7D461EDD242100BD8414 /* OneDimensional.swift in Sources */,
-				AEE202291EF4172D0073CE17 /* Hideable.swift in Sources */,
-				AE0F7D6F1EDD422E00BD8414 /* QuadCurve.swift in Sources */,
-				AE0F7D221EDD23DC00BD8414 /* Cedula.swift in Sources */,
-				AE5440CD1EF1AF3E004E7D54 /* LayerDrawable.swift in Sources */,
-				AE0F7D641EDD3B8500BD8414 /* Segment2Points.swift in Sources */,
-				3E6CFCEE1F05685500ACC8EC /* Touchable.swift in Sources */,
-				AE0F7D1F1EDD23DC00BD8414 /* OptionalProtocol.swift in Sources */,
-				AE0F7D5F1EDD374800BD8414 /* Ruler2Points.swift in Sources */,
-				AE0F7D451EDD242100BD8414 /* FreeValued.swift in Sources */,
-				AE0F7D2C1EDD23E000BD8414 /* RawTypes.swift in Sources */,
-				AE0F7D2A1EDD23E000BD8414 /* RawValueProtocol.swift in Sources */,
-				AE0F7D481EDD242100BD8414 /* Bounded.swift in Sources */,
-				3E6CFCEC1F05663400ACC8EC /* TouchableFigureCanvas.swift in Sources */,
+				3E6DBD1B1F1489F700BEDE9B /* MathError.swift in Sources */,
+				3E1D8F2D1F17EFBE00C52F34 /* OneDimensional.swift in Sources */,
+				3E6DBD1C1F148A7500BEDE9B /* RawOptionals.swift in Sources */,
+				3E1D8F291F17ECBE00C52F34 /* FigureContext.swift in Sources */,
+				3E21F4BA1F14519300261438 /* Weak.swift in Sources */,
+				3E1D8F2A1F17ECC100C52F34 /* Figure.swift in Sources */,
+				3E1D8F331F18669200C52F34 /* FreeScalar.swift in Sources */,
+				3E1D8F301F18648500C52F34 /* ParentComparable.swift in Sources */,
+				3E1D8F2F1F18646200C52F34 /* Bounded.swift in Sources */,
+				3E21F4BD1F145BAA00261438 /* ObjectSet.swift in Sources */,
+				3E1D8F2B1F17EDB000C52F34 /* AnyFigure.swift in Sources */,
+				3E6DBD181F14826300BEDE9B /* RawTypes.swift in Sources */,
+				3E6DBD161F147A1000BEDE9B /* RawValueProtocol.swift in Sources */,
+				3E6DBD1A1F1489B400BEDE9B /* RawExtensions.swift in Sources */,
+				3E1D8F201F17EC0000C52F34 /* Complex.swift in Sources */,
+				3E21F4BB1F14526100261438 /* OptionalProtocol.swift in Sources */,
+				3E1D8F311F18649600C52F34 /* Scalar.swift in Sources */,
+				3E6DBD191F1489A000BEDE9B /* RawMath.swift in Sources */,
+				3E1D8F261F17EC8200C52F34 /* QuarticPolynomial.swift in Sources */,
+				3E1D8F271F17EC9200C52F34 /* QuinticPolynomial.swift in Sources */,
+				3E6DBD141F1479EB00BEDE9B /* Cedula.swift in Sources */,
+				3E1D8F241F17EC6F00C52F34 /* QuadraticPolynomial.swift in Sources */,
+				3E6DBD151F1479F300BEDE9B /* Association.swift in Sources */,
 				3E6CFCE91F00695D00ACC8EC /* ContextView.swift in Sources */,
-				AE0F7D5B1EDD285E00BD8414 /* Ruler.swift in Sources */,
-				AE0F7D2E1EDD23E000BD8414 /* RawExtensions.swift in Sources */,
-				AE0F7D601EDD374D00BD8414 /* DirectedLine.swift in Sources */,
-				AE0F7D681EDD3BA600BD8414 /* CircleToPoint.swift in Sources */,
-				AE0F7D321EDD23E000BD8414 /* Complex.swift in Sources */,
-				AEA287421EBCCB2C002E425F /* AppDelegate.swift in Sources */,
-				AEE2021D1EF30C570073CE17 /* FigureStyles.swift in Sources */,
-				AE0F7D4F1EDD248B00BD8414 /* SlidingPoint.swift in Sources */,
-				AE0F7D3E1EDD23FC00BD8414 /* Drawable.swift in Sources */,
-				AE0F7D691EDD3CC200BD8414 /* CircleWithRadius.swift in Sources */,
-				AEE202571EF9DA5D0073CE17 /* CoreStyles.swift in Sources */,
-				AE0F7D431EDD241600BD8414 /* AnyFigure.swift in Sources */,
-				AE0F7D661EDD3B9B00BD8414 /* PerpendicularLine.swift in Sources */,
-				AE5440CB1EF17052004E7D54 /* LayerStyleable.swift in Sources */,
-				AEE2025F1EFDAF640073CE17 /* FigureCanvas.swift in Sources */,
-				AEE2025B1EFAA8B60073CE17 /* LayerStyleableFigure.swift in Sources */,
-				AEE202171EF20E4E0073CE17 /* CoreExtensions.swift in Sources */,
-				AE0F7D511EDD249E00BD8414 /* Baricenter.swift in Sources */,
-				AE0F86BD1EE5EB7E00BD8414 /* TwoCircles.swift in Sources */,
-				AE0F7D4E1EDD244100BD8414 /* FreePoint.swift in Sources */,
-				AE0F7D631EDD3A9900BD8414 /* RayAway.swift in Sources */,
-				AE0F7D2D1EDD23E000BD8414 /* RawMath.swift in Sources */,
-				AEE202611EFF577C0073CE17 /* StyleInitiableFigure.swift in Sources */,
-				AE0F7D6D1EDD3CFE00BD8414 /* Curve.swift in Sources */,
-				AE0F7D381EDD23EE00BD8414 /* QuarticPolynomial.swift in Sources */,
-				AE0F7D391EDD23EE00BD8414 /* QuinticPolynomial.swift in Sources */,
-				AE0F7D361EDD23EE00BD8414 /* QuadraticPolynomial.swift in Sources */,
-				AEE202591EF9EBC50073CE17 /* LayerDrawableFigure.swift in Sources */,
-				3EA92F921F0FF1C100753FD8 /* SelectionStyleableFigure.swift in Sources */,
-				AE0F7D701EDD423500BD8414 /* QuadCurve3Points.swift in Sources */,
-				AE0F7D201EDD23DC00BD8414 /* HashableObject.swift in Sources */,
-				AE0F7D6C1EDD3CEF00BD8414 /* Circumarc.swift in Sources */,
-				AE5440D61EF1D55F004E7D54 /* SelectionStyleable.swift in Sources */,
-				AE5440D41EF1D486004E7D54 /* Selectable.swift in Sources */,
-				AE0F7D6B1EDD3CE400BD8414 /* Arc.swift in Sources */,
-				AE0F7D4A1EDD242D00BD8414 /* Scalar.swift in Sources */,
-				AE0F7D491EDD242100BD8414 /* ParentComparable.swift in Sources */,
-				AE0F7D4D1EDD243B00BD8414 /* CoupleOfPoints.swift in Sources */,
-				AE0F7D231EDD23DC00BD8414 /* Association.swift in Sources */,
-				AE0F7D2B1EDD23E000BD8414 /* RawProtocols.swift in Sources */,
-				AE0F7D1E1EDD23DA00BD8414 /* Weak.swift in Sources */,
-				AEE202521EF70FB40073CE17 /* WrapsFigure.swift in Sources */,
-				AE0F7D721EDDDB6D00BD8414 /* RulerCircle.swift in Sources */,
-				AE0F7D671EDD3BA000BD8414 /* Circle.swift in Sources */,
-				AE0F7D341EDD23EE00BD8414 /* PolynomialRoots.swift in Sources */,
-				AE5440BE1EF0B226004E7D54 /* LayerCanvas.swift in Sources */,
-				AE0F7D651EDD3B9500BD8414 /* ParallelLine.swift in Sources */,
-				AE0F7D371EDD23EE00BD8414 /* CubicPolynomial.swift in Sources */,
+				3E1D8F2C1F17EE1800C52F34 /* FreeValued.swift in Sources */,
+				3E6DBD171F14806800BEDE9B /* RawProtocols.swift in Sources */,
+				3E1D8F2E1F18640C00C52F34 /* AnyWeakOneDimensional.swift in Sources */,
+				3E21F4B91F14514200261438 /* AppDelegate.swift in Sources */,
+				3E1D8F281F17EC9F00C52F34 /* LazyNode.swift in Sources */,
+				3E1D8F221F17EC5600C52F34 /* PolynomialRoots.swift in Sources */,
+				3E1D8F251F17EC7A00C52F34 /* CubicPolynomial.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -961,7 +869,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -969,7 +879,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -999,6 +913,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1012,7 +927,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -1020,7 +937,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
@@ -1042,6 +963,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1058,7 +980,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trovy.GeometrySample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -1073,7 +994,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trovy.GeometrySample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -1088,7 +1008,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trovy.GeometrySampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeometrySample.app/GeometrySample";
 			};
 			name = Debug;
@@ -1104,7 +1023,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.trovy.GeometrySampleTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/GeometrySample.app/GeometrySample";
 			};
 			name = Release;

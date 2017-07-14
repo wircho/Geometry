@@ -6,15 +6,13 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Result
-
 protocol OneDimensional: Figure {
-    associatedtype P: RawPointProtocol
-    var oneDimensionalStorage: OneDimensionalStorage<P> { get set }
-    var touchingDefiningPoints: [AnyFigure<P>] { get }
-    func at(offset: P.Value) -> Res<P>
-    func nearestOffset(from point: P) -> Res<P.Value>
-    func gap(from point: P) -> Res<P.Value>
+    associatedtype MemberPoint: RawPointProtocol
+    var oneDimensionalStorage: OneDimensionalStorage<MemberPoint> { get set }
+    var touchingDefiningPoints: [AnyFigure<MemberPoint>] { get }
+    func at(offset: MemberPoint.Value) -> MemberPoint?
+    func nearestOffset(from point: MemberPoint) -> MemberPoint.Value?
+    func gap(from point: MemberPoint) -> MemberPoint.Value?
 }
 
 struct OneDimensionalStorage<P: RawPointProtocol> {
@@ -23,13 +21,13 @@ struct OneDimensionalStorage<P: RawPointProtocol> {
 }
 
 private extension ObjectSet where T == AnyObject {
-    init<T>(figures: [AnyFigure<T>]) {
+    init<S>(figures: [AnyFigure<S>]) {
         self.init(figures.map { $0.figure })
     }
 }
 
 extension OneDimensional {
-    var slidingPoints: [AnyFigure<P>] {
+    var slidingPoints: [AnyFigure<MemberPoint>] {
         get {
             oneDimensionalStorage.weakSlidingPoints = oneDimensionalStorage.weakSlidingPoints.filter { $0.figure != nil }
             return oneDimensionalStorage.weakSlidingPoints.flatMap { $0.anyFigure }
@@ -39,7 +37,7 @@ extension OneDimensional {
         }
     }
     
-    var intersectionPoints: [AnyFigure<P>] {
+    var intersectionPoints: [AnyFigure<MemberPoint>] {
         get {
             oneDimensionalStorage.weakIntersectionPoints = oneDimensionalStorage.weakIntersectionPoints.filter { $0.figure != nil }
             return oneDimensionalStorage.weakIntersectionPoints.flatMap { $0.anyFigure }
@@ -49,15 +47,15 @@ extension OneDimensional {
         }
     }
     
-    var nonIntersectionTouchingPoints: [AnyFigure<P>] {
+    var nonIntersectionTouchingPoints: [AnyFigure<MemberPoint>] {
         return touchingDefiningPoints + slidingPoints
     }
     
-    var allTouchingPoints: [AnyFigure<P>] {
+    var allTouchingPoints: [AnyFigure<MemberPoint>] {
         return nonIntersectionTouchingPoints + intersectionPoints
     }
     
-    func findPreexistingCommonPoints<Other: OneDimensional>(with other: Other, _ closure: (AnyFigure<P>) -> Bool) {
+    func findPreexistingCommonPoints<Other: OneDimensional>(with other: Other, _ closure: (AnyFigure<MemberPoint>) -> Bool) {
         let intersections = intersectionPoints
         let nonIntersections = nonIntersectionTouchingPoints
         let otherAll = ObjectSet(figures: other.allTouchingPoints)
@@ -68,9 +66,8 @@ extension OneDimensional {
             }
         }
         for p in intersections {
-            if otherNonIntersections.contains(p.figure) {
-                guard closure(p) else { break }
-            }
+            guard otherNonIntersections.contains(p.figure) else { continue }
+            guard closure(p) else { break }
         }
     }
 }

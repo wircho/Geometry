@@ -204,10 +204,10 @@ private func createFigureContext4() -> FigureContext {
     return ctx
 }
 */
-class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate, FigureCanvasDelegate {
+class ContextView: UIView /*, FigureContextDelegate, UIGestureRecognizerDelegate, FigureCanvasDelegate */ {
 
-    let context = FigureContext()
-    let canvas = CoreFigureCanvas()
+//    let context = FigureContext()
+//    let canvas = CoreFigureCanvas()
     
     
     override init(frame: CGRect) {
@@ -223,8 +223,8 @@ class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate, F
     }
     
     func setUp() {
-        context.delegate = self
-        canvas.delegate = self
+//        context.delegate = self
+//        canvas.delegate = self
     /*    context.delegate = self
         let t = UITapGestureRecognizer(target: self, action: #selector(tapped))
         t.delegate = self
@@ -237,16 +237,16 @@ class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate, F
     
     
     func addFigures() {
-        let p0 = FreePoint<CGPoint>(x: 50, y: 150, in: context)
-        let p1 = FreePoint<CGPoint>(x: 50, y: 250, in: context)
-        let p2 = FreePoint<CGPoint>(x: 200, y: 250, in: context)
-        let circle = Circumcircle<RawCircle<CGPoint>>(p0, p1, p2)
-        canvas.add(p0)
-        canvas.add(p1)
-        canvas.add(p2)
-        let styleableCircle = canvas.add(circle)
-        styleableCircle.style.lineWidth = 0.5
-        styleableCircle.style.color = .blue
+//        let p0 = FreePoint<CGPoint>(x: 50, y: 150, in: context)
+//        let p1 = FreePoint<CGPoint>(x: 50, y: 250, in: context)
+//        let p2 = FreePoint<CGPoint>(x: 200, y: 250, in: context)
+//        let circle = Circumcircle<RawCircle<CGPoint>>(p0, p1, p2)
+//        canvas.add(p0)
+//        canvas.add(p1)
+//        canvas.add(p2)
+//        let styleableCircle = canvas.add(circle)
+//        styleableCircle.style.lineWidth = 0.5
+//        styleableCircle.style.color = .blue
     }
     /*
     func tapped(t: UITapGestureRecognizer) {
@@ -267,15 +267,15 @@ class ContextView: UIView, FigureContextDelegate, UIGestureRecognizerDelegate, F
         }
     }*/
     
-    func figuresWillUpdate(in _: FigureContext) {
-        setNeedsDisplay()
-    }
-    
-    func appearanceDidUpdate(in _: FigureCanvasBase) {
-        setNeedsDisplay()
-    }
-    
-    override func draw(_ rect: CGRect) {
-        canvas.draw(in: rect)
-    }
+//    func figuresWillUpdate(in _: FigureContext) {
+//        setNeedsDisplay()
+//    }
+//
+//    func appearanceDidUpdate(in _: FigureCanvasBase) {
+//        setNeedsDisplay()
+//    }
+//
+//    override func draw(_ rect: CGRect) {
+//        canvas.draw(in: rect)
+//    }
 }

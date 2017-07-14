@@ -8,7 +8,6 @@
 // MARK: Operators
 
 infix operator • : MultiplicationPrecedence
-infix operator ~/ : MultiplicationPrecedence
 
 // MARK: Operations
 

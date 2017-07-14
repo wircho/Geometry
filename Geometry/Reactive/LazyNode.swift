@@ -5,9 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Foundation
-import Result
-
 // MARK: - Signal Propagation Algorithms
 
 enum LazyNodeSignalAlgorithm {

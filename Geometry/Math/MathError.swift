@@ -5,18 +5,19 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-enum MathError: Error {
-    case none
-    case complex
-    case infinity
-}
+//enum MathError: Error {
+//    case none
+//    case complex
+//    case infinity
+//}
+//
+//protocol MathErrorProtocol {
+//    init(_ error: MathError)
+//}
+//
+//extension MathError: MathErrorProtocol {
+//    init(_ error: MathError) {
+//        self = error
+//    }
+//}
 
-protocol MathErrorProtocol {
-    init(_ error: MathError)
-}
-
-extension MathError: MathErrorProtocol {
-    init(_ error: MathError) {
-        self = error
-    }
-}

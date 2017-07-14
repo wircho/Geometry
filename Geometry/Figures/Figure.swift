@@ -5,8 +5,6 @@
 //  Copyright © 2017 Trovy. All rights reserved.
 //
 
-import Result
-
 // MARK: - Figure
 
 protocol FigureBase: LazyNodeBase {
@@ -17,7 +15,7 @@ protocol FigureBase: LazyNodeBase {
 struct FigureStorage<Value> {
     weak var context: FigureContext?
     var receivers: [() -> LazyNodeBase?] = []
-    var _result: Res<Value> = .none /* {
+    var _result: Value? = nil /* {
         didSet {
             if case .success = oldValue, case .failure = _result, selected {
                 selected = false
@@ -44,7 +42,7 @@ struct FigureStorage<Value> {
 }
 
 protocol Figure: FigureBase, LazyNode {
-    associatedtype FigureValue
+    associatedtype FigureValue where ResultValue == FigureValue?
     var storage: FigureStorage<FigureValue> { get set }
     func compare(with other: Self) -> Bool
 }
@@ -55,7 +53,7 @@ extension Figure {
         set { storage.receivers = newValue }
     }
     
-    var _result: Res<FigureValue> {
+    var _result: FigureValue? {
         get { return storage._result }
         set { storage._result = newValue }
     }
